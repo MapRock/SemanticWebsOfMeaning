@@ -1,3 +1,6 @@
+**August 18, 2026 - The book was released a couple of weeks earlier than I expected, so I’m still tidying up the supplemental GitHub repository mentioned in the book. I expect to make it public in a week or so.**
+
+
 # Semantic Webs of Meaning — Supplemental Book Material
 
 This repository contains supplemental appendices, examples, and technical material accompanying the book:
@@ -30,6 +33,14 @@ Because this repository may continue to evolve after publication, examples here 
 
 Where there is a difference between an example in this repository and material in the published book, the repository should be treated as supplemental implementation material rather than as an amendment to the published text unless explicitly stated otherwise.
 
+https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/book_code/kalbi_plate.ttl 
+
+The book will refer to files by a truncated path to the GitHub repo: 
+
+- Code from this book example: book_code/kalbi_plate.ttl.
+- Document example: docs/datalog_vs_prolog.md 
+- Appendices: appendices/appendix_a_beyond_ontology.md 
+
 ## Use of Examples
 
 Most examples in this repository are intended to illustrate concepts and architectural patterns. They are not necessarily production-ready implementations.
@@ -59,7 +70,7 @@ Code samples may be provided under a separate license if one is included in this
 
 ## Publisher
 
-*Semantic Webs of Meaning: Building Contextual Knowledge Graphs for Deduction and Integration* is published by [**Technics Publications**](https://technicspub.com)).
+*Semantic Webs of Meaning: Building Contextual Knowledge Graphs for Deduction and Integration* is published by [**Technics Publications**](https://technicspub.com).
 
 This supplemental repository is maintained by the author. Unless explicitly stated otherwise, repository updates made after publication should not be interpreted as official publisher revisions to the book.
 
