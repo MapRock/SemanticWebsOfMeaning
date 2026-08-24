@@ -34,5 +34,5 @@
 
 :baseModel rdf:type ja:MemoryModel ;
     ja:content [
-        ja:externalContent <file:///C:/MapRock/knowledge_graph_book/book_code/programmers.ttl>
+        ja:externalContent <file:///C:/MapRock/SemanticWebsOfMeaning/book_code/programmers.ttl>
     ] .
