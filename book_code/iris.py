@@ -9,7 +9,7 @@ import re
 # 1. Train a simple clustering model on the Iris dataset
 # ------------------------------------------------------------
 
-model_url = "https://github.com/MapRock/knowledge_graph_book/blob/main/book_code/iris_kmeans_model.pkl"
+model_url = "https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/book_code/iris_kmeans_model.pkl"
 
 iris = load_iris()
 X = iris.data
