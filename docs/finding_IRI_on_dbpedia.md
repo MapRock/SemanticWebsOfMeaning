@@ -180,5 +180,5 @@ Check `owl:sameAs` on each page. That is how you see whether DBpedia already spl
 Wiki**data** is often cleaner for identity (`wd:Q11420` for judo). DBpedia is better when you want Wiki**pedia**-shaped text and infobox facts next to the IRI.
 
 
-[1]: https://www.dbpedia.org/resources/ontology/?utm_source=chatgpt.com "Ontology (DBO) - DBpedia Association"
-[2]: https://www.dbpedia.org/resources/linked-data/?utm_source=chatgpt.com "Linked Data Access - DBpedia Association"
+[1]: https://www.dbpedia.org/resources/ontology/ "Ontology (DBO) - DBpedia Association"
+[2]: https://www.dbpedia.org/resources/linked-data/ "Linked Data Access - DBpedia Association"
