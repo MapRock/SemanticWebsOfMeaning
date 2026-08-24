@@ -1,0 +1,5062 @@
+@prefix :     <http://example.org/kg/> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# Metadata classes
+:SourceTable a owl:Class .
+:SourceColumn a owl:Class .
+
+# Metadata properties
+:mappedToTable a owl:ObjectProperty .
+:mappedToColumn a owl:ObjectProperty .
+:hasColumn a owl:ObjectProperty .
+:isColumnOf a owl:ObjectProperty .
+:serverName a owl:DatatypeProperty .
+:databaseName a owl:DatatypeProperty .
+:schemaName a owl:DatatypeProperty .
+:tableName a owl:DatatypeProperty .
+:columnName a owl:DatatypeProperty .
+:dataType a owl:DatatypeProperty .
+:isNullable a owl:DatatypeProperty .
+:ordinalPosition a owl:DatatypeProperty .
+
+:AdventureWorksDWBuildVersion
+    a owl:Class ;
+    rdfs:label "AdventureWorksDWBuildVersion" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_AdventureWorksDWBuildVersion .
+
+:DatabaseLog
+    a owl:Class ;
+    rdfs:label "DatabaseLog" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_DatabaseLog .
+
+:Account
+    a owl:Class ;
+    rdfs:label "Account" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_DimAccount .
+
+:Currency
+    a owl:Class ;
+    rdfs:label "Currency" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_DimCurrency .
+
+:Customer
+    a owl:Class ;
+    rdfs:label "Customer" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_DimCustomer .
+
+:Date
+    a owl:Class ;
+    rdfs:label "Date" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_DimDate .
+
+:DepartmentGroup
+    a owl:Class ;
+    rdfs:label "DepartmentGroup" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_DimDepartmentGroup .
+
+:Employee
+    a owl:Class ;
+    rdfs:label "Employee" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_DimEmployee .
+
+:Geography
+    a owl:Class ;
+    rdfs:label "Geography" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_DimGeography .
+
+:Organization
+    a owl:Class ;
+    rdfs:label "Organization" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_DimOrganization .
+
+:Product
+    a owl:Class ;
+    rdfs:label "Product" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_DimProduct .
+
+:ProductCategory
+    a owl:Class ;
+    rdfs:label "ProductCategory" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_DimProductCategory .
+
+:ProductSubcategory
+    a owl:Class ;
+    rdfs:label "ProductSubcategory" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_DimProductSubcategory .
+
+:Promotion
+    a owl:Class ;
+    rdfs:label "Promotion" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_DimPromotion .
+
+:Reseller
+    a owl:Class ;
+    rdfs:label "Reseller" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_DimReseller .
+
+:SalesReason
+    a owl:Class ;
+    rdfs:label "SalesReason" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_DimSalesReason .
+
+:SalesTerritory
+    a owl:Class ;
+    rdfs:label "SalesTerritory" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_DimSalesTerritory .
+
+:Scenario
+    a owl:Class ;
+    rdfs:label "Scenario" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_DimScenario .
+
+:AdditionalInternationalProductDescription
+    a owl:Class ;
+    rdfs:label "AdditionalInternationalProductDescription" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_FactAdditionalInternationalProductDescription .
+
+:CallCenter
+    a owl:Class ;
+    rdfs:label "CallCenter" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_FactCallCenter .
+
+:CurrencyRate
+    a owl:Class ;
+    rdfs:label "CurrencyRate" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_FactCurrencyRate .
+
+:Finance
+    a owl:Class ;
+    rdfs:label "Finance" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_FactFinance .
+
+:InternetSales
+    a owl:Class ;
+    rdfs:label "InternetSales" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_FactInternetSales .
+
+:InternetSalesReason
+    a owl:Class ;
+    rdfs:label "InternetSalesReason" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_FactInternetSalesReason .
+
+:ProductInventory
+    a owl:Class ;
+    rdfs:label "ProductInventory" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_FactProductInventory .
+
+:ResellerSales
+    a owl:Class ;
+    rdfs:label "ResellerSales" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_FactResellerSales .
+
+:SalesQuota
+    a owl:Class ;
+    rdfs:label "SalesQuota" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_FactSalesQuota .
+
+:SurveyResponse
+    a owl:Class ;
+    rdfs:label "SurveyResponse" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_FactSurveyResponse .
+
+:NewFactCurrencyRate
+    a owl:Class ;
+    rdfs:label "NewFactCurrencyRate" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_NewFactCurrencyRate .
+
+:ProspectiveBuyer
+    a owl:Class ;
+    rdfs:label "ProspectiveBuyer" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_ProspectiveBuyer .
+
+:sysdiagrams
+    a owl:Class ;
+    rdfs:label "sysdiagrams" ;
+    :mappedToTable :AdventureWorksDW2017_dbo_sysdiagrams .
+
+:AdventureWorksDW2017_dbo_AdventureWorksDWBuildVersion
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "AdventureWorksDWBuildVersion" .
+
+:AdventureWorksDW2017_dbo_DatabaseLog
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "DatabaseLog" .
+
+:AdventureWorksDW2017_dbo_DimAccount
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "DimAccount" .
+
+:AdventureWorksDW2017_dbo_DimCurrency
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "DimCurrency" .
+
+:AdventureWorksDW2017_dbo_DimCustomer
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "DimCustomer" .
+
+:AdventureWorksDW2017_dbo_DimDate
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "DimDate" .
+
+:AdventureWorksDW2017_dbo_DimDepartmentGroup
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "DimDepartmentGroup" .
+
+:AdventureWorksDW2017_dbo_DimEmployee
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "DimEmployee" .
+
+:AdventureWorksDW2017_dbo_DimGeography
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "DimGeography" .
+
+:AdventureWorksDW2017_dbo_DimOrganization
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "DimOrganization" .
+
+:AdventureWorksDW2017_dbo_DimProduct
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "DimProduct" .
+
+:AdventureWorksDW2017_dbo_DimProductCategory
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "DimProductCategory" .
+
+:AdventureWorksDW2017_dbo_DimProductSubcategory
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "DimProductSubcategory" .
+
+:AdventureWorksDW2017_dbo_DimPromotion
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "DimPromotion" .
+
+:AdventureWorksDW2017_dbo_DimReseller
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "DimReseller" .
+
+:AdventureWorksDW2017_dbo_DimSalesReason
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "DimSalesReason" .
+
+:AdventureWorksDW2017_dbo_DimSalesTerritory
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "DimSalesTerritory" .
+
+:AdventureWorksDW2017_dbo_DimScenario
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "DimScenario" .
+
+:AdventureWorksDW2017_dbo_FactAdditionalInternationalProductDescription
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "FactAdditionalInternationalProductDescription" .
+
+:AdventureWorksDW2017_dbo_FactCallCenter
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "FactCallCenter" .
+
+:AdventureWorksDW2017_dbo_FactCurrencyRate
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "FactCurrencyRate" .
+
+:AdventureWorksDW2017_dbo_FactFinance
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "FactFinance" .
+
+:AdventureWorksDW2017_dbo_FactInternetSales
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "FactInternetSales" .
+
+:AdventureWorksDW2017_dbo_FactInternetSalesReason
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "FactInternetSalesReason" .
+
+:AdventureWorksDW2017_dbo_FactProductInventory
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "FactProductInventory" .
+
+:AdventureWorksDW2017_dbo_FactResellerSales
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "FactResellerSales" .
+
+:AdventureWorksDW2017_dbo_FactSalesQuota
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "FactSalesQuota" .
+
+:AdventureWorksDW2017_dbo_FactSurveyResponse
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "FactSurveyResponse" .
+
+:AdventureWorksDW2017_dbo_NewFactCurrencyRate
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "NewFactCurrencyRate" .
+
+:AdventureWorksDW2017_dbo_ProspectiveBuyer
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "ProspectiveBuyer" .
+
+:AdventureWorksDW2017_dbo_sysdiagrams
+    a :SourceTable ;
+    :serverName "EAA2024" ;
+    :databaseName "AdventureWorksDW2017" ;
+    :schemaName "dbo" ;
+    :tableName "sysdiagrams" .
+
+:dBVersion
+    a owl:DatatypeProperty ;
+    rdfs:domain :AdventureWorksDWBuildVersion ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_AdventureWorksDWBuildVersion_DBVersion .
+
+:versionDate
+    a owl:DatatypeProperty ;
+    rdfs:domain :AdventureWorksDWBuildVersion ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_AdventureWorksDWBuildVersion_VersionDate .
+
+:databaseLogID
+    a owl:DatatypeProperty ;
+    rdfs:domain :DatabaseLog ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DatabaseLog_DatabaseLogID .
+
+:postTime
+    a owl:DatatypeProperty ;
+    rdfs:domain :DatabaseLog ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DatabaseLog_PostTime .
+
+:databaseUser
+    a owl:DatatypeProperty ;
+    rdfs:domain :DatabaseLog ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DatabaseLog_DatabaseUser .
+
+:event
+    a owl:DatatypeProperty ;
+    rdfs:domain :DatabaseLog ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DatabaseLog_Event .
+
+:schema
+    a owl:DatatypeProperty ;
+    rdfs:domain :DatabaseLog ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DatabaseLog_Schema .
+
+:object
+    a owl:DatatypeProperty ;
+    rdfs:domain :DatabaseLog ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DatabaseLog_Object .
+
+:tSQL
+    a owl:DatatypeProperty ;
+    rdfs:domain :DatabaseLog ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DatabaseLog_TSQL .
+
+:xmlEvent
+    a owl:DatatypeProperty ;
+    rdfs:domain :DatabaseLog ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DatabaseLog_XmlEvent .
+
+:accountKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Account ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimAccount_AccountKey .
+
+:parentAccountKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Account ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimAccount_ParentAccountKey .
+
+:accountCodeAlternateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Account ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimAccount_AccountCodeAlternateKey .
+
+:parentAccountCodeAlternateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Account ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimAccount_ParentAccountCodeAlternateKey .
+
+:accountDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain :Account ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimAccount_AccountDescription .
+
+:accountType
+    a owl:DatatypeProperty ;
+    rdfs:domain :Account ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimAccount_AccountType .
+
+:operator
+    a owl:DatatypeProperty ;
+    rdfs:domain :Account ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimAccount_Operator .
+
+:customMembers
+    a owl:DatatypeProperty ;
+    rdfs:domain :Account ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimAccount_CustomMembers .
+
+:valueType
+    a owl:DatatypeProperty ;
+    rdfs:domain :Account ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimAccount_ValueType .
+
+:customMemberOptions
+    a owl:DatatypeProperty ;
+    rdfs:domain :Account ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimAccount_CustomMemberOptions .
+
+:currencyKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Currency ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCurrency_CurrencyKey .
+
+:currencyAlternateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Currency ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCurrency_CurrencyAlternateKey .
+
+:currencyName
+    a owl:DatatypeProperty ;
+    rdfs:domain :Currency ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCurrency_CurrencyName .
+
+:customerKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_CustomerKey .
+
+:geographyKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_GeographyKey .
+
+:customerAlternateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_CustomerAlternateKey .
+
+:title
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_Title .
+
+:firstName
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_FirstName .
+
+:middleName
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_MiddleName .
+
+:lastName
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_LastName .
+
+:nameStyle
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_NameStyle .
+
+:birthDate
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_BirthDate .
+
+:maritalStatus
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_MaritalStatus .
+
+:suffix
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_Suffix .
+
+:gender
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_Gender .
+
+:emailAddress
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_EmailAddress .
+
+:yearlyIncome
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_YearlyIncome .
+
+:totalChildren
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_TotalChildren .
+
+:numberChildrenAtHome
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_NumberChildrenAtHome .
+
+:englishEducation
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_EnglishEducation .
+
+:spanishEducation
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_SpanishEducation .
+
+:frenchEducation
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_FrenchEducation .
+
+:englishOccupation
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_EnglishOccupation .
+
+:spanishOccupation
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_SpanishOccupation .
+
+:frenchOccupation
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_FrenchOccupation .
+
+:houseOwnerFlag
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_HouseOwnerFlag .
+
+:numberCarsOwned
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_NumberCarsOwned .
+
+:addressLine1
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_AddressLine1 .
+
+:addressLine2
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_AddressLine2 .
+
+:phone
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_Phone .
+
+:dateFirstPurchase
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_DateFirstPurchase .
+
+:commuteDistance
+    a owl:DatatypeProperty ;
+    rdfs:domain :Customer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimCustomer_CommuteDistance .
+
+:dateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Date ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimDate_DateKey .
+
+:fullDateAlternateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Date ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimDate_FullDateAlternateKey .
+
+:dayNumberOfWeek
+    a owl:DatatypeProperty ;
+    rdfs:domain :Date ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimDate_DayNumberOfWeek .
+
+:englishDayNameOfWeek
+    a owl:DatatypeProperty ;
+    rdfs:domain :Date ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimDate_EnglishDayNameOfWeek .
+
+:spanishDayNameOfWeek
+    a owl:DatatypeProperty ;
+    rdfs:domain :Date ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimDate_SpanishDayNameOfWeek .
+
+:frenchDayNameOfWeek
+    a owl:DatatypeProperty ;
+    rdfs:domain :Date ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimDate_FrenchDayNameOfWeek .
+
+:dayNumberOfMonth
+    a owl:DatatypeProperty ;
+    rdfs:domain :Date ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimDate_DayNumberOfMonth .
+
+:dayNumberOfYear
+    a owl:DatatypeProperty ;
+    rdfs:domain :Date ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimDate_DayNumberOfYear .
+
+:weekNumberOfYear
+    a owl:DatatypeProperty ;
+    rdfs:domain :Date ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimDate_WeekNumberOfYear .
+
+:englishMonthName
+    a owl:DatatypeProperty ;
+    rdfs:domain :Date ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimDate_EnglishMonthName .
+
+:spanishMonthName
+    a owl:DatatypeProperty ;
+    rdfs:domain :Date ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimDate_SpanishMonthName .
+
+:frenchMonthName
+    a owl:DatatypeProperty ;
+    rdfs:domain :Date ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimDate_FrenchMonthName .
+
+:monthNumberOfYear
+    a owl:DatatypeProperty ;
+    rdfs:domain :Date ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimDate_MonthNumberOfYear .
+
+:calendarQuarter
+    a owl:DatatypeProperty ;
+    rdfs:domain :Date ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimDate_CalendarQuarter .
+
+:calendarYear
+    a owl:DatatypeProperty ;
+    rdfs:domain :Date ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimDate_CalendarYear .
+
+:calendarSemester
+    a owl:DatatypeProperty ;
+    rdfs:domain :Date ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimDate_CalendarSemester .
+
+:fiscalQuarter
+    a owl:DatatypeProperty ;
+    rdfs:domain :Date ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimDate_FiscalQuarter .
+
+:fiscalYear
+    a owl:DatatypeProperty ;
+    rdfs:domain :Date ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimDate_FiscalYear .
+
+:fiscalSemester
+    a owl:DatatypeProperty ;
+    rdfs:domain :Date ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimDate_FiscalSemester .
+
+:departmentGroupKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :DepartmentGroup ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimDepartmentGroup_DepartmentGroupKey .
+
+:parentDepartmentGroupKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :DepartmentGroup ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimDepartmentGroup_ParentDepartmentGroupKey .
+
+:departmentGroupName
+    a owl:DatatypeProperty ;
+    rdfs:domain :DepartmentGroup ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimDepartmentGroup_DepartmentGroupName .
+
+:employeeKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_EmployeeKey .
+
+:parentEmployeeKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_ParentEmployeeKey .
+
+:employeeNationalIDAlternateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_EmployeeNationalIDAlternateKey .
+
+:parentEmployeeNationalIDAlternateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_ParentEmployeeNationalIDAlternateKey .
+
+:salesTerritoryKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_SalesTerritoryKey .
+
+:firstName
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_FirstName .
+
+:lastName
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_LastName .
+
+:middleName
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_MiddleName .
+
+:nameStyle
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_NameStyle .
+
+:title
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_Title .
+
+:hireDate
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_HireDate .
+
+:birthDate
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_BirthDate .
+
+:loginID
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_LoginID .
+
+:emailAddress
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_EmailAddress .
+
+:phone
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_Phone .
+
+:maritalStatus
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_MaritalStatus .
+
+:emergencyContactName
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_EmergencyContactName .
+
+:emergencyContactPhone
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_EmergencyContactPhone .
+
+:salariedFlag
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_SalariedFlag .
+
+:gender
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_Gender .
+
+:payFrequency
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_PayFrequency .
+
+:baseRate
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_BaseRate .
+
+:vacationHours
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_VacationHours .
+
+:sickLeaveHours
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_SickLeaveHours .
+
+:currentFlag
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_CurrentFlag .
+
+:salesPersonFlag
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_SalesPersonFlag .
+
+:departmentName
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_DepartmentName .
+
+:startDate
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_StartDate .
+
+:endDate
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_EndDate .
+
+:status
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_Status .
+
+:employeePhoto
+    a owl:DatatypeProperty ;
+    rdfs:domain :Employee ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimEmployee_EmployeePhoto .
+
+:geographyKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Geography ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimGeography_GeographyKey .
+
+:city
+    a owl:DatatypeProperty ;
+    rdfs:domain :Geography ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimGeography_City .
+
+:stateProvinceCode
+    a owl:DatatypeProperty ;
+    rdfs:domain :Geography ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimGeography_StateProvinceCode .
+
+:stateProvinceName
+    a owl:DatatypeProperty ;
+    rdfs:domain :Geography ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimGeography_StateProvinceName .
+
+:countryRegionCode
+    a owl:DatatypeProperty ;
+    rdfs:domain :Geography ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimGeography_CountryRegionCode .
+
+:englishCountryRegionName
+    a owl:DatatypeProperty ;
+    rdfs:domain :Geography ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimGeography_EnglishCountryRegionName .
+
+:spanishCountryRegionName
+    a owl:DatatypeProperty ;
+    rdfs:domain :Geography ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimGeography_SpanishCountryRegionName .
+
+:frenchCountryRegionName
+    a owl:DatatypeProperty ;
+    rdfs:domain :Geography ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimGeography_FrenchCountryRegionName .
+
+:postalCode
+    a owl:DatatypeProperty ;
+    rdfs:domain :Geography ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimGeography_PostalCode .
+
+:salesTerritoryKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Geography ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimGeography_SalesTerritoryKey .
+
+:ipAddressLocator
+    a owl:DatatypeProperty ;
+    rdfs:domain :Geography ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimGeography_IpAddressLocator .
+
+:organizationKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Organization ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimOrganization_OrganizationKey .
+
+:parentOrganizationKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Organization ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimOrganization_ParentOrganizationKey .
+
+:percentageOfOwnership
+    a owl:DatatypeProperty ;
+    rdfs:domain :Organization ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimOrganization_PercentageOfOwnership .
+
+:organizationName
+    a owl:DatatypeProperty ;
+    rdfs:domain :Organization ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimOrganization_OrganizationName .
+
+:currencyKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Organization ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimOrganization_CurrencyKey .
+
+:productKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_ProductKey .
+
+:productAlternateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_ProductAlternateKey .
+
+:productSubcategoryKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_ProductSubcategoryKey .
+
+:weightUnitMeasureCode
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_WeightUnitMeasureCode .
+
+:sizeUnitMeasureCode
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_SizeUnitMeasureCode .
+
+:englishProductName
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_EnglishProductName .
+
+:spanishProductName
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_SpanishProductName .
+
+:frenchProductName
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_FrenchProductName .
+
+:standardCost
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_StandardCost .
+
+:finishedGoodsFlag
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_FinishedGoodsFlag .
+
+:color
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_Color .
+
+:safetyStockLevel
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_SafetyStockLevel .
+
+:reorderPoint
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_ReorderPoint .
+
+:listPrice
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_ListPrice .
+
+:size
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_Size .
+
+:sizeRange
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_SizeRange .
+
+:weight
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_Weight .
+
+:daysToManufacture
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_DaysToManufacture .
+
+:productLine
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_ProductLine .
+
+:dealerPrice
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_DealerPrice .
+
+:class
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_Class .
+
+:style
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_Style .
+
+:modelName
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_ModelName .
+
+:largePhoto
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_LargePhoto .
+
+:englishDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_EnglishDescription .
+
+:frenchDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_FrenchDescription .
+
+:chineseDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_ChineseDescription .
+
+:arabicDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_ArabicDescription .
+
+:hebrewDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_HebrewDescription .
+
+:thaiDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_ThaiDescription .
+
+:germanDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_GermanDescription .
+
+:japaneseDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_JapaneseDescription .
+
+:turkishDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_TurkishDescription .
+
+:startDate
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_StartDate .
+
+:endDate
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_EndDate .
+
+:status
+    a owl:DatatypeProperty ;
+    rdfs:domain :Product ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProduct_Status .
+
+:productCategoryKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProductCategory ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProductCategory_ProductCategoryKey .
+
+:productCategoryAlternateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProductCategory ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProductCategory_ProductCategoryAlternateKey .
+
+:englishProductCategoryName
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProductCategory ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProductCategory_EnglishProductCategoryName .
+
+:spanishProductCategoryName
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProductCategory ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProductCategory_SpanishProductCategoryName .
+
+:frenchProductCategoryName
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProductCategory ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProductCategory_FrenchProductCategoryName .
+
+:productSubcategoryKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProductSubcategory ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProductSubcategory_ProductSubcategoryKey .
+
+:productSubcategoryAlternateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProductSubcategory ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProductSubcategory_ProductSubcategoryAlternateKey .
+
+:englishProductSubcategoryName
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProductSubcategory ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProductSubcategory_EnglishProductSubcategoryName .
+
+:spanishProductSubcategoryName
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProductSubcategory ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProductSubcategory_SpanishProductSubcategoryName .
+
+:frenchProductSubcategoryName
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProductSubcategory ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProductSubcategory_FrenchProductSubcategoryName .
+
+:productCategoryKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProductSubcategory ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimProductSubcategory_ProductCategoryKey .
+
+:promotionKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Promotion ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimPromotion_PromotionKey .
+
+:promotionAlternateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Promotion ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimPromotion_PromotionAlternateKey .
+
+:englishPromotionName
+    a owl:DatatypeProperty ;
+    rdfs:domain :Promotion ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimPromotion_EnglishPromotionName .
+
+:spanishPromotionName
+    a owl:DatatypeProperty ;
+    rdfs:domain :Promotion ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimPromotion_SpanishPromotionName .
+
+:frenchPromotionName
+    a owl:DatatypeProperty ;
+    rdfs:domain :Promotion ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimPromotion_FrenchPromotionName .
+
+:discountPct
+    a owl:DatatypeProperty ;
+    rdfs:domain :Promotion ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimPromotion_DiscountPct .
+
+:englishPromotionType
+    a owl:DatatypeProperty ;
+    rdfs:domain :Promotion ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimPromotion_EnglishPromotionType .
+
+:spanishPromotionType
+    a owl:DatatypeProperty ;
+    rdfs:domain :Promotion ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimPromotion_SpanishPromotionType .
+
+:frenchPromotionType
+    a owl:DatatypeProperty ;
+    rdfs:domain :Promotion ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimPromotion_FrenchPromotionType .
+
+:englishPromotionCategory
+    a owl:DatatypeProperty ;
+    rdfs:domain :Promotion ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimPromotion_EnglishPromotionCategory .
+
+:spanishPromotionCategory
+    a owl:DatatypeProperty ;
+    rdfs:domain :Promotion ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimPromotion_SpanishPromotionCategory .
+
+:frenchPromotionCategory
+    a owl:DatatypeProperty ;
+    rdfs:domain :Promotion ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimPromotion_FrenchPromotionCategory .
+
+:startDate
+    a owl:DatatypeProperty ;
+    rdfs:domain :Promotion ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimPromotion_StartDate .
+
+:endDate
+    a owl:DatatypeProperty ;
+    rdfs:domain :Promotion ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimPromotion_EndDate .
+
+:minQty
+    a owl:DatatypeProperty ;
+    rdfs:domain :Promotion ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimPromotion_MinQty .
+
+:maxQty
+    a owl:DatatypeProperty ;
+    rdfs:domain :Promotion ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimPromotion_MaxQty .
+
+:resellerKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Reseller ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimReseller_ResellerKey .
+
+:geographyKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Reseller ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimReseller_GeographyKey .
+
+:resellerAlternateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Reseller ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimReseller_ResellerAlternateKey .
+
+:phone
+    a owl:DatatypeProperty ;
+    rdfs:domain :Reseller ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimReseller_Phone .
+
+:businessType
+    a owl:DatatypeProperty ;
+    rdfs:domain :Reseller ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimReseller_BusinessType .
+
+:resellerName
+    a owl:DatatypeProperty ;
+    rdfs:domain :Reseller ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimReseller_ResellerName .
+
+:numberEmployees
+    a owl:DatatypeProperty ;
+    rdfs:domain :Reseller ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimReseller_NumberEmployees .
+
+:orderFrequency
+    a owl:DatatypeProperty ;
+    rdfs:domain :Reseller ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimReseller_OrderFrequency .
+
+:orderMonth
+    a owl:DatatypeProperty ;
+    rdfs:domain :Reseller ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimReseller_OrderMonth .
+
+:firstOrderYear
+    a owl:DatatypeProperty ;
+    rdfs:domain :Reseller ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimReseller_FirstOrderYear .
+
+:lastOrderYear
+    a owl:DatatypeProperty ;
+    rdfs:domain :Reseller ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimReseller_LastOrderYear .
+
+:productLine
+    a owl:DatatypeProperty ;
+    rdfs:domain :Reseller ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimReseller_ProductLine .
+
+:addressLine1
+    a owl:DatatypeProperty ;
+    rdfs:domain :Reseller ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimReseller_AddressLine1 .
+
+:addressLine2
+    a owl:DatatypeProperty ;
+    rdfs:domain :Reseller ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimReseller_AddressLine2 .
+
+:annualSales
+    a owl:DatatypeProperty ;
+    rdfs:domain :Reseller ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimReseller_AnnualSales .
+
+:bankName
+    a owl:DatatypeProperty ;
+    rdfs:domain :Reseller ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimReseller_BankName .
+
+:minPaymentType
+    a owl:DatatypeProperty ;
+    rdfs:domain :Reseller ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimReseller_MinPaymentType .
+
+:minPaymentAmount
+    a owl:DatatypeProperty ;
+    rdfs:domain :Reseller ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimReseller_MinPaymentAmount .
+
+:annualRevenue
+    a owl:DatatypeProperty ;
+    rdfs:domain :Reseller ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimReseller_AnnualRevenue .
+
+:yearOpened
+    a owl:DatatypeProperty ;
+    rdfs:domain :Reseller ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimReseller_YearOpened .
+
+:salesReasonKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :SalesReason ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimSalesReason_SalesReasonKey .
+
+:salesReasonAlternateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :SalesReason ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimSalesReason_SalesReasonAlternateKey .
+
+:salesReasonName
+    a owl:DatatypeProperty ;
+    rdfs:domain :SalesReason ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimSalesReason_SalesReasonName .
+
+:salesReasonReasonType
+    a owl:DatatypeProperty ;
+    rdfs:domain :SalesReason ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimSalesReason_SalesReasonReasonType .
+
+:salesTerritoryKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :SalesTerritory ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimSalesTerritory_SalesTerritoryKey .
+
+:salesTerritoryAlternateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :SalesTerritory ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimSalesTerritory_SalesTerritoryAlternateKey .
+
+:salesTerritoryRegion
+    a owl:DatatypeProperty ;
+    rdfs:domain :SalesTerritory ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimSalesTerritory_SalesTerritoryRegion .
+
+:salesTerritoryCountry
+    a owl:DatatypeProperty ;
+    rdfs:domain :SalesTerritory ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimSalesTerritory_SalesTerritoryCountry .
+
+:salesTerritoryGroup
+    a owl:DatatypeProperty ;
+    rdfs:domain :SalesTerritory ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimSalesTerritory_SalesTerritoryGroup .
+
+:salesTerritoryImage
+    a owl:DatatypeProperty ;
+    rdfs:domain :SalesTerritory ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimSalesTerritory_SalesTerritoryImage .
+
+:scenarioKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Scenario ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimScenario_ScenarioKey .
+
+:scenarioName
+    a owl:DatatypeProperty ;
+    rdfs:domain :Scenario ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_DimScenario_ScenarioName .
+
+:productKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :AdditionalInternationalProductDescription ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactAdditionalInternationalProductDescription_ProductKey .
+
+:cultureName
+    a owl:DatatypeProperty ;
+    rdfs:domain :AdditionalInternationalProductDescription ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactAdditionalInternationalProductDescription_CultureName .
+
+:productDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain :AdditionalInternationalProductDescription ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactAdditionalInternationalProductDescription_ProductDescription .
+
+:factCallCenterID
+    a owl:DatatypeProperty ;
+    rdfs:domain :CallCenter ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactCallCenter_FactCallCenterID .
+
+:dateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :CallCenter ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactCallCenter_DateKey .
+
+:wageType
+    a owl:DatatypeProperty ;
+    rdfs:domain :CallCenter ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactCallCenter_WageType .
+
+:shift
+    a owl:DatatypeProperty ;
+    rdfs:domain :CallCenter ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactCallCenter_Shift .
+
+:levelOneOperators
+    a owl:DatatypeProperty ;
+    rdfs:domain :CallCenter ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactCallCenter_LevelOneOperators .
+
+:levelTwoOperators
+    a owl:DatatypeProperty ;
+    rdfs:domain :CallCenter ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactCallCenter_LevelTwoOperators .
+
+:totalOperators
+    a owl:DatatypeProperty ;
+    rdfs:domain :CallCenter ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactCallCenter_TotalOperators .
+
+:calls
+    a owl:DatatypeProperty ;
+    rdfs:domain :CallCenter ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactCallCenter_Calls .
+
+:automaticResponses
+    a owl:DatatypeProperty ;
+    rdfs:domain :CallCenter ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactCallCenter_AutomaticResponses .
+
+:orders
+    a owl:DatatypeProperty ;
+    rdfs:domain :CallCenter ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactCallCenter_Orders .
+
+:issuesRaised
+    a owl:DatatypeProperty ;
+    rdfs:domain :CallCenter ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactCallCenter_IssuesRaised .
+
+:averageTimePerIssue
+    a owl:DatatypeProperty ;
+    rdfs:domain :CallCenter ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactCallCenter_AverageTimePerIssue .
+
+:serviceGrade
+    a owl:DatatypeProperty ;
+    rdfs:domain :CallCenter ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactCallCenter_ServiceGrade .
+
+:date
+    a owl:DatatypeProperty ;
+    rdfs:domain :CallCenter ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactCallCenter_Date .
+
+:currencyKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :CurrencyRate ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactCurrencyRate_CurrencyKey .
+
+:dateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :CurrencyRate ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactCurrencyRate_DateKey .
+
+:averageRate
+    a owl:DatatypeProperty ;
+    rdfs:domain :CurrencyRate ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactCurrencyRate_AverageRate .
+
+:endOfDayRate
+    a owl:DatatypeProperty ;
+    rdfs:domain :CurrencyRate ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactCurrencyRate_EndOfDayRate .
+
+:date
+    a owl:DatatypeProperty ;
+    rdfs:domain :CurrencyRate ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactCurrencyRate_Date .
+
+:financeKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Finance ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactFinance_FinanceKey .
+
+:dateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Finance ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactFinance_DateKey .
+
+:organizationKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Finance ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactFinance_OrganizationKey .
+
+:departmentGroupKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Finance ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactFinance_DepartmentGroupKey .
+
+:scenarioKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Finance ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactFinance_ScenarioKey .
+
+:accountKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :Finance ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactFinance_AccountKey .
+
+:amount
+    a owl:DatatypeProperty ;
+    rdfs:domain :Finance ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactFinance_Amount .
+
+:date
+    a owl:DatatypeProperty ;
+    rdfs:domain :Finance ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactFinance_Date .
+
+:productKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSales_ProductKey .
+
+:orderDateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSales_OrderDateKey .
+
+:dueDateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSales_DueDateKey .
+
+:shipDateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSales_ShipDateKey .
+
+:customerKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSales_CustomerKey .
+
+:promotionKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSales_PromotionKey .
+
+:currencyKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSales_CurrencyKey .
+
+:salesTerritoryKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSales_SalesTerritoryKey .
+
+:salesOrderNumber
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSales_SalesOrderNumber .
+
+:salesOrderLineNumber
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSales_SalesOrderLineNumber .
+
+:revisionNumber
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSales_RevisionNumber .
+
+:orderQuantity
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSales_OrderQuantity .
+
+:unitPrice
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSales_UnitPrice .
+
+:extendedAmount
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSales_ExtendedAmount .
+
+:unitPriceDiscountPct
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSales_UnitPriceDiscountPct .
+
+:discountAmount
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSales_DiscountAmount .
+
+:productStandardCost
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSales_ProductStandardCost .
+
+:totalProductCost
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSales_TotalProductCost .
+
+:salesAmount
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSales_SalesAmount .
+
+:taxAmt
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSales_TaxAmt .
+
+:freight
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSales_Freight .
+
+:carrierTrackingNumber
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSales_CarrierTrackingNumber .
+
+:customerPONumber
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSales_CustomerPONumber .
+
+:orderDate
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSales_OrderDate .
+
+:dueDate
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSales_DueDate .
+
+:shipDate
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSales_ShipDate .
+
+:salesOrderNumber
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSalesReason ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSalesReason_SalesOrderNumber .
+
+:salesOrderLineNumber
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSalesReason ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSalesReason_SalesOrderLineNumber .
+
+:salesReasonKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :InternetSalesReason ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactInternetSalesReason_SalesReasonKey .
+
+:productKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProductInventory ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactProductInventory_ProductKey .
+
+:dateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProductInventory ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactProductInventory_DateKey .
+
+:movementDate
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProductInventory ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactProductInventory_MovementDate .
+
+:unitCost
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProductInventory ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactProductInventory_UnitCost .
+
+:unitsIn
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProductInventory ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactProductInventory_UnitsIn .
+
+:unitsOut
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProductInventory ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactProductInventory_UnitsOut .
+
+:unitsBalance
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProductInventory ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactProductInventory_UnitsBalance .
+
+:productKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :ResellerSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactResellerSales_ProductKey .
+
+:orderDateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :ResellerSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactResellerSales_OrderDateKey .
+
+:dueDateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :ResellerSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactResellerSales_DueDateKey .
+
+:shipDateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :ResellerSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactResellerSales_ShipDateKey .
+
+:resellerKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :ResellerSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactResellerSales_ResellerKey .
+
+:employeeKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :ResellerSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactResellerSales_EmployeeKey .
+
+:promotionKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :ResellerSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactResellerSales_PromotionKey .
+
+:currencyKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :ResellerSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactResellerSales_CurrencyKey .
+
+:salesTerritoryKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :ResellerSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactResellerSales_SalesTerritoryKey .
+
+:salesOrderNumber
+    a owl:DatatypeProperty ;
+    rdfs:domain :ResellerSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactResellerSales_SalesOrderNumber .
+
+:salesOrderLineNumber
+    a owl:DatatypeProperty ;
+    rdfs:domain :ResellerSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactResellerSales_SalesOrderLineNumber .
+
+:revisionNumber
+    a owl:DatatypeProperty ;
+    rdfs:domain :ResellerSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactResellerSales_RevisionNumber .
+
+:orderQuantity
+    a owl:DatatypeProperty ;
+    rdfs:domain :ResellerSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactResellerSales_OrderQuantity .
+
+:unitPrice
+    a owl:DatatypeProperty ;
+    rdfs:domain :ResellerSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactResellerSales_UnitPrice .
+
+:extendedAmount
+    a owl:DatatypeProperty ;
+    rdfs:domain :ResellerSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactResellerSales_ExtendedAmount .
+
+:unitPriceDiscountPct
+    a owl:DatatypeProperty ;
+    rdfs:domain :ResellerSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactResellerSales_UnitPriceDiscountPct .
+
+:discountAmount
+    a owl:DatatypeProperty ;
+    rdfs:domain :ResellerSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactResellerSales_DiscountAmount .
+
+:productStandardCost
+    a owl:DatatypeProperty ;
+    rdfs:domain :ResellerSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactResellerSales_ProductStandardCost .
+
+:totalProductCost
+    a owl:DatatypeProperty ;
+    rdfs:domain :ResellerSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactResellerSales_TotalProductCost .
+
+:salesAmount
+    a owl:DatatypeProperty ;
+    rdfs:domain :ResellerSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactResellerSales_SalesAmount .
+
+:taxAmt
+    a owl:DatatypeProperty ;
+    rdfs:domain :ResellerSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactResellerSales_TaxAmt .
+
+:freight
+    a owl:DatatypeProperty ;
+    rdfs:domain :ResellerSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactResellerSales_Freight .
+
+:carrierTrackingNumber
+    a owl:DatatypeProperty ;
+    rdfs:domain :ResellerSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactResellerSales_CarrierTrackingNumber .
+
+:customerPONumber
+    a owl:DatatypeProperty ;
+    rdfs:domain :ResellerSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactResellerSales_CustomerPONumber .
+
+:orderDate
+    a owl:DatatypeProperty ;
+    rdfs:domain :ResellerSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactResellerSales_OrderDate .
+
+:dueDate
+    a owl:DatatypeProperty ;
+    rdfs:domain :ResellerSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactResellerSales_DueDate .
+
+:shipDate
+    a owl:DatatypeProperty ;
+    rdfs:domain :ResellerSales ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactResellerSales_ShipDate .
+
+:salesQuotaKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :SalesQuota ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactSalesQuota_SalesQuotaKey .
+
+:employeeKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :SalesQuota ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactSalesQuota_EmployeeKey .
+
+:dateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :SalesQuota ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactSalesQuota_DateKey .
+
+:calendarYear
+    a owl:DatatypeProperty ;
+    rdfs:domain :SalesQuota ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactSalesQuota_CalendarYear .
+
+:calendarQuarter
+    a owl:DatatypeProperty ;
+    rdfs:domain :SalesQuota ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactSalesQuota_CalendarQuarter .
+
+:salesAmountQuota
+    a owl:DatatypeProperty ;
+    rdfs:domain :SalesQuota ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactSalesQuota_SalesAmountQuota .
+
+:date
+    a owl:DatatypeProperty ;
+    rdfs:domain :SalesQuota ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactSalesQuota_Date .
+
+:surveyResponseKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :SurveyResponse ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactSurveyResponse_SurveyResponseKey .
+
+:dateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :SurveyResponse ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactSurveyResponse_DateKey .
+
+:customerKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :SurveyResponse ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactSurveyResponse_CustomerKey .
+
+:productCategoryKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :SurveyResponse ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactSurveyResponse_ProductCategoryKey .
+
+:englishProductCategoryName
+    a owl:DatatypeProperty ;
+    rdfs:domain :SurveyResponse ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactSurveyResponse_EnglishProductCategoryName .
+
+:productSubcategoryKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :SurveyResponse ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactSurveyResponse_ProductSubcategoryKey .
+
+:englishProductSubcategoryName
+    a owl:DatatypeProperty ;
+    rdfs:domain :SurveyResponse ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactSurveyResponse_EnglishProductSubcategoryName .
+
+:date
+    a owl:DatatypeProperty ;
+    rdfs:domain :SurveyResponse ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_FactSurveyResponse_Date .
+
+:averageRate
+    a owl:DatatypeProperty ;
+    rdfs:domain :NewFactCurrencyRate ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_NewFactCurrencyRate_AverageRate .
+
+:currencyID
+    a owl:DatatypeProperty ;
+    rdfs:domain :NewFactCurrencyRate ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_NewFactCurrencyRate_CurrencyID .
+
+:currencyDate
+    a owl:DatatypeProperty ;
+    rdfs:domain :NewFactCurrencyRate ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_NewFactCurrencyRate_CurrencyDate .
+
+:endOfDayRate
+    a owl:DatatypeProperty ;
+    rdfs:domain :NewFactCurrencyRate ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_NewFactCurrencyRate_EndOfDayRate .
+
+:currencyKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :NewFactCurrencyRate ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_NewFactCurrencyRate_CurrencyKey .
+
+:dateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :NewFactCurrencyRate ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_NewFactCurrencyRate_DateKey .
+
+:prospectiveBuyerKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProspectiveBuyer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_ProspectiveBuyer_ProspectiveBuyerKey .
+
+:prospectAlternateKey
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProspectiveBuyer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_ProspectiveBuyer_ProspectAlternateKey .
+
+:firstName
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProspectiveBuyer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_ProspectiveBuyer_FirstName .
+
+:middleName
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProspectiveBuyer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_ProspectiveBuyer_MiddleName .
+
+:lastName
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProspectiveBuyer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_ProspectiveBuyer_LastName .
+
+:birthDate
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProspectiveBuyer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_ProspectiveBuyer_BirthDate .
+
+:maritalStatus
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProspectiveBuyer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_ProspectiveBuyer_MaritalStatus .
+
+:gender
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProspectiveBuyer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_ProspectiveBuyer_Gender .
+
+:emailAddress
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProspectiveBuyer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_ProspectiveBuyer_EmailAddress .
+
+:yearlyIncome
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProspectiveBuyer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_ProspectiveBuyer_YearlyIncome .
+
+:totalChildren
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProspectiveBuyer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_ProspectiveBuyer_TotalChildren .
+
+:numberChildrenAtHome
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProspectiveBuyer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_ProspectiveBuyer_NumberChildrenAtHome .
+
+:education
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProspectiveBuyer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_ProspectiveBuyer_Education .
+
+:occupation
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProspectiveBuyer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_ProspectiveBuyer_Occupation .
+
+:houseOwnerFlag
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProspectiveBuyer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_ProspectiveBuyer_HouseOwnerFlag .
+
+:numberCarsOwned
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProspectiveBuyer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_ProspectiveBuyer_NumberCarsOwned .
+
+:addressLine1
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProspectiveBuyer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_ProspectiveBuyer_AddressLine1 .
+
+:addressLine2
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProspectiveBuyer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_ProspectiveBuyer_AddressLine2 .
+
+:city
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProspectiveBuyer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_ProspectiveBuyer_City .
+
+:stateProvinceCode
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProspectiveBuyer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_ProspectiveBuyer_StateProvinceCode .
+
+:postalCode
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProspectiveBuyer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_ProspectiveBuyer_PostalCode .
+
+:phone
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProspectiveBuyer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_ProspectiveBuyer_Phone .
+
+:salutation
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProspectiveBuyer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_ProspectiveBuyer_Salutation .
+
+:unknown
+    a owl:DatatypeProperty ;
+    rdfs:domain :ProspectiveBuyer ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_ProspectiveBuyer_Unknown .
+
+:name
+    a owl:DatatypeProperty ;
+    rdfs:domain :sysdiagrams ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_sysdiagrams_name .
+
+:principal_id
+    a owl:DatatypeProperty ;
+    rdfs:domain :sysdiagrams ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_sysdiagrams_principal_id .
+
+:diagram_id
+    a owl:DatatypeProperty ;
+    rdfs:domain :sysdiagrams ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_sysdiagrams_diagram_id .
+
+:version
+    a owl:DatatypeProperty ;
+    rdfs:domain :sysdiagrams ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_sysdiagrams_version .
+
+:definition
+    a owl:DatatypeProperty ;
+    rdfs:domain :sysdiagrams ;
+    :mappedToColumn :AdventureWorksDW2017_dbo_sysdiagrams_definition .
+
+:AdventureWorksDW2017_dbo_AdventureWorksDWBuildVersion_DBVersion
+    a :SourceColumn ;
+    :columnName "DBVersion" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_AdventureWorksDWBuildVersion .
+
+:AdventureWorksDW2017_dbo_AdventureWorksDWBuildVersion_VersionDate
+    a :SourceColumn ;
+    :columnName "VersionDate" ;
+    :dataType "datetime" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_AdventureWorksDWBuildVersion .
+
+:AdventureWorksDW2017_dbo_DatabaseLog_DatabaseLogID
+    a :SourceColumn ;
+    :columnName "DatabaseLogID" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DatabaseLog .
+
+:AdventureWorksDW2017_dbo_DatabaseLog_PostTime
+    a :SourceColumn ;
+    :columnName "PostTime" ;
+    :dataType "datetime" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DatabaseLog .
+
+:AdventureWorksDW2017_dbo_DatabaseLog_DatabaseUser
+    a :SourceColumn ;
+    :columnName "DatabaseUser" ;
+    :dataType "sysname" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DatabaseLog .
+
+:AdventureWorksDW2017_dbo_DatabaseLog_Event
+    a :SourceColumn ;
+    :columnName "Event" ;
+    :dataType "sysname" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "4"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DatabaseLog .
+
+:AdventureWorksDW2017_dbo_DatabaseLog_Schema
+    a :SourceColumn ;
+    :columnName "Schema" ;
+    :dataType "sysname" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "5"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DatabaseLog .
+
+:AdventureWorksDW2017_dbo_DatabaseLog_Object
+    a :SourceColumn ;
+    :columnName "Object" ;
+    :dataType "sysname" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "6"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DatabaseLog .
+
+:AdventureWorksDW2017_dbo_DatabaseLog_TSQL
+    a :SourceColumn ;
+    :columnName "TSQL" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "7"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DatabaseLog .
+
+:AdventureWorksDW2017_dbo_DatabaseLog_XmlEvent
+    a :SourceColumn ;
+    :columnName "XmlEvent" ;
+    :dataType "xml" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "8"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DatabaseLog .
+
+:AdventureWorksDW2017_dbo_DimAccount_AccountKey
+    a :SourceColumn ;
+    :columnName "AccountKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimAccount .
+
+:AdventureWorksDW2017_dbo_DimAccount_ParentAccountKey
+    a :SourceColumn ;
+    :columnName "ParentAccountKey" ;
+    :dataType "int" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimAccount .
+
+:AdventureWorksDW2017_dbo_DimAccount_AccountCodeAlternateKey
+    a :SourceColumn ;
+    :columnName "AccountCodeAlternateKey" ;
+    :dataType "int" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimAccount .
+
+:AdventureWorksDW2017_dbo_DimAccount_ParentAccountCodeAlternateKey
+    a :SourceColumn ;
+    :columnName "ParentAccountCodeAlternateKey" ;
+    :dataType "int" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "4"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimAccount .
+
+:AdventureWorksDW2017_dbo_DimAccount_AccountDescription
+    a :SourceColumn ;
+    :columnName "AccountDescription" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "5"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimAccount .
+
+:AdventureWorksDW2017_dbo_DimAccount_AccountType
+    a :SourceColumn ;
+    :columnName "AccountType" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "6"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimAccount .
+
+:AdventureWorksDW2017_dbo_DimAccount_Operator
+    a :SourceColumn ;
+    :columnName "Operator" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "7"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimAccount .
+
+:AdventureWorksDW2017_dbo_DimAccount_CustomMembers
+    a :SourceColumn ;
+    :columnName "CustomMembers" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "8"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimAccount .
+
+:AdventureWorksDW2017_dbo_DimAccount_ValueType
+    a :SourceColumn ;
+    :columnName "ValueType" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "9"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimAccount .
+
+:AdventureWorksDW2017_dbo_DimAccount_CustomMemberOptions
+    a :SourceColumn ;
+    :columnName "CustomMemberOptions" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "10"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimAccount .
+
+:AdventureWorksDW2017_dbo_DimCurrency_CurrencyKey
+    a :SourceColumn ;
+    :columnName "CurrencyKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCurrency .
+
+:AdventureWorksDW2017_dbo_DimCurrency_CurrencyAlternateKey
+    a :SourceColumn ;
+    :columnName "CurrencyAlternateKey" ;
+    :dataType "nchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCurrency .
+
+:AdventureWorksDW2017_dbo_DimCurrency_CurrencyName
+    a :SourceColumn ;
+    :columnName "CurrencyName" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCurrency .
+
+:AdventureWorksDW2017_dbo_DimCustomer_CustomerKey
+    a :SourceColumn ;
+    :columnName "CustomerKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimCustomer_GeographyKey
+    a :SourceColumn ;
+    :columnName "GeographyKey" ;
+    :dataType "int" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimCustomer_CustomerAlternateKey
+    a :SourceColumn ;
+    :columnName "CustomerAlternateKey" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimCustomer_Title
+    a :SourceColumn ;
+    :columnName "Title" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "4"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimCustomer_FirstName
+    a :SourceColumn ;
+    :columnName "FirstName" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "5"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimCustomer_MiddleName
+    a :SourceColumn ;
+    :columnName "MiddleName" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "6"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimCustomer_LastName
+    a :SourceColumn ;
+    :columnName "LastName" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "7"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimCustomer_NameStyle
+    a :SourceColumn ;
+    :columnName "NameStyle" ;
+    :dataType "bit" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "8"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimCustomer_BirthDate
+    a :SourceColumn ;
+    :columnName "BirthDate" ;
+    :dataType "date" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "9"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimCustomer_MaritalStatus
+    a :SourceColumn ;
+    :columnName "MaritalStatus" ;
+    :dataType "nchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "10"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimCustomer_Suffix
+    a :SourceColumn ;
+    :columnName "Suffix" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "11"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimCustomer_Gender
+    a :SourceColumn ;
+    :columnName "Gender" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "12"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimCustomer_EmailAddress
+    a :SourceColumn ;
+    :columnName "EmailAddress" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "13"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimCustomer_YearlyIncome
+    a :SourceColumn ;
+    :columnName "YearlyIncome" ;
+    :dataType "money" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "14"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimCustomer_TotalChildren
+    a :SourceColumn ;
+    :columnName "TotalChildren" ;
+    :dataType "tinyint" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "15"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimCustomer_NumberChildrenAtHome
+    a :SourceColumn ;
+    :columnName "NumberChildrenAtHome" ;
+    :dataType "tinyint" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "16"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimCustomer_EnglishEducation
+    a :SourceColumn ;
+    :columnName "EnglishEducation" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "17"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimCustomer_SpanishEducation
+    a :SourceColumn ;
+    :columnName "SpanishEducation" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "18"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimCustomer_FrenchEducation
+    a :SourceColumn ;
+    :columnName "FrenchEducation" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "19"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimCustomer_EnglishOccupation
+    a :SourceColumn ;
+    :columnName "EnglishOccupation" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "20"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimCustomer_SpanishOccupation
+    a :SourceColumn ;
+    :columnName "SpanishOccupation" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "21"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimCustomer_FrenchOccupation
+    a :SourceColumn ;
+    :columnName "FrenchOccupation" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "22"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimCustomer_HouseOwnerFlag
+    a :SourceColumn ;
+    :columnName "HouseOwnerFlag" ;
+    :dataType "nchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "23"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimCustomer_NumberCarsOwned
+    a :SourceColumn ;
+    :columnName "NumberCarsOwned" ;
+    :dataType "tinyint" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "24"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimCustomer_AddressLine1
+    a :SourceColumn ;
+    :columnName "AddressLine1" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "25"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimCustomer_AddressLine2
+    a :SourceColumn ;
+    :columnName "AddressLine2" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "26"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimCustomer_Phone
+    a :SourceColumn ;
+    :columnName "Phone" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "27"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimCustomer_DateFirstPurchase
+    a :SourceColumn ;
+    :columnName "DateFirstPurchase" ;
+    :dataType "date" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "28"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimCustomer_CommuteDistance
+    a :SourceColumn ;
+    :columnName "CommuteDistance" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "29"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimCustomer .
+
+:AdventureWorksDW2017_dbo_DimDate_DateKey
+    a :SourceColumn ;
+    :columnName "DateKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimDate .
+
+:AdventureWorksDW2017_dbo_DimDate_FullDateAlternateKey
+    a :SourceColumn ;
+    :columnName "FullDateAlternateKey" ;
+    :dataType "date" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimDate .
+
+:AdventureWorksDW2017_dbo_DimDate_DayNumberOfWeek
+    a :SourceColumn ;
+    :columnName "DayNumberOfWeek" ;
+    :dataType "tinyint" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimDate .
+
+:AdventureWorksDW2017_dbo_DimDate_EnglishDayNameOfWeek
+    a :SourceColumn ;
+    :columnName "EnglishDayNameOfWeek" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "4"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimDate .
+
+:AdventureWorksDW2017_dbo_DimDate_SpanishDayNameOfWeek
+    a :SourceColumn ;
+    :columnName "SpanishDayNameOfWeek" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "5"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimDate .
+
+:AdventureWorksDW2017_dbo_DimDate_FrenchDayNameOfWeek
+    a :SourceColumn ;
+    :columnName "FrenchDayNameOfWeek" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "6"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimDate .
+
+:AdventureWorksDW2017_dbo_DimDate_DayNumberOfMonth
+    a :SourceColumn ;
+    :columnName "DayNumberOfMonth" ;
+    :dataType "tinyint" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "7"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimDate .
+
+:AdventureWorksDW2017_dbo_DimDate_DayNumberOfYear
+    a :SourceColumn ;
+    :columnName "DayNumberOfYear" ;
+    :dataType "smallint" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "8"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimDate .
+
+:AdventureWorksDW2017_dbo_DimDate_WeekNumberOfYear
+    a :SourceColumn ;
+    :columnName "WeekNumberOfYear" ;
+    :dataType "tinyint" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "9"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimDate .
+
+:AdventureWorksDW2017_dbo_DimDate_EnglishMonthName
+    a :SourceColumn ;
+    :columnName "EnglishMonthName" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "10"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimDate .
+
+:AdventureWorksDW2017_dbo_DimDate_SpanishMonthName
+    a :SourceColumn ;
+    :columnName "SpanishMonthName" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "11"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimDate .
+
+:AdventureWorksDW2017_dbo_DimDate_FrenchMonthName
+    a :SourceColumn ;
+    :columnName "FrenchMonthName" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "12"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimDate .
+
+:AdventureWorksDW2017_dbo_DimDate_MonthNumberOfYear
+    a :SourceColumn ;
+    :columnName "MonthNumberOfYear" ;
+    :dataType "tinyint" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "13"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimDate .
+
+:AdventureWorksDW2017_dbo_DimDate_CalendarQuarter
+    a :SourceColumn ;
+    :columnName "CalendarQuarter" ;
+    :dataType "tinyint" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "14"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimDate .
+
+:AdventureWorksDW2017_dbo_DimDate_CalendarYear
+    a :SourceColumn ;
+    :columnName "CalendarYear" ;
+    :dataType "smallint" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "15"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimDate .
+
+:AdventureWorksDW2017_dbo_DimDate_CalendarSemester
+    a :SourceColumn ;
+    :columnName "CalendarSemester" ;
+    :dataType "tinyint" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "16"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimDate .
+
+:AdventureWorksDW2017_dbo_DimDate_FiscalQuarter
+    a :SourceColumn ;
+    :columnName "FiscalQuarter" ;
+    :dataType "tinyint" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "17"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimDate .
+
+:AdventureWorksDW2017_dbo_DimDate_FiscalYear
+    a :SourceColumn ;
+    :columnName "FiscalYear" ;
+    :dataType "smallint" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "18"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimDate .
+
+:AdventureWorksDW2017_dbo_DimDate_FiscalSemester
+    a :SourceColumn ;
+    :columnName "FiscalSemester" ;
+    :dataType "tinyint" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "19"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimDate .
+
+:AdventureWorksDW2017_dbo_DimDepartmentGroup_DepartmentGroupKey
+    a :SourceColumn ;
+    :columnName "DepartmentGroupKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimDepartmentGroup .
+
+:AdventureWorksDW2017_dbo_DimDepartmentGroup_ParentDepartmentGroupKey
+    a :SourceColumn ;
+    :columnName "ParentDepartmentGroupKey" ;
+    :dataType "int" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimDepartmentGroup .
+
+:AdventureWorksDW2017_dbo_DimDepartmentGroup_DepartmentGroupName
+    a :SourceColumn ;
+    :columnName "DepartmentGroupName" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimDepartmentGroup .
+
+:AdventureWorksDW2017_dbo_DimEmployee_EmployeeKey
+    a :SourceColumn ;
+    :columnName "EmployeeKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_ParentEmployeeKey
+    a :SourceColumn ;
+    :columnName "ParentEmployeeKey" ;
+    :dataType "int" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_EmployeeNationalIDAlternateKey
+    a :SourceColumn ;
+    :columnName "EmployeeNationalIDAlternateKey" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_ParentEmployeeNationalIDAlternateKey
+    a :SourceColumn ;
+    :columnName "ParentEmployeeNationalIDAlternateKey" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "4"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_SalesTerritoryKey
+    a :SourceColumn ;
+    :columnName "SalesTerritoryKey" ;
+    :dataType "int" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "5"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_FirstName
+    a :SourceColumn ;
+    :columnName "FirstName" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "6"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_LastName
+    a :SourceColumn ;
+    :columnName "LastName" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "7"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_MiddleName
+    a :SourceColumn ;
+    :columnName "MiddleName" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "8"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_NameStyle
+    a :SourceColumn ;
+    :columnName "NameStyle" ;
+    :dataType "bit" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "9"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_Title
+    a :SourceColumn ;
+    :columnName "Title" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "10"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_HireDate
+    a :SourceColumn ;
+    :columnName "HireDate" ;
+    :dataType "date" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "11"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_BirthDate
+    a :SourceColumn ;
+    :columnName "BirthDate" ;
+    :dataType "date" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "12"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_LoginID
+    a :SourceColumn ;
+    :columnName "LoginID" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "13"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_EmailAddress
+    a :SourceColumn ;
+    :columnName "EmailAddress" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "14"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_Phone
+    a :SourceColumn ;
+    :columnName "Phone" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "15"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_MaritalStatus
+    a :SourceColumn ;
+    :columnName "MaritalStatus" ;
+    :dataType "nchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "16"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_EmergencyContactName
+    a :SourceColumn ;
+    :columnName "EmergencyContactName" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "17"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_EmergencyContactPhone
+    a :SourceColumn ;
+    :columnName "EmergencyContactPhone" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "18"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_SalariedFlag
+    a :SourceColumn ;
+    :columnName "SalariedFlag" ;
+    :dataType "bit" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "19"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_Gender
+    a :SourceColumn ;
+    :columnName "Gender" ;
+    :dataType "nchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "20"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_PayFrequency
+    a :SourceColumn ;
+    :columnName "PayFrequency" ;
+    :dataType "tinyint" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "21"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_BaseRate
+    a :SourceColumn ;
+    :columnName "BaseRate" ;
+    :dataType "money" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "22"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_VacationHours
+    a :SourceColumn ;
+    :columnName "VacationHours" ;
+    :dataType "smallint" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "23"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_SickLeaveHours
+    a :SourceColumn ;
+    :columnName "SickLeaveHours" ;
+    :dataType "smallint" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "24"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_CurrentFlag
+    a :SourceColumn ;
+    :columnName "CurrentFlag" ;
+    :dataType "bit" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "25"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_SalesPersonFlag
+    a :SourceColumn ;
+    :columnName "SalesPersonFlag" ;
+    :dataType "bit" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "26"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_DepartmentName
+    a :SourceColumn ;
+    :columnName "DepartmentName" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "27"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_StartDate
+    a :SourceColumn ;
+    :columnName "StartDate" ;
+    :dataType "date" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "28"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_EndDate
+    a :SourceColumn ;
+    :columnName "EndDate" ;
+    :dataType "date" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "29"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_Status
+    a :SourceColumn ;
+    :columnName "Status" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "30"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimEmployee_EmployeePhoto
+    a :SourceColumn ;
+    :columnName "EmployeePhoto" ;
+    :dataType "varbinary" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "31"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimEmployee .
+
+:AdventureWorksDW2017_dbo_DimGeography_GeographyKey
+    a :SourceColumn ;
+    :columnName "GeographyKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimGeography .
+
+:AdventureWorksDW2017_dbo_DimGeography_City
+    a :SourceColumn ;
+    :columnName "City" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimGeography .
+
+:AdventureWorksDW2017_dbo_DimGeography_StateProvinceCode
+    a :SourceColumn ;
+    :columnName "StateProvinceCode" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimGeography .
+
+:AdventureWorksDW2017_dbo_DimGeography_StateProvinceName
+    a :SourceColumn ;
+    :columnName "StateProvinceName" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "4"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimGeography .
+
+:AdventureWorksDW2017_dbo_DimGeography_CountryRegionCode
+    a :SourceColumn ;
+    :columnName "CountryRegionCode" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "5"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimGeography .
+
+:AdventureWorksDW2017_dbo_DimGeography_EnglishCountryRegionName
+    a :SourceColumn ;
+    :columnName "EnglishCountryRegionName" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "6"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimGeography .
+
+:AdventureWorksDW2017_dbo_DimGeography_SpanishCountryRegionName
+    a :SourceColumn ;
+    :columnName "SpanishCountryRegionName" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "7"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimGeography .
+
+:AdventureWorksDW2017_dbo_DimGeography_FrenchCountryRegionName
+    a :SourceColumn ;
+    :columnName "FrenchCountryRegionName" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "8"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimGeography .
+
+:AdventureWorksDW2017_dbo_DimGeography_PostalCode
+    a :SourceColumn ;
+    :columnName "PostalCode" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "9"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimGeography .
+
+:AdventureWorksDW2017_dbo_DimGeography_SalesTerritoryKey
+    a :SourceColumn ;
+    :columnName "SalesTerritoryKey" ;
+    :dataType "int" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "10"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimGeography .
+
+:AdventureWorksDW2017_dbo_DimGeography_IpAddressLocator
+    a :SourceColumn ;
+    :columnName "IpAddressLocator" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "11"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimGeography .
+
+:AdventureWorksDW2017_dbo_DimOrganization_OrganizationKey
+    a :SourceColumn ;
+    :columnName "OrganizationKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimOrganization .
+
+:AdventureWorksDW2017_dbo_DimOrganization_ParentOrganizationKey
+    a :SourceColumn ;
+    :columnName "ParentOrganizationKey" ;
+    :dataType "int" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimOrganization .
+
+:AdventureWorksDW2017_dbo_DimOrganization_PercentageOfOwnership
+    a :SourceColumn ;
+    :columnName "PercentageOfOwnership" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimOrganization .
+
+:AdventureWorksDW2017_dbo_DimOrganization_OrganizationName
+    a :SourceColumn ;
+    :columnName "OrganizationName" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "4"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimOrganization .
+
+:AdventureWorksDW2017_dbo_DimOrganization_CurrencyKey
+    a :SourceColumn ;
+    :columnName "CurrencyKey" ;
+    :dataType "int" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "5"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimOrganization .
+
+:AdventureWorksDW2017_dbo_DimProduct_ProductKey
+    a :SourceColumn ;
+    :columnName "ProductKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_ProductAlternateKey
+    a :SourceColumn ;
+    :columnName "ProductAlternateKey" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_ProductSubcategoryKey
+    a :SourceColumn ;
+    :columnName "ProductSubcategoryKey" ;
+    :dataType "int" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_WeightUnitMeasureCode
+    a :SourceColumn ;
+    :columnName "WeightUnitMeasureCode" ;
+    :dataType "nchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "4"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_SizeUnitMeasureCode
+    a :SourceColumn ;
+    :columnName "SizeUnitMeasureCode" ;
+    :dataType "nchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "5"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_EnglishProductName
+    a :SourceColumn ;
+    :columnName "EnglishProductName" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "6"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_SpanishProductName
+    a :SourceColumn ;
+    :columnName "SpanishProductName" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "7"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_FrenchProductName
+    a :SourceColumn ;
+    :columnName "FrenchProductName" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "8"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_StandardCost
+    a :SourceColumn ;
+    :columnName "StandardCost" ;
+    :dataType "money" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "9"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_FinishedGoodsFlag
+    a :SourceColumn ;
+    :columnName "FinishedGoodsFlag" ;
+    :dataType "bit" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "10"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_Color
+    a :SourceColumn ;
+    :columnName "Color" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "11"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_SafetyStockLevel
+    a :SourceColumn ;
+    :columnName "SafetyStockLevel" ;
+    :dataType "smallint" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "12"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_ReorderPoint
+    a :SourceColumn ;
+    :columnName "ReorderPoint" ;
+    :dataType "smallint" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "13"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_ListPrice
+    a :SourceColumn ;
+    :columnName "ListPrice" ;
+    :dataType "money" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "14"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_Size
+    a :SourceColumn ;
+    :columnName "Size" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "15"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_SizeRange
+    a :SourceColumn ;
+    :columnName "SizeRange" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "16"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_Weight
+    a :SourceColumn ;
+    :columnName "Weight" ;
+    :dataType "float" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "17"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_DaysToManufacture
+    a :SourceColumn ;
+    :columnName "DaysToManufacture" ;
+    :dataType "int" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "18"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_ProductLine
+    a :SourceColumn ;
+    :columnName "ProductLine" ;
+    :dataType "nchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "19"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_DealerPrice
+    a :SourceColumn ;
+    :columnName "DealerPrice" ;
+    :dataType "money" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "20"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_Class
+    a :SourceColumn ;
+    :columnName "Class" ;
+    :dataType "nchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "21"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_Style
+    a :SourceColumn ;
+    :columnName "Style" ;
+    :dataType "nchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "22"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_ModelName
+    a :SourceColumn ;
+    :columnName "ModelName" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "23"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_LargePhoto
+    a :SourceColumn ;
+    :columnName "LargePhoto" ;
+    :dataType "varbinary" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "24"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_EnglishDescription
+    a :SourceColumn ;
+    :columnName "EnglishDescription" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "25"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_FrenchDescription
+    a :SourceColumn ;
+    :columnName "FrenchDescription" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "26"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_ChineseDescription
+    a :SourceColumn ;
+    :columnName "ChineseDescription" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "27"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_ArabicDescription
+    a :SourceColumn ;
+    :columnName "ArabicDescription" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "28"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_HebrewDescription
+    a :SourceColumn ;
+    :columnName "HebrewDescription" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "29"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_ThaiDescription
+    a :SourceColumn ;
+    :columnName "ThaiDescription" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "30"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_GermanDescription
+    a :SourceColumn ;
+    :columnName "GermanDescription" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "31"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_JapaneseDescription
+    a :SourceColumn ;
+    :columnName "JapaneseDescription" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "32"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_TurkishDescription
+    a :SourceColumn ;
+    :columnName "TurkishDescription" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "33"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_StartDate
+    a :SourceColumn ;
+    :columnName "StartDate" ;
+    :dataType "datetime" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "34"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_EndDate
+    a :SourceColumn ;
+    :columnName "EndDate" ;
+    :dataType "datetime" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "35"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProduct_Status
+    a :SourceColumn ;
+    :columnName "Status" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "36"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProduct .
+
+:AdventureWorksDW2017_dbo_DimProductCategory_ProductCategoryKey
+    a :SourceColumn ;
+    :columnName "ProductCategoryKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProductCategory .
+
+:AdventureWorksDW2017_dbo_DimProductCategory_ProductCategoryAlternateKey
+    a :SourceColumn ;
+    :columnName "ProductCategoryAlternateKey" ;
+    :dataType "int" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProductCategory .
+
+:AdventureWorksDW2017_dbo_DimProductCategory_EnglishProductCategoryName
+    a :SourceColumn ;
+    :columnName "EnglishProductCategoryName" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProductCategory .
+
+:AdventureWorksDW2017_dbo_DimProductCategory_SpanishProductCategoryName
+    a :SourceColumn ;
+    :columnName "SpanishProductCategoryName" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "4"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProductCategory .
+
+:AdventureWorksDW2017_dbo_DimProductCategory_FrenchProductCategoryName
+    a :SourceColumn ;
+    :columnName "FrenchProductCategoryName" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "5"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProductCategory .
+
+:AdventureWorksDW2017_dbo_DimProductSubcategory_ProductSubcategoryKey
+    a :SourceColumn ;
+    :columnName "ProductSubcategoryKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProductSubcategory .
+
+:AdventureWorksDW2017_dbo_DimProductSubcategory_ProductSubcategoryAlternateKey
+    a :SourceColumn ;
+    :columnName "ProductSubcategoryAlternateKey" ;
+    :dataType "int" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProductSubcategory .
+
+:AdventureWorksDW2017_dbo_DimProductSubcategory_EnglishProductSubcategoryName
+    a :SourceColumn ;
+    :columnName "EnglishProductSubcategoryName" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProductSubcategory .
+
+:AdventureWorksDW2017_dbo_DimProductSubcategory_SpanishProductSubcategoryName
+    a :SourceColumn ;
+    :columnName "SpanishProductSubcategoryName" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "4"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProductSubcategory .
+
+:AdventureWorksDW2017_dbo_DimProductSubcategory_FrenchProductSubcategoryName
+    a :SourceColumn ;
+    :columnName "FrenchProductSubcategoryName" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "5"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProductSubcategory .
+
+:AdventureWorksDW2017_dbo_DimProductSubcategory_ProductCategoryKey
+    a :SourceColumn ;
+    :columnName "ProductCategoryKey" ;
+    :dataType "int" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "6"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimProductSubcategory .
+
+:AdventureWorksDW2017_dbo_DimPromotion_PromotionKey
+    a :SourceColumn ;
+    :columnName "PromotionKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimPromotion .
+
+:AdventureWorksDW2017_dbo_DimPromotion_PromotionAlternateKey
+    a :SourceColumn ;
+    :columnName "PromotionAlternateKey" ;
+    :dataType "int" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimPromotion .
+
+:AdventureWorksDW2017_dbo_DimPromotion_EnglishPromotionName
+    a :SourceColumn ;
+    :columnName "EnglishPromotionName" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimPromotion .
+
+:AdventureWorksDW2017_dbo_DimPromotion_SpanishPromotionName
+    a :SourceColumn ;
+    :columnName "SpanishPromotionName" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "4"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimPromotion .
+
+:AdventureWorksDW2017_dbo_DimPromotion_FrenchPromotionName
+    a :SourceColumn ;
+    :columnName "FrenchPromotionName" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "5"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimPromotion .
+
+:AdventureWorksDW2017_dbo_DimPromotion_DiscountPct
+    a :SourceColumn ;
+    :columnName "DiscountPct" ;
+    :dataType "float" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "6"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimPromotion .
+
+:AdventureWorksDW2017_dbo_DimPromotion_EnglishPromotionType
+    a :SourceColumn ;
+    :columnName "EnglishPromotionType" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "7"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimPromotion .
+
+:AdventureWorksDW2017_dbo_DimPromotion_SpanishPromotionType
+    a :SourceColumn ;
+    :columnName "SpanishPromotionType" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "8"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimPromotion .
+
+:AdventureWorksDW2017_dbo_DimPromotion_FrenchPromotionType
+    a :SourceColumn ;
+    :columnName "FrenchPromotionType" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "9"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimPromotion .
+
+:AdventureWorksDW2017_dbo_DimPromotion_EnglishPromotionCategory
+    a :SourceColumn ;
+    :columnName "EnglishPromotionCategory" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "10"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimPromotion .
+
+:AdventureWorksDW2017_dbo_DimPromotion_SpanishPromotionCategory
+    a :SourceColumn ;
+    :columnName "SpanishPromotionCategory" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "11"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimPromotion .
+
+:AdventureWorksDW2017_dbo_DimPromotion_FrenchPromotionCategory
+    a :SourceColumn ;
+    :columnName "FrenchPromotionCategory" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "12"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimPromotion .
+
+:AdventureWorksDW2017_dbo_DimPromotion_StartDate
+    a :SourceColumn ;
+    :columnName "StartDate" ;
+    :dataType "datetime" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "13"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimPromotion .
+
+:AdventureWorksDW2017_dbo_DimPromotion_EndDate
+    a :SourceColumn ;
+    :columnName "EndDate" ;
+    :dataType "datetime" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "14"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimPromotion .
+
+:AdventureWorksDW2017_dbo_DimPromotion_MinQty
+    a :SourceColumn ;
+    :columnName "MinQty" ;
+    :dataType "int" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "15"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimPromotion .
+
+:AdventureWorksDW2017_dbo_DimPromotion_MaxQty
+    a :SourceColumn ;
+    :columnName "MaxQty" ;
+    :dataType "int" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "16"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimPromotion .
+
+:AdventureWorksDW2017_dbo_DimReseller_ResellerKey
+    a :SourceColumn ;
+    :columnName "ResellerKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimReseller .
+
+:AdventureWorksDW2017_dbo_DimReseller_GeographyKey
+    a :SourceColumn ;
+    :columnName "GeographyKey" ;
+    :dataType "int" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimReseller .
+
+:AdventureWorksDW2017_dbo_DimReseller_ResellerAlternateKey
+    a :SourceColumn ;
+    :columnName "ResellerAlternateKey" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimReseller .
+
+:AdventureWorksDW2017_dbo_DimReseller_Phone
+    a :SourceColumn ;
+    :columnName "Phone" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "4"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimReseller .
+
+:AdventureWorksDW2017_dbo_DimReseller_BusinessType
+    a :SourceColumn ;
+    :columnName "BusinessType" ;
+    :dataType "varchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "5"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimReseller .
+
+:AdventureWorksDW2017_dbo_DimReseller_ResellerName
+    a :SourceColumn ;
+    :columnName "ResellerName" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "6"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimReseller .
+
+:AdventureWorksDW2017_dbo_DimReseller_NumberEmployees
+    a :SourceColumn ;
+    :columnName "NumberEmployees" ;
+    :dataType "int" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "7"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimReseller .
+
+:AdventureWorksDW2017_dbo_DimReseller_OrderFrequency
+    a :SourceColumn ;
+    :columnName "OrderFrequency" ;
+    :dataType "char" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "8"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimReseller .
+
+:AdventureWorksDW2017_dbo_DimReseller_OrderMonth
+    a :SourceColumn ;
+    :columnName "OrderMonth" ;
+    :dataType "tinyint" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "9"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimReseller .
+
+:AdventureWorksDW2017_dbo_DimReseller_FirstOrderYear
+    a :SourceColumn ;
+    :columnName "FirstOrderYear" ;
+    :dataType "int" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "10"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimReseller .
+
+:AdventureWorksDW2017_dbo_DimReseller_LastOrderYear
+    a :SourceColumn ;
+    :columnName "LastOrderYear" ;
+    :dataType "int" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "11"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimReseller .
+
+:AdventureWorksDW2017_dbo_DimReseller_ProductLine
+    a :SourceColumn ;
+    :columnName "ProductLine" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "12"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimReseller .
+
+:AdventureWorksDW2017_dbo_DimReseller_AddressLine1
+    a :SourceColumn ;
+    :columnName "AddressLine1" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "13"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimReseller .
+
+:AdventureWorksDW2017_dbo_DimReseller_AddressLine2
+    a :SourceColumn ;
+    :columnName "AddressLine2" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "14"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimReseller .
+
+:AdventureWorksDW2017_dbo_DimReseller_AnnualSales
+    a :SourceColumn ;
+    :columnName "AnnualSales" ;
+    :dataType "money" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "15"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimReseller .
+
+:AdventureWorksDW2017_dbo_DimReseller_BankName
+    a :SourceColumn ;
+    :columnName "BankName" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "16"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimReseller .
+
+:AdventureWorksDW2017_dbo_DimReseller_MinPaymentType
+    a :SourceColumn ;
+    :columnName "MinPaymentType" ;
+    :dataType "tinyint" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "17"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimReseller .
+
+:AdventureWorksDW2017_dbo_DimReseller_MinPaymentAmount
+    a :SourceColumn ;
+    :columnName "MinPaymentAmount" ;
+    :dataType "money" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "18"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimReseller .
+
+:AdventureWorksDW2017_dbo_DimReseller_AnnualRevenue
+    a :SourceColumn ;
+    :columnName "AnnualRevenue" ;
+    :dataType "money" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "19"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimReseller .
+
+:AdventureWorksDW2017_dbo_DimReseller_YearOpened
+    a :SourceColumn ;
+    :columnName "YearOpened" ;
+    :dataType "int" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "20"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimReseller .
+
+:AdventureWorksDW2017_dbo_DimSalesReason_SalesReasonKey
+    a :SourceColumn ;
+    :columnName "SalesReasonKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimSalesReason .
+
+:AdventureWorksDW2017_dbo_DimSalesReason_SalesReasonAlternateKey
+    a :SourceColumn ;
+    :columnName "SalesReasonAlternateKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimSalesReason .
+
+:AdventureWorksDW2017_dbo_DimSalesReason_SalesReasonName
+    a :SourceColumn ;
+    :columnName "SalesReasonName" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimSalesReason .
+
+:AdventureWorksDW2017_dbo_DimSalesReason_SalesReasonReasonType
+    a :SourceColumn ;
+    :columnName "SalesReasonReasonType" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "4"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimSalesReason .
+
+:AdventureWorksDW2017_dbo_DimSalesTerritory_SalesTerritoryKey
+    a :SourceColumn ;
+    :columnName "SalesTerritoryKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimSalesTerritory .
+
+:AdventureWorksDW2017_dbo_DimSalesTerritory_SalesTerritoryAlternateKey
+    a :SourceColumn ;
+    :columnName "SalesTerritoryAlternateKey" ;
+    :dataType "int" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimSalesTerritory .
+
+:AdventureWorksDW2017_dbo_DimSalesTerritory_SalesTerritoryRegion
+    a :SourceColumn ;
+    :columnName "SalesTerritoryRegion" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimSalesTerritory .
+
+:AdventureWorksDW2017_dbo_DimSalesTerritory_SalesTerritoryCountry
+    a :SourceColumn ;
+    :columnName "SalesTerritoryCountry" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "4"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimSalesTerritory .
+
+:AdventureWorksDW2017_dbo_DimSalesTerritory_SalesTerritoryGroup
+    a :SourceColumn ;
+    :columnName "SalesTerritoryGroup" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "5"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimSalesTerritory .
+
+:AdventureWorksDW2017_dbo_DimSalesTerritory_SalesTerritoryImage
+    a :SourceColumn ;
+    :columnName "SalesTerritoryImage" ;
+    :dataType "varbinary" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "6"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimSalesTerritory .
+
+:AdventureWorksDW2017_dbo_DimScenario_ScenarioKey
+    a :SourceColumn ;
+    :columnName "ScenarioKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimScenario .
+
+:AdventureWorksDW2017_dbo_DimScenario_ScenarioName
+    a :SourceColumn ;
+    :columnName "ScenarioName" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_DimScenario .
+
+:AdventureWorksDW2017_dbo_FactAdditionalInternationalProductDescription_ProductKey
+    a :SourceColumn ;
+    :columnName "ProductKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactAdditionalInternationalProductDescription .
+
+:AdventureWorksDW2017_dbo_FactAdditionalInternationalProductDescription_CultureName
+    a :SourceColumn ;
+    :columnName "CultureName" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactAdditionalInternationalProductDescription .
+
+:AdventureWorksDW2017_dbo_FactAdditionalInternationalProductDescription_ProductDescription
+    a :SourceColumn ;
+    :columnName "ProductDescription" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactAdditionalInternationalProductDescription .
+
+:AdventureWorksDW2017_dbo_FactCallCenter_FactCallCenterID
+    a :SourceColumn ;
+    :columnName "FactCallCenterID" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactCallCenter .
+
+:AdventureWorksDW2017_dbo_FactCallCenter_DateKey
+    a :SourceColumn ;
+    :columnName "DateKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactCallCenter .
+
+:AdventureWorksDW2017_dbo_FactCallCenter_WageType
+    a :SourceColumn ;
+    :columnName "WageType" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactCallCenter .
+
+:AdventureWorksDW2017_dbo_FactCallCenter_Shift
+    a :SourceColumn ;
+    :columnName "Shift" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "4"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactCallCenter .
+
+:AdventureWorksDW2017_dbo_FactCallCenter_LevelOneOperators
+    a :SourceColumn ;
+    :columnName "LevelOneOperators" ;
+    :dataType "smallint" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "5"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactCallCenter .
+
+:AdventureWorksDW2017_dbo_FactCallCenter_LevelTwoOperators
+    a :SourceColumn ;
+    :columnName "LevelTwoOperators" ;
+    :dataType "smallint" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "6"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactCallCenter .
+
+:AdventureWorksDW2017_dbo_FactCallCenter_TotalOperators
+    a :SourceColumn ;
+    :columnName "TotalOperators" ;
+    :dataType "smallint" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "7"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactCallCenter .
+
+:AdventureWorksDW2017_dbo_FactCallCenter_Calls
+    a :SourceColumn ;
+    :columnName "Calls" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "8"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactCallCenter .
+
+:AdventureWorksDW2017_dbo_FactCallCenter_AutomaticResponses
+    a :SourceColumn ;
+    :columnName "AutomaticResponses" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "9"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactCallCenter .
+
+:AdventureWorksDW2017_dbo_FactCallCenter_Orders
+    a :SourceColumn ;
+    :columnName "Orders" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "10"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactCallCenter .
+
+:AdventureWorksDW2017_dbo_FactCallCenter_IssuesRaised
+    a :SourceColumn ;
+    :columnName "IssuesRaised" ;
+    :dataType "smallint" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "11"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactCallCenter .
+
+:AdventureWorksDW2017_dbo_FactCallCenter_AverageTimePerIssue
+    a :SourceColumn ;
+    :columnName "AverageTimePerIssue" ;
+    :dataType "smallint" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "12"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactCallCenter .
+
+:AdventureWorksDW2017_dbo_FactCallCenter_ServiceGrade
+    a :SourceColumn ;
+    :columnName "ServiceGrade" ;
+    :dataType "float" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "13"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactCallCenter .
+
+:AdventureWorksDW2017_dbo_FactCallCenter_Date
+    a :SourceColumn ;
+    :columnName "Date" ;
+    :dataType "datetime" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "14"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactCallCenter .
+
+:AdventureWorksDW2017_dbo_FactCurrencyRate_CurrencyKey
+    a :SourceColumn ;
+    :columnName "CurrencyKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactCurrencyRate .
+
+:AdventureWorksDW2017_dbo_FactCurrencyRate_DateKey
+    a :SourceColumn ;
+    :columnName "DateKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactCurrencyRate .
+
+:AdventureWorksDW2017_dbo_FactCurrencyRate_AverageRate
+    a :SourceColumn ;
+    :columnName "AverageRate" ;
+    :dataType "float" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactCurrencyRate .
+
+:AdventureWorksDW2017_dbo_FactCurrencyRate_EndOfDayRate
+    a :SourceColumn ;
+    :columnName "EndOfDayRate" ;
+    :dataType "float" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "4"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactCurrencyRate .
+
+:AdventureWorksDW2017_dbo_FactCurrencyRate_Date
+    a :SourceColumn ;
+    :columnName "Date" ;
+    :dataType "datetime" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "5"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactCurrencyRate .
+
+:AdventureWorksDW2017_dbo_FactFinance_FinanceKey
+    a :SourceColumn ;
+    :columnName "FinanceKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactFinance .
+
+:AdventureWorksDW2017_dbo_FactFinance_DateKey
+    a :SourceColumn ;
+    :columnName "DateKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactFinance .
+
+:AdventureWorksDW2017_dbo_FactFinance_OrganizationKey
+    a :SourceColumn ;
+    :columnName "OrganizationKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactFinance .
+
+:AdventureWorksDW2017_dbo_FactFinance_DepartmentGroupKey
+    a :SourceColumn ;
+    :columnName "DepartmentGroupKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "4"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactFinance .
+
+:AdventureWorksDW2017_dbo_FactFinance_ScenarioKey
+    a :SourceColumn ;
+    :columnName "ScenarioKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "5"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactFinance .
+
+:AdventureWorksDW2017_dbo_FactFinance_AccountKey
+    a :SourceColumn ;
+    :columnName "AccountKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "6"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactFinance .
+
+:AdventureWorksDW2017_dbo_FactFinance_Amount
+    a :SourceColumn ;
+    :columnName "Amount" ;
+    :dataType "float" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "7"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactFinance .
+
+:AdventureWorksDW2017_dbo_FactFinance_Date
+    a :SourceColumn ;
+    :columnName "Date" ;
+    :dataType "datetime" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "8"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactFinance .
+
+:AdventureWorksDW2017_dbo_FactInternetSales_ProductKey
+    a :SourceColumn ;
+    :columnName "ProductKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSales .
+
+:AdventureWorksDW2017_dbo_FactInternetSales_OrderDateKey
+    a :SourceColumn ;
+    :columnName "OrderDateKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSales .
+
+:AdventureWorksDW2017_dbo_FactInternetSales_DueDateKey
+    a :SourceColumn ;
+    :columnName "DueDateKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSales .
+
+:AdventureWorksDW2017_dbo_FactInternetSales_ShipDateKey
+    a :SourceColumn ;
+    :columnName "ShipDateKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "4"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSales .
+
+:AdventureWorksDW2017_dbo_FactInternetSales_CustomerKey
+    a :SourceColumn ;
+    :columnName "CustomerKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "5"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSales .
+
+:AdventureWorksDW2017_dbo_FactInternetSales_PromotionKey
+    a :SourceColumn ;
+    :columnName "PromotionKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "6"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSales .
+
+:AdventureWorksDW2017_dbo_FactInternetSales_CurrencyKey
+    a :SourceColumn ;
+    :columnName "CurrencyKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "7"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSales .
+
+:AdventureWorksDW2017_dbo_FactInternetSales_SalesTerritoryKey
+    a :SourceColumn ;
+    :columnName "SalesTerritoryKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "8"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSales .
+
+:AdventureWorksDW2017_dbo_FactInternetSales_SalesOrderNumber
+    a :SourceColumn ;
+    :columnName "SalesOrderNumber" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "9"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSales .
+
+:AdventureWorksDW2017_dbo_FactInternetSales_SalesOrderLineNumber
+    a :SourceColumn ;
+    :columnName "SalesOrderLineNumber" ;
+    :dataType "tinyint" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "10"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSales .
+
+:AdventureWorksDW2017_dbo_FactInternetSales_RevisionNumber
+    a :SourceColumn ;
+    :columnName "RevisionNumber" ;
+    :dataType "tinyint" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "11"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSales .
+
+:AdventureWorksDW2017_dbo_FactInternetSales_OrderQuantity
+    a :SourceColumn ;
+    :columnName "OrderQuantity" ;
+    :dataType "smallint" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "12"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSales .
+
+:AdventureWorksDW2017_dbo_FactInternetSales_UnitPrice
+    a :SourceColumn ;
+    :columnName "UnitPrice" ;
+    :dataType "money" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "13"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSales .
+
+:AdventureWorksDW2017_dbo_FactInternetSales_ExtendedAmount
+    a :SourceColumn ;
+    :columnName "ExtendedAmount" ;
+    :dataType "money" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "14"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSales .
+
+:AdventureWorksDW2017_dbo_FactInternetSales_UnitPriceDiscountPct
+    a :SourceColumn ;
+    :columnName "UnitPriceDiscountPct" ;
+    :dataType "float" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "15"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSales .
+
+:AdventureWorksDW2017_dbo_FactInternetSales_DiscountAmount
+    a :SourceColumn ;
+    :columnName "DiscountAmount" ;
+    :dataType "float" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "16"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSales .
+
+:AdventureWorksDW2017_dbo_FactInternetSales_ProductStandardCost
+    a :SourceColumn ;
+    :columnName "ProductStandardCost" ;
+    :dataType "money" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "17"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSales .
+
+:AdventureWorksDW2017_dbo_FactInternetSales_TotalProductCost
+    a :SourceColumn ;
+    :columnName "TotalProductCost" ;
+    :dataType "money" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "18"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSales .
+
+:AdventureWorksDW2017_dbo_FactInternetSales_SalesAmount
+    a :SourceColumn ;
+    :columnName "SalesAmount" ;
+    :dataType "money" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "19"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSales .
+
+:AdventureWorksDW2017_dbo_FactInternetSales_TaxAmt
+    a :SourceColumn ;
+    :columnName "TaxAmt" ;
+    :dataType "money" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "20"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSales .
+
+:AdventureWorksDW2017_dbo_FactInternetSales_Freight
+    a :SourceColumn ;
+    :columnName "Freight" ;
+    :dataType "money" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "21"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSales .
+
+:AdventureWorksDW2017_dbo_FactInternetSales_CarrierTrackingNumber
+    a :SourceColumn ;
+    :columnName "CarrierTrackingNumber" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "22"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSales .
+
+:AdventureWorksDW2017_dbo_FactInternetSales_CustomerPONumber
+    a :SourceColumn ;
+    :columnName "CustomerPONumber" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "23"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSales .
+
+:AdventureWorksDW2017_dbo_FactInternetSales_OrderDate
+    a :SourceColumn ;
+    :columnName "OrderDate" ;
+    :dataType "datetime" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "24"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSales .
+
+:AdventureWorksDW2017_dbo_FactInternetSales_DueDate
+    a :SourceColumn ;
+    :columnName "DueDate" ;
+    :dataType "datetime" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "25"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSales .
+
+:AdventureWorksDW2017_dbo_FactInternetSales_ShipDate
+    a :SourceColumn ;
+    :columnName "ShipDate" ;
+    :dataType "datetime" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "26"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSales .
+
+:AdventureWorksDW2017_dbo_FactInternetSalesReason_SalesOrderNumber
+    a :SourceColumn ;
+    :columnName "SalesOrderNumber" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSalesReason .
+
+:AdventureWorksDW2017_dbo_FactInternetSalesReason_SalesOrderLineNumber
+    a :SourceColumn ;
+    :columnName "SalesOrderLineNumber" ;
+    :dataType "tinyint" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSalesReason .
+
+:AdventureWorksDW2017_dbo_FactInternetSalesReason_SalesReasonKey
+    a :SourceColumn ;
+    :columnName "SalesReasonKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactInternetSalesReason .
+
+:AdventureWorksDW2017_dbo_FactProductInventory_ProductKey
+    a :SourceColumn ;
+    :columnName "ProductKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactProductInventory .
+
+:AdventureWorksDW2017_dbo_FactProductInventory_DateKey
+    a :SourceColumn ;
+    :columnName "DateKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactProductInventory .
+
+:AdventureWorksDW2017_dbo_FactProductInventory_MovementDate
+    a :SourceColumn ;
+    :columnName "MovementDate" ;
+    :dataType "date" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactProductInventory .
+
+:AdventureWorksDW2017_dbo_FactProductInventory_UnitCost
+    a :SourceColumn ;
+    :columnName "UnitCost" ;
+    :dataType "money" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "4"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactProductInventory .
+
+:AdventureWorksDW2017_dbo_FactProductInventory_UnitsIn
+    a :SourceColumn ;
+    :columnName "UnitsIn" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "5"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactProductInventory .
+
+:AdventureWorksDW2017_dbo_FactProductInventory_UnitsOut
+    a :SourceColumn ;
+    :columnName "UnitsOut" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "6"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactProductInventory .
+
+:AdventureWorksDW2017_dbo_FactProductInventory_UnitsBalance
+    a :SourceColumn ;
+    :columnName "UnitsBalance" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "7"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactProductInventory .
+
+:AdventureWorksDW2017_dbo_FactResellerSales_ProductKey
+    a :SourceColumn ;
+    :columnName "ProductKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactResellerSales .
+
+:AdventureWorksDW2017_dbo_FactResellerSales_OrderDateKey
+    a :SourceColumn ;
+    :columnName "OrderDateKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactResellerSales .
+
+:AdventureWorksDW2017_dbo_FactResellerSales_DueDateKey
+    a :SourceColumn ;
+    :columnName "DueDateKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactResellerSales .
+
+:AdventureWorksDW2017_dbo_FactResellerSales_ShipDateKey
+    a :SourceColumn ;
+    :columnName "ShipDateKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "4"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactResellerSales .
+
+:AdventureWorksDW2017_dbo_FactResellerSales_ResellerKey
+    a :SourceColumn ;
+    :columnName "ResellerKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "5"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactResellerSales .
+
+:AdventureWorksDW2017_dbo_FactResellerSales_EmployeeKey
+    a :SourceColumn ;
+    :columnName "EmployeeKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "6"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactResellerSales .
+
+:AdventureWorksDW2017_dbo_FactResellerSales_PromotionKey
+    a :SourceColumn ;
+    :columnName "PromotionKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "7"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactResellerSales .
+
+:AdventureWorksDW2017_dbo_FactResellerSales_CurrencyKey
+    a :SourceColumn ;
+    :columnName "CurrencyKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "8"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactResellerSales .
+
+:AdventureWorksDW2017_dbo_FactResellerSales_SalesTerritoryKey
+    a :SourceColumn ;
+    :columnName "SalesTerritoryKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "9"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactResellerSales .
+
+:AdventureWorksDW2017_dbo_FactResellerSales_SalesOrderNumber
+    a :SourceColumn ;
+    :columnName "SalesOrderNumber" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "10"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactResellerSales .
+
+:AdventureWorksDW2017_dbo_FactResellerSales_SalesOrderLineNumber
+    a :SourceColumn ;
+    :columnName "SalesOrderLineNumber" ;
+    :dataType "tinyint" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "11"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactResellerSales .
+
+:AdventureWorksDW2017_dbo_FactResellerSales_RevisionNumber
+    a :SourceColumn ;
+    :columnName "RevisionNumber" ;
+    :dataType "tinyint" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "12"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactResellerSales .
+
+:AdventureWorksDW2017_dbo_FactResellerSales_OrderQuantity
+    a :SourceColumn ;
+    :columnName "OrderQuantity" ;
+    :dataType "smallint" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "13"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactResellerSales .
+
+:AdventureWorksDW2017_dbo_FactResellerSales_UnitPrice
+    a :SourceColumn ;
+    :columnName "UnitPrice" ;
+    :dataType "money" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "14"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactResellerSales .
+
+:AdventureWorksDW2017_dbo_FactResellerSales_ExtendedAmount
+    a :SourceColumn ;
+    :columnName "ExtendedAmount" ;
+    :dataType "money" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "15"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactResellerSales .
+
+:AdventureWorksDW2017_dbo_FactResellerSales_UnitPriceDiscountPct
+    a :SourceColumn ;
+    :columnName "UnitPriceDiscountPct" ;
+    :dataType "float" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "16"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactResellerSales .
+
+:AdventureWorksDW2017_dbo_FactResellerSales_DiscountAmount
+    a :SourceColumn ;
+    :columnName "DiscountAmount" ;
+    :dataType "float" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "17"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactResellerSales .
+
+:AdventureWorksDW2017_dbo_FactResellerSales_ProductStandardCost
+    a :SourceColumn ;
+    :columnName "ProductStandardCost" ;
+    :dataType "money" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "18"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactResellerSales .
+
+:AdventureWorksDW2017_dbo_FactResellerSales_TotalProductCost
+    a :SourceColumn ;
+    :columnName "TotalProductCost" ;
+    :dataType "money" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "19"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactResellerSales .
+
+:AdventureWorksDW2017_dbo_FactResellerSales_SalesAmount
+    a :SourceColumn ;
+    :columnName "SalesAmount" ;
+    :dataType "money" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "20"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactResellerSales .
+
+:AdventureWorksDW2017_dbo_FactResellerSales_TaxAmt
+    a :SourceColumn ;
+    :columnName "TaxAmt" ;
+    :dataType "money" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "21"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactResellerSales .
+
+:AdventureWorksDW2017_dbo_FactResellerSales_Freight
+    a :SourceColumn ;
+    :columnName "Freight" ;
+    :dataType "money" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "22"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactResellerSales .
+
+:AdventureWorksDW2017_dbo_FactResellerSales_CarrierTrackingNumber
+    a :SourceColumn ;
+    :columnName "CarrierTrackingNumber" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "23"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactResellerSales .
+
+:AdventureWorksDW2017_dbo_FactResellerSales_CustomerPONumber
+    a :SourceColumn ;
+    :columnName "CustomerPONumber" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "24"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactResellerSales .
+
+:AdventureWorksDW2017_dbo_FactResellerSales_OrderDate
+    a :SourceColumn ;
+    :columnName "OrderDate" ;
+    :dataType "datetime" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "25"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactResellerSales .
+
+:AdventureWorksDW2017_dbo_FactResellerSales_DueDate
+    a :SourceColumn ;
+    :columnName "DueDate" ;
+    :dataType "datetime" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "26"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactResellerSales .
+
+:AdventureWorksDW2017_dbo_FactResellerSales_ShipDate
+    a :SourceColumn ;
+    :columnName "ShipDate" ;
+    :dataType "datetime" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "27"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactResellerSales .
+
+:AdventureWorksDW2017_dbo_FactSalesQuota_SalesQuotaKey
+    a :SourceColumn ;
+    :columnName "SalesQuotaKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactSalesQuota .
+
+:AdventureWorksDW2017_dbo_FactSalesQuota_EmployeeKey
+    a :SourceColumn ;
+    :columnName "EmployeeKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactSalesQuota .
+
+:AdventureWorksDW2017_dbo_FactSalesQuota_DateKey
+    a :SourceColumn ;
+    :columnName "DateKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactSalesQuota .
+
+:AdventureWorksDW2017_dbo_FactSalesQuota_CalendarYear
+    a :SourceColumn ;
+    :columnName "CalendarYear" ;
+    :dataType "smallint" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "4"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactSalesQuota .
+
+:AdventureWorksDW2017_dbo_FactSalesQuota_CalendarQuarter
+    a :SourceColumn ;
+    :columnName "CalendarQuarter" ;
+    :dataType "tinyint" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "5"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactSalesQuota .
+
+:AdventureWorksDW2017_dbo_FactSalesQuota_SalesAmountQuota
+    a :SourceColumn ;
+    :columnName "SalesAmountQuota" ;
+    :dataType "money" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "6"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactSalesQuota .
+
+:AdventureWorksDW2017_dbo_FactSalesQuota_Date
+    a :SourceColumn ;
+    :columnName "Date" ;
+    :dataType "datetime" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "7"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactSalesQuota .
+
+:AdventureWorksDW2017_dbo_FactSurveyResponse_SurveyResponseKey
+    a :SourceColumn ;
+    :columnName "SurveyResponseKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactSurveyResponse .
+
+:AdventureWorksDW2017_dbo_FactSurveyResponse_DateKey
+    a :SourceColumn ;
+    :columnName "DateKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactSurveyResponse .
+
+:AdventureWorksDW2017_dbo_FactSurveyResponse_CustomerKey
+    a :SourceColumn ;
+    :columnName "CustomerKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactSurveyResponse .
+
+:AdventureWorksDW2017_dbo_FactSurveyResponse_ProductCategoryKey
+    a :SourceColumn ;
+    :columnName "ProductCategoryKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "4"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactSurveyResponse .
+
+:AdventureWorksDW2017_dbo_FactSurveyResponse_EnglishProductCategoryName
+    a :SourceColumn ;
+    :columnName "EnglishProductCategoryName" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "5"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactSurveyResponse .
+
+:AdventureWorksDW2017_dbo_FactSurveyResponse_ProductSubcategoryKey
+    a :SourceColumn ;
+    :columnName "ProductSubcategoryKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "6"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactSurveyResponse .
+
+:AdventureWorksDW2017_dbo_FactSurveyResponse_EnglishProductSubcategoryName
+    a :SourceColumn ;
+    :columnName "EnglishProductSubcategoryName" ;
+    :dataType "nvarchar" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "7"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactSurveyResponse .
+
+:AdventureWorksDW2017_dbo_FactSurveyResponse_Date
+    a :SourceColumn ;
+    :columnName "Date" ;
+    :dataType "datetime" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "8"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_FactSurveyResponse .
+
+:AdventureWorksDW2017_dbo_NewFactCurrencyRate_AverageRate
+    a :SourceColumn ;
+    :columnName "AverageRate" ;
+    :dataType "real" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_NewFactCurrencyRate .
+
+:AdventureWorksDW2017_dbo_NewFactCurrencyRate_CurrencyID
+    a :SourceColumn ;
+    :columnName "CurrencyID" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_NewFactCurrencyRate .
+
+:AdventureWorksDW2017_dbo_NewFactCurrencyRate_CurrencyDate
+    a :SourceColumn ;
+    :columnName "CurrencyDate" ;
+    :dataType "date" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_NewFactCurrencyRate .
+
+:AdventureWorksDW2017_dbo_NewFactCurrencyRate_EndOfDayRate
+    a :SourceColumn ;
+    :columnName "EndOfDayRate" ;
+    :dataType "real" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "4"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_NewFactCurrencyRate .
+
+:AdventureWorksDW2017_dbo_NewFactCurrencyRate_CurrencyKey
+    a :SourceColumn ;
+    :columnName "CurrencyKey" ;
+    :dataType "int" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "5"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_NewFactCurrencyRate .
+
+:AdventureWorksDW2017_dbo_NewFactCurrencyRate_DateKey
+    a :SourceColumn ;
+    :columnName "DateKey" ;
+    :dataType "int" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "6"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_NewFactCurrencyRate .
+
+:AdventureWorksDW2017_dbo_ProspectiveBuyer_ProspectiveBuyerKey
+    a :SourceColumn ;
+    :columnName "ProspectiveBuyerKey" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_ProspectiveBuyer .
+
+:AdventureWorksDW2017_dbo_ProspectiveBuyer_ProspectAlternateKey
+    a :SourceColumn ;
+    :columnName "ProspectAlternateKey" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_ProspectiveBuyer .
+
+:AdventureWorksDW2017_dbo_ProspectiveBuyer_FirstName
+    a :SourceColumn ;
+    :columnName "FirstName" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_ProspectiveBuyer .
+
+:AdventureWorksDW2017_dbo_ProspectiveBuyer_MiddleName
+    a :SourceColumn ;
+    :columnName "MiddleName" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "4"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_ProspectiveBuyer .
+
+:AdventureWorksDW2017_dbo_ProspectiveBuyer_LastName
+    a :SourceColumn ;
+    :columnName "LastName" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "5"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_ProspectiveBuyer .
+
+:AdventureWorksDW2017_dbo_ProspectiveBuyer_BirthDate
+    a :SourceColumn ;
+    :columnName "BirthDate" ;
+    :dataType "datetime" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "6"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_ProspectiveBuyer .
+
+:AdventureWorksDW2017_dbo_ProspectiveBuyer_MaritalStatus
+    a :SourceColumn ;
+    :columnName "MaritalStatus" ;
+    :dataType "nchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "7"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_ProspectiveBuyer .
+
+:AdventureWorksDW2017_dbo_ProspectiveBuyer_Gender
+    a :SourceColumn ;
+    :columnName "Gender" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "8"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_ProspectiveBuyer .
+
+:AdventureWorksDW2017_dbo_ProspectiveBuyer_EmailAddress
+    a :SourceColumn ;
+    :columnName "EmailAddress" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "9"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_ProspectiveBuyer .
+
+:AdventureWorksDW2017_dbo_ProspectiveBuyer_YearlyIncome
+    a :SourceColumn ;
+    :columnName "YearlyIncome" ;
+    :dataType "money" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "10"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_ProspectiveBuyer .
+
+:AdventureWorksDW2017_dbo_ProspectiveBuyer_TotalChildren
+    a :SourceColumn ;
+    :columnName "TotalChildren" ;
+    :dataType "tinyint" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "11"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_ProspectiveBuyer .
+
+:AdventureWorksDW2017_dbo_ProspectiveBuyer_NumberChildrenAtHome
+    a :SourceColumn ;
+    :columnName "NumberChildrenAtHome" ;
+    :dataType "tinyint" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "12"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_ProspectiveBuyer .
+
+:AdventureWorksDW2017_dbo_ProspectiveBuyer_Education
+    a :SourceColumn ;
+    :columnName "Education" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "13"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_ProspectiveBuyer .
+
+:AdventureWorksDW2017_dbo_ProspectiveBuyer_Occupation
+    a :SourceColumn ;
+    :columnName "Occupation" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "14"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_ProspectiveBuyer .
+
+:AdventureWorksDW2017_dbo_ProspectiveBuyer_HouseOwnerFlag
+    a :SourceColumn ;
+    :columnName "HouseOwnerFlag" ;
+    :dataType "nchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "15"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_ProspectiveBuyer .
+
+:AdventureWorksDW2017_dbo_ProspectiveBuyer_NumberCarsOwned
+    a :SourceColumn ;
+    :columnName "NumberCarsOwned" ;
+    :dataType "tinyint" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "16"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_ProspectiveBuyer .
+
+:AdventureWorksDW2017_dbo_ProspectiveBuyer_AddressLine1
+    a :SourceColumn ;
+    :columnName "AddressLine1" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "17"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_ProspectiveBuyer .
+
+:AdventureWorksDW2017_dbo_ProspectiveBuyer_AddressLine2
+    a :SourceColumn ;
+    :columnName "AddressLine2" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "18"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_ProspectiveBuyer .
+
+:AdventureWorksDW2017_dbo_ProspectiveBuyer_City
+    a :SourceColumn ;
+    :columnName "City" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "19"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_ProspectiveBuyer .
+
+:AdventureWorksDW2017_dbo_ProspectiveBuyer_StateProvinceCode
+    a :SourceColumn ;
+    :columnName "StateProvinceCode" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "20"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_ProspectiveBuyer .
+
+:AdventureWorksDW2017_dbo_ProspectiveBuyer_PostalCode
+    a :SourceColumn ;
+    :columnName "PostalCode" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "21"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_ProspectiveBuyer .
+
+:AdventureWorksDW2017_dbo_ProspectiveBuyer_Phone
+    a :SourceColumn ;
+    :columnName "Phone" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "22"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_ProspectiveBuyer .
+
+:AdventureWorksDW2017_dbo_ProspectiveBuyer_Salutation
+    a :SourceColumn ;
+    :columnName "Salutation" ;
+    :dataType "nvarchar" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "23"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_ProspectiveBuyer .
+
+:AdventureWorksDW2017_dbo_ProspectiveBuyer_Unknown
+    a :SourceColumn ;
+    :columnName "Unknown" ;
+    :dataType "int" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "24"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_ProspectiveBuyer .
+
+:AdventureWorksDW2017_dbo_sysdiagrams_name
+    a :SourceColumn ;
+    :columnName "name" ;
+    :dataType "sysname" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "1"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_sysdiagrams .
+
+:AdventureWorksDW2017_dbo_sysdiagrams_principal_id
+    a :SourceColumn ;
+    :columnName "principal_id" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "2"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_sysdiagrams .
+
+:AdventureWorksDW2017_dbo_sysdiagrams_diagram_id
+    a :SourceColumn ;
+    :columnName "diagram_id" ;
+    :dataType "int" ;
+    :isNullable "false"^^xsd:boolean ;
+    :ordinalPosition "3"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_sysdiagrams .
+
+:AdventureWorksDW2017_dbo_sysdiagrams_version
+    a :SourceColumn ;
+    :columnName "version" ;
+    :dataType "int" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "4"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_sysdiagrams .
+
+:AdventureWorksDW2017_dbo_sysdiagrams_definition
+    a :SourceColumn ;
+    :columnName "definition" ;
+    :dataType "varbinary" ;
+    :isNullable "true"^^xsd:boolean ;
+    :ordinalPosition "5"^^xsd:integer ;
+    :isColumnOf :AdventureWorksDW2017_dbo_sysdiagrams .
+

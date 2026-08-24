@@ -1,0 +1,880 @@
+@prefix :     <http://example.org/kg/> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# Core tutorial classes
+:Employee a owl:Class .
+:ProductCategory a owl:Class .
+:ProductSubcategory a owl:Class .
+:Product a owl:Class .
+:SourceTable a owl:Class .
+:SourceRow a owl:Class .
+
+# Core tutorial properties
+:mappedToTable a owl:ObjectProperty .
+:mappedToSourceRow a owl:ObjectProperty .
+:isRowOf a owl:ObjectProperty .
+:sourceServer a owl:DatatypeProperty .
+:sourceDatabase a owl:DatatypeProperty .
+:sourceSchema a owl:DatatypeProperty .
+:sourceTable a owl:DatatypeProperty .
+:sourceKey a owl:DatatypeProperty .
+:employeeKey a owl:DatatypeProperty .
+:firstName a owl:DatatypeProperty .
+:lastName a owl:DatatypeProperty .
+:title a owl:DatatypeProperty .
+:departmentName a owl:DatatypeProperty .
+:emailAddress a owl:DatatypeProperty .
+:hireDate a owl:DatatypeProperty .
+:currentFlag a owl:DatatypeProperty .
+:productCategoryKey a owl:DatatypeProperty .
+:productSubcategoryKey a owl:DatatypeProperty .
+:productKey a owl:DatatypeProperty .
+:productAlternateKey a owl:DatatypeProperty .
+:productName a owl:DatatypeProperty .
+:modelName a owl:DatatypeProperty .
+:color a owl:DatatypeProperty .
+:size a owl:DatatypeProperty .
+:listPrice a owl:DatatypeProperty .
+:standardCost a owl:DatatypeProperty .
+:finishedGoodsFlag a owl:DatatypeProperty .
+
+# Source table metadata
+:AdventureWorksDW2017_dbo_DimEmployee
+    a :SourceTable ;
+    :sourceServer "EAA2024" ;
+    :sourceDatabase "AdventureWorksDW2017" ;
+    :sourceSchema "dbo" ;
+    :sourceTable "DimEmployee" .
+
+:AdventureWorksDW2017_dbo_DimProductCategory
+    a :SourceTable ;
+    :sourceServer "EAA2024" ;
+    :sourceDatabase "AdventureWorksDW2017" ;
+    :sourceSchema "dbo" ;
+    :sourceTable "DimProductCategory" .
+
+:AdventureWorksDW2017_dbo_DimProductSubcategory
+    a :SourceTable ;
+    :sourceServer "EAA2024" ;
+    :sourceDatabase "AdventureWorksDW2017" ;
+    :sourceSchema "dbo" ;
+    :sourceTable "DimProductSubcategory" .
+
+:AdventureWorksDW2017_dbo_DimProduct
+    a :SourceTable ;
+    :sourceServer "EAA2024" ;
+    :sourceDatabase "AdventureWorksDW2017" ;
+    :sourceSchema "dbo" ;
+    :sourceTable "DimProduct" .
+
+# ------------------------------------------------------------
+# Pattern 1: DimEmployee rows become individuals
+# ------------------------------------------------------------
+
+:Employee_1
+    a :Employee ;
+    rdfs:label "Guy Gilbert" ;
+    :employeeKey "1"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimEmployee_Row_1 .
+
+:AdventureWorksDW2017_dbo_DimEmployee_Row_1
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimEmployee ;
+    :sourceKey "1"^^xsd:integer .
+
+:Employee_1 :firstName "Guy" .
+:Employee_1 :lastName "Gilbert" .
+:Employee_1 :title "Production Technician - WC60" .
+:Employee_1 :departmentName "Production" .
+:Employee_1 :emailAddress "guy1@adventure-works.com" .
+:Employee_1 :hireDate "2006-01-28"^^xsd:date .
+:Employee_1 :currentFlag "true"^^xsd:boolean .
+
+:Employee_2
+    a :Employee ;
+    rdfs:label "Kevin Brown" ;
+    :employeeKey "2"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimEmployee_Row_2 .
+
+:AdventureWorksDW2017_dbo_DimEmployee_Row_2
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimEmployee ;
+    :sourceKey "2"^^xsd:integer .
+
+:Employee_2 :firstName "Kevin" .
+:Employee_2 :lastName "Brown" .
+:Employee_2 :title "Marketing Assistant" .
+:Employee_2 :departmentName "Marketing" .
+:Employee_2 :emailAddress "kevin0@adventure-works.com" .
+:Employee_2 :hireDate "2006-08-26"^^xsd:date .
+:Employee_2 :currentFlag "true"^^xsd:boolean .
+
+:Employee_3
+    a :Employee ;
+    rdfs:label "Roberto Tamburello" ;
+    :employeeKey "3"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimEmployee_Row_3 .
+
+:AdventureWorksDW2017_dbo_DimEmployee_Row_3
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimEmployee ;
+    :sourceKey "3"^^xsd:integer .
+
+:Employee_3 :firstName "Roberto" .
+:Employee_3 :lastName "Tamburello" .
+:Employee_3 :title "Engineering Manager" .
+:Employee_3 :departmentName "Engineering" .
+:Employee_3 :emailAddress "roberto0@adventure-works.com" .
+:Employee_3 :hireDate "2007-06-11"^^xsd:date .
+:Employee_3 :currentFlag "true"^^xsd:boolean .
+
+:Employee_4
+    a :Employee ;
+    rdfs:label "Rob Walters" ;
+    :employeeKey "4"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimEmployee_Row_4 .
+
+:AdventureWorksDW2017_dbo_DimEmployee_Row_4
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimEmployee ;
+    :sourceKey "4"^^xsd:integer .
+
+:Employee_4 :firstName "Rob" .
+:Employee_4 :lastName "Walters" .
+:Employee_4 :title "Senior Tool Designer" .
+:Employee_4 :departmentName "Tool Design" .
+:Employee_4 :emailAddress "rob0@adventure-works.com" .
+:Employee_4 :hireDate "2007-07-05"^^xsd:date .
+:Employee_4 :currentFlag "true"^^xsd:boolean .
+
+:Employee_5
+    a :Employee ;
+    rdfs:label "Rob Walters" ;
+    :employeeKey "5"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimEmployee_Row_5 .
+
+:AdventureWorksDW2017_dbo_DimEmployee_Row_5
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimEmployee ;
+    :sourceKey "5"^^xsd:integer .
+
+:Employee_5 :firstName "Rob" .
+:Employee_5 :lastName "Walters" .
+:Employee_5 :title "Senior Tool Designer" .
+:Employee_5 :departmentName "Tool Design" .
+:Employee_5 :emailAddress "rob0@adventure-works.com" .
+:Employee_5 :hireDate "2007-07-05"^^xsd:date .
+:Employee_5 :currentFlag "true"^^xsd:boolean .
+
+:Employee_6
+    a :Employee ;
+    rdfs:label "Thierry D'Hers" ;
+    :employeeKey "6"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimEmployee_Row_6 .
+
+:AdventureWorksDW2017_dbo_DimEmployee_Row_6
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimEmployee ;
+    :sourceKey "6"^^xsd:integer .
+
+:Employee_6 :firstName "Thierry" .
+:Employee_6 :lastName "D'Hers" .
+:Employee_6 :title "Tool Designer" .
+:Employee_6 :departmentName "Tool Design" .
+:Employee_6 :emailAddress "thierry0@adventure-works.com" .
+:Employee_6 :hireDate "2007-07-11"^^xsd:date .
+:Employee_6 :currentFlag "true"^^xsd:boolean .
+
+:Employee_7
+    a :Employee ;
+    rdfs:label "David Bradley" ;
+    :employeeKey "7"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimEmployee_Row_7 .
+
+:AdventureWorksDW2017_dbo_DimEmployee_Row_7
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimEmployee ;
+    :sourceKey "7"^^xsd:integer .
+
+:Employee_7 :firstName "David" .
+:Employee_7 :lastName "Bradley" .
+:Employee_7 :title "Marketing Manager" .
+:Employee_7 :departmentName "Marketing" .
+:Employee_7 :emailAddress "david0@adventure-works.com" .
+:Employee_7 :hireDate "2007-07-20"^^xsd:date .
+:Employee_7 :currentFlag "true"^^xsd:boolean .
+
+:Employee_8
+    a :Employee ;
+    rdfs:label "David Bradley" ;
+    :employeeKey "8"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimEmployee_Row_8 .
+
+:AdventureWorksDW2017_dbo_DimEmployee_Row_8
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimEmployee ;
+    :sourceKey "8"^^xsd:integer .
+
+:Employee_8 :firstName "David" .
+:Employee_8 :lastName "Bradley" .
+:Employee_8 :title "Marketing Manager" .
+:Employee_8 :departmentName "Marketing" .
+:Employee_8 :emailAddress "david0@adventure-works.com" .
+:Employee_8 :hireDate "2007-07-20"^^xsd:date .
+:Employee_8 :currentFlag "true"^^xsd:boolean .
+
+:Employee_9
+    a :Employee ;
+    rdfs:label "JoLynn Dobney" ;
+    :employeeKey "9"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimEmployee_Row_9 .
+
+:AdventureWorksDW2017_dbo_DimEmployee_Row_9
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimEmployee ;
+    :sourceKey "9"^^xsd:integer .
+
+:Employee_9 :firstName "JoLynn" .
+:Employee_9 :lastName "Dobney" .
+:Employee_9 :title "Production Supervisor - WC60" .
+:Employee_9 :departmentName "Production" .
+:Employee_9 :emailAddress "jolynn0@adventure-works.com" .
+:Employee_9 :hireDate "2007-07-26"^^xsd:date .
+:Employee_9 :currentFlag "true"^^xsd:boolean .
+
+:Employee_10
+    a :Employee ;
+    rdfs:label "Ruth Ellerbrock" ;
+    :employeeKey "10"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimEmployee_Row_10 .
+
+:AdventureWorksDW2017_dbo_DimEmployee_Row_10
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimEmployee ;
+    :sourceKey "10"^^xsd:integer .
+
+:Employee_10 :firstName "Ruth" .
+:Employee_10 :lastName "Ellerbrock" .
+:Employee_10 :title "Production Technician - WC10" .
+:Employee_10 :departmentName "Production" .
+:Employee_10 :emailAddress "ruth0@adventure-works.com" .
+:Employee_10 :hireDate "2007-08-06"^^xsd:date .
+:Employee_10 :currentFlag "true"^^xsd:boolean .
+
+# ------------------------------------------------------------
+# Pattern 2: DimProductCategory, DimProductSubcategory, and DimProduct rows become classes
+# ------------------------------------------------------------
+
+:ProductCategory_1
+    a owl:Class ;
+    rdfs:subClassOf :ProductCategory ;
+    rdfs:label "Bikes" ;
+    :productCategoryKey "1"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProductCategory_Row_1 .
+
+:AdventureWorksDW2017_dbo_DimProductCategory_Row_1
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProductCategory ;
+    :sourceKey "1"^^xsd:integer .
+
+:ProductCategory_2
+    a owl:Class ;
+    rdfs:subClassOf :ProductCategory ;
+    rdfs:label "Components" ;
+    :productCategoryKey "2"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProductCategory_Row_2 .
+
+:AdventureWorksDW2017_dbo_DimProductCategory_Row_2
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProductCategory ;
+    :sourceKey "2"^^xsd:integer .
+
+:ProductCategory_3
+    a owl:Class ;
+    rdfs:subClassOf :ProductCategory ;
+    rdfs:label "Clothing" ;
+    :productCategoryKey "3"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProductCategory_Row_3 .
+
+:AdventureWorksDW2017_dbo_DimProductCategory_Row_3
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProductCategory ;
+    :sourceKey "3"^^xsd:integer .
+
+:ProductCategory_4
+    a owl:Class ;
+    rdfs:subClassOf :ProductCategory ;
+    rdfs:label "Accessories" ;
+    :productCategoryKey "4"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProductCategory_Row_4 .
+
+:AdventureWorksDW2017_dbo_DimProductCategory_Row_4
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProductCategory ;
+    :sourceKey "4"^^xsd:integer .
+
+:ProductSubcategory_1
+    a owl:Class ;
+    rdfs:subClassOf :ProductCategory_1 ;
+    rdfs:label "Mountain Bikes" ;
+    :productSubcategoryKey "1"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProductSubcategory_Row_1 .
+
+:AdventureWorksDW2017_dbo_DimProductSubcategory_Row_1
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProductSubcategory ;
+    :sourceKey "1"^^xsd:integer .
+
+:ProductSubcategory_2
+    a owl:Class ;
+    rdfs:subClassOf :ProductCategory_1 ;
+    rdfs:label "Road Bikes" ;
+    :productSubcategoryKey "2"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProductSubcategory_Row_2 .
+
+:AdventureWorksDW2017_dbo_DimProductSubcategory_Row_2
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProductSubcategory ;
+    :sourceKey "2"^^xsd:integer .
+
+:ProductSubcategory_3
+    a owl:Class ;
+    rdfs:subClassOf :ProductCategory_1 ;
+    rdfs:label "Touring Bikes" ;
+    :productSubcategoryKey "3"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProductSubcategory_Row_3 .
+
+:AdventureWorksDW2017_dbo_DimProductSubcategory_Row_3
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProductSubcategory ;
+    :sourceKey "3"^^xsd:integer .
+
+:ProductSubcategory_4
+    a owl:Class ;
+    rdfs:subClassOf :ProductCategory_2 ;
+    rdfs:label "Handlebars" ;
+    :productSubcategoryKey "4"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProductSubcategory_Row_4 .
+
+:AdventureWorksDW2017_dbo_DimProductSubcategory_Row_4
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProductSubcategory ;
+    :sourceKey "4"^^xsd:integer .
+
+:ProductSubcategory_5
+    a owl:Class ;
+    rdfs:subClassOf :ProductCategory_2 ;
+    rdfs:label "Bottom Brackets" ;
+    :productSubcategoryKey "5"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProductSubcategory_Row_5 .
+
+:AdventureWorksDW2017_dbo_DimProductSubcategory_Row_5
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProductSubcategory ;
+    :sourceKey "5"^^xsd:integer .
+
+:ProductSubcategory_6
+    a owl:Class ;
+    rdfs:subClassOf :ProductCategory_2 ;
+    rdfs:label "Brakes" ;
+    :productSubcategoryKey "6"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProductSubcategory_Row_6 .
+
+:AdventureWorksDW2017_dbo_DimProductSubcategory_Row_6
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProductSubcategory ;
+    :sourceKey "6"^^xsd:integer .
+
+:ProductSubcategory_7
+    a owl:Class ;
+    rdfs:subClassOf :ProductCategory_2 ;
+    rdfs:label "Chains" ;
+    :productSubcategoryKey "7"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProductSubcategory_Row_7 .
+
+:AdventureWorksDW2017_dbo_DimProductSubcategory_Row_7
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProductSubcategory ;
+    :sourceKey "7"^^xsd:integer .
+
+:ProductSubcategory_8
+    a owl:Class ;
+    rdfs:subClassOf :ProductCategory_2 ;
+    rdfs:label "Cranksets" ;
+    :productSubcategoryKey "8"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProductSubcategory_Row_8 .
+
+:AdventureWorksDW2017_dbo_DimProductSubcategory_Row_8
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProductSubcategory ;
+    :sourceKey "8"^^xsd:integer .
+
+:ProductSubcategory_9
+    a owl:Class ;
+    rdfs:subClassOf :ProductCategory_2 ;
+    rdfs:label "Derailleurs" ;
+    :productSubcategoryKey "9"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProductSubcategory_Row_9 .
+
+:AdventureWorksDW2017_dbo_DimProductSubcategory_Row_9
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProductSubcategory ;
+    :sourceKey "9"^^xsd:integer .
+
+:ProductSubcategory_10
+    a owl:Class ;
+    rdfs:subClassOf :ProductCategory_2 ;
+    rdfs:label "Forks" ;
+    :productSubcategoryKey "10"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProductSubcategory_Row_10 .
+
+:AdventureWorksDW2017_dbo_DimProductSubcategory_Row_10
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProductSubcategory ;
+    :sourceKey "10"^^xsd:integer .
+
+:ProductSubcategory_11
+    a owl:Class ;
+    rdfs:subClassOf :ProductCategory_2 ;
+    rdfs:label "Headsets" ;
+    :productSubcategoryKey "11"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProductSubcategory_Row_11 .
+
+:AdventureWorksDW2017_dbo_DimProductSubcategory_Row_11
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProductSubcategory ;
+    :sourceKey "11"^^xsd:integer .
+
+:ProductSubcategory_12
+    a owl:Class ;
+    rdfs:subClassOf :ProductCategory_2 ;
+    rdfs:label "Mountain Frames" ;
+    :productSubcategoryKey "12"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProductSubcategory_Row_12 .
+
+:AdventureWorksDW2017_dbo_DimProductSubcategory_Row_12
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProductSubcategory ;
+    :sourceKey "12"^^xsd:integer .
+
+:Product_344
+    a owl:Class ;
+    rdfs:subClassOf :ProductSubcategory_1 ;
+    rdfs:label "Mountain-100 Silver, 38" ;
+    :productKey "344"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProduct_Row_344 .
+
+:AdventureWorksDW2017_dbo_DimProduct_Row_344
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProduct ;
+    :sourceKey "344"^^xsd:integer .
+
+:Product_344 :productAlternateKey "BK-M82S-38" .
+:Product_344 :productName "Mountain-100 Silver, 38" .
+:Product_344 :modelName "Mountain-100" .
+:Product_344 :color "Silver" .
+:Product_344 :size "38" .
+:Product_344 :listPrice "3399.99"^^xsd:decimal .
+:Product_344 :standardCost "1912.15"^^xsd:decimal .
+:Product_344 :finishedGoodsFlag "true"^^xsd:boolean .
+
+:Product_345
+    a owl:Class ;
+    rdfs:subClassOf :ProductSubcategory_1 ;
+    rdfs:label "Mountain-100 Silver, 42" ;
+    :productKey "345"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProduct_Row_345 .
+
+:AdventureWorksDW2017_dbo_DimProduct_Row_345
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProduct ;
+    :sourceKey "345"^^xsd:integer .
+
+:Product_345 :productAlternateKey "BK-M82S-42" .
+:Product_345 :productName "Mountain-100 Silver, 42" .
+:Product_345 :modelName "Mountain-100" .
+:Product_345 :color "Silver" .
+:Product_345 :size "42" .
+:Product_345 :listPrice "3399.99"^^xsd:decimal .
+:Product_345 :standardCost "1912.15"^^xsd:decimal .
+:Product_345 :finishedGoodsFlag "true"^^xsd:boolean .
+
+:Product_346
+    a owl:Class ;
+    rdfs:subClassOf :ProductSubcategory_1 ;
+    rdfs:label "Mountain-100 Silver, 44" ;
+    :productKey "346"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProduct_Row_346 .
+
+:AdventureWorksDW2017_dbo_DimProduct_Row_346
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProduct ;
+    :sourceKey "346"^^xsd:integer .
+
+:Product_346 :productAlternateKey "BK-M82S-44" .
+:Product_346 :productName "Mountain-100 Silver, 44" .
+:Product_346 :modelName "Mountain-100" .
+:Product_346 :color "Silver" .
+:Product_346 :size "44" .
+:Product_346 :listPrice "3399.99"^^xsd:decimal .
+:Product_346 :standardCost "1912.15"^^xsd:decimal .
+:Product_346 :finishedGoodsFlag "true"^^xsd:boolean .
+
+:Product_347
+    a owl:Class ;
+    rdfs:subClassOf :ProductSubcategory_1 ;
+    rdfs:label "Mountain-100 Silver, 48" ;
+    :productKey "347"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProduct_Row_347 .
+
+:AdventureWorksDW2017_dbo_DimProduct_Row_347
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProduct ;
+    :sourceKey "347"^^xsd:integer .
+
+:Product_347 :productAlternateKey "BK-M82S-48" .
+:Product_347 :productName "Mountain-100 Silver, 48" .
+:Product_347 :modelName "Mountain-100" .
+:Product_347 :color "Silver" .
+:Product_347 :size "48" .
+:Product_347 :listPrice "3399.99"^^xsd:decimal .
+:Product_347 :standardCost "1912.15"^^xsd:decimal .
+:Product_347 :finishedGoodsFlag "true"^^xsd:boolean .
+
+:Product_348
+    a owl:Class ;
+    rdfs:subClassOf :ProductSubcategory_1 ;
+    rdfs:label "Mountain-100 Black, 38" ;
+    :productKey "348"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProduct_Row_348 .
+
+:AdventureWorksDW2017_dbo_DimProduct_Row_348
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProduct ;
+    :sourceKey "348"^^xsd:integer .
+
+:Product_348 :productAlternateKey "BK-M82B-38" .
+:Product_348 :productName "Mountain-100 Black, 38" .
+:Product_348 :modelName "Mountain-100" .
+:Product_348 :color "Black" .
+:Product_348 :size "38" .
+:Product_348 :listPrice "3374.99"^^xsd:decimal .
+:Product_348 :standardCost "1898.09"^^xsd:decimal .
+:Product_348 :finishedGoodsFlag "true"^^xsd:boolean .
+
+:Product_349
+    a owl:Class ;
+    rdfs:subClassOf :ProductSubcategory_1 ;
+    rdfs:label "Mountain-100 Black, 42" ;
+    :productKey "349"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProduct_Row_349 .
+
+:AdventureWorksDW2017_dbo_DimProduct_Row_349
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProduct ;
+    :sourceKey "349"^^xsd:integer .
+
+:Product_349 :productAlternateKey "BK-M82B-42" .
+:Product_349 :productName "Mountain-100 Black, 42" .
+:Product_349 :modelName "Mountain-100" .
+:Product_349 :color "Black" .
+:Product_349 :size "42" .
+:Product_349 :listPrice "3374.99"^^xsd:decimal .
+:Product_349 :standardCost "1898.09"^^xsd:decimal .
+:Product_349 :finishedGoodsFlag "true"^^xsd:boolean .
+
+:Product_350
+    a owl:Class ;
+    rdfs:subClassOf :ProductSubcategory_1 ;
+    rdfs:label "Mountain-100 Black, 44" ;
+    :productKey "350"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProduct_Row_350 .
+
+:AdventureWorksDW2017_dbo_DimProduct_Row_350
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProduct ;
+    :sourceKey "350"^^xsd:integer .
+
+:Product_350 :productAlternateKey "BK-M82B-44" .
+:Product_350 :productName "Mountain-100 Black, 44" .
+:Product_350 :modelName "Mountain-100" .
+:Product_350 :color "Black" .
+:Product_350 :size "44" .
+:Product_350 :listPrice "3374.99"^^xsd:decimal .
+:Product_350 :standardCost "1898.09"^^xsd:decimal .
+:Product_350 :finishedGoodsFlag "true"^^xsd:boolean .
+
+:Product_351
+    a owl:Class ;
+    rdfs:subClassOf :ProductSubcategory_1 ;
+    rdfs:label "Mountain-100 Black, 48" ;
+    :productKey "351"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProduct_Row_351 .
+
+:AdventureWorksDW2017_dbo_DimProduct_Row_351
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProduct ;
+    :sourceKey "351"^^xsd:integer .
+
+:Product_351 :productAlternateKey "BK-M82B-48" .
+:Product_351 :productName "Mountain-100 Black, 48" .
+:Product_351 :modelName "Mountain-100" .
+:Product_351 :color "Black" .
+:Product_351 :size "48" .
+:Product_351 :listPrice "3374.99"^^xsd:decimal .
+:Product_351 :standardCost "1898.09"^^xsd:decimal .
+:Product_351 :finishedGoodsFlag "true"^^xsd:boolean .
+
+:Product_352
+    a owl:Class ;
+    rdfs:subClassOf :ProductSubcategory_1 ;
+    rdfs:label "Mountain-200 Silver, 38" ;
+    :productKey "352"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProduct_Row_352 .
+
+:AdventureWorksDW2017_dbo_DimProduct_Row_352
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProduct ;
+    :sourceKey "352"^^xsd:integer .
+
+:Product_352 :productAlternateKey "BK-M68S-38" .
+:Product_352 :productName "Mountain-200 Silver, 38" .
+:Product_352 :modelName "Mountain-200" .
+:Product_352 :color "Silver" .
+:Product_352 :size "38" .
+:Product_352 :listPrice "2071.42"^^xsd:decimal .
+:Product_352 :standardCost "1117.86"^^xsd:decimal .
+:Product_352 :finishedGoodsFlag "true"^^xsd:boolean .
+
+:Product_353
+    a owl:Class ;
+    rdfs:subClassOf :ProductSubcategory_1 ;
+    rdfs:label "Mountain-200 Silver, 38" ;
+    :productKey "353"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProduct_Row_353 .
+
+:AdventureWorksDW2017_dbo_DimProduct_Row_353
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProduct ;
+    :sourceKey "353"^^xsd:integer .
+
+:Product_353 :productAlternateKey "BK-M68S-38" .
+:Product_353 :productName "Mountain-200 Silver, 38" .
+:Product_353 :modelName "Mountain-200" .
+:Product_353 :color "Silver" .
+:Product_353 :size "38" .
+:Product_353 :listPrice "2319.99"^^xsd:decimal .
+:Product_353 :standardCost "1265.62"^^xsd:decimal .
+:Product_353 :finishedGoodsFlag "true"^^xsd:boolean .
+
+:Product_354
+    a owl:Class ;
+    rdfs:subClassOf :ProductSubcategory_1 ;
+    rdfs:label "Mountain-200 Silver, 42" ;
+    :productKey "354"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProduct_Row_354 .
+
+:AdventureWorksDW2017_dbo_DimProduct_Row_354
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProduct ;
+    :sourceKey "354"^^xsd:integer .
+
+:Product_354 :productAlternateKey "BK-M68S-42" .
+:Product_354 :productName "Mountain-200 Silver, 42" .
+:Product_354 :modelName "Mountain-200" .
+:Product_354 :color "Silver" .
+:Product_354 :size "42" .
+:Product_354 :listPrice "2071.42"^^xsd:decimal .
+:Product_354 :standardCost "1117.86"^^xsd:decimal .
+:Product_354 :finishedGoodsFlag "true"^^xsd:boolean .
+
+:Product_355
+    a owl:Class ;
+    rdfs:subClassOf :ProductSubcategory_1 ;
+    rdfs:label "Mountain-200 Silver, 42" ;
+    :productKey "355"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProduct_Row_355 .
+
+:AdventureWorksDW2017_dbo_DimProduct_Row_355
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProduct ;
+    :sourceKey "355"^^xsd:integer .
+
+:Product_355 :productAlternateKey "BK-M68S-42" .
+:Product_355 :productName "Mountain-200 Silver, 42" .
+:Product_355 :modelName "Mountain-200" .
+:Product_355 :color "Silver" .
+:Product_355 :size "42" .
+:Product_355 :listPrice "2319.99"^^xsd:decimal .
+:Product_355 :standardCost "1265.62"^^xsd:decimal .
+:Product_355 :finishedGoodsFlag "true"^^xsd:boolean .
+
+:Product_356
+    a owl:Class ;
+    rdfs:subClassOf :ProductSubcategory_1 ;
+    rdfs:label "Mountain-200 Silver, 46" ;
+    :productKey "356"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProduct_Row_356 .
+
+:AdventureWorksDW2017_dbo_DimProduct_Row_356
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProduct ;
+    :sourceKey "356"^^xsd:integer .
+
+:Product_356 :productAlternateKey "BK-M68S-46" .
+:Product_356 :productName "Mountain-200 Silver, 46" .
+:Product_356 :modelName "Mountain-200" .
+:Product_356 :color "Silver" .
+:Product_356 :size "46" .
+:Product_356 :listPrice "2071.42"^^xsd:decimal .
+:Product_356 :standardCost "1117.86"^^xsd:decimal .
+:Product_356 :finishedGoodsFlag "true"^^xsd:boolean .
+
+:Product_357
+    a owl:Class ;
+    rdfs:subClassOf :ProductSubcategory_1 ;
+    rdfs:label "Mountain-200 Silver, 46" ;
+    :productKey "357"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProduct_Row_357 .
+
+:AdventureWorksDW2017_dbo_DimProduct_Row_357
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProduct ;
+    :sourceKey "357"^^xsd:integer .
+
+:Product_357 :productAlternateKey "BK-M68S-46" .
+:Product_357 :productName "Mountain-200 Silver, 46" .
+:Product_357 :modelName "Mountain-200" .
+:Product_357 :color "Silver" .
+:Product_357 :size "46" .
+:Product_357 :listPrice "2319.99"^^xsd:decimal .
+:Product_357 :standardCost "1265.62"^^xsd:decimal .
+:Product_357 :finishedGoodsFlag "true"^^xsd:boolean .
+
+:Product_358
+    a owl:Class ;
+    rdfs:subClassOf :ProductSubcategory_1 ;
+    rdfs:label "Mountain-200 Black, 38" ;
+    :productKey "358"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProduct_Row_358 .
+
+:AdventureWorksDW2017_dbo_DimProduct_Row_358
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProduct ;
+    :sourceKey "358"^^xsd:integer .
+
+:Product_358 :productAlternateKey "BK-M68B-38" .
+:Product_358 :productName "Mountain-200 Black, 38" .
+:Product_358 :modelName "Mountain-200" .
+:Product_358 :color "Black" .
+:Product_358 :size "38" .
+:Product_358 :listPrice "2049.10"^^xsd:decimal .
+:Product_358 :standardCost "1105.81"^^xsd:decimal .
+:Product_358 :finishedGoodsFlag "true"^^xsd:boolean .
+
+:Product_359
+    a owl:Class ;
+    rdfs:subClassOf :ProductSubcategory_1 ;
+    rdfs:label "Mountain-200 Black, 38" ;
+    :productKey "359"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProduct_Row_359 .
+
+:AdventureWorksDW2017_dbo_DimProduct_Row_359
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProduct ;
+    :sourceKey "359"^^xsd:integer .
+
+:Product_359 :productAlternateKey "BK-M68B-38" .
+:Product_359 :productName "Mountain-200 Black, 38" .
+:Product_359 :modelName "Mountain-200" .
+:Product_359 :color "Black" .
+:Product_359 :size "38" .
+:Product_359 :listPrice "2294.99"^^xsd:decimal .
+:Product_359 :standardCost "1251.98"^^xsd:decimal .
+:Product_359 :finishedGoodsFlag "true"^^xsd:boolean .
+
+:Product_360
+    a owl:Class ;
+    rdfs:subClassOf :ProductSubcategory_1 ;
+    rdfs:label "Mountain-200 Black, 42" ;
+    :productKey "360"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProduct_Row_360 .
+
+:AdventureWorksDW2017_dbo_DimProduct_Row_360
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProduct ;
+    :sourceKey "360"^^xsd:integer .
+
+:Product_360 :productAlternateKey "BK-M68B-42" .
+:Product_360 :productName "Mountain-200 Black, 42" .
+:Product_360 :modelName "Mountain-200" .
+:Product_360 :color "Black" .
+:Product_360 :size "42" .
+:Product_360 :listPrice "2049.10"^^xsd:decimal .
+:Product_360 :standardCost "1105.81"^^xsd:decimal .
+:Product_360 :finishedGoodsFlag "true"^^xsd:boolean .
+
+:Product_361
+    a owl:Class ;
+    rdfs:subClassOf :ProductSubcategory_1 ;
+    rdfs:label "Mountain-200 Black, 42" ;
+    :productKey "361"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProduct_Row_361 .
+
+:AdventureWorksDW2017_dbo_DimProduct_Row_361
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProduct ;
+    :sourceKey "361"^^xsd:integer .
+
+:Product_361 :productAlternateKey "BK-M68B-42" .
+:Product_361 :productName "Mountain-200 Black, 42" .
+:Product_361 :modelName "Mountain-200" .
+:Product_361 :color "Black" .
+:Product_361 :size "42" .
+:Product_361 :listPrice "2294.99"^^xsd:decimal .
+:Product_361 :standardCost "1251.98"^^xsd:decimal .
+:Product_361 :finishedGoodsFlag "true"^^xsd:boolean .
+
+:Product_362
+    a owl:Class ;
+    rdfs:subClassOf :ProductSubcategory_1 ;
+    rdfs:label "Mountain-200 Black, 46" ;
+    :productKey "362"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProduct_Row_362 .
+
+:AdventureWorksDW2017_dbo_DimProduct_Row_362
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProduct ;
+    :sourceKey "362"^^xsd:integer .
+
+:Product_362 :productAlternateKey "BK-M68B-46" .
+:Product_362 :productName "Mountain-200 Black, 46" .
+:Product_362 :modelName "Mountain-200" .
+:Product_362 :color "Black" .
+:Product_362 :size "46" .
+:Product_362 :listPrice "2049.10"^^xsd:decimal .
+:Product_362 :standardCost "1105.81"^^xsd:decimal .
+:Product_362 :finishedGoodsFlag "true"^^xsd:boolean .
+
+:Product_363
+    a owl:Class ;
+    rdfs:subClassOf :ProductSubcategory_1 ;
+    rdfs:label "Mountain-200 Black, 46" ;
+    :productKey "363"^^xsd:integer ;
+    :mappedToSourceRow :AdventureWorksDW2017_dbo_DimProduct_Row_363 .
+
+:AdventureWorksDW2017_dbo_DimProduct_Row_363
+    a :SourceRow ;
+    :isRowOf :AdventureWorksDW2017_dbo_DimProduct ;
+    :sourceKey "363"^^xsd:integer .
+
+:Product_363 :productAlternateKey "BK-M68B-46" .
+:Product_363 :productName "Mountain-200 Black, 46" .
+:Product_363 :modelName "Mountain-200" .
+:Product_363 :color "Black" .
+:Product_363 :size "46" .
+:Product_363 :listPrice "2294.99"^^xsd:decimal .
+:Product_363 :standardCost "1251.98"^^xsd:decimal .
+:Product_363 :finishedGoodsFlag "true"^^xsd:boolean .

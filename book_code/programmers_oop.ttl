@@ -1,0 +1,213 @@
+@prefix : <http://example.org/kg/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://example.org/kg/> .
+
+[ rdf:type owl:Ontology
+ ] .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://example.org/kg/hasExpertise
+:hasExpertise rdf:type owl:ObjectProperty .
+
+
+###  http://example.org/kg/knowsLanguage
+:knowsLanguage rdf:type owl:ObjectProperty ;
+               rdfs:domain :Programmer ;
+               rdfs:range :ProgrammingLanguage .
+
+
+###  http://example.org/kg/worksFor
+:worksFor rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://example.org/kg/yearsExperience
+:yearsExperience rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Programmer ;
+                 rdfs:range xsd:integer .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://example.org/kg/BusinessIntelligence
+:BusinessIntelligence rdf:type owl:Class .
+
+
+###  http://example.org/kg/KnowledgeGraphs
+:KnowledgeGraphs rdf:type owl:Class .
+
+
+###  http://example.org/kg/Kyvos
+:Kyvos rdf:type owl:Class .
+
+
+###  http://example.org/kg/MachineLearning
+:MachineLearning rdf:type owl:Class .
+
+
+###  http://example.org/kg/ObjectOrientedLanguage
+:ObjectOrientedLanguage rdf:type owl:Class ;
+                        rdfs:subClassOf :ProgrammingLanguage .
+
+
+###  http://example.org/kg/ObjectOrientedProgrammer
+:ObjectOrientedProgrammer rdf:type owl:Class ;
+                          rdfs:subClassOf :Programmer .
+
+
+###  http://example.org/kg/OtherCompany
+:OtherCompany rdf:type owl:Class .
+
+
+###  http://example.org/kg/Programmer
+:Programmer rdf:type owl:Class .
+
+
+###  http://example.org/kg/ProgrammingLanguage
+:ProgrammingLanguage rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://example.org/kg/Anna
+:Anna rdf:type owl:NamedIndividual ,
+               :Programmer ;
+      :hasExpertise :MachineLearning ;
+      :knowsLanguage :JavaScript ,
+                     :Python ;
+      :worksFor :Kyvos ;
+      :yearsExperience 8 ;
+      rdfs:label "Anna Lee" .
+
+
+###  http://example.org/kg/Ben
+:Ben rdf:type owl:NamedIndividual ,
+              :Programmer ;
+     :hasExpertise :BusinessIntelligence ;
+     :knowsLanguage :SQL ;
+     :worksFor :OtherCompany ;
+     :yearsExperience 12 ;
+     rdfs:label "Ben Smith" .
+
+
+###  http://example.org/kg/BusinessIntelligence
+:BusinessIntelligence rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/kg/CSharp
+:CSharp rdf:type owl:NamedIndividual ,
+                 :ObjectOrientedLanguage ;
+        rdfs:label "C#" .
+
+
+###  http://example.org/kg/Eugene
+:Eugene rdf:type owl:NamedIndividual ,
+                 :Programmer ;
+        :hasExpertise :BusinessIntelligence ,
+                      :KnowledgeGraphs ;
+        :knowsLanguage :CSharp ,
+                       :Python ,
+                       :SQL ;
+        :worksFor :Kyvos ;
+        :yearsExperience 45 ;
+        rdfs:label "Eugene Asahara" .
+
+
+###  http://example.org/kg/JavaScript
+:JavaScript rdf:type owl:NamedIndividual ,
+                     :ObjectOrientedLanguage ;
+            rdfs:label "JavaScript" .
+
+
+###  http://example.org/kg/KnowledgeGraphs
+:KnowledgeGraphs rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/kg/Kyvos
+:Kyvos rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/kg/MachineLearning
+:MachineLearning rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/kg/OtherCompany
+:OtherCompany rdf:type owl:NamedIndividual .
+
+
+###  http://example.org/kg/Python
+:Python rdf:type owl:NamedIndividual ,
+                 :ObjectOrientedLanguage ;
+        rdfs:label "Python" .
+
+
+###  http://example.org/kg/SQL
+:SQL rdf:type owl:NamedIndividual ,
+              :ProgrammingLanguage ;
+     rdfs:label "SQL" .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+:p rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:l rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "OOP" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :Programmer ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :p
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :knowsLanguage ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :p ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> :l
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#classPredicate> :ObjectOrientedLanguage ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> :l
+                                                                           ] ;
+                                                                 rdf:rest rdf:nil
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :ObjectOrientedProgrammer ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :p
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi

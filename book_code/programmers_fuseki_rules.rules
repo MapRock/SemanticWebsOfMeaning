@@ -1,0 +1,10 @@
+@prefix : <http://example.org/kg/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+[ OOPRule:
+  (?p rdf:type :Programmer)
+  (?p :knowsLanguage ?l)
+  (?l rdf:type :ObjectOrientedLanguage)
+  ->
+  (?p rdf:type :ObjectOrientedProgrammer)
+]

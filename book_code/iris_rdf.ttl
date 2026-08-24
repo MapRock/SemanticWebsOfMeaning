@@ -1,0 +1,95 @@
+# Mentioned on page 173 of the book, Semantic Webs of Meaning.
+
+@prefix ex:   <https://example.org/iris/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+ex:Iris
+    a owl:Class ;
+    rdfs:label "Iris" ;
+    rdfs:subClassOf ex:FloweringPlant .
+
+ex:FloweringPlant
+    a owl:Class ;
+    rdfs:label "Flowering plant" .
+
+ex:MachineLearnedCluster
+    a owl:Class ;
+    rdfs:label "Machine learned cluster" ;
+    rdfs:comment "A class generated from a machine learning clustering model." .
+
+ex:modelName
+    a owl:DatatypeProperty ;
+    rdfs:label "model name" .
+
+ex:clusterId
+    a owl:DatatypeProperty ;
+    rdfs:label "cluster id" .
+
+ex:memberCount
+    a owl:DatatypeProperty ;
+    rdfs:label "member count" .
+
+ex:dominantSpecies
+    a owl:DatatypeProperty ;
+    rdfs:label "dominant species" .
+
+ex:sepalLengthCentroid
+    a owl:DatatypeProperty ;
+    rdfs:label "sepal length centroid" .
+
+ex:sepalWidthCentroid
+    a owl:DatatypeProperty ;
+    rdfs:label "sepal width centroid" .
+
+ex:petalLengthCentroid
+    a owl:DatatypeProperty ;
+    rdfs:label "petal length centroid" .
+
+ex:petalWidthCentroid
+    a owl:DatatypeProperty ;
+    rdfs:label "petal width centroid" .
+
+ex:IrisCluster_VersicolorLike
+    a owl:Class ;
+    rdfs:subClassOf ex:Iris ;
+    rdfs:subClassOf ex:MachineLearnedCluster ;
+    rdfs:label "IrisCluster_VersicolorLike" ;
+    ex:modelName "KMeans Iris clustering model" ;
+    ex:clusterId "0"^^xsd:integer ;
+    ex:memberCount "62"^^xsd:integer ;
+    ex:dominantSpecies "versicolor" ;
+    ex:sepalLengthCentroid "5.902"^^xsd:decimal ;
+    ex:sepalWidthCentroid "2.748"^^xsd:decimal ;
+    ex:petalLengthCentroid "4.394"^^xsd:decimal ;
+    ex:petalWidthCentroid "1.434"^^xsd:decimal .
+
+ex:IrisCluster_SetosaLike
+    a owl:Class ;
+    rdfs:subClassOf ex:Iris ;
+    rdfs:subClassOf ex:MachineLearnedCluster ;
+    rdfs:label "IrisCluster_SetosaLike" ;
+    ex:modelName "KMeans Iris clustering model" ;
+    ex:clusterId "1"^^xsd:integer ;
+    ex:memberCount "50"^^xsd:integer ;
+    ex:dominantSpecies "setosa" ;
+    ex:sepalLengthCentroid "5.006"^^xsd:decimal ;
+    ex:sepalWidthCentroid "3.428"^^xsd:decimal ;
+    ex:petalLengthCentroid "1.462"^^xsd:decimal ;
+    ex:petalWidthCentroid "0.246"^^xsd:decimal .
+
+ex:IrisCluster_VirginicaLike
+    a owl:Class ;
+    rdfs:subClassOf ex:Iris ;
+    rdfs:subClassOf ex:MachineLearnedCluster ;
+    rdfs:label "IrisCluster_VirginicaLike" ;
+    ex:modelName "KMeans Iris clustering model" ;
+    ex:clusterId "2"^^xsd:integer ;
+    ex:memberCount "38"^^xsd:integer ;
+    ex:dominantSpecies "virginica" ;
+    ex:sepalLengthCentroid "6.850"^^xsd:decimal ;
+    ex:sepalWidthCentroid "3.074"^^xsd:decimal ;
+    ex:petalLengthCentroid "5.742"^^xsd:decimal ;
+    ex:petalWidthCentroid "2.071"^^xsd:decimal .

@@ -1,0 +1,69 @@
+[
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "productId": "schema:sku",
+    "productName": "schema:name",
+    "category": "schema:category",
+    "price": "schema:price",
+    "material": "schema:material",
+    "additionalProperty": "schema:additionalProperty",
+    "propertyID": "schema:propertyID",
+    "value": "schema:value"
+  },
+  "@id": "https://example.org/products/101",
+  "@type": "schema:Product",
+  "productId": "101",
+  "productName": "Steel Hammer",
+  "category": "Tool",
+  "price": 24.95,
+  "material": "steel",
+  "additionalProperty": [
+    {
+      "@type": "schema:PropertyValue",
+      "propertyID": "handleType",
+      "value": "fiberglass"
+    },
+    {
+      "@type": "schema:PropertyValue",
+      "propertyID": "weightOz",
+      "value": 16
+    }
+  ]
+},
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "productId": "schema:sku",
+    "productName": "schema:name",
+    "category": "schema:category",
+    "price": "schema:price",
+    "additionalProperty": "schema:additionalProperty",
+    "propertyID": "schema:propertyID",
+    "value": "schema:value"
+  },
+  "@id": "https://example.org/products/202",
+  "@type": "schema:Product",
+  "productId": "202",
+  "productName": "GroGud Fertilizer",
+  "category": "Garden Supply",
+  "price": 18.99,
+  "additionalProperty": [
+    {
+      "@type": "schema:PropertyValue",
+      "propertyID": "npkRatio",
+      "value": "10-10-10"
+    },
+    {
+      "@type": "schema:PropertyValue",
+      "propertyID": "season",
+      "value": "spring"
+    },
+    {
+      "@type": "schema:PropertyValue",
+      "propertyID": "coverageSqFt",
+      "value": 5000
+    }
+  ]
+}
+]

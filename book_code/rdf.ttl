@@ -1,0 +1,60 @@
+# This is the beginning version for the exercise beginning on page 120.
+
+@prefix : <http://example.org/kg/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix wikidata: <http://www.wikidata.org/entity/> .
+
+# Classes
+
+:Physicist rdf:type owl:Class .
+:Scientist rdf:type owl:Class .
+:City rdf:type owl:Class .
+:Dog rdf:type owl:Class .
+:Mammal rdf:type owl:Class .
+:ElectricCar rdf:type owl:Class .
+:Car rdf:type owl:Class .
+:Engine rdf:type owl:Class .
+:Heart rdf:type owl:Class .
+:HumanBody rdf:type owl:Class .
+:Wheel rdf:type owl:Class .
+:Bicycle rdf:type owl:Class .
+
+# rdf:type examples
+# rdf:type asserts that an individual belongs to a class.
+
+:Einstein rdf:type :Physicist .
+:Paris rdf:type :City .
+:TeslaModelS rdf:type :ElectricCar .
+
+# rdfs:subClassOf examples
+# rdfs:subClassOf defines a taxonomy between classes.
+# It means one class is a kind of another class.
+
+:Physicist rdfs:subClassOf :Scientist .
+:Dog rdfs:subClassOf :Mammal .
+:ElectricCar rdfs:subClassOf :Car .
+
+# owl:sameAs examples
+# owl:sameAs asserts that two identifiers refer to exactly the same real-world thing.
+
+dbpedia:Albert_Einstein owl:sameAs wikidata:Q937 .
+:Barack_Obama owl:sameAs :President_44 .
+:TeslaInc owl:sameAs :TSLA_company .
+
+# part-of / has-part relationship definitions
+
+:partOf rdf:type owl:ObjectProperty ;
+    owl:inverseOf :hasPart .
+
+:hasPart rdf:type owl:ObjectProperty ;
+    owl:inverseOf :partOf .
+
+# part-of examples
+# :partOf expresses a part-whole relationship.
+
+:Engine :partOf :Car .
+:Heart :partOf :HumanBody .
+:Wheel :partOf :Bicycle .

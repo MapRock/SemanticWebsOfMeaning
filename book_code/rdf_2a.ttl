@@ -1,0 +1,197 @@
+# This is the saved version after going through the exercise that began on page 120.
+# We started with rdf.ttl and saved rdf_2a.ttl at the end of the exercise (page 133).
+
+@prefix : <http://www.timemolecules.org#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix wikidata: <http://www.wikidata.org/entity/> .
+@base <http://www.timemolecules.org#> .
+
+[ rdf:type owl:Ontology
+ ] .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://dbpedia.org/ontology/manufacturer
+dbo:manufacturer rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.timemolecules.org#hasPart
+:hasPart rdf:type owl:ObjectProperty ;
+         owl:inverseOf :partOf .
+
+
+###  http://www.timemolecules.org#partOf
+:partOf rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.timemolecules.org#Bicycle
+:Bicycle rdf:type owl:Class .
+
+
+###  http://www.timemolecules.org#City
+:City rdf:type owl:Class .
+
+
+###  http://www.timemolecules.org#Dog
+:Dog rdf:type owl:Class ;
+     rdfs:subClassOf :Mammal .
+
+
+###  http://www.timemolecules.org#ElectricCar
+:ElectricCar rdf:type owl:Class ;
+             rdfs:subClassOf wikidata:Q1420 .
+
+
+###  http://www.timemolecules.org#Engine
+:Engine rdf:type owl:Class .
+
+
+###  http://www.timemolecules.org#Heart
+:Heart rdf:type owl:Class .
+
+
+###  http://www.timemolecules.org#HumanBody
+:HumanBody rdf:type owl:Class .
+
+
+###  http://www.timemolecules.org#Mammal
+:Mammal rdf:type owl:Class .
+
+
+###  http://www.timemolecules.org#Manufacturer
+:Manufacturer rdf:type owl:Class .
+
+
+###  http://www.timemolecules.org#Physicist
+:Physicist rdf:type owl:Class ;
+           rdfs:subClassOf :Scientist .
+
+
+###  http://www.timemolecules.org#Scientist
+:Scientist rdf:type owl:Class .
+
+
+###  http://www.timemolecules.org#TeslaModelS
+:TeslaModelS rdf:type owl:Class ;
+             rdfs:subClassOf :ElectricCar ;
+             dbo:manufacturer :TeslaInc .
+
+
+###  http://www.timemolecules.org#Wheel
+:Wheel rdf:type owl:Class .
+
+
+###  http://www.wikidata.org/entity/Q1420
+wikidata:Q1420 rdf:type owl:Class ;
+               rdfs:label "Car"@en .
+
+
+###  http://www.wikidata.org/entity/Q190578
+wikidata:Q190578 rdf:type owl:Class ;
+                 rdfs:subClassOf wikidata:Q1420 ;
+                 rdfs:label "Sedan" .
+
+
+###  http://www.wikidata.org/entity/Q463632
+wikidata:Q463632 rdf:type owl:Class ;
+                 rdfs:subClassOf wikidata:Q190578 ;
+                 rdfs:label "HondaAccord" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://dbpedia.org/resource/Albert_Einstein
+dbpedia:Albert_Einstein rdf:type owl:NamedIndividual ;
+                        owl:sameAs wikidata:Q937 .
+
+
+###  http://www.wikidata.org/entity/Q937
+
+###  http://dbpedia.org/resource/Barack_Obama
+dbpedia:Barack_Obama rdf:type owl:NamedIndividual ;
+                     owl:sameAs wikidata:Q76 .
+
+
+###  http://www.wikidata.org/entity/Q76
+
+###  http://www.timemolecules.org#Bicycle
+:Bicycle rdf:type owl:NamedIndividual .
+
+
+###  http://www.timemolecules.org#Car
+:Car rdf:type owl:NamedIndividual .
+
+
+###  http://www.timemolecules.org#Einstein
+:Einstein rdf:type owl:NamedIndividual ,
+                   :Physicist .
+
+
+###  http://www.timemolecules.org#Engine
+:Engine rdf:type owl:NamedIndividual ;
+        :partOf :Car .
+
+
+###  http://www.timemolecules.org#Heart
+:Heart rdf:type owl:NamedIndividual ;
+       :partOf :HumanBody .
+
+
+###  http://www.timemolecules.org#HumanBody
+:HumanBody rdf:type owl:NamedIndividual .
+
+
+###  http://www.timemolecules.org#Paris
+:Paris rdf:type owl:NamedIndividual ,
+                :City .
+
+
+###  http://www.timemolecules.org#TeslaInc
+:TeslaInc rdf:type owl:NamedIndividual ,
+                   :Manufacturer ;
+          owl:sameAs wikidata:Q478214 .
+
+
+###  http://www.wikidata.org/entity/Q478214
+
+###  http://www.timemolecules.org#Wheel
+:Wheel rdf:type owl:NamedIndividual ;
+       :partOf :Bicycle .
+
+
+###  http://www.wikidata.org/entity/Q478214
+wikidata:Q478214 rdf:type owl:NamedIndividual .
+
+
+###  http://www.wikidata.org/entity/Q76
+wikidata:Q76 rdf:type owl:NamedIndividual .
+
+
+###  http://www.wikidata.org/entity/Q937
+wikidata:Q937 rdf:type owl:NamedIndividual .
+
+
+###  http://www.wikidata.org/entity/Q190578#Honda_Accord_2025_VIN_399939993999
+<http://www.wikidata.org/entity/Q190578#Honda_Accord_2025_VIN_399939993999> rdf:type owl:NamedIndividual ,
+                                                                                     wikidata:Q463632 .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi

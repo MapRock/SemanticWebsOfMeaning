@@ -1,0 +1,69 @@
+@prefix : <http://example.org/kg/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# === Classes ===
+:Programmer a owl:Class .
+:ObjectOrientedProgrammer a owl:Class ;
+    rdfs:subClassOf :Programmer .
+
+:ProgrammingLanguage a owl:Class .
+:ObjectOrientedLanguage a owl:Class ;
+    rdfs:subClassOf :ProgrammingLanguage .
+
+# === Properties ===
+:knowsLanguage a owl:ObjectProperty ;
+    rdfs:domain :Programmer ;
+    rdfs:range :ProgrammingLanguage .
+
+:hasExpertise a owl:ObjectProperty .
+:worksFor a owl:ObjectProperty .
+
+:yearsExperience a owl:DatatypeProperty ;
+    rdfs:domain :Programmer ;
+    rdfs:range xsd:integer .
+
+# === Languages ===
+:CSharp a :ObjectOrientedLanguage ;
+    rdfs:label "C#" .
+
+:Python a :ObjectOrientedLanguage ;
+    rdfs:label "Python" .
+
+:JavaScript a :ObjectOrientedLanguage ;
+    rdfs:label "JavaScript" .
+
+:SQL a :ProgrammingLanguage ;
+    rdfs:label "SQL" .
+
+# === Expertise areas (optional but useful) ===
+:BusinessIntelligence a owl:Class .
+:KnowledgeGraphs a owl:Class .
+:MachineLearning a owl:Class .
+
+# === Companies ===
+:Kyvos a owl:Class .
+:OtherCompany a owl:Class .
+
+# === Individuals ===
+:Eugene a :Programmer ;
+    rdfs:label "Eugene Asahara" ;
+    :knowsLanguage :CSharp, :Python, :SQL ;
+    :hasExpertise :BusinessIntelligence, :KnowledgeGraphs ;
+    :yearsExperience "45"^^xsd:integer ;
+    :worksFor :Kyvos .
+
+:Anna a :Programmer ;
+    rdfs:label "Anna Lee" ;
+    :knowsLanguage :Python, :JavaScript ;
+    :hasExpertise :MachineLearning ;
+    :yearsExperience "8"^^xsd:integer ;
+    :worksFor :Kyvos .
+
+:Ben a :Programmer ;
+    rdfs:label "Ben Smith" ;
+    :knowsLanguage :SQL ;
+    :hasExpertise :BusinessIntelligence ;
+    :yearsExperience "12"^^xsd:integer ;
+    :worksFor :OtherCompany .

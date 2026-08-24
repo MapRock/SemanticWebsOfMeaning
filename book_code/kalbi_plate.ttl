@@ -1,0 +1,224 @@
+# Mentioned on Page 18 of the book, Semantic Webs of Meaning.
+
+@prefix :        <http://example.org/foodkg#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+
+# See https://github.com/MapRock/knowledge_graph_book/blob/main/book_code/kalbi_plate.md for tutorial.
+
+
+# ──────────────────────────────────────────────────────────────
+# Top-level class: anything we recognize as a "plate meal"
+# ──────────────────────────────────────────────────────────────
+
+# Meal is the general class of plate-style meals represented in this ontology.
+:Meal
+    a owl:Class ;
+    rdfs:label "Meal (recognized plate meal)" .
+
+
+# ──────────────────────────────────────────────────────────────
+# Two different recognized styles of plate meals
+# ──────────────────────────────────────────────────────────────
+
+# HawaiianPlateLunch represents the Hawaiian plate-lunch tradition.
+:HawaiianPlateLunch
+    a owl:Class ;
+    rdfs:subClassOf :Meal ;
+    rdfs:label "Hawaiian plate lunch" .
+
+# KoreanMeal represents meals interpreted within the Korean food tradition.
+:KoreanMeal
+    a owl:Class ;
+    rdfs:subClassOf :Meal ;
+    rdfs:label "Korean meal" .
+
+
+# ──────────────────────────────────────────────────────────────
+# The two different "kalbi plate" concepts
+# Same English label, but different meaning in different contexts
+# ──────────────────────────────────────────────────────────────
+
+# HawaiianKalbiPlate is the Hawaiian plate-lunch meaning of "kalbi plate."
+:HawaiianKalbiPlate
+    a owl:Class ;
+    rdfs:subClassOf :HawaiianPlateLunch ;
+    rdfs:label "kalbi plate" .
+
+# KoreanKalbiPlate is the Korean-meal meaning of "kalbi plate."
+:KoreanKalbiPlate
+    a owl:Class ;
+    rdfs:subClassOf :KoreanMeal ;
+    rdfs:label "kalbi plate" .
+
+
+# ──────────────────────────────────────────────────────────────
+# Dish categories
+# These are classes because they describe kinds of food,
+# not particular servings of food.
+# ──────────────────────────────────────────────────────────────
+
+# MealComponent is the general class of things that can appear as parts of a meal.
+:MealComponent
+    a owl:Class ;
+    rdfs:label "Meal component" .
+
+# MainDish is a kind of MealComponent.
+:MainDish
+    a owl:Class ;
+    rdfs:subClassOf :MealComponent ;
+    rdfs:label "Main dish" .
+
+# SideDish is a kind of MealComponent.
+:SideDish
+    a owl:Class ;
+    rdfs:subClassOf :MealComponent ;
+    rdfs:label "Side dish" .
+
+
+# ──────────────────────────────────────────────────────────────
+# Types of dishes
+# Kalbi, Kimchi, Rice, etc. are classes because they describe
+# kinds of food rather than one particular serving.
+# ──────────────────────────────────────────────────────────────
+
+# Kalbi is a kind of main dish.
+:Kalbi
+    a owl:Class ;
+    rdfs:subClassOf :MainDish ;
+    rdfs:label "kalbi" .
+
+# Bulgogi is another kind of main dish.
+:Bulgogi
+    a owl:Class ;
+    rdfs:subClassOf :MainDish ;
+    rdfs:label "bulgogi" .
+
+# Rice is modeled here as a kind of side dish.
+:Rice
+    a owl:Class ;
+    rdfs:subClassOf :SideDish ;
+    rdfs:label "rice" .
+
+# MacaroniSalad is a kind of side dish.
+:MacaroniSalad
+    a owl:Class ;
+    rdfs:subClassOf :SideDish ;
+    rdfs:label "macaroni salad" .
+
+# Kimchi is a kind of side dish.
+:Kimchi
+    a owl:Class ;
+    rdfs:subClassOf :SideDish ;
+    rdfs:label "kimchi" .
+
+# BeanSproutSalad is a kind of side dish.
+:BeanSproutSalad
+    a owl:Class ;
+    rdfs:subClassOf :SideDish ;
+    rdfs:label "bean sprout salad" .
+
+
+# ──────────────────────────────────────────────────────────────
+# Object properties
+# These relate meals to the kinds of food components they contain
+# or may offer.
+# ──────────────────────────────────────────────────────────────
+
+# hasMainDish relates a Meal to one of its main-dish components.
+:hasMainDish
+    a owl:ObjectProperty ;
+    rdfs:domain :Meal ;
+    rdfs:range :MainDish ;
+    rdfs:label "has main dish" .
+
+# hasSideDish relates a Meal to one of its side-dish components.
+:hasSideDish
+    a owl:ObjectProperty ;
+    rdfs:domain :Meal ;
+    rdfs:range :SideDish ;
+    rdfs:label "has side dish" .
+
+# allowsMainDish records a permitted main-dish type without requiring
+# every meal instance to contain that dish.
+:allowsMainDish
+    a owl:ObjectProperty ;
+    rdfs:domain :Meal ;
+    rdfs:range :MainDish ;
+    rdfs:label "allows main dish" .
+
+
+# ──────────────────────────────────────────────────────────────
+# OWL restrictions
+# These express required contents of each kind of kalbi plate.
+# owl:someValuesFrom means that an instance must have at least one
+# relationship to an instance of the specified class.
+# ──────────────────────────────────────────────────────────────
+
+# Every Hawaiian kalbi plate has at least one main dish that is Kalbi.
+:HawaiianKalbiPlate
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty :hasMainDish ;
+        owl:someValuesFrom :Kalbi
+    ] .
+
+# Every Hawaiian kalbi plate has at least one side dish that is MacaroniSalad.
+:HawaiianKalbiPlate
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty :hasSideDish ;
+        owl:someValuesFrom :MacaroniSalad
+    ] .
+
+# Every Hawaiian kalbi plate has at least one side dish that is Rice.
+:HawaiianKalbiPlate
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty :hasSideDish ;
+        owl:someValuesFrom :Rice
+    ] .
+
+# Every Korean kalbi plate has at least one main dish that is Kalbi.
+:KoreanKalbiPlate
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty :hasMainDish ;
+        owl:someValuesFrom :Kalbi
+    ] .
+
+# Every Korean kalbi plate has at least one side dish that is Kimchi.
+:KoreanKalbiPlate
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty :hasSideDish ;
+        owl:someValuesFrom :Kimchi
+    ] .
+
+# Every Korean kalbi plate has at least one side dish that is Rice.
+:KoreanKalbiPlate
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty :hasSideDish ;
+        owl:someValuesFrom :Rice
+    ] .
+
+# Every Korean kalbi plate has at least one side dish that is BeanSproutSalad.
+:KoreanKalbiPlate
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty :hasSideDish ;
+        owl:someValuesFrom :BeanSproutSalad
+    ] .
+
+
+# ──────────────────────────────────────────────────────────────
+# Permitted alternatives
+# This differs from an OWL requirement. These statements describe
+# main-dish types that Korean meals may offer.
+# ──────────────────────────────────────────────────────────────
+
+# Korean meals may be offered with Kalbi or Bulgogi as a main dish.
+:KoreanMeal
+    :allowsMainDish :Kalbi, :Bulgogi .

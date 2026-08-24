@@ -1,0 +1,364 @@
+@prefix ex:    <http://example.org/kg/pizza/> .
+@prefix taste: <http://example.org/kg/taste/> .
+@prefix food:  <http://example.org/kg/food/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+
+# ------------------------------------------------------------
+# Ontology
+# ------------------------------------------------------------
+
+# Declare this RDF graph as an OWL ontology.
+<http://example.org/kg/pizza>
+    a owl:Ontology .
+
+# ------------------------------------------------------------
+# Basic classes
+# ------------------------------------------------------------
+
+# A Dish is the general class of prepared foods.
+food:Dish
+    a owl:Class ;
+    rdfs:label "Dish" .
+
+# Pizza is a kind of Dish, with descriptive metadata about why it is appealing.
+food:Pizza
+    a owl:Class ;
+    rdfs:subClassOf food:Dish ;
+    rdfs:label "Pizza" ;
+    ex:universallyLiked true ;
+    ex:reason "Perfect balance of the major tastes and other sensory contributions in one bite" .
+
+# A Component is a kind of ingredient or constituent of a dish.
+food:Component
+    a owl:Class ;
+    rdfs:label "Food component" .
+
+# TasteContribution groups the sensory effects that food components can contribute.
+taste:TasteContribution
+    a owl:Class ;
+    rdfs:label "Taste or sensory contribution" .
+
+# A FlavorProfile represents the combined sensory character of a food.
+ex:FlavorProfile
+    a owl:Class ;
+    rdfs:label "Flavor profile" .
+
+# Person represents people who can make statements or express preferences.
+ex:Person
+    a owl:Class ;
+    rdfs:label "Person" .
+
+# SimpleAssertion represents a basic subject-predicate-object statement.
+ex:SimpleAssertion
+    a owl:Class ;
+    rdfs:label "Simple assertion" .
+
+# ------------------------------------------------------------
+# Object properties
+# ------------------------------------------------------------
+
+# hasComponent relates a Dish to one of its food components.
+ex:hasComponent
+    a owl:ObjectProperty ;
+    rdfs:domain food:Dish ;
+    rdfs:range food:Component ;
+    rdfs:label "has component" .
+
+# contributesTo relates a food component to a taste or sensory contribution.
+ex:contributesTo
+    a owl:ObjectProperty ;
+    rdfs:domain food:Component ;
+    rdfs:range taste:TasteContribution ;
+    rdfs:label "contributes to" .
+
+# browningCreates relates a component to a sensory contribution produced by browning.
+ex:browningCreates
+    a owl:ObjectProperty ;
+    rdfs:domain food:Component ;
+    rdfs:range taste:TasteContribution ;
+    rdfs:label "browning creates" .
+
+# achieves relates a flavor profile to the sensory balance it produces.
+ex:achieves
+    a owl:ObjectProperty ;
+    rdfs:domain ex:FlavorProfile ;
+    rdfs:range taste:TasteContribution ;
+    rdfs:label "achieves" .
+
+# subject identifies the subject of a represented assertion.
+ex:subject
+    a owl:ObjectProperty ;
+    rdfs:label "subject" .
+
+# predicate identifies the relationship being expressed by a represented assertion.
+ex:predicate
+    a owl:ObjectProperty ;
+    rdfs:label "predicate" .
+
+# object identifies the object of a represented assertion.
+ex:object
+    a owl:ObjectProperty ;
+    rdfs:label "object" .
+
+# ------------------------------------------------------------
+# Annotation properties
+# ------------------------------------------------------------
+
+# universallyLiked records a descriptive claim about a category rather than an OWL restriction.
+ex:universallyLiked
+    a owl:AnnotationProperty .
+
+# reason provides a human-readable explanation for a descriptive claim.
+ex:reason
+    a owl:AnnotationProperty .
+
+# description provides explanatory text about an ontology resource.
+ex:description
+    a owl:AnnotationProperty .
+
+# requiresContext records whether an assertion needs additional context for interpretation.
+ex:requiresContext
+    a owl:AnnotationProperty .
+
+# note provides additional human-readable commentary.
+ex:note
+    a owl:AnnotationProperty .
+
+# ------------------------------------------------------------
+# Taste / sensory contribution classes
+# ------------------------------------------------------------
+
+# CarbohydrateSatisfaction represents the sensory satisfaction associated with carbohydrates.
+taste:CarbohydrateSatisfaction
+    a owl:Class ;
+    rdfs:subClassOf taste:TasteContribution ;
+    rdfs:label "Carbohydrate satisfaction" .
+
+# Umami represents the savory taste contribution associated with glutamates and related compounds.
+taste:Umami
+    a owl:Class ;
+    rdfs:subClassOf taste:TasteContribution ;
+    rdfs:label "Umami" .
+
+# Acidity represents the sour or acidic contribution to flavor.
+taste:Acidity
+    a owl:Class ;
+    rdfs:subClassOf taste:TasteContribution ;
+    rdfs:label "Acidity" .
+
+# Sweetness represents the sweet contribution to flavor.
+taste:Sweetness
+    a owl:Class ;
+    rdfs:subClassOf taste:TasteContribution ;
+    rdfs:label "Sweetness" .
+
+# Saltiness represents the salty contribution to flavor.
+taste:Saltiness
+    a owl:Class ;
+    rdfs:subClassOf taste:TasteContribution ;
+    rdfs:label "Saltiness" .
+
+# Fattiness represents the rich sensory contribution associated with fat.
+taste:Fattiness
+    a owl:Class ;
+    rdfs:subClassOf taste:TasteContribution ;
+    rdfs:label "Fattiness" .
+
+# Bitterness represents the bitter contribution to flavor.
+taste:Bitterness
+    a owl:Class ;
+    rdfs:subClassOf taste:TasteContribution ;
+    rdfs:label "Bitterness" .
+
+# MaillardUmami represents additional savory character created through browning reactions.
+taste:MaillardUmami
+    a owl:Class ;
+    rdfs:subClassOf taste:Umami ;
+    rdfs:label "Maillard-created umami" .
+
+# BalancedFiveTastes represents an overall balance among the major taste dimensions.
+taste:BalancedFiveTastes
+    a owl:Class ;
+    rdfs:subClassOf taste:TasteContribution ;
+    rdfs:label "Balanced five tastes" .
+
+# ------------------------------------------------------------
+# Pizza components
+# ------------------------------------------------------------
+
+# Crust is a food component whose instances contribute carbohydrate satisfaction.
+ex:Crust
+    a owl:Class ;
+    rdfs:subClassOf food:Component ;
+    rdfs:label "Baked bread crust" ;
+    ex:description "Simple carbohydrates transformed by heat" ;
+
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty ex:contributesTo ;
+        owl:someValuesFrom taste:CarbohydrateSatisfaction
+    ] .
+
+# TomatoSauce is a component whose instances contribute umami, acidity, and sweetness.
+ex:TomatoSauce
+    a owl:Class ;
+    rdfs:subClassOf food:Component ;
+    rdfs:label "Tomato sauce" ;
+    ex:description "Bright acidity, umami, and natural sweetness" ;
+
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty ex:contributesTo ;
+        owl:someValuesFrom taste:Umami
+    ] ;
+
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty ex:contributesTo ;
+        owl:someValuesFrom taste:Acidity
+    ] ;
+
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty ex:contributesTo ;
+        owl:someValuesFrom taste:Sweetness
+    ] .
+
+# Cheese is a component whose instances contribute umami and saltiness, with browning adding more umami.
+ex:Cheese
+    a owl:Class ;
+    rdfs:subClassOf food:Component ;
+    rdfs:label "Cheese" ;
+    ex:description "Rich savory depth; browning adds additional umami" ;
+
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty ex:contributesTo ;
+        owl:someValuesFrom taste:Umami
+    ] ;
+
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty ex:contributesTo ;
+        owl:someValuesFrom taste:Saltiness
+    ] ;
+
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty ex:browningCreates ;
+        owl:someValuesFrom taste:MaillardUmami
+    ] .
+
+# Pepperoni is a component whose instances contribute umami and fattiness.
+ex:Pepperoni
+    a owl:Class ;
+    rdfs:subClassOf food:Component ;
+    rdfs:label "Pepperoni" ;
+    ex:description "Additional umami layer and pleasant fattiness" ;
+
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty ex:contributesTo ;
+        owl:someValuesFrom taste:Umami
+    ] ;
+
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty ex:contributesTo ;
+        owl:someValuesFrom taste:Fattiness
+    ] .
+
+# Herbs are components whose instances contribute a balancing bitter note.
+ex:Herbs
+    a owl:Class ;
+    rdfs:subClassOf food:Component ;
+    rdfs:label "Herbs (basil, oregano)" ;
+    ex:description "Bitter notes that keep the dish from tasting flat or cloying" ;
+
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty ex:contributesTo ;
+        owl:someValuesFrom taste:Bitterness
+    ] .
+
+# ------------------------------------------------------------
+# What Pizza has
+# ------------------------------------------------------------
+
+# Pizza is defined as having components drawn from crust, tomato sauce, cheese, pepperoni, and herbs.
+food:Pizza
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty ex:hasComponent ;
+        owl:someValuesFrom ex:Crust
+    ] ;
+
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty ex:hasComponent ;
+        owl:someValuesFrom ex:TomatoSauce
+    ] ;
+
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty ex:hasComponent ;
+        owl:someValuesFrom ex:Cheese
+    ] ;
+
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty ex:hasComponent ;
+        owl:someValuesFrom ex:Pepperoni
+    ] ;
+
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty ex:hasComponent ;
+        owl:someValuesFrom ex:Herbs
+    ] .
+
+# ------------------------------------------------------------
+# Overall flavor profile
+# ------------------------------------------------------------
+
+# PizzaFlavorBalance is a flavor profile that achieves a balance of the major tastes.
+ex:PizzaFlavorBalance
+    a owl:Class ;
+    rdfs:subClassOf ex:FlavorProfile ;
+    rdfs:label "Pizza flavor balance" ;
+    ex:description "A combination of complementary sensory contributions" ;
+
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty ex:achieves ;
+        owl:someValuesFrom taste:BalancedFiveTastes
+    ] .
+
+# ------------------------------------------------------------
+# Example assertion
+# This portion uses individuals because it represents
+# a particular statement made by a particular person.
+# ------------------------------------------------------------
+
+# Speaker is one particular Person who makes the example statement.
+ex:Speaker
+    a ex:Person ;
+    rdfs:label "Speaker" .
+
+# Likes represents the relationship expressed by the statement "I like pizza."
+taste:Likes
+    a rdf:Property ;
+    rdfs:label "likes" .
+
+# Statement_ILikePizza represents the particular assertion "I like pizza" and records its context.
+ex:Statement_ILikePizza
+    a ex:SimpleAssertion ;
+    rdfs:label "I like pizza" ;
+    ex:subject ex:Speaker ;
+    ex:predicate taste:Likes ;
+    ex:object food:Pizza ;
+    ex:requiresContext true ;
+    ex:note "Even this simple SVO hides deep cultural, personal, and sensory context" .

@@ -1,0 +1,38 @@
+@prefix :        <http://example.org/fuseki#> .
+@prefix fuseki:  <http://jena.apache.org/fuseki#> .
+@prefix ja:      <http://jena.hpl.hp.com/2005/11/Assembler#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+[] rdf:type fuseki:Server ;
+   fuseki:services ( :service ) .
+
+:service rdf:type fuseki:Service ;
+    fuseki:name "kg" ;
+    fuseki:endpoint [
+        fuseki:operation fuseki:query ;
+        fuseki:name "sparql"
+    ] ;
+    fuseki:dataset :dataset .
+
+:dataset rdf:type ja:RDFDataset ;
+    ja:defaultGraph :model .
+
+:model rdf:type ja:InfModel ;
+    ja:baseModel :baseModel ;
+    ja:reasoner [
+        ja:reasonerURL <http://jena.hpl.hp.com/2003/GenericRuleReasoner> ;
+        ja:rule """
+[ OOPRule:
+  (?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.org/kg/Programmer>)
+  (?p <http://example.org/kg/knowsLanguage> ?l)
+  (?l <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.org/kg/ObjectOrientedLanguage>)
+  ->
+  (?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.org/kg/ObjectOrientedProgrammer>)
+]
+"""
+    ] .
+
+:baseModel rdf:type ja:MemoryModel ;
+    ja:content [
+        ja:externalContent <file:///C:/MapRock/knowledge_graph_book/book_code/programmers.ttl>
+    ] .

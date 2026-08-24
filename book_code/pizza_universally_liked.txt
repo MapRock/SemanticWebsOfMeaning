@@ -1,0 +1,34 @@
+Pizza is a Dish
+Pizza is universally liked
+Pizza has reason “perfect balance of the five basic tastes in one bite”
+Pizza has component Crust
+Pizza has component Tomato Sauce
+Pizza has component Cheese
+Pizza has component Pepperoni
+Pizza has component Herbs
+Crust is a Component
+Crust is labeled “Baked bread crust”
+Crust contributes to Carbohydrate Satisfaction
+Crust has description “Simple carbohydrates transformed by heat”
+Tomato Sauce is a Component
+Tomato Sauce contributes to Umami
+Tomato Sauce contributes to Acidity
+Tomato Sauce contributes to Sweetness
+Tomato Sauce has description “Bright acidity and natural sweetness from glutamates”
+Cheese is a Component
+Cheese contributes to Umami
+Cheese contributes to Saltiness
+Cheese browning creates Maillard Umami
+Cheese has description “Rich savory depth; browning via Maillard reaction adds extra umami”
+Pepperoni is a Component
+Pepperoni contributes to Umami
+Pepperoni contributes to Fattiness
+Pepperoni has description “Additional umami layer and pleasant fattiness”
+Herbs is a Component
+Herbs is labeled “Herbs (basil, oregano)”
+Herbs contributes to Bitterness
+Herbs has description “Bitter note that prevents the dish from tasting flat or cloying”
+Pizza achieves Balanced Five Tastes
+Pizza flavor balance hits every major flavor receptor at once in a familiar, comforting format
+“I like pizza” is a Simple Assertion
+“I like pizza” requires deep sensory and contextual knowledge to fully understand

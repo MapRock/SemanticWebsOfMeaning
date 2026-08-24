@@ -1,0 +1,58 @@
+PREFIX : <http://example.org/kg/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT
+    ?programmer
+    ?programmerName
+    ?companyName
+    (COUNT(DISTINCT ?language) AS ?languageCount)
+    (GROUP_CONCAT(DISTINCT ?languageName; separator=", ") AS ?languages)
+WHERE {
+    ?programmer a :Programmer ;
+                rdfs:label ?programmerName ;
+                :worksFor ?company ;
+                :knowsLanguage ?language .
+    ?company rdfs:label ?companyName .
+    ?language rdfs:label ?languageName .
+    OPTIONAL { ?programmer :yearsExperience ?yearsExperience .   }
+    FILTER (?company = :Kyvos)
+    FILTER (!BOUND(?yearsExperience) || ?yearsExperience >= 5)
+}
+GROUP BY
+    ?programmer
+    ?programmerName
+    ?companyName
+HAVING (COUNT(DISTINCT ?language) >= 2)
+ORDER BY DESC(?languageCount)
+LIMIT 10
+
+https://www.w3.org/2002/07/owl
+
+Brains hold detail about history, state, and relationships.
+
+documents are serializations of what is in the mind that can be understood by other minds.
+
+KGs hold relationship, the current beliefs. our thinking brain processes such relationships. our subconscious brain carries out processes.
+
+machine learning models (non-llm) holds relationships statistically learned. as opposed to those recorded in a knowledge graph.
+
+oltp databases hold state.
+
+bi and event processing hold events.
+
+video holds events, pictures are a snapshot of state.
+
+LLMs hold documents, events, pictures. 
+
+knowledge graph can model components of a formula, extend before enterprise.
+
+prolog and kg cannot discover what isn't there, but we can identify the risks.
+
+the idea of many prolog fragments means we can see things based on context.
+
+prolog is good at validating the relationship in a kg.
+
+
+
+

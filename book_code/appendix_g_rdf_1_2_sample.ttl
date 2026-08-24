@@ -1,0 +1,52 @@
+@version "1.2" .
+
+@prefix :      <http://example.org/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+
+# ======================
+# Basic Ontology (TBox)
+# ======================
+
+:Person
+    rdf:type owl:Class .
+
+:Company
+    rdf:type owl:Class .
+
+:worksFor
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :Person ;
+    rdfs:range  :Company .
+
+# ======================
+# Individuals and Data (ABox)
+# ======================
+
+# Define John as an individual.
+:John
+    rdf:type :Person ;
+    :name "John Smith" .
+
+# Define AcmeCorp as an individual.
+:AcmeCorp
+    rdf:type :Company ;
+    :name "Acme Corporation" .
+
+# ======================
+# The Actual Fact (asserted)
+# ======================
+
+:John :worksFor :AcmeCorp .
+
+# ======================
+# RDF 1.2 Reification
+# ======================
+
+# :Statement1 reifies the John-worksFor-AcmeCorp triple,
+# allowing metadata to be attached to that particular assertion.
+<< :John :worksFor :AcmeCorp ~ :Statement1 >>
+    :assertedBy :DataTeam ;
+    :validFrom "2023-01-15"^^xsd:date .
