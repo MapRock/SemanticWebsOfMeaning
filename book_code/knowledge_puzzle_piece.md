@@ -20,7 +20,7 @@ See [The Assemblage of Artificial Intelligence](https://eugeneasahara.com/the-as
 
 This is Figure 7 on page 21 of the book:
 
-![Knowledge puzzle pieces](https://github.com/MapRock/SemanticWebsOfMeaning_Private/blob/main/book_code/images/Figure_7_knowledge_puzzle_pieces.png?raw=true)
+![Knowledge puzzle pieces](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/book_code/images/Figure_7_knowledge_puzzle_pieces.png?raw=true)
 
 
 ## Relationship labels
