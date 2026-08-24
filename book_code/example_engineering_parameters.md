@@ -157,5 +157,5 @@ Protected egress routes require 60-minute fire doors.
 ```
 
 
-[1]: https://www.buildingsmart.org/users/services/buildingsmart-data-dictionary/?utm_source=chatgpt.com "buildingSMART Data Dictionary (bSDD)"
-[2]: https://technical.buildingsmart.org/services/bsdd/data-structure/?utm_source=chatgpt.com "Data structure of bSDD - buildingSMART Technical"
+[1]: https://www.buildingsmart.org/users/services/buildingsmart-data-dictionary/ "buildingSMART Data Dictionary (bSDD)"
+[2]: https://technical.buildingsmart.org/services/bsdd/data-structure/ "Data structure of bSDD - buildingSMART Technical"
