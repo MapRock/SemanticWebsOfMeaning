@@ -1,0 +1,716 @@
+@prefix ei:   <http://example.org/enterprise-intelligence/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# ============================================================================
+# ONTOLOGY
+# ============================================================================
+
+<http://example.org/enterprise-intelligence>
+    a owl:Ontology ;
+    rdfs:label "Enterprise Intelligence Trade-Off Semantic Network" ;
+    rdfs:comment
+        "A Trade-Off Semantic Network describing components that contribute to enterprise intelligence, the value they provide, their costs and limitations, and the relationships among them." .
+
+
+# ============================================================================
+# NODE CLASSES
+# ============================================================================
+
+# Every item participating in the Trade-Off Semantic Network is a TOSN node.
+ei:TOSNNode
+    a owl:Class ;
+    rdfs:label "TOSN Node" ;
+    rdfs:comment
+        "Anything represented as a node in the Trade-Off Semantic Network." ;
+
+    # A defining TOSN assumption: every node has some beneficial consequence.
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty ei:hasPro ;
+        owl:someValuesFrom ei:TOSNNode
+    ] ;
+
+    # A defining TOSN assumption: every node also has some cost, limitation, or downside.
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty ei:hasCon ;
+        owl:someValuesFrom ei:TOSNNode
+    ] .
+
+# A major technology, architectural approach, human source, or analytical mechanism.
+ei:IntelligenceComponent
+    a owl:Class ;
+    rdfs:subClassOf ei:TOSNNode ;
+    rdfs:label "Intelligence Component" .
+
+# A beneficial result or characteristic.
+ei:Value
+    a owl:Class ;
+    rdfs:subClassOf ei:TOSNNode ;
+    rdfs:label "Value" .
+
+# A capability made possible by other components or values.
+ei:Capability
+    a owl:Class ;
+    rdfs:subClassOf ei:TOSNNode ;
+    rdfs:label "Capability" .
+
+# A cost, weakness, limitation, risk, or other negative trade-off.
+ei:CostOrCon
+    a owl:Class ;
+    rdfs:subClassOf ei:TOSNNode ;
+    rdfs:label "Cost or Con" .
+
+# A source from which enterprise knowledge or data can originate.
+ei:KnowledgeSource
+    a owl:Class ;
+    rdfs:subClassOf ei:TOSNNode ;
+    rdfs:label "Knowledge Source" .
+
+# An objective toward which other nodes contribute.
+ei:Goal
+    a owl:Class ;
+    rdfs:subClassOf ei:TOSNNode ;
+    rdfs:label "Goal" .
+
+
+# ============================================================================
+# TRADE-OFF RELATIONSHIPS
+# ============================================================================
+
+# General parent relationship for a beneficial consequence of a node.
+ei:hasPro
+    a owl:ObjectProperty ;
+    rdfs:domain ei:TOSNNode ;
+    rdfs:range ei:TOSNNode ;
+    rdfs:label "has pro" .
+
+# General parent relationship for a detrimental consequence of a node.
+ei:hasCon
+    a owl:ObjectProperty ;
+    rdfs:domain ei:TOSNNode ;
+    rdfs:range ei:TOSNNode ;
+    rdfs:label "has con" .
+
+# Providing a useful value is one kind of positive trade-off.
+ei:providesValue
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf ei:hasPro ;
+    rdfs:label "provides value" .
+
+# Promoting another desirable condition is a positive trade-off.
+ei:promotes
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf ei:hasPro ;
+    rdfs:label "promotes" .
+
+# Enabling another capability is a positive trade-off.
+ei:enables
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf ei:hasPro ;
+    rdfs:label "enables" .
+
+# Reducing a cost or limitation is a positive trade-off.
+ei:mitigates
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf ei:hasPro ;
+    rdfs:label "mitigates" .
+
+# Contributing toward the central objective is a positive trade-off.
+ei:contributesTo
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf ei:hasPro ;
+    rdfs:label "contributes to" .
+
+# Extending coverage with additional data is a potential positive trade-off.
+ei:canExtend
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf ei:hasPro ;
+    rdfs:label "can extend" .
+
+# A limitation is one kind of negative trade-off.
+ei:hasLimitation
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf ei:hasCon ;
+    rdfs:label "has limitation" .
+
+# Consuming resources or requiring effort is another negative trade-off.
+ei:incursCost
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf ei:hasCon ;
+    rdfs:label "incurs cost" .
+
+
+# ============================================================================
+# OTHER SEMANTIC RELATIONSHIPS
+# ============================================================================
+
+# A component makes use of another mechanism.
+ei:uses
+    a owl:ObjectProperty ;
+    rdfs:label "uses" .
+
+# RAG or another mechanism retrieves information from a source.
+ei:retrievesFrom
+    a owl:ObjectProperty ;
+    rdfs:label "retrieves from" .
+
+# A graph can expose another system through a virtual-graph mechanism.
+ei:usesAsVirtualGraph
+    a owl:ObjectProperty ;
+    rdfs:label "uses as virtual graph" .
+
+# One mechanism represents meaning beyond another mechanism's model.
+ei:extendsMeaningBeyond
+    a owl:ObjectProperty ;
+    rdfs:label "extends meaning beyond" .
+
+# An analytical mechanism produces an observation or result.
+ei:produces
+    a owl:ObjectProperty ;
+    rdfs:label "produces" .
+
+# Knowledge or observations are supplied to another component.
+ei:feeds
+    a owl:ObjectProperty ;
+    rdfs:label "feeds" .
+
+
+# ============================================================================
+# CENTRAL GOAL
+# ============================================================================
+
+# The objective is an integrated web of knowledge across business domains.
+ei:IntegratedKnowledge
+    a ei:Goal ;
+    rdfs:label "Integrated Knowledge" ;
+    rdfs:comment
+        "An integrated web of knowledge across business domains for people, software, analytics, and AI." .
+
+
+# ============================================================================
+# THREE CENTRAL COMPONENTS
+# ============================================================================
+
+# LLMs provide unusually broad learned knowledge, synthesis, and language reasoning.
+ei:LLM
+    a ei:IntelligenceComponent ;
+    rdfs:label "LLM" ;
+    rdfs:comment
+        "Broad learned knowledge, synthesis, language understanding, and reasoning across many domains." ;
+    ei:providesValue
+        ei:BroadKnowledge,
+        ei:RapidSynthesis,
+        ei:NaturalLanguage ;
+    ei:hasLimitation
+        ei:DepthLimit,
+        ei:TrainingGap ;
+    ei:incursCost
+        ei:LLMCost .
+
+# The Semantic Layer provides curated, governed, secure, high-performance business data.
+ei:SemanticLayer
+    a ei:IntelligenceComponent ;
+    rdfs:label "Semantic Layer" ;
+    rdfs:comment
+        "Highly curated, governed, secure, business-friendly, high-performance access to enterprise data." ;
+    ei:providesValue
+        ei:CuratedData,
+        ei:HighPerformance,
+        ei:CentralSecurity,
+        ei:BusinessView,
+        ei:CommonDecisionData ;
+    ei:hasLimitation
+        ei:DataCoverageGap,
+        ei:MeaningGap ;
+    ei:incursCost
+        ei:SLOnboardingEffort .
+
+# The Knowledge Graph provides explicit governed meaning and relationships.
+ei:KnowledgeGraph
+    a ei:IntelligenceComponent ;
+    rdfs:label "Knowledge Graph" ;
+    rdfs:comment
+        "Explicit governed meaning and relationships that ground LLMs and extend beyond the Semantic Layer schema." ;
+    ei:providesValue
+        ei:ExplicitMeaning,
+        ei:HumanKnowledge,
+        ei:CrossDomainLinks,
+        ei:LLMGrounding,
+        ei:RicherMeaning ;
+    ei:incursCost
+        ei:KGAuthoring,
+        ei:KGMaintenance .
+
+
+# ============================================================================
+# LLM VALUES
+# ============================================================================
+
+# LLMs know something about an unusually broad range of subjects.
+ei:BroadKnowledge
+    a ei:Value ;
+    rdfs:label "Broad Knowledge" ;
+    rdfs:comment
+        "Knowledge spanning an unusually broad range of subjects and domains." ;
+    ei:contributesTo ei:IntegratedKnowledge .
+
+# LLMs can rapidly combine information from different domains.
+ei:RapidSynthesis
+    a ei:Value ;
+    rdfs:label "Rapid Synthesis" ;
+    rdfs:comment
+        "Ability to combine information and ideas rapidly across domains." ;
+    ei:contributesTo ei:IntegratedKnowledge .
+
+# Natural language provides a broadly accessible interface to enterprise knowledge.
+ei:NaturalLanguage
+    a ei:Value ;
+    rdfs:label "Natural Language" ;
+    rdfs:comment
+        "Conversational access to knowledge, explanations, and enterprise information." ;
+    ei:contributesTo ei:IntegratedKnowledge .
+
+
+# ============================================================================
+# LLM CONS
+# ============================================================================
+
+# Breadth does not guarantee the deepest specialist expertise.
+ei:DepthLimit
+    a ei:CostOrCon ;
+    rdfs:label "Depth Limit" ;
+    rdfs:comment
+        "Broad LLM knowledge does not guarantee the deepest specialist expertise in every domain." .
+
+# Training cannot contain knowledge that was never available or written down.
+ei:TrainingGap
+    a ei:CostOrCon ;
+    rdfs:label "Knowledge Gap" ;
+    rdfs:comment
+        "Important knowledge may be absent from LLM training material, particularly tacit or unwritten knowledge." .
+
+# LLM operation consumes potentially significant computational resources.
+ei:LLMCost
+    a ei:CostOrCon ;
+    rdfs:label "LLM Cost" ;
+    rdfs:comment
+        "Token, compute, energy, infrastructure, and operational resources required for LLM inference." .
+
+
+# ============================================================================
+# HUMAN EXPERTISE
+# ============================================================================
+
+# Human experts supply depth, experience, judgment, and knowledge unavailable elsewhere.
+ei:HumanExperts
+    a ei:IntelligenceComponent, ei:KnowledgeSource ;
+    rdfs:label "Human Experts" ;
+    rdfs:comment
+        "People possessing deep domain expertise, experience, judgment, preferences, and knowledge that may never have been formally recorded." ;
+    ei:providesValue
+        ei:DeepExpertise,
+        ei:TacitKnowledge .
+
+# Specialist knowledge mitigates the LLM's lack of deepest-domain expertise.
+ei:DeepExpertise
+    a ei:Value ;
+    rdfs:label "Deep Expertise" ;
+    rdfs:comment
+        "Specialized expertise and judgment deeper than broad general-purpose knowledge." ;
+    ei:mitigates ei:DepthLimit .
+
+# Tacit knowledge helps fill knowledge that never entered training material.
+ei:TacitKnowledge
+    a ei:Value ;
+    rdfs:label "Tacit Knowledge" ;
+    rdfs:comment
+        "Experience, judgment, preferences, opinions, and knowledge people possess but may never have formally documented." ;
+    ei:mitigates ei:TrainingGap .
+
+
+# ============================================================================
+# SEMANTIC LAYER VALUE CHAINS
+# ============================================================================
+
+# Curated data has been integrated and prepared for business use.
+ei:CuratedData
+    a ei:Value ;
+    rdfs:label "Curated Data" ;
+    rdfs:comment
+        "Business data that has been integrated, modeled, cleaned, governed, and prepared for decision making." ;
+    ei:promotes ei:TrustedDecisionData .
+
+# Curated data promotes trustworthy information for decision making.
+ei:TrustedDecisionData
+    a ei:Capability ;
+    rdfs:label "Trusted Data" ;
+    rdfs:comment
+        "Consistent governed information that people and applications can rely upon for business decisions." ;
+    ei:contributesTo ei:IntegratedKnowledge .
+
+# Semantic Layer performance can support interactive and repeated analytical workloads.
+ei:HighPerformance
+    a ei:Value ;
+    rdfs:label "High Performance" ;
+    rdfs:comment
+        "High-performance analytical access enabled by pre-aggregation, caching, query optimization, or related techniques." ;
+    ei:enables
+        ei:FastRAG,
+        ei:RapidInsightRefresh .
+
+# Centralized policies provide consistent control over enterprise information.
+ei:CentralSecurity
+    a ei:Value ;
+    rdfs:label "Central Security" ;
+    rdfs:comment
+        "Centralized enforcement of data security, governance, and access policies." ;
+    ei:enables ei:GovernedAccess .
+
+# Governed access permits enterprise information to be shared consistently and safely.
+ei:GovernedAccess
+    a ei:Capability ;
+    rdfs:label "Governed Access" ;
+    rdfs:comment
+        "Consistent controlled access to enterprise information across people, applications, analytics, and AI." ;
+    ei:contributesTo ei:IntegratedKnowledge .
+
+# The Semantic Layer translates physical schemas into business concepts.
+ei:BusinessView
+    a ei:Value ;
+    rdfs:label "Business View" ;
+    rdfs:comment
+        "Measures, dimensions, hierarchies, and concepts presented in business terms rather than physical source-system schemas." ;
+    ei:promotes ei:DecisionUsability .
+
+# Business-oriented presentation makes governed information easier to use in decisions.
+ei:DecisionUsability
+    a ei:Capability ;
+    rdfs:label "Decision Usability" ;
+    rdfs:comment
+        "Information that business users can understand and use without knowing physical source-system implementations." ;
+    ei:contributesTo ei:IntegratedKnowledge .
+
+# The Semantic Layer addresses the highly reused core of enterprise decision data.
+ei:CommonDecisionData
+    a ei:Value ;
+    rdfs:label "Common Decision Data" ;
+    rdfs:comment
+        "The highly reused core of governed data required by most users for most recurring business decisions." ;
+    ei:contributesTo ei:IntegratedKnowledge .
+
+
+# ============================================================================
+# SEMANTIC LAYER CONS
+# ============================================================================
+
+# Not all potentially useful data has necessarily entered the governed layer.
+ei:DataCoverageGap
+    a ei:CostOrCon ;
+    rdfs:label "Data Coverage Gap" ;
+    rdfs:comment
+        "Relevant internal, partner, purchased, public, or third-party data that is not yet accessible through the governed Semantic Layer." .
+
+# A dimensional semantic schema cannot express every kind of enterprise meaning.
+ei:MeaningGap
+    a ei:CostOrCon ;
+    rdfs:label "Meaning Gap" ;
+    rdfs:comment
+        "Relationships, goals, beliefs, rules, opinions, context, and other meaning that cannot be fully represented as Semantic Layer measures, dimensions, hierarchies, and schemas." .
+
+# Bringing a new domain into a governed Semantic Layer requires work.
+ei:SLOnboardingEffort
+    a ei:CostOrCon ;
+    rdfs:label "SL Onboarding Effort" ;
+    rdfs:comment
+        "Effort required to bring a business domain, its data, semantics, measures, dimensions, security, and governance into the Semantic Layer." .
+
+
+# ============================================================================
+# KNOWLEDGE GRAPH VALUE CHAINS
+# ============================================================================
+
+# The Knowledge Graph gives enterprise concepts and relationships explicit meaning.
+ei:ExplicitMeaning
+    a ei:Value ;
+    rdfs:label "Explicit Meaning" ;
+    rdfs:comment
+        "Explicit, addressable, governable meanings and relationships represented in the graph." ;
+    ei:contributesTo ei:IntegratedKnowledge .
+
+# People can express knowledge not contained in databases or LLM training.
+ei:HumanKnowledge
+    a ei:Value ;
+    rdfs:label "Human Knowledge" ;
+    rdfs:comment
+        "Goals, appetites, desires, opinions, beliefs, expertise, and other knowledge explicitly contributed by people." ;
+    ei:contributesTo ei:IntegratedKnowledge ;
+    ei:mitigates ei:TrainingGap .
+
+# Knowledge graphs can connect meaning across application and domain boundaries.
+ei:CrossDomainLinks
+    a ei:Value ;
+    rdfs:label "Cross-Domain Links" ;
+    rdfs:comment
+        "Explicit relationships connecting concepts and entities across organizational, application, and technical boundaries." ;
+    ei:contributesTo ei:IntegratedKnowledge .
+
+# Governed graph knowledge provides enterprise-specific context for LLMs.
+ei:LLMGrounding
+    a ei:Value ;
+    rdfs:label "LLM Grounding" ;
+    rdfs:comment
+        "Explicit governed enterprise knowledge that can constrain, contextualize, and enrich LLM reasoning." ;
+    ei:promotes ei:GroundedReasoning .
+
+# The Knowledge Graph can represent meaning beyond Semantic Layer schemas.
+ei:RicherMeaning
+    a ei:Value ;
+    rdfs:label "Richer Meaning" ;
+    rdfs:comment
+        "Meaning and relationships extending beyond measures, dimensions, hierarchies, and other Semantic Layer schema constructs." ;
+    ei:mitigates ei:MeaningGap ;
+    ei:contributesTo ei:IntegratedKnowledge .
+
+
+# ============================================================================
+# KNOWLEDGE GRAPH CONS
+# ============================================================================
+
+# Explicit knowledge requires intellectual and modeling effort.
+ei:KGAuthoring
+    a ei:CostOrCon ;
+    rdfs:label "KG Authoring" ;
+    rdfs:comment
+        "Manual and intellectual effort required to identify, express, connect, review, and govern enterprise knowledge." .
+
+# Explicit knowledge must change as organizations and the world change.
+ei:KGMaintenance
+    a ei:CostOrCon ;
+    rdfs:label "KG Maintenance" ;
+    rdfs:comment
+        "Ongoing effort required to keep explicit knowledge synchronized with changes in the enterprise and outside world." .
+
+
+# ============================================================================
+# RAG
+# ============================================================================
+
+# RAG retrieves enterprise context for an LLM at inference time.
+ei:RAG
+    a ei:IntelligenceComponent ;
+    rdfs:label "RAG" ;
+    rdfs:comment
+        "Retrieval-Augmented Generation that supplies relevant enterprise data and knowledge to an LLM at inference time." ;
+    ei:retrievesFrom
+        ei:KnowledgeGraph,
+        ei:SemanticLayer ;
+    ei:enables ei:GroundedReasoning .
+
+# The LLM uses RAG to reach governed enterprise knowledge.
+ei:LLM
+    ei:uses ei:RAG .
+
+# Fast Semantic Layer response supports practical RAG use.
+ei:FastRAG
+    a ei:Capability ;
+    rdfs:label "Fast RAG" ;
+    rdfs:comment
+        "Rapid retrieval of governed enterprise information for use in LLM prompts and reasoning." ;
+    ei:enables ei:GroundedReasoning .
+
+# Grounded reasoning combines LLM flexibility with governed enterprise context.
+ei:GroundedReasoning
+    a ei:Capability ;
+    rdfs:label "Grounded Reasoning" ;
+    rdfs:comment
+        "LLM reasoning informed by governed enterprise data, explicit knowledge, and relationships." ;
+    ei:contributesTo ei:IntegratedKnowledge .
+
+
+# ============================================================================
+# KG + SEMANTIC LAYER
+# ============================================================================
+
+# The Knowledge Graph may expose Semantic Layer data through a virtual graph.
+ei:KnowledgeGraph
+    ei:usesAsVirtualGraph ei:SemanticLayer ;
+    ei:extendsMeaningBeyond ei:SemanticLayer .
+
+
+# ============================================================================
+# DATA MESH
+# ============================================================================
+
+# Data Mesh can accelerate governed domain onboarding.
+ei:DataMesh
+    a ei:IntelligenceComponent ;
+    rdfs:label "Data Mesh" ;
+    rdfs:comment
+        "Domain-oriented data ownership and data-product practices that can accelerate bringing business domains into the governed information environment." ;
+    ei:promotes ei:FasterDomainOnboarding .
+
+# Faster onboarding reduces effort and broadens governed data coverage.
+ei:FasterDomainOnboarding
+    a ei:Value ;
+    rdfs:label "Faster Onboarding" ;
+    rdfs:comment
+        "Faster onboarding of domain-owned business data and semantic models into the governed enterprise Semantic Layer." ;
+    ei:mitigates ei:SLOnboardingEffort ;
+    ei:promotes ei:BroaderDataCoverage .
+
+# Broader governed coverage reduces the amount of relevant inaccessible data.
+ei:BroaderDataCoverage
+    a ei:Value ;
+    rdfs:label "Broader Coverage" ;
+    rdfs:comment
+        "A greater portion of relevant enterprise and external data made available through the governed Semantic Layer." ;
+    ei:mitigates ei:DataCoverageGap .
+
+
+# ============================================================================
+# DATA VAULT / ELT
+# ============================================================================
+
+# Data Vault / ELT can capture source data before all business transformation is complete.
+ei:DataVault
+    a ei:IntelligenceComponent ;
+    rdfs:label "Data Vault / ELT" ;
+    rdfs:comment
+        "An ingestion-oriented architecture that can capture source data before all downstream business transformation has been completed." ;
+    ei:promotes ei:FasterSourceIngestion .
+
+# Faster ingestion can avoid waiting for every transformation before loading.
+ei:FasterSourceIngestion
+    a ei:Value ;
+    rdfs:label "Faster Ingestion" ;
+    rdfs:comment
+        "Faster capture of source-system data into the enterprise data environment." ;
+    ei:mitigates ei:TransformBottleneck ;
+    ei:promotes ei:FasterDomainOnboarding .
+
+# Extensive up-front transformation can delay adding new data.
+ei:TransformBottleneck
+    a ei:CostOrCon ;
+    rdfs:label "Transform Bottleneck" ;
+    rdfs:comment
+        "Delay caused when extensive transformation and business modeling must be completed before source data can be incorporated." .
+
+
+# ============================================================================
+# KG AUTHORING ASSISTANCE
+# ============================================================================
+
+# LLMs can reduce some of the work involved in creating and maintaining the graph.
+ei:LLMKGAuthoring
+    a ei:IntelligenceComponent ;
+    rdfs:label "LLM KG Authoring" ;
+    rdfs:comment
+        "LLM assistance for proposing, documenting, connecting, reviewing, and maintaining knowledge-graph content." ;
+    ei:mitigates
+        ei:KGAuthoring,
+        ei:KGMaintenance .
+
+# Data science discovers statistical structures that can become candidate knowledge.
+ei:DataScience
+    a ei:IntelligenceComponent ;
+    rdfs:label "Data Science" ;
+    rdfs:comment
+        "Statistical and machine-learning techniques that discover patterns, associations, classifications, and other candidate knowledge." ;
+    ei:produces ei:DiscoveredPatterns .
+
+# Discovered patterns can become evidence or explicit enterprise knowledge.
+ei:DiscoveredPatterns
+    a ei:Value ;
+    rdfs:label "Discovered Patterns" ;
+    rdfs:comment
+        "Patterns discovered automatically that can become observations, evidence, or candidate explicit knowledge." ;
+    ei:feeds ei:KnowledgeGraph .
+
+# Automated rule generation can reduce manual knowledge encoding.
+ei:RuleGeneration
+    a ei:IntelligenceComponent ;
+    rdfs:label "Rule Generation" ;
+    rdfs:comment
+        "Automated or AI-assisted generation of explicit rules from data, models, documents, or expert knowledge." ;
+    ei:mitigates ei:KGAuthoring ;
+    ei:feeds ei:KnowledgeGraph .
+
+
+# ============================================================================
+# ISG / TCW
+# ============================================================================
+
+# High Semantic Layer performance permits statistical observations to be refreshed frequently.
+ei:RapidInsightRefresh
+    a ei:Capability ;
+    rdfs:label "Rapid Insight Refresh" ;
+    rdfs:comment
+        "Ability to repeatedly execute analytical functions and refresh statistical observations because the underlying Semantic Layer is highly performant." ;
+    ei:enables
+        ei:ISG,
+        ei:TCW .
+
+# ISG collects observations emerging from analytical activity.
+ei:ISG
+    a ei:IntelligenceComponent ;
+    rdfs:label "ISG" ;
+    rdfs:comment
+        "Insight Space Graph that collects significant observations produced across analytical activity and business domains." ;
+    ei:produces ei:ObservedInsights .
+
+# Significant analytical observations become another source of enterprise knowledge.
+ei:ObservedInsights
+    a ei:Value ;
+    rdfs:label "Observed Insights" ;
+    rdfs:comment
+        "Significant observations discovered across analytical activity and business domains." ;
+    ei:feeds ei:KnowledgeGraph .
+
+# TCW records statistical relationships among observations and attributes.
+ei:TCW
+    a ei:IntelligenceComponent ;
+    rdfs:label "TCW" ;
+    rdfs:comment
+        "Tuple Correlation Web representing statistical relationships among observations, attributes, and analytical results." ;
+    ei:produces ei:StatisticalLinks .
+
+# Statistical relationships complement relationships asserted semantically.
+ei:StatisticalLinks
+    a ei:Value ;
+    rdfs:label "Statistical Links" ;
+    rdfs:comment
+        "Probabilistic and statistical relationships that complement explicitly asserted semantic relationships." ;
+    ei:feeds ei:KnowledgeGraph .
+
+
+# ============================================================================
+# DATA OUTSIDE THE SEMANTIC LAYER
+# ============================================================================
+
+# Relevant enterprise data may exist internally but remain outside the governed layer.
+ei:InternalData
+    a ei:KnowledgeSource ;
+    rdfs:label "Internal Data" ;
+    rdfs:comment
+        "Relevant enterprise data that exists internally but has not yet been incorporated into the governed Semantic Layer." ;
+    ei:canExtend ei:BroaderDataCoverage .
+
+# Business partners can provide knowledge unavailable internally.
+ei:PartnerData
+    a ei:KnowledgeSource ;
+    rdfs:label "Partner Data" ;
+    rdfs:comment
+        "Data and knowledge supplied by customers, suppliers, partners, or other organizations in the business ecosystem." ;
+    ei:canExtend ei:BroaderDataCoverage .
+
+# External sources can provide context beyond the enterprise's own systems.
+ei:ExternalData
+    a ei:KnowledgeSource ;
+    rdfs:label "External Data" ;
+    rdfs:comment
+        "Purchased, public, licensed, or other third-party data that can add context unavailable from internal systems." ;
+    ei:canExtend ei:BroaderDataCoverage .
