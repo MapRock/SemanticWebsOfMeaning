@@ -20,7 +20,7 @@ This is a small ontology that models **two culturally different versions** of a 
 
 ## Interesting SPARQL Queries
 
-Here are some good queries, ordered from simple to more insightful. Use [Jena Fuseki](https://github.com/MapRock/SemanticWebsOfMeaning_Private/blob/main/install_jena_fuseki.md) for this querying.
+Here are some good queries, ordered from simple to more insightful. Use [Jena Fuseki](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/install_jena_fuseki.md) for this querying.
 
 ### 1. Show Both Versions of "Kalbi Plate" (Most Interesting)
 
