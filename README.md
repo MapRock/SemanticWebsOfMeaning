@@ -49,9 +49,6 @@ Before using them in a production environment, evaluate them for your particular
 
 Product names, technologies, and platforms mentioned in the examples remain the property of their respective owners.
 
-## Related Blogs
-
-- [When Sedans have Four Doors Means Five Different Things](https://eugeneasahara.com/2026/08/24/when-sedans-have-four-doors-means-five-different-things-in-rdf/): This is where knowledge graph people can start to sound like the "Comic book Guy" on the Simpsons or Sheldon Cooper on the Big Bang Theory. But AI is a magnitude worse. And we'll need to deal with it in an increasingly automated fashion, which means we need to start getting into that mindset.
 
 
 ## Repo Copyright
@@ -76,12 +73,16 @@ This supplemental repository is maintained by the author. Unless explicitly stat
 
 **[Eugene Asahara](https://www.linkedin.com/in/eugeneasahara/)**
 
-Additional material and related work:
+### Additional material and related work
 
 * [My blog site](https://eugeneasahara.com)
 * [Enterprise Intelligence supplemental repo](https://github.com/MapRock/IntelligenceBusiness)
 * [Time Molecules Supplemental Repo](https://github.com/MapRock/TimeMolecules)
 * [Assemblage of AI Supplemental Repo](https://github.com/MapRock/assemblage-of-artificial-intelligence)
+
+### Related Blogs
+
+- [When Sedans have Four Doors Means Five Different Things](https://eugeneasahara.com/2026/08/24/when-sedans-have-four-doors-means-five-different-things-in-rdf/): This is where knowledge graph people can start to sound like the "Comic book Guy" on the Simpsons or Sheldon Cooper on the Big Bang Theory. But AI is a magnitude worse. And we'll need to deal with it in an increasingly automated fashion, which means we need to start getting into that mindset.
 
 ## Errors and Corrections
 
