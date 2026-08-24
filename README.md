@@ -89,4 +89,4 @@ Corrections to this repository may be made independently of future printings or 
 This is a collections of errors discovered in the book:
 
 - IRI stands for [Internationalized Resource Identifier](https://dbpedia.org/page/Internationalized_Resource_Identifier), not International Resource Identifier. I've been saying it so much as just IRI, I forgot the "ized".
-- [Mistake on RDF 1.2 Reification](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/appendices/appendix_g_reification_rdf_1_2.md#fix-to-the-topic-reification-in-rdf-12-august-24-2026) - Stil need to assert a triple in RDF 1.2.
+- [Mistake on RDF 1.2 Reification-Chapter 6](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/appendices/appendix_g_reification_rdf_1_2.md#fix-to-the-topic-reification-in-rdf-12-august-24-2026) - Stil need to assert a triple in RDF 1.2.
