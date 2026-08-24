@@ -574,6 +574,6 @@ The following Turtle is intentionally **polyhierarchical**. It does not claim th
 The public mappings above use `skos:closeMatch` deliberately. The local taxonomy is making claims about **forms of encoded knowledge**, while Wikidata’s items often describe the more familiar artifact or discipline. For example, Wikidata identifies documents, paintings, poems, knowledge graphs, symbolic AI, and LLMs, but it does not necessarily classify them according to this particular theory of encoding. ([Wikidata][3])
 
 
-[1]: https://www.wikidata.org/wiki/Q5514059?utm_source=chatgpt.com "symbolic artificial intelligence"
-[2]: https://www.wikidata.org/wiki/Q115305900?utm_source=chatgpt.com "large language model - Wikidata"
-[3]: https://www.wikidata.org/wiki/Q49848?utm_source=chatgpt.com "document"
+[1]: https://www.wikidata.org/wiki/Q5514059 "symbolic artificial intelligence"
+[2]: https://www.wikidata.org/wiki/Q115305900 "large language model - Wikidata"
+[3]: https://www.wikidata.org/wiki/Q49848 "document"
