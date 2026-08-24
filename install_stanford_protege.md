@@ -107,9 +107,9 @@ Protégé allows different tabs to be shown or hidden. For the examples in this 
 | **DL Query**             | Lets you enter OWL class expressions and ask the reasoner which classes or individuals satisfy them. It is especially useful for testing inferred relationships after a reasoner has been started.                                                                                                          |
 | **Active ontology**      | Shows information about the ontology currently being edited, including its ontology IRI, version information, imports, annotations, and other ontology-level metadata.                                                                                                                                      |
 
-[1]: https://protegeproject.github.io/protege/getting-started/?utm_source=chatgpt.com "Getting Started"
-[2]: https://protegeproject.github.io/protege/views/object-property-hierarchy/?utm_source=chatgpt.com "Object Property Hierarchy"
-[3]: https://protegeproject.github.io/protege/views/?utm_source=chatgpt.com "Views"
+[1]: https://protegeproject.github.io/protege/getting-started/ "Getting Started"
+[2]: https://protegeproject.github.io/protege/views/object-property-hierarchy/ "Object Property Hierarchy"
+[3]: https://protegeproject.github.io/protege/views/"Views"
 
 
 Use:
@@ -194,5 +194,5 @@ After restarting Protégé, follow these steps:
 Because some exercises in this book use **SWRL rules** to demonstrate inference, we install and use **Pellet** for more reliable results.
 
 
-[1]: https://protegeproject.github.io/protege/installation/windows/?utm_source=chatgpt.com "Windows Installation"
-[2]: https://protege.stanford.edu/?utm_source=chatgpt.com "Protégé"
+[1]: https://protegeproject.github.io/protege/installation/windows/ "Windows Installation"
+[2]: https://protege.stanford.edu/ "Protégé"
