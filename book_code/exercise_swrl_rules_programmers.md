@@ -20,9 +20,9 @@ By the end of this exercise you will be able to:
 
 ## Prerequisites
 
-- Protégé installed (see the separate [installation guide](https://github.com/MapRock/knowledge_graph_book/blob/main/install_stanford_protege.md))
+- Protégé installed (see the separate [installation guide](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/install_stanford_protege.md))
 - Basic familiarity with opening files in Protégé
-- The file [book_code/programmers.ttl](https://github.com/MapRock/knowledge_graph_book/blob/main/book_code/programmers.ttl) from the repository
+- The file [book_code/programmers.ttl](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/book_code/programmers.ttl) from the repository
 
 ---
 
@@ -47,7 +47,7 @@ Now ensure the SWRL tab is opened.
 1. Go to **File → Open**.
 2. Navigate to the repository folder and open:
    ```
-   https://github.com/MapRock/knowledge_graph_book/blob/main/book_code/programmers.ttl
+   https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/book_code/programmers.ttl
    ```
 3. Once loaded, you should see the **Programmer** class and the three individuals: **Eugene**, **Anna**, and **Ben**.
 
