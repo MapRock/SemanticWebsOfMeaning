@@ -1,7 +1,7 @@
 
 # Quick Summary of the Ontology
 
-This document lists a few interesting queries for [kalbi_plate.ttl](https://github.com/MapRock/knowledge_graph_book/blob/main/book_code/kalbi_plate.ttl), which is mentioned on page 18 of the book.
+This document lists a few interesting queries for [kalbi_plate.ttl](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/book_code/kalbi_plate.ttl), which is mentioned on page 18 of the book.
 
 <img src="images/kalbi_plate.png" alt="Korean and Hawaiian BBQ Kalbi Plate" width="800">
 
