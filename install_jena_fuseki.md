@@ -235,5 +235,5 @@ Fuseki
 
 This is a realistic workflow. Protégé is primarily an ontology editor. Fuseki is a SPARQL server. Using both tools makes the process clearer: define the graph in Turtle or Protégé, load it into Fuseki, and query it with SPARQL.
 
-[1]: https://jena.apache.org/documentation/fuseki2/?utm_source=chatgpt.com "Apache Jena - Apache Jena Fuseki"
-[2]: https://jena.apache.org/download/index.cgi?utm_source=chatgpt.com "Apache Jena - Apache Jena Releases"
+[1]: https://jena.apache.org/documentation/fuseki2 "Apache Jena - Apache Jena Fuseki"
+[2]: https://jena.apache.org/download/index.cgi "Apache Jena - Apache Jena Releases"
