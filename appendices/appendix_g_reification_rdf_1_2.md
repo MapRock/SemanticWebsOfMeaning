@@ -294,7 +294,7 @@ http://localhost:3030
 
 Select the `/kg` dataset and choose **add data**.
 
-Upload the RDF 1.2 Turtle file containing the example above. Use [book_code/appendix_g_rdf_1_2_sample.ttl](https://github.com/MapRock/SemanticWebsOfMeaning_Private/blob/main/book_code/appendix_g_rdf_1_2_sample.ttl)
+Upload the RDF 1.2 Turtle file containing the example above. Use [book_code/appendix_g_rdf_1_2_sample.ttl](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/book_code/appendix_g_rdf_1_2_sample.ttl)
 
 After the file has loaded, select **query**.
 
