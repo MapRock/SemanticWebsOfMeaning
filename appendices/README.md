@@ -3,7 +3,7 @@
 
 This folder contains supplemental appendices for [*Semantic Webs of Meaning: Building Contextual Knowledge Graphs for Deduction and Integration*](https://technicspub.com/semantic-webs-of-meaning/) by Eugene Asahara, published by [Technics Publications](https://technicspub.com), 2026.
 
-The intent of these appendices is to provide material that is useful to the book but better suited to an online repository than to a printed edition. Since these are appendices to the book, they might refer to something in the book or otherwise seem incomplete. Theese aren't meant to be stand-alone artifacts, as are the artifacts in the [docs folder](https://github.com/MapRock/SemanticWebsOfMeaning_Private/tree/main/docs).
+The intent of these appendices is to provide material that is useful to the book but better suited to an online repository than to a printed edition. Since these are appendices to the book, they might refer to something in the book or otherwise seem incomplete. Theese aren't meant to be stand-alone artifacts, as are the artifacts in the [docs folder](https://github.com/MapRock/SemanticWebsOfMeaning/tree/main/docs).
 
 Many of the technologies discussed in the book—knowledge graph platforms, reasoning engines, AI integration patterns, machine learning techniques, standards, libraries, and implementation practices—are moving quickly. A printed book necessarily captures a point in time. These appendices provide a place where implementation details, examples, comparisons, and additional technical material can continue to evolve as the surrounding technology changes.
 
