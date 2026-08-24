@@ -44,8 +44,8 @@ This is a simple example, but it demonstrates the larger idea behind rule-based 
 This example uses two main files:
 
 
-- [programmers.ttl](https://github.com/MapRock/SemanticWebsOfMeaning_Private/blob/main/book_code/programmers.ttl)
-- [fuseki-config.ttl](https://github.com/MapRock/SemanticWebsOfMeaning_Private/blob/main/book_code/fuseki-config.ttl)
+- [programmers.ttl](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/book_code/programmers.ttl)
+- [fuseki-config.ttl](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/book_code/fuseki-config.ttl)
 
 
 The file `programmers.ttl` contains the RDF data.
@@ -206,7 +206,7 @@ Anna rdf:type ObjectOrientedProgrammer
 
 # 5. Starting Fuseki
 
-See [install_jena_fuseki.md](https://github.com/MapRock/SemanticWebsOfMeaning_Private/blob/main/install_jena_fuseki.md) to install Jena Fuseki.
+See [install_jena_fuseki.md](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/install_jena_fuseki.md) to install Jena Fuseki.
 
 If a Fuseki instance is already running, focus on the Powershell window it's in and ctrl-C to exit it.
 
