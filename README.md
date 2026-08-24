@@ -1,6 +1,3 @@
-**August 18, 2026 - The book was released a couple of weeks earlier than I expected, so I’m still tidying up the supplemental GitHub repository mentioned in the book. I expect to make it public in a week or so.**
-
-
 # Semantic Webs of Meaning — Supplemental Book Material
 
 This repository contains supplemental appendices, examples, and technical material accompanying the book:
@@ -8,6 +5,8 @@ This repository contains supplemental appendices, examples, and technical materi
 [***Semantic Webs of Meaning: Building Contextual Knowledge Graphs for Deduction and Integration***](https://technicspub.com/semantic-webs-of-meaning/)
 **Eugene Asahara**
 [Technics Publications](https://technicspub.com), 2026
+
+Please see my blog, [Trailer to my book: Semantic Webs of Meaning](https://eugeneasahara.com/2026/08/12/trailer-for-my-new-book-semantic-webs-of-meaning/), for an overview.
 
 The material here extends topics discussed in the book with implementation details, examples, code, and supporting material that are better suited to an online repository than to the printed text.
 
@@ -29,21 +28,13 @@ The appendices should be considered **supplemental material**, not replacements 
 
 ## Relationship to the Book
 
-Because this repository may continue to evolve after publication, examples here may be expanded, corrected, or updated independently of the printed edition.
+Because this repository will continue to evolve after publication, examples here may be expanded, corrected, or updated independently of the printed edition.
 
 Where there is a difference between an example in this repository and material in the published book, the repository should be treated as supplemental implementation material rather than as an amendment to the published text unless explicitly stated otherwise.
 
-https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/book_code/kalbi_plate.ttl 
-
-The book will refer to files by a truncated path to the GitHub repo: 
-
-- Code from this book example: book_code/kalbi_plate.ttl.
-- Document example: docs/datalog_vs_prolog.md 
-- Appendices: appendices/appendix_a_beyond_ontology.md 
-
 ## Use of Examples
 
-Most examples in this repository are intended to illustrate concepts and architectural patterns. They are not necessarily production-ready implementations.
+Most examples in this repository are intended to illustrate concepts and architectural patterns. They are not intended to be production-ready implementations.
 
 Before using them in a production environment, evaluate them for your particular requirements, including:
 
@@ -68,11 +59,24 @@ The presence of material in a public GitHub repository does not, by itself, plac
 
 Code samples may be provided under a separate license if one is included in this repository. Where a license file applies to code, that license governs the covered code. It does not automatically apply to the book text, appendix prose, figures, or other copyrighted material unless explicitly stated.
 
-## Publisher
+## Publisher of <i>Semantic Webs of Meaning</i>
 
 *Semantic Webs of Meaning: Building Contextual Knowledge Graphs for Deduction and Integration* is published by [**Technics Publications**](https://technicspub.com).
 
 This supplemental repository is maintained by the author. Unless explicitly stated otherwise, repository updates made after publication should not be interpreted as official publisher revisions to the book.
+
+**Please note: This Github repo is owned and maintained by the author, [Eugene Asahara](https://www.linkedin.com/in/eugeneasahara/), not [**Technics Publications**](https://technicspub.com).**
+
+## Author of <i>Semantic Webs of Meaning</i>
+
+**[Eugene Asahara](https://www.linkedin.com/in/eugeneasahara/)**
+
+Additional material and related work:
+
+* [My blog site](https://eugeneasahara.com)
+* [Enterprise Intelligence supplemental repo](https://github.com/MapRock/IntelligenceBusiness)
+* [Time Molecules Supplemental Repo](https://github.com/MapRock/TimeMolecules)
+* [Assemblage of AI Supplemental Repo](https://github.com/MapRock/assemblage-of-artificial-intelligence)
 
 ## Errors and Corrections
 
@@ -80,11 +84,9 @@ If you find an error in an example or supplemental appendix, please open a GitHu
 
 Corrections to this repository may be made independently of future printings or editions of the book.
 
-## Author
+## Book Erratum
 
-**Eugene Asahara**
+This is a collections of errors discovered in the book:
 
-Additional material and related work:
-
-* [eugeneasahara.com](https://eugeneasahara.com)
-* [GitHub](https://github.com/MapRock)
+- IRI stands for [Internationalized Resource Identifier](https://dbpedia.org/page/Internationalized_Resource_Identifier), not International Resource Identifier. I've been saying it so much as just IRI, I forgot the "ized".
+- [Mistake on RDF 1.2 Reification](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/appendices/appendix_g_reification_rdf_1_2.md#fix-to-the-topic-reification-in-rdf-12-august-24-2026) - Stil need to assert a triple in RDF 1.2.
