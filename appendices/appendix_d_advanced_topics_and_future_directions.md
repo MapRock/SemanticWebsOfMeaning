@@ -16,7 +16,7 @@ This means we need to inject an equivalent of “slowly changing dimensions” i
 
 See: 
 - [https://eugeneasahara.com/2024/11/10/deductive-time-travel-prolog-in-the-llm-era-thanksgiving-special/](https://eugeneasahara.com/2024/11/10/deductive-time-travel-prolog-in-the-llm-era-thanksgiving-special/)
-- [Topic in appendix E - Machine learning model versions](https://github.com/MapRock/SemanticWebsOfMeaning_Private/blob/main/appendices/appendix_e_machine_learning_models.md#model-identity-versions-and-time-travel)
+- [Topic in appendix E - Machine learning model versions](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/appendices/appendix_e_machine_learning_models.md#model-identity-versions-and-time-travel)
   
 ## Multi-Modal Knowledge Graphs
 
@@ -32,7 +32,7 @@ However, it’s valuable to include the model as a node with relationships to in
 
 See: 
 - [https://eugeneasahara.com/2025/01/09/machine-learning-models-embedded-in-knowledge-graphs/](https://eugeneasahara.com/2025/01/09/machine-learning-models-embedded-in-knowledge-graphs/)
-- [appendix f rich properties](https://github.com/MapRock/SemanticWebsOfMeaning_Private/blob/main/appendices/appendix_f_rich_properties.md)
+- [appendix f rich properties](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/appendices/appendix_f_rich_properties.md)
 
 ## Logic in Knowledge Graphs
 
