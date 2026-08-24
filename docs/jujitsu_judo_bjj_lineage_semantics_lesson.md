@@ -697,7 +697,7 @@ And when a single name can reverse an entire family tree, that distinction matte
     a :MartialArtTradition ;
     rdfs:label "Daito-ryu Aiki-jujitsu" ;
     :hasHistoricalLineageFrom :JapaneseJujitsu ;
-    skos:closeMatch wd:Q1157127 .
+    skos:closeMatch wd:Q1500342 .
 
 :Aikido
     a :MartialArtTradition ;
@@ -781,7 +781,7 @@ And when a single name can reverse an entire family tree, that distinction matte
 ```
 Here is a snapshot of that OWL loaded into Protege:
 
-<img src="images/jiujitsu.png" alt="OWL above loaded into Protege" width="800">
+<img src="images/jiujitsu.png" alt="Presentation as viewed in Protege" width="800">
 
 [1]: https://www.youtube.com/watch?v=LSGfF1sV8kU&vl=en-US "Fighting a judo master to see if my jiu jitsu helps"
 [2]: https://kdkjd.org/%E8%AC%9B%E9%81%93%E9%A4%A8%E6%9F%94%E9%81%93%E3%81%AE%E6%AD%B4%E5%8F%B2/ "History of Kodokan Judo – Kodokan Global"
