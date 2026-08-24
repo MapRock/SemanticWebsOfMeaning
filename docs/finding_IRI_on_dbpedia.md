@@ -168,7 +168,7 @@ Prefer `dbo:` in your own graph. Use `dbp:` only when the mapped property does n
 
 ### For the Jiu-Jitsu/Judo Example
 
-Related to the article, [Judo, Jujitsu, and BJJ](https://github.com/MapRock/SemanticWebsOfMeaning_Private/blob/main/docs/jujitsu_judo_bjj_lineage_semantics_lesson.md), start here:
+Related to the article, [Judo, Jujitsu, and BJJ](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/docs/jujitsu_judo_bjj_lineage_semantics_lesson.md), start here:
 
 - [Judo](https://dbpedia.org/page/Judo) → `dbr:Judo`  
 - [Brazilian_jiu-jitsu](https://dbpedia.org/page/Brazilian_jiu-jitsu)  
