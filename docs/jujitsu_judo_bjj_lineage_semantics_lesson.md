@@ -12,7 +12,7 @@ I've never ever heard anyone refer to BJJ simple as "jiu jitsu", which is why it
 
 To be clear, the mistake was mine. I appreciate Josh Beam bringing to light BJJ's judo roots. The "error" I perceived is therefore not really about martial arts. It is about **identity and meaning**.
 
-And that makes this a great RDF example, along with the [Kalbi Plate](https://github.com/MapRock/SemanticWebsOfMeaning_Private/blob/main/book_code/kalbi_plate.md) example. It's a great example because most people don't know the lineage of Judo, BJJ, Aikido, and Jujitsu. So most people wouldn't catch the confusion it might cause.
+And that makes this a great RDF example, along with the [Kalbi Plate](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/book_code/kalbi_plate.md) example. It's a great example because most people don't know the lineage of Judo, BJJ, Aikido, and Jujitsu. So most people wouldn't catch the confusion it might cause.
 
 ## The Historical Family Tree
 
