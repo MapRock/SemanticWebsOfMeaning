@@ -5,7 +5,7 @@
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
 
-# See https://github.com/MapRock/knowledge_graph_book/blob/main/book_code/kalbi_plate.md for tutorial.
+# See https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/book_code/kalbi_plate.md for tutorial.
 
 
 # ──────────────────────────────────────────────────────────────
