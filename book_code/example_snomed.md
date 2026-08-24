@@ -133,4 +133,4 @@ ex:Patient456
 
 
 
-[1]: https://terminology.hl7.org/SNOMEDCT.html?utm_source=chatgpt.com "Using SNOMED CT with HL7 Standards"
+[1]: https://terminology.hl7.org/SNOMEDCT.html "Using SNOMED CT with HL7 Standards"
