@@ -156,7 +156,7 @@ WHERE { dbr:Judo rdf:type ?type }
 
 ### How to read what you find
 
-| Prefix | Meaning |
+| Prefix or Term | Meaning |
 |---|---|
 | `dbr:` | the thing |
 | `dbo:` | mapped ontology (cleaner) |
