@@ -36,7 +36,7 @@ See:
 
 ## Logic in Knowledge Graphs
 
-This is a very important aspect that I’ve focused on since 2005 (with my SQL Server troubleshooting KG). Relationships aren’t just a symbol. They are dynamic, different under different contexts, very complex. This is the notion of applying logic in relationships to determine the strength.
+This is a very important aspect that I’ve focused on since 2005 (with my [SQL Server troubleshooting KG](https://eugeneasahara.com/2025/11/17/trade-off-semantic-network-prolog-in-the-llm-era-ai-3rd-anniversary-special/#sql_server_example)). Relationships aren’t just a symbol. They are dynamic, different under different contexts, very complex. This is the notion of applying logic in relationships to determine the strength.
 
 This will focus on SWRL (Semantic Web Rule Language) — and the peculiarities of authoring KGs for reasoning, not Prolog.
 
