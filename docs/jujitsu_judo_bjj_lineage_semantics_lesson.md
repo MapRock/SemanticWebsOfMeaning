@@ -1,6 +1,6 @@
 <i>This document accompanies [***Semantic Webs of Meaning: Building Contextual Knowledge Graphs for Deduction and Integration***](https://technicspub.com/semantic-webs-of-meaning/) by Eugene Asahara, published by [Technics Publications](https://technicspub.com).</i>
 
-This document is a recent example of confusion I experienced when a word, jiu-jitsu, presented with meaning not in line with what I understood. I makes for a fun tutorial in semantics.
+This document is a recent example of confusion I experienced when a word, jiu-jitsu, presented with meaning not in line with what I understood. It makes for a fun tutorial in semantics.
 
 # Judo, Jiujitsu, and BJJ: When a Name Turns the Family Tree Backwards
 
