@@ -78,7 +78,7 @@ This supplemental repository is maintained by the author. Unless explicitly stat
 
 ### Additional material and related work
 
-* [My blog site](https://eugeneasahara.com)
+* [My blog site](https://eugeneasahara.com), [Semantic Webs of Meaning Category](https://eugeneasahara.com/category/semantic-webs-of-meaning-book/)
 * [Enterprise Intelligence supplemental repo](https://github.com/MapRock/IntelligenceBusiness)
 * [Time Molecules Supplemental Repo](https://github.com/MapRock/TimeMolecules)
 * [Assemblage of AI Supplemental Repo](https://github.com/MapRock/assemblage-of-artificial-intelligence)
