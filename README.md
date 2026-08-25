@@ -8,7 +8,7 @@ This repository contains supplemental appendices, examples, and technical materi
 
 Please see my blog, [Trailer to my book: Semantic Webs of Meaning](https://eugeneasahara.com/2026/08/12/trailer-for-my-new-book-semantic-webs-of-meaning/), for an overview.
 
-The material here extends topics discussed in the book with implementation details, examples, code, and supporting material that are better suited to an online repository than to the printed text.
+The material here extends topics discussed in the book with implementation details, examples, code, and supporting material that are better suited to an online, evolving repository than to the printed text.
 
 ## About This Repository
 
