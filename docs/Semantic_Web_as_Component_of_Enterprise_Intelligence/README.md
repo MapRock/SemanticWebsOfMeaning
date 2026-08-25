@@ -20,6 +20,8 @@ The folder includes the original LLM prompts plus two representations of the res
 
 The easiest way to reproduce the Neo4j demo is to run the supplied Cypher script.
 
+We're using [Neo4j](https://neo4j.com/download/) because we can get a pretty picture from an easy to install platform.
+
 ### Neo4j
 
 1. Create or start a Neo4j database using Neo4j Desktop, Neo4j Aura, or another Neo4j installation.
