@@ -37,9 +37,9 @@ So:
 
 This is why saying, ":Judo is an ancestor of **BJJ**", is OK. But saying, "Judo is an ancestor of jiujitsu", is backwards **if `jiujitsu` means the older Japanese martial traditions from which judo arose**.
 
-### Homonyms, Synonyms, and Polysemy
+### Homonyms, Synonyms, and Homonymy
 
-The ambiguity here is in the ballpark of familiar ideas such as homonyms and synonyms, but it is not either one. Homonyms are words that share the same spelling **or** sound while referring to what is usually clearly different things, such as bat the animal and bat the piece of sports equipment. Synonyms are different words with the same or nearly the same meaning. Jiu-jitsu is different: the same label is being used for two historically related but distinct martial-art traditions—traditional Japanese jujitsu/jujutsu and Brazilian Jiu-Jitsu. The closest description is lexical ambiguity, or more specifically polysemy, where one expression has multiple related meanings.
+The ambiguity here is in the ballpark of familiar ideas such as homonyms and synonyms, but it is not either one. Homonyms are words that share the same spelling **or** sound while referring to what is usually clearly different things, such as bat the animal and bat the piece of sports equipment. Synonyms are different words with the same or nearly the same meaning. Jiu-jitsu is different: the same label is being used for two historically related but distinct martial-art traditions—traditional Japanese jujitsu/jujutsu and Brazilian Jiu-Jitsu. The closest description is lexical ambiguity, or more specifically, homonymy, where one word has unrelated meanings (ex. bank river / bank money).
 
 What makes this case especially interesting is that the meanings are not obviously different. Unlike mouse, where an animal and a computer device are easy to distinguish, Japanese jujitsu and BJJ are close enough historically and technically that two people can hear the same word, resolve it to different things, and never realize they have done so.
 
