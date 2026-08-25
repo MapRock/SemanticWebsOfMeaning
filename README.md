@@ -38,14 +38,17 @@ Most examples in this repository are intended to illustrate concepts and archite
 
 Before using them in a production environment, evaluate them for your particular requirements, including:
 
-* security
-* performance
-* scalability
-* data governance
-* licensing
-* platform compatibility
-* error handling
-* operational support
+| Area                       | Considerations                                                                                     |
+| -------------------------- | -------------------------------------------------------------------------------------------------- |
+| **Security**               | Authentication, authorization, secrets management, data exposure, and attack surface               |
+| **Performance**            | Expected workloads, latency, throughput, query behavior, and resource consumption                  |
+| **Scalability**            | Data volume, concurrency, distributed deployment, and growth requirements                          |
+| **Data Governance**        | Data ownership, privacy, retention, lineage, compliance, and access policies                       |
+| **Licensing**              | Licenses and usage restrictions for software, libraries, models, datasets, and other dependencies  |
+| **Platform Compatibility** | Operating systems, runtimes, databases, cloud platforms, versions, and infrastructure dependencies |
+| **Error Handling**         | Validation, exceptions, retries, failure recovery, logging, and unexpected inputs                  |
+| **Operational Support**    | Monitoring, deployment, maintenance, backups, upgrades, troubleshooting, and long-term support     |
+
 
 Product names, technologies, and platforms mentioned in the examples remain the property of their respective owners.
 
