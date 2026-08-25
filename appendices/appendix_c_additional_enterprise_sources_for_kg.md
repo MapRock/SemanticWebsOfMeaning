@@ -2,7 +2,7 @@
 
 <i>This appendix accompanies [***Semantic Webs of Meaning: Building Contextual Knowledge Graphs for Deduction and Integration***](https://technicspub.com/semantic-webs-of-meaning/) by Eugene Asahara, published by [Technics Publications](https://technicspub.com).</i>
 
-Enterprise knowledge graphs rarely begin with a blank slate. This appendix presents additional sources of organizational knowledge that can be mined to enrich a graph, including ER diagrams, master data systems, feature stores, dashboards, business glossaries, policies, source-code comments, APIs, event streams, documentation, collaboration sites, and operational tickets. Together, these sources provide not only data, but also business meaning, intent, and organizational knowledge that can be incorporated into the graph.
+This appendix presents additional sources of existing organizational knowledge that can be mined to enrich a graph, including ER diagrams, master data systems, feature stores, dashboards, business glossaries, policies, source-code comments, APIs, event streams, documentation, collaboration sites, and operational tickets. Together, these sources provide not only data, but also business meaning, intent, and organizational knowledge that can be incorporated into the graph.
 
 ## ER Diagrams
 
