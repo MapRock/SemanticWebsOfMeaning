@@ -785,6 +785,8 @@ Here is a snapshot of that OWL loaded into Protege:
 
 <img src="images/jiujitsu.png" alt="Presentation as viewed in Protege" width="800">
 
+Also see this article's sister piece: [When Sedans Have Four Doors Means Five Different Things in RDF](https://eugeneasahara.com/2026/08/24/when-sedans-have-four-doors-means-five-different-things-in-rdf/).
+
 [1]: https://www.youtube.com/watch?v=LSGfF1sV8kU&vl=en-US "Fighting a judo master to see if my jiu jitsu helps"
 [2]: https://kdkjd.org/%E8%AC%9B%E9%81%93%E9%A4%A8%E6%9F%94%E9%81%93%E3%81%AE%E6%AD%B4%E5%8F%B2/ "History of Kodokan Judo – Kodokan Global"
 [3]: https://www.daito-ryu.org/en/daito-ryu-and-aikido.html "Daito-ryu and aikido"
