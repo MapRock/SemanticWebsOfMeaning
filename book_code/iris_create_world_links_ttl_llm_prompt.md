@@ -1,474 +1,281 @@
-You are given an OWL/RDF Turtle file generated from a machine-learning model. The file represents some combination of:
+You are given an RDF/OWL Turtle file generated from a machine-learning model.
 
-* the machine-learning model itself
-* model outputs such as clusters, classes, predictions, rules, features, centroids, or scores
-* learned OWL classes
-* individuals representing concrete model artifacts or outputs
-* datatype and object properties
-* labels, comments, descriptions, provenance, feature names, and other metadata
-
-Your task is to create a **separate companion OWL/RDF Turtle ontology** that connects the local machine-learning ontology to the wider world of meaning.
-
-Call the output file:
+Create a separate companion Turtle file named:
 
 `<source-name>_world_links.ttl`
 
-For example, given `iris_rdf.ttl`, create:
+Its purpose is to connect concepts mentioned in the source RDF to established external IRIs, preferably Wikidata.
 
-`iris_world_links.ttl`
+Do not redesign the source ontology. Do not add a large new ontology. Keep the result simple and conservative.
 
-## Goal
+## Step 1: Read the source RDF
 
-Treat the source ontology as a local semantic model produced from machine learning. Build a second ontology that enriches it with:
+Inspect:
 
-* established domain concepts
-* taxonomy
-* meaningful relationships
-* external identifiers
-* Wikidata entities where appropriate
-* other authoritative RDF/OWL vocabularies or IRIs when they are better than Wikidata
-* semantic interpretation of ML features and outputs
+* OWL classes
+* named individuals
+* datatype properties
+* object properties
+* `rdfs:label`
+* `rdfs:comment`
+* descriptions
+* model names
+* other textual metadata
 
-The result should make it possible to load the original ontology and the world-links ontology together in Protégé and see how locally discovered statistical structure connects to broader knowledge.
+Use the text in those resources to determine what real-world concepts are being discussed.
 
-Do **not** rewrite the original ontology unless absolutely necessary. The world-links file should normally enrich resources already defined there.
+## Step 2: Extract meaningful concepts
 
----
+Look inside labels, property names, and descriptions for recognizable real-world concepts.
 
-## 1. First understand the source ontology
-
-Inspect the entire RDF/OWL file before creating anything.
-
-Determine, from IRIs, labels, comments, descriptions, property names, class hierarchy, individuals, and values:
-
-* What real-world domain is being modeled?
-* What does each important class represent?
-* What do important individuals represent?
-* Which resources are machine-learning artifacts?
-* Which resources are learned semantic classes?
-* Which properties represent model metadata?
-* Which properties represent actual domain concepts?
-* What do feature names mean in the real world?
-* What dataset, algorithm, model family, or statistical technique appears to have produced the model?
-
-Do not interpret resources only from their IRI names if labels, comments, or surrounding RDF give more information.
-
-Where the source distinguishes between:
-
-1. a **model-output individual**, such as a particular cluster produced by K-means, and
-2. a **learned OWL class**, such as a semantic category suggested by that cluster,
-
-preserve that distinction.
+Do not require the entire label to correspond to an external entity.
 
 For example:
 
-```text
-IrisKMeansCluster_1
-    instance of MachineLearnedCluster
+* `Iris` → Iris genus
+* `Flowering plant` → flowering plant
+* `Setosa-like Iris` → Iris setosa
+* `Versicolor-like Iris` → Iris versicolor
+* `Virginica-like Iris` → Iris virginica
+* `petal length centroid` → petal
+* `petal width centroid` → petal
+* `sepal length centroid` → sepal
+* `sepal width centroid` → sepal
+* `Iris KMeans model` → K-means clustering
+* a comment mentioning `dominant known species ... setosa` → Iris setosa
 
-IrisCluster_SetosaLike
-    subclass of Iris
-```
+Ignore generic words such as:
 
-These are related concepts but are **not the same thing**.
+* value
+* result
+* ID
+* count
+* centroid
+* model
+* property
 
-Do not introduce OWL punning merely to make a relationship convenient.
+unless they identify a real concept worth linking.
 
----
+## Step 3: Find the best external IRI
 
-## 2. Create a separate ontology
+For every meaningful concept found, search for the closest authoritative external IRI.
 
-Create a new `owl:Ontology` resource for the world-links file.
+Prefer:
 
-If the source file declares an ontology IRI, add:
+1. Wikidata
+2. a well-established domain ontology
+3. another authoritative linked-data source
 
-```turtle
-owl:imports <SOURCE_ONTOLOGY_IRI>
-```
+For Wikidata, verify that the QID actually represents the intended concept.
 
-The dependency should normally be:
+Never invent a QID.
 
-```text
-world-links ontology
-        |
-        | imports
-        v
-local ML ontology
-```
+If a mapping is uncertain, omit it.
 
-The original ML ontology should not have to import its enrichment ontology.
+## Step 4: Directly link source resources when appropriate
 
-This keeps the local ontology independently usable.
-
-If the source ontology has no ontology IRI, do not invent an import that cannot be resolved. Explain this briefly and keep the files independently loadable.
-
----
-
-## 3. Map local concepts to established external concepts
-
-For each important domain resource, search for an appropriate external concept.
-
-Prefer, in roughly this order:
-
-1. established domain ontologies or vocabularies
-2. Wikidata
-3. other authoritative linked-data resources
-
-Use Wikidata QIDs where they provide a clear match.
-
-Examples might include:
-
-```turtle
-world:IrisVersicolor
-    rdfs:seeAlso wd:Q164844 .
-
-world:Petal
-    rdfs:seeAlso wd:Q107412 .
-
-world:Sepal
-    rdfs:seeAlso wd:Q107216 .
-
-ex:IrisKMeansModel
-    world:usesAlgorithm wd:Q310401 .
-```
-
-Verify Wikidata QIDs before using them.
-
-Never invent QIDs.
-
-Do not guess when an external mapping is uncertain.
-
-If no sufficiently good external concept exists, keep the concept local.
-
----
-
-## 4. Prefer conservative external links
-
-For ordinary external mappings, prefer:
+When an existing RDF resource clearly represents the external concept, add:
 
 ```turtle
 rdfs:seeAlso
 ```
 
-Do **not** create a redundant custom property such as:
+Example:
 
 ```turtle
-world:wikidataEntity
+ex:Iris
+    rdfs:seeAlso wd:Q156901 .
 ```
 
-if `rdfs:seeAlso` already expresses what is needed.
+Likewise:
+
+```turtle
+ex:FloweringPlant
+    rdfs:seeAlso wd:Q25314 .
+```
+
+If a learned class is only similar to a known real-world class, still use the conservative `rdfs:seeAlso`.
+
+For example:
+
+```turtle
+ex:IrisCluster_SetosaLike
+    rdfs:seeAlso wd:Q894226 .
+```
 
 Do not use:
 
 ```turtle
 owl:sameAs
+owl:equivalentClass
 ```
 
-unless the two resources genuinely denote the same individual/resource under strong OWL identity semantics.
+for approximate or learned categories.
 
-Do not use `owl:equivalentClass` merely because two class labels appear similar.
+## Step 5: Extract concepts from properties and descriptions
 
-The world-links ontology should enrich meaning without making unjustifiably strong logical claims.
+This is important.
 
----
-
-## 5. Build useful domain structure
-
-Do more than simply attach QIDs.
-
-Construct a small, intuitive domain model around the concepts discovered in the source ontology when doing so improves meaning.
-
-For example, an Iris model might lead to:
-
-```text
-FloweringPlant
-    └── Iridaceae
-         └── Iris
-              ├── Iris setosa
-              ├── Iris versicolor
-              └── Iris virginica
-
-Flower
-    └── IrisFlower
-
-FloralPart
-    ├── Petal
-    └── Sepal
-
-Color
-    ├── Blue
-    ├── Violet
-    ├── Purple
-    ├── White
-    └── Yellow
-```
-
-Only add domain concepts that meaningfully explain or connect the ML ontology.
-
-Do not build a huge general-purpose ontology.
-
-The purpose is to expose the semantic neighborhood surrounding the ML model.
-
----
-
-## 6. Give ML features real-world meaning
-
-Pay particular attention to datatype properties and model features.
-
-A feature such as:
-
-```text
-petalLengthCentroid
-```
-
-is not merely a number. It contains semantic information about what was measured.
-
-Connect features to the concepts they measure.
+A datatype property may contain a meaningful real-world concept even though the property itself is not that thing.
 
 For example:
 
 ```turtle
 ex:petalLengthCentroid
-    world:measuresPlantPart world:Petal ;
+    rdfs:label "petal length centroid" .
+```
+
+The important world concept is:
+
+`petal`
+
+Find the external IRI for petal and include that connection.
+
+For example:
+
+```turtle
+ex:petalLengthCentroid
     rdfs:seeAlso wd:Q107412 .
 ```
 
-Likewise, identify the meaning of:
+Likewise:
 
-* feature columns
-* dimensions
-* measurements
-* units
-* categories
-* targets
-* prediction outputs
-* centroid components
-* rule conditions
+```turtle
+ex:petalWidthCentroid
+    rdfs:seeAlso wd:Q107412 .
 
-where possible.
+ex:sepalLengthCentroid
+    rdfs:seeAlso wd:Q107216 .
 
-Use annotation properties when the relationship is metadata **about a property or class**, rather than an ordinary relationship between individuals.
+ex:sepalWidthCentroid
+    rdfs:seeAlso wd:Q107216 .
+```
 
-Avoid creating an object property whose object is an OWL class if doing so would inadvertently cause that class to become a named individual through OWL 2 punning.
+The purpose of `rdfs:seeAlso` here is not to claim that the datatype property **is** a petal or sepal. It is a semantic pointer to the real-world concept contained in the feature name.
 
----
+Do the same thing with important concepts found inside comments and descriptions.
 
-## 7. Connect the ML model itself to the wider ML world
+## Step 6: Preserve the source ontology
 
-If the source ontology contains a machine-learning model individual, enrich that individual.
+Do not change existing resources from:
+
+* class to individual
+* individual to class
+* datatype property to object property
+* object property to datatype property
+
+Do not introduce OWL punning.
+
+Do not replace or rename resources from the source ontology.
+
+The companion file should mostly add external links to existing source resources.
+
+## Step 7: Keep the world file simple
+
+Do not automatically create:
+
+* complex OWL restrictions
+* taxonomic hierarchies
+* part-of structures
+* color ontologies
+* new domain models
+* equivalence axioms
+* inferred classes
+
+unless they are absolutely necessary to express a clear external connection.
+
+The main task is:
+
+```text
+source RDF text
+    ↓
+recognize concepts
+    ↓
+find authoritative external IRI
+    ↓
+add conservative semantic link
+```
+
+## Step 8: Import the source ontology
+
+If the source RDF contains an `owl:Ontology` IRI, make the world-links ontology import it.
 
 For example:
 
 ```turtle
-ex:IrisKMeansModel
-    world:trainedOnDataset wd:Q4203254 ;
-    world:usesAlgorithm wd:Q310401 .
+<https://example.org/iris/world/ontology>
+    a owl:Ontology ;
+    owl:imports <https://example.org/iris/ontology> .
 ```
 
-Dataset and algorithm relationships generally belong on the **model**, not redundantly on every output cluster.
+The world-links ontology imports the source ontology.
 
-Use proper object properties for relationships between ordinary individuals/resources where appropriate.
+The source ontology should not need to import the world-links ontology.
 
-Examples:
+## Example expected from the Iris RDF
+
+A good result would contain mappings such as:
 
 ```turtle
-world:trainedOnDataset
-    a owl:ObjectProperty .
+@prefix ex:   <https://example.org/iris/> .
+@prefix wd:   <http://www.wikidata.org/entity/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
 
-world:usesAlgorithm
-    a owl:ObjectProperty .
-```
+<https://example.org/iris/world/ontology>
+    a owl:Ontology ;
+    owl:imports <https://example.org/iris/ontology> .
 
-If an external dataset or algorithm has a recognized Wikidata item or authoritative IRI, use it.
+ex:FloweringPlant
+    rdfs:seeAlso wd:Q25314 .
 
----
-
-## 8. Connect ML outputs to domain interpretation
-
-When a model-output individual has a learned semantic interpretation, enrich the output appropriately.
-
-For example:
-
-```turtle
-ex:IrisKMeansCluster_0
-    world:dominantTaxon world:IrisVersicolor .
-```
-
-If the original ontology already says:
-
-```turtle
-ex:IrisKMeansCluster_0
-    ex:representsLearnedClass ex:IrisCluster_VersicolorLike .
-```
-
-do not duplicate or replace that relationship unnecessarily.
-
-Instead, enrich the resources around it:
-
-```text
-IrisKMeansCluster_0
-       |
-       | representsLearnedClass
-       v
-IrisCluster_VersicolorLike
-
-IrisKMeansCluster_0
-       |
-       | dominantTaxon
-       v
-IrisVersicolor
-       |
-       | rdfs:seeAlso
-       v
-Wikidata Q164844
-```
-
-Do not claim that a learned class and an established real-world taxon/category are identical unless there is strong evidence for that assertion.
-
-For a label such as `SetosaLike`, the word **Like** is important. Treat it as a learned approximation or interpretation, not automatically as logical equivalence with `Iris setosa`.
-
----
-
-## 9. Add contextual knowledge that was not part of the ML features
-
-The enrichment ontology may add useful real-world facts that the model itself did not use.
-
-For example, an Iris model based only on sepal and petal dimensions might be connected to flower colors.
-
-Clearly distinguish this **domain enrichment** from features observed by the ML model.
-
-Use descriptive annotation properties for facts such as:
-
-```turtle
-world:typicalFlowerColor
-world:flowerMarkingColor
-```
-
-Do not imply that these properties influenced the ML model unless the source actually says so.
-
----
-
-## 10. Avoid unnecessarily strong OWL restrictions
-
-Do not add logical restrictions merely because a natural-language statement sounds reasonable.
-
-For example, avoid automatically asserting:
-
-```turtle
 ex:Iris
-    rdfs:subClassOf [
-        owl:onProperty world:hasPart ;
-        owl:someValuesFrom world:IrisFlower
-    ] .
+    rdfs:seeAlso wd:Q156901 .
+
+ex:IrisCluster_SetosaLike
+    rdfs:seeAlso wd:Q894226 .
+
+ex:IrisCluster_VersicolorLike
+    rdfs:seeAlso wd:Q164844 .
+
+ex:IrisCluster_VirginicaLike
+    rdfs:seeAlso wd:Q7934335 .
+
+ex:petalLengthCentroid
+    rdfs:seeAlso wd:Q107412 .
+
+ex:petalWidthCentroid
+    rdfs:seeAlso wd:Q107412 .
+
+ex:sepalLengthCentroid
+    rdfs:seeAlso wd:Q107216 .
+
+ex:sepalWidthCentroid
+    rdfs:seeAlso wd:Q107216 .
 ```
 
-That means every Iris instance must have at least one Iris flower.
+Also look for useful concepts mentioned in model names and descriptions, such as:
 
-If the intended meaning is merely descriptive, prefer something such as:
+* K-means clustering
+* the Iris data set
+* Iris setosa
+* Iris versicolor
+* Iris virginica
 
-```turtle
-ex:Iris
-    world:characteristicFlower world:IrisFlower .
-```
+Connect them to appropriate source resources when doing so is clear and conservative.
 
-Use OWL restrictions only when the logical semantics are genuinely intended.
-
----
-
-## 11. Make the ontology readable in Protégé
-
-Add good `rdfs:label` values for local classes, individuals, and properties.
-
-For external IRIs such as Wikidata resources, optionally add local labels:
-
-```turtle
-wd:Q164844
-    rdfs:label "Iris versicolor"@en .
-```
-
-These labels are convenience annotations so that Protégé displays readable names even without importing or dereferencing Wikidata.
-
-Do not attempt to recreate Wikidata locally.
-
----
-
-## 12. Preserve modularity
-
-The final architecture should resemble:
-
-```text
-LOCAL ML ONTOLOGY
-
-MachineLearningModel
-    └── IrisKMeansModel
-
-MachineLearnedCluster
-    ├── IrisKMeansCluster_0
-    ├── IrisKMeansCluster_1
-    └── IrisKMeansCluster_2
-
-Iris
-    ├── IrisCluster_SetosaLike
-    ├── IrisCluster_VersicolorLike
-    └── IrisCluster_VirginicaLike
-
-
-WORLD-LINKS ONTOLOGY
-
-IrisKMeansModel
-    ├── trainedOnDataset → external dataset
-    └── usesAlgorithm → external algorithm
-
-IrisKMeansCluster_0
-    └── dominantTaxon → Iris versicolor → Wikidata
-
-Iris
-    └── Iridaceae
-         └── broader botanical world
-
-petalLengthCentroid
-    └── measuresPlantPart → Petal → Wikidata
-```
-
-The local ML ontology represents **what the model discovered or produced**.
-
-The world-links ontology represents **what those local things mean in the larger world**.
-
----
-
-## 13. Validate the result
+## Final checks
 
 Before returning the file:
 
-1. Parse the generated Turtle to ensure it is syntactically valid.
-2. Parse it together with the source ontology.
-3. Check for accidental class/individual punning.
-4. Check that referenced local IRIs actually exist in the source ontology.
-5. Check all Wikidata QIDs used.
-6. Check that learned classes remain classes unless the source intentionally uses punning.
-7. Check that ML cluster/model artifacts that should be individuals remain individuals.
-8. Check that no unnecessary duplicate predicates express the same external mapping.
-9. Check that the ontology import points to the source ontology IRI exactly.
-10. Check that the resulting graph should load sensibly in Protégé.
+1. Verify every external IRI.
+2. Verify every Wikidata QID.
+3. Make sure every local IRI used actually exists in the source RDF.
+4. Make sure no class became an individual.
+5. Do not use `owl:sameAs` or `owl:equivalentClass` for approximate matches.
+6. Parse the generated Turtle.
+7. Parse it together with the source RDF.
 
-If something in the source ontology appears semantically questionable, do not silently compensate for it in the world-links ontology. Call it out separately.
+Produce the complete `<source-name>_world_links.ttl` file.
 
----
-
-## Output
-
-Create the complete Turtle file:
-
-`<source-name>_world_links.ttl`
-
-Return the file for download.
-
-Also provide a short explanation of:
-
-* the major external concepts added
-* important Wikidata or other external mappings
-* how ML outputs were connected to real-world concepts
-* any mappings you deliberately did **not** make because they were uncertain
-* any modeling issues discovered in the source ontology
-
-Do not merely provide suggestions or a sample fragment. Produce the complete companion ontology.
+After the Turtle file, briefly list the concepts recognized and the external IRIs selected.
