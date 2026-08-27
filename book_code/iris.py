@@ -1,45 +1,74 @@
 # Mentioned on page 173 of the book, Semantic Webs of Meaning.
 
-from sklearn.datasets import load_iris
-from sklearn.cluster import KMeans
 from collections import Counter
+from pathlib import Path
+import pickle
 import re
+
+from sklearn.cluster import KMeans
+from sklearn.datasets import load_iris
+
 
 # ------------------------------------------------------------
 # 1. Train a simple clustering model on the Iris dataset
 # ------------------------------------------------------------
 
-model_url = "https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/book_code/iris_kmeans_model.pkl"
+model_url = (
+    "https://github.com/MapRock/SemanticWebsOfMeaning/"
+    "blob/main/book_code/iris_kmeans_model.pkl"
+)
 
 iris = load_iris()
 X = iris.data
-feature_names = iris.feature_names
 target_names = iris.target_names
 y = iris.target
 
 kmeans = KMeans(n_clusters=3, random_state=42, n_init=10)
 cluster_ids = kmeans.fit_predict(X)
 
+
 # ------------------------------------------------------------
-# 2. Give each cluster a simple human-readable name
+# 2. Give each learned Iris class a human-readable name
 #    using the dominant known Iris species in the cluster.
-#    This is still a cluster model; the species labels are used
-#    only to name the learned clusters for readability.
+#
+#    Important distinction:
+#      * IrisCluster_* is an OWL class whose members are Iris
+#        observations assigned to that learned category.
+#      * IrisKMeansCluster_* is an individual representing the
+#        actual cluster result produced by the KMeans model.
 # ------------------------------------------------------------
 
 def safe_name(text):
     return re.sub(r"[^A-Za-z0-9]+", "", text.title())
 
-cluster_names = {}
+
+cluster_class_names = {}
+cluster_dominant_species = {}
 
 for cluster_id in range(3):
     members = [i for i, c in enumerate(cluster_ids) if c == cluster_id]
     dominant_species_id = Counter(y[members]).most_common(1)[0][0]
     dominant_species = target_names[dominant_species_id]
-    cluster_names[cluster_id] = f"IrisCluster_{safe_name(dominant_species)}Like"
+
+    cluster_class_names[cluster_id] = (
+        f"IrisCluster_{safe_name(dominant_species)}Like"
+    )
+    cluster_dominant_species[cluster_id] = dominant_species
+
 
 # ------------------------------------------------------------
-# 3. Export the learned clusters as Turtle
+# 3. Persist the trained model
+# ------------------------------------------------------------
+
+output_dir = Path(__file__).parent
+
+model_file = output_dir / "iris_kmeans_model.pkl"
+with open(model_file, "wb") as f:
+    pickle.dump(kmeans, f)
+
+
+# ------------------------------------------------------------
+# 4. Export the model and learned clusters as Turtle
 # ------------------------------------------------------------
 
 ttl_lines = []
@@ -51,75 +80,151 @@ ttl_lines.append("@prefix owl:  <http://www.w3.org/2002/07/owl#> .")
 ttl_lines.append("@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .")
 ttl_lines.append("")
 
-ttl_lines.append("ex:Iris")
-ttl_lines.append("    a owl:Class ;")
-ttl_lines.append('    rdfs:label "Iris" ;')
-ttl_lines.append(f'    ex:modelFileUrl "{model_url}"^^xsd:anyURI ;')
-ttl_lines.append("    rdfs:subClassOf ex:FloweringPlant .")
+# Give the ontology a stable IRI so another ontology can import it later.
+ttl_lines.append("<https://example.org/iris/ontology>")
+ttl_lines.append("    a owl:Ontology ;")
+ttl_lines.append('    rdfs:label "Iris KMeans clustering example" ;')
+ttl_lines.append(
+    '    rdfs:comment "Core Iris ontology and machine-learning clustering results." .'
+)
 ttl_lines.append("")
 
+# Domain classes.
 ttl_lines.append("ex:FloweringPlant")
 ttl_lines.append("    a owl:Class ;")
 ttl_lines.append('    rdfs:label "Flowering plant" .')
 ttl_lines.append("")
 
+ttl_lines.append("ex:Iris")
+ttl_lines.append("    a owl:Class ;")
+ttl_lines.append('    rdfs:label "Iris" ;')
+ttl_lines.append("    rdfs:subClassOf ex:FloweringPlant .")
+ttl_lines.append("")
+
+# Machine-learning artifact classes.
+ttl_lines.append("ex:MachineLearningModel")
+ttl_lines.append("    a owl:Class ;")
+ttl_lines.append('    rdfs:label "Machine learning model" ;')
+ttl_lines.append(
+    '    rdfs:comment "A trained machine-learning model represented as a knowledge-graph resource." .'
+)
+ttl_lines.append("")
+
 ttl_lines.append("ex:MachineLearnedCluster")
 ttl_lines.append("    a owl:Class ;")
 ttl_lines.append('    rdfs:label "Machine learned cluster" ;')
-ttl_lines.append('    rdfs:comment "A class generated from a machine learning clustering model." .')
+ttl_lines.append(
+    '    rdfs:comment "A cluster result produced by a machine-learning clustering model." .'
+)
 ttl_lines.append("")
 
-# Properties used to describe the learned cluster
-for prop, label in [
-    ("modelName", "model name"),
-    ("clusterId", "cluster id"),
-    ("memberCount", "member count"),
-    ("dominantSpecies", "dominant species"),
-    ("sepalLengthCentroid", "sepal length centroid"),
-    ("sepalWidthCentroid", "sepal width centroid"),
-    ("petalLengthCentroid", "petal length centroid"),
-    ("petalWidthCentroid", "petal width centroid"),
+# Object property between ordinary individuals: cluster result -> model.
+ttl_lines.append("ex:generatedBy")
+ttl_lines.append("    a owl:ObjectProperty ;")
+ttl_lines.append('    rdfs:label "generated by" ;')
+ttl_lines.append("    rdfs:domain ex:MachineLearnedCluster ;")
+ttl_lines.append("    rdfs:range ex:MachineLearningModel .")
+ttl_lines.append("")
+
+# This intentionally remains an annotation property.  Its object is an OWL
+# class IRI; making it an ObjectProperty would force that class IRI to be
+# treated as an individual as well (OWL 2 punning), recreating the Protégé
+# problem this revision is intended to remove.
+ttl_lines.append("ex:representsLearnedClass")
+ttl_lines.append("    a owl:AnnotationProperty ;")
+ttl_lines.append('    rdfs:label "represents learned class" .')
+ttl_lines.append("")
+
+# Model metadata properties.
+for prop, label, range_iri in [
+    ("modelName", "model name", "xsd:string"),
+    ("modelFileUrl", "model file URL", "xsd:anyURI"),
 ]:
     ttl_lines.append(f"ex:{prop}")
     ttl_lines.append("    a owl:DatatypeProperty ;")
-    ttl_lines.append(f'    rdfs:label "{label}" .')
+    ttl_lines.append(f'    rdfs:label "{label}" ;')
+    ttl_lines.append("    rdfs:domain ex:MachineLearningModel ;")
+    ttl_lines.append(f"    rdfs:range {range_iri} .")
     ttl_lines.append("")
 
-for cluster_id, centroid in enumerate(kmeans.cluster_centers_):
-    class_name = cluster_names[cluster_id]
-    members = [i for i, c in enumerate(cluster_ids) if c == cluster_id]
-    dominant_species_id = Counter(y[members]).most_common(1)[0][0]
-    dominant_species = target_names[dominant_species_id]
+# Cluster-result metadata properties.
+for prop, label, range_iri in [
+    ("clusterId", "cluster id", "xsd:integer"),
+    ("memberCount", "member count", "xsd:integer"),
+    ("dominantSpecies", "dominant species", "xsd:string"),
+    ("sepalLengthCentroid", "sepal length centroid", "xsd:decimal"),
+    ("sepalWidthCentroid", "sepal width centroid", "xsd:decimal"),
+    ("petalLengthCentroid", "petal length centroid", "xsd:decimal"),
+    ("petalWidthCentroid", "petal width centroid", "xsd:decimal"),
+]:
+    ttl_lines.append(f"ex:{prop}")
+    ttl_lines.append("    a owl:DatatypeProperty ;")
+    ttl_lines.append(f'    rdfs:label "{label}" ;')
+    ttl_lines.append("    rdfs:domain ex:MachineLearnedCluster ;")
+    ttl_lines.append(f"    rdfs:range {range_iri} .")
+    ttl_lines.append("")
 
+# The trained KMeans model is an individual, not a property of the Iris class.
+ttl_lines.append("ex:IrisKMeansModel")
+ttl_lines.append("    a owl:NamedIndividual, ex:MachineLearningModel ;")
+ttl_lines.append('    rdfs:label "Iris KMeans model" ;')
+ttl_lines.append('    ex:modelName "KMeans Iris clustering model" ;')
+ttl_lines.append(f'    ex:modelFileUrl "{model_url}"^^xsd:anyURI .')
+ttl_lines.append("")
+
+# Export both:
+#   1. the learned Iris class, and
+#   2. the cluster-result individual carrying centroid/provenance metadata.
+for cluster_id, centroid in enumerate(kmeans.cluster_centers_):
+    class_name = cluster_class_names[cluster_id]
+    dominant_species = cluster_dominant_species[cluster_id]
+    members = [i for i, c in enumerate(cluster_ids) if c == cluster_id]
+
+    # Learned semantic category: this is genuinely a subclass of Iris.
     ttl_lines.append(f"ex:{class_name}")
     ttl_lines.append("    a owl:Class ;")
     ttl_lines.append("    rdfs:subClassOf ex:Iris ;")
-    ttl_lines.append("    rdfs:subClassOf ex:MachineLearnedCluster ;")
-    ttl_lines.append(f'    rdfs:label "{class_name}" ;')
-    ttl_lines.append('    ex:modelName "KMeans Iris clustering model" ;')
+    ttl_lines.append(
+        f'    rdfs:label "{safe_name(dominant_species)}-like Iris" ;'
+    )
+    ttl_lines.append(
+        f'    rdfs:comment "An Iris category corresponding to KMeans cluster {cluster_id}, '
+        f'whose dominant known species in the training data is {dominant_species}." .'
+    )
+    ttl_lines.append("")
+
+    # Concrete model output: this is an individual MachineLearnedCluster.
+    cluster_individual = f"IrisKMeansCluster_{cluster_id}"
+    ttl_lines.append(f"ex:{cluster_individual}")
+    ttl_lines.append("    a owl:NamedIndividual, ex:MachineLearnedCluster ;")
+    ttl_lines.append(
+        f'    rdfs:label "Iris KMeans cluster {cluster_id} ({safe_name(dominant_species)}-like)" ;'
+    )
+    ttl_lines.append("    ex:generatedBy ex:IrisKMeansModel ;")
+    ttl_lines.append(f"    ex:representsLearnedClass ex:{class_name} ;")
     ttl_lines.append(f'    ex:clusterId "{cluster_id}"^^xsd:integer ;')
     ttl_lines.append(f'    ex:memberCount "{len(members)}"^^xsd:integer ;')
     ttl_lines.append(f'    ex:dominantSpecies "{dominant_species}" ;')
-    ttl_lines.append(f'    ex:sepalLengthCentroid "{centroid[0]:.3f}"^^xsd:decimal ;')
-    ttl_lines.append(f'    ex:sepalWidthCentroid "{centroid[1]:.3f}"^^xsd:decimal ;')
-    ttl_lines.append(f'    ex:petalLengthCentroid "{centroid[2]:.3f}"^^xsd:decimal ;')
-    ttl_lines.append(f'    ex:petalWidthCentroid "{centroid[3]:.3f}"^^xsd:decimal .')
+    ttl_lines.append(
+        f'    ex:sepalLengthCentroid "{centroid[0]:.3f}"^^xsd:decimal ;'
+    )
+    ttl_lines.append(
+        f'    ex:sepalWidthCentroid "{centroid[1]:.3f}"^^xsd:decimal ;'
+    )
+    ttl_lines.append(
+        f'    ex:petalLengthCentroid "{centroid[2]:.3f}"^^xsd:decimal ;'
+    )
+    ttl_lines.append(
+        f'    ex:petalWidthCentroid "{centroid[3]:.3f}"^^xsd:decimal .'
+    )
     ttl_lines.append("")
+
 
 ttl = "\n".join(ttl_lines)
 
+ttl_file = output_dir / "iris_rdf.ttl"
+ttl_file.write_text(ttl, encoding="utf-8")
+
 print(ttl)
-
-with open("iris_clusters.ttl", "w", encoding="utf-8") as f:
-    f.write(ttl)
-
-import pickle
-
-from pathlib import Path
-
-output_dir = Path(__file__).parent
-
-model_file = output_dir / "iris_kmeans_model.pkl"
-
-with open(model_file, "wb") as f:
-    pickle.dump(kmeans, f)
+print(f"\nWrote: {ttl_file}")
+print(f"Wrote: {model_file}")
