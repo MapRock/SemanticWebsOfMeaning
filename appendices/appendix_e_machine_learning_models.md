@@ -104,30 +104,35 @@ The KG does not necessarily store all of these parts directly. Its role is to ca
 
 Clustering models group similar records without requiring pre-labeled outcomes. Examples include K-Means, DBSCAN, hierarchical clustering, and Gaussian mixture models.
 
-In a knowledge graph, a cluster can become a candidate class, segment, concept, or category.
+A cluster can be represented as a model-output individual, while its semantic interpretation may become a candidate class, segment, concept, or category.
 
 | Aspect     | Examples                                                                        |
 | ---------- | ------------------------------------------------------------------------------- |
 | Parameters | Number of clusters, distance metric, random seed, minimum cluster size          |
 | Inputs     | Measurements, feature vectors, embeddings, behavioral attributes                |
 | Outputs    | Cluster ID, centroid, member count, cluster label, distance from centroid       |
-| KG use     | Create learned subclasses, customer segments, product groups, behavioral groups |
+| KG use     | Represent cluster outputs and connect them to learned subclasses, customer segments, product groups, or behavioral groups. |
 
 Example:
 
 ```turtle
 ex:IrisCluster_SetosaLike
     a owl:Class ;
-    rdfs:subClassOf ex:Iris ;
+    rdfs:subClassOf ex:Iris .
+
+ex:IrisKMeansCluster_1
+    a ex:MachineLearnedCluster ;
     ex:generatedBy ex:IrisKMeansModel ;
+    ex:representsLearnedClass ex:IrisCluster_SetosaLike ;
     ex:clusterId 1 ;
     ex:memberCount 50 ;
     ex:sepalLengthCentroid 5.006 .
 ```
+IrisKMeansCluster_1 is the concrete output of the clustering model and therefore carries the centroid, member count, provenance, and other model metadata. IrisCluster_SetosaLike is the semantic class suggested by that result; its members are Iris observations, not machine-learning clusters.
 
 #### Clustering Models (SWRL examples)
 
-Clustering models discover groups without labeled outcomes. Once a clustering model has been trained, the resulting clusters can be turned into OWL classes, and membership rules can be expressed in SWRL. These rules allow new individuals to be classified into the learned clusters using the same features the model originally used.
+Clustering models discover groups without labeled outcomes. Once a clustering model has been trained, its cluster results can be represented as individuals, and the semantic categories suggested by those clusters can be represented as OWL classes. These rules allow new individuals to be classified into the learned clusters using the same features the model originally used.
 
 #### Simple centroid-style membership rule
 
@@ -180,21 +185,7 @@ Different clusters receive different combinations of thresholds, reflecting the 
 As with decision trees, the knowledge graph should preserve provenance by connecting the SWRL rule to the clustering model that produced the clusters:
 
 ```turtle
-ex:SetosaLikeMembershipRule
-    a ex:ClusterMembershipRule ;
-    ex:generatedBy ex:IrisKMeansModel ;
-    ex:expressedAsSWRL """
-        Iris(?i) 
-        ^ hasSepalLength(?i, ?sl) 
-        ^ swrlb:greaterThanOrEqual(?sl, 4.7) 
-        ^ swrlb:lessThanOrEqual(?sl, 5.3) 
-        ^ hasSepalWidth(?i, ?sw) 
-        ^ swrlb:greaterThanOrEqual(?sw, 3.2) 
-        ^ swrlb:lessThanOrEqual(?sw, 3.6) 
-        ^ hasPetalLength(?i, ?pl) 
-        ^ swrlb:lessThanOrEqual(?pl, 1.9) 
-        → IrisCluster_SetosaLike(?i)
-    """ ;
+ex:definesLearnedClass ex:IrisCluster_SetosaLike ;
     ex:definesCluster ex:IrisCluster_SetosaLike ;
     ex:usesFeature ex:SepalLength, ex:SepalWidth, ex:PetalLength ;
     ex:modelArtifactUrl "https://example.org/models/iris_kmeans.pkl"^^xsd:anyURI .
