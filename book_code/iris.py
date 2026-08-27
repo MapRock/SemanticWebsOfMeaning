@@ -222,7 +222,7 @@ for cluster_id, centroid in enumerate(kmeans.cluster_centers_):
 
 ttl = "\n".join(ttl_lines)
 
-ttl_file = output_dir / "iris_rdf.ttl"
+ttl_file = output_dir / "iris_rdf.rdf" # .ttl is better, but it says "iris_rdf.rdf" in the book--page 174.
 ttl_file.write_text(ttl, encoding="utf-8")
 
 print(ttl)
