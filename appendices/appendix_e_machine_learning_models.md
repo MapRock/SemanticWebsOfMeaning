@@ -118,25 +118,30 @@ Example:
 ```turtle
 ex:IrisCluster_SetosaLike
     a owl:Class ;
-    rdfs:subClassOf ex:Iris .
+    rdfs:subClassOf ex:Iris ;
+    rdfs:label "Setosa-like Iris" .
 
 ex:IrisKMeansCluster_1
-    a ex:MachineLearnedCluster ;
+    a owl:NamedIndividual, ex:MachineLearnedCluster ;
     ex:generatedBy ex:IrisKMeansModel ;
     ex:representsLearnedClass ex:IrisCluster_SetosaLike ;
     ex:clusterId 1 ;
     ex:memberCount 50 ;
-    ex:sepalLengthCentroid 5.006 .
+    ex:sepalLengthCentroid 5.006 ;
+    ex:sepalWidthCentroid 3.428 ;
+    ex:petalLengthCentroid 1.462 ;
+    ex:petalWidthCentroid 0.246 .
 ```
-IrisKMeansCluster_1 is the concrete output of the clustering model and therefore carries the centroid, member count, provenance, and other model metadata. IrisCluster_SetosaLike is the semantic class suggested by that result; its members are Iris observations, not machine-learning clusters.
+IrisCluster_SetosaLike represents the learned category and is therefore an OWL class. IrisKMeansCluster_1 represents the concrete cluster produced by this particular trained model and is therefore an individual. The centroid, member count, cluster ID, and provenance describe that particular model result.
+
 
 #### Clustering Models (SWRL examples)
 
-Clustering models discover groups without labeled outcomes. Once a clustering model has been trained, its cluster results can be represented as individuals, and the semantic categories suggested by those clusters can be represented as OWL classes. These rules allow new individuals to be classified into the learned clusters using the same features the model originally used.
+Clustering models discover groups without labeled outcomes. Once a model has been trained, the resulting clusters can be represented as OWL classes. SWRL can then be used in two different ways: to express human-readable rules that approximate regions associated with the learned clusters, or, where the model permits it, to reproduce the model's actual classification logic. The first examples below illustrate the approximation approach. The final example shows how the nearest-centroid logic of K-Means itself can be represented.
 
-#### Simple centroid-style membership rule
+#### Simple Feature-Range Approximation
 
-A basic way to express cluster membership is to test whether an individual’s feature values fall near the learned centroid:
+A simple way to summarize a learned cluster is to construct an interpretable rule around characteristic feature ranges:
 
 ```swrl
 Iris(?i) 
@@ -146,11 +151,11 @@ Iris(?i)
 → IrisCluster_SetosaLike(?i)
 ```
 
-This rule states that any Iris whose sepal length falls in a narrow band around the cluster centroid belongs to the `IrisCluster_SetosaLike` class.
+This rule treats an Iris whose sepal length falls in this range as Setosa-like. It is a human-readable approximation of the learned cluster, not the actual K-Means assignment algorithm.
 
-#### Multi-feature cluster membership rule
+#### Multi-Feature Cluster Approximation
 
-Real clusters are defined by several dimensions at once. Here is a more realistic membership rule that combines multiple features:
+A richer approximation can use several dimensions of the learned cluster at once:
 
 ```swrl
 Iris(?i) 
@@ -165,9 +170,9 @@ Iris(?i)
 → IrisCluster_SetosaLike(?i)
 ```
 
-This captures the typical multi-dimensional region that a K-Means or similar algorithm would associate with the Setosa-like cluster.
+This produces a more informative semantic approximation of the Setosa-like cluster, but the rectangular feature ranges still do not reproduce K-Means's actual nearest-centroid decision boundary.
 
-#### Alternative cluster with different feature ranges
+#### Alternative Approximation for Another Cluster
 
 ```swrl
 Iris(?i) 
@@ -178,19 +183,73 @@ Iris(?i)
 → IrisCluster_VirginicaLike(?i)
 ```
 
-Different clusters receive different combinations of thresholds, reflecting the regions discovered by the original clustering model.
-
-#### Linking the rule back to the model artifact
+Different learned clusters can be summarized with different combinations of feature thresholds. Such rules are useful because they are simple and interpretable, but they should be understood as model-derived approximations rather than literal K-Means decision rules.
+#### Linking the Rule Back to the Model Artifact
 
 As with decision trees, the knowledge graph should preserve provenance by connecting the SWRL rule to the clustering model that produced the clusters:
 
 ```turtle
-ex:definesLearnedClass ex:IrisCluster_SetosaLike ;
-    ex:definesCluster ex:IrisCluster_SetosaLike ;
+ex:SetosaLikeApproximationRule
+    a ex:ClusterMembershipRule ;
+    ex:derivedFromModel ex:IrisKMeansModel ;
+    ex:expressedAsSWRL """
+        Iris(?i)
+        ^ hasSepalLength(?i, ?sl)
+        ^ swrlb:greaterThanOrEqual(?sl, 4.7)
+        ^ swrlb:lessThanOrEqual(?sl, 5.3)
+        ^ hasSepalWidth(?i, ?sw)
+        ^ swrlb:greaterThanOrEqual(?sw, 3.2)
+        ^ swrlb:lessThanOrEqual(?sw, 3.6)
+        ^ hasPetalLength(?i, ?pl)
+        ^ swrlb:lessThanOrEqual(?pl, 1.9)
+        → IrisCluster_SetosaLike(?i)
+    """ ;
+    ex:approximatesCluster ex:IrisCluster_SetosaLike ;
     ex:usesFeature ex:SepalLength, ex:SepalWidth, ex:PetalLength ;
-    ex:modelArtifactUrl "https://example.org/models/iris_kmeans.pkl"^^xsd:anyURI .
+    ex:modelArtifactUrl
+        "https://example.org/models/iris_kmeans.pkl"^^xsd:anyURI .
 ```
+#### Reproducing K-Means Membership with SWRL
 
+The preceding rules deliberately simplify the learned clusters into readable feature ranges. K-Means itself uses a different rule: a new observation is assigned to the cluster whose centroid is closest in the model's feature space. Because the Iris model stores the four learned centroid coordinates, this calculation can also be represented explicitly in SWRL.
+
+```turtle
+Iris(?i)
+^ hasSepalLength(?i, ?sl)
+^ hasSepalWidth(?i, ?sw)
+^ hasPetalLength(?i, ?pl)
+^ hasPetalWidth(?i, ?pw)
+
+^ swrlb:subtract(?d1, ?sl, 5.006)
+^ swrlb:multiply(?d1sq, ?d1, ?d1)
+
+^ swrlb:subtract(?d2, ?sw, 3.428)
+^ swrlb:multiply(?d2sq, ?d2, ?d2)
+
+^ swrlb:subtract(?d3, ?pl, 1.462)
+^ swrlb:multiply(?d3sq, ?d3, ?d3)
+
+^ swrlb:subtract(?d4, ?pw, 0.246)
+^ swrlb:multiply(?d4sq, ?d4, ?d4)
+
+^ swrlb:add(?s1, ?d1sq, ?d2sq)
+^ swrlb:add(?s2, ?d3sq, ?d4sq)
+^ swrlb:add(?distance, ?s1, ?s2)
+
+→ distanceToSetosaCentroid(?i, ?distance)
+```
+Equivalent rules calculate the distances to the Versicolor-like and Virginica-like centroids. The square root is unnecessary because comparing squared Euclidean distances produces the same ordering.
+```turtle
+Iris(?i)
+^ distanceToSetosaCentroid(?i, ?ds)
+^ distanceToVersicolorCentroid(?i, ?dv)
+^ distanceToVirginicaCentroid(?i, ?dvi)
+^ swrlb:lessThan(?ds, ?dv)
+^ swrlb:lessThan(?ds, ?dvi)
+
+→ IrisCluster_SetosaLike(?i)
+```
+Similar comparison rules infer the Versicolor-like and Virginica-like classes. Unlike the preceding feature-range examples, these rules express the nearest-centroid logic used by the trained K-Means model itself. The complete executable version can be retained with the source code rather than reproduced in full here.
 
 ### Decision Trees and Rule Models
 
