@@ -1,0 +1,6 @@
+ex:TestIris
+    a ex:Iris ;
+    ex:hasSepalLength 6.1 ;
+    ex:hasSepalWidth 2.8 ;
+    ex:hasPetalLength 4.7 ;
+    ex:hasPetalWidth 1.2 .
