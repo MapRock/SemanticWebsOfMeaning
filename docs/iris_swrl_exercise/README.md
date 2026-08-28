@@ -15,53 +15,7 @@ Those are the actual centroids produced by your KMeans(n_clusters=3, random_stat
 Create iris-fuseki.ttl in the same directory:
 
 ```turtle
-PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX ja:     <http://jena.hpl.hp.com/2005/11/Assembler#>
-PREFIX fuseki: <http://jena.apache.org/fuseki#>
 
-<#service>
-    rdf:type fuseki:Service ;
-    fuseki:name "iris" ;
-
-    fuseki:endpoint [
-        fuseki:operation fuseki:query ;
-        fuseki:name "sparql"
-    ] ;
-
-    fuseki:dataset <#dataset> .
-
-
-<#dataset>
-    rdf:type ja:RDFDataset ;
-    ja:defaultGraph <#infGraph> .
-
-
-<#infGraph>
-    rdf:type ja:InfModel ;
-
-    ja:baseModel <#baseModel> ;
-
-    ja:reasoner [
-        ja:reasonerURL
-            <http://jena.hpl.hp.com/2003/GenericRuleReasoner> ;
-
-        ja:rulesFrom
-            <file:iris-kmeans.rules>
-    ] .
-
-
-<#baseModel>
-    rdf:type ja:MemoryModel ;
-
-    ja:content [
-        ja:externalContent <file:iris_rdf.rdf>
-    ] ;
-
-    ja:content [
-        ja:externalContent <file:iris-test.ttl>
-    ] .
-```
 
 This is the standard Jena assembler pattern: an InfModel wraps a base model and uses a GenericRuleReasoner whose rules are loaded with ja:rulesFrom.
 
