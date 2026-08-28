@@ -1,25 +1,25 @@
 # SWRL Exercise with iris_rdf.rdf
 
-Put your existing iris_rdf.rdf into the <i>apache-jena-fuseki-6.x.x</i> directory with these three additional files. 
+Copy these files into the <i>apache-jena-fuseki-6.x.x</i> directory with these three additional files. See [install_jena_fuseki.md](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/install_jena_fuseki.md).
 
-iris-test.ttl
+| File                | Brief description                                                                                                                                                                              |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`iris_rdf.rdf`](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/book_code/iris_rdf.rdf)      | The semantic description of the trained Iris K-Means model. It defines the model, learned cluster classes, cluster-result individuals, centroids, provenance, and related ontology terms.      |
+| `iris-test.ttl`     | A small test input containing a new Iris individual with sepal and petal measurements to classify.                                                                                             |
+| `iris-kmeans.rules` | Jena rules that reproduce the K-Means nearest-centroid logic by calculating the distance from the test Iris to each learned centroid and inferring the closest cluster class.                  |
+| `iris-fuseki.ttl`   | The Fuseki/Jena assembler configuration that loads the RDF model and test data, attaches the Jena rule reasoner, and exposes the resulting inferred graph through the `/iris` SPARQL endpoint. |
 
-Those values should classify as Versicolor-like.
 
-Next save this as iris-kmeans.rules:
-
-
-
-Those are the actual centroids produced by your KMeans(n_clusters=3, random_state=42, n_init=10) Iris model, rather than the approximate threshold rules.
-
-Create iris-fuseki.ttl in the same directory:
-
-```turtle
 
 
 This is the standard Jena assembler pattern: an InfModel wraps a base model and uses a GenericRuleReasoner whose rules are loaded with ja:rulesFrom.
 
-From that directory, start Fuseki:
+Using PowerShell, navigate to that directory:
+```text
+cd C:\temp\apache-jena-fuseki-6.1.0
+```
+
+Start Fuseki:
 
 ```bat
 fuseki-server.bat --conf=iris-fuseki.ttl
