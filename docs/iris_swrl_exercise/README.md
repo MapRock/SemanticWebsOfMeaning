@@ -7,9 +7,9 @@ Copy these files into the <i>apache-jena-fuseki-6.x.x</i> directory with these t
 | File                | Brief description                                                                                                                                                                              |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [`iris_rdf.rdf`](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/book_code/iris_rdf.rdf)      | The semantic description of the trained Iris K-Means model. It defines the model, learned cluster classes, cluster-result individuals, centroids, provenance, and related ontology terms.      |
-| `iris-test.ttl`     | A small test input containing a new Iris individual with sepal and petal measurements to classify.                                                                                             |
-| `iris-kmeans.rules` | Jena rules that reproduce the K-Means nearest-centroid logic by calculating the distance from the test Iris to each learned centroid and inferring the closest cluster class.                  |
-| `iris-fuseki.ttl`   | The Fuseki/Jena assembler configuration that loads the RDF model and test data, attaches the Jena rule reasoner, and exposes the resulting inferred graph through the `/iris` SPARQL endpoint. |
+| [`iris-test.ttl`](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/docs/iris_swrl_exercise/iris-test.ttl)     | A small test input containing a new Iris individual with sepal and petal measurements to classify.                                                                                             |
+| [`iris-kmeans.rules`](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/docs/iris_swrl_exercise/iris-kmeans.rules) | Jena rules that reproduce the K-Means nearest-centroid logic by calculating the distance from the test Iris to each learned centroid and inferring the closest cluster class.                  |
+| [`iris-fuseki.ttl`](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/docs/iris_swrl_exercise/iris-fuseki.ttl)   | The Fuseki/Jena assembler configuration that loads the RDF model and test data, attaches the Jena rule reasoner, and exposes the resulting inferred graph through the `/iris` SPARQL endpoint. |
 
 
 
