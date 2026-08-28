@@ -1,0 +1,152 @@
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix ex:  <https://example.org/iris/>.
+
+# ---------------------------------------------------------
+# K-Means cluster 0: Versicolor-like
+# centroid = 5.9016129, 2.7483871, 4.39354839, 1.43387097
+# ---------------------------------------------------------
+
+[versicolorDistance:
+    (?i rdf:type ex:Iris)
+    (?i ex:hasSepalLength ?sl)
+    (?i ex:hasSepalWidth ?sw)
+    (?i ex:hasPetalLength ?pl)
+    (?i ex:hasPetalWidth ?pw)
+
+    difference(?sl, 5.9016129, ?d1)
+    product(?d1, ?d1, ?d1sq)
+
+    difference(?sw, 2.7483871, ?d2)
+    product(?d2, ?d2, ?d2sq)
+
+    difference(?pl, 4.39354839, ?d3)
+    product(?d3, ?d3, ?d3sq)
+
+    difference(?pw, 1.43387097, ?d4)
+    product(?d4, ?d4, ?d4sq)
+
+    sum(?d1sq, ?d2sq, ?s1)
+    sum(?d3sq, ?d4sq, ?s2)
+    sum(?s1, ?s2, ?distance)
+
+ ->
+    (?i ex:distanceToVersicolorCentroid ?distance)
+]
+
+
+# ---------------------------------------------------------
+# K-Means cluster 1: Setosa-like
+# centroid = 5.006, 3.428, 1.462, 0.246
+# ---------------------------------------------------------
+
+[setosaDistance:
+    (?i rdf:type ex:Iris)
+    (?i ex:hasSepalLength ?sl)
+    (?i ex:hasSepalWidth ?sw)
+    (?i ex:hasPetalLength ?pl)
+    (?i ex:hasPetalWidth ?pw)
+
+    difference(?sl, 5.006, ?d1)
+    product(?d1, ?d1, ?d1sq)
+
+    difference(?sw, 3.428, ?d2)
+    product(?d2, ?d2, ?d2sq)
+
+    difference(?pl, 1.462, ?d3)
+    product(?d3, ?d3, ?d3sq)
+
+    difference(?pw, 0.246, ?d4)
+    product(?d4, ?d4, ?d4sq)
+
+    sum(?d1sq, ?d2sq, ?s1)
+    sum(?d3sq, ?d4sq, ?s2)
+    sum(?s1, ?s2, ?distance)
+
+ ->
+    (?i ex:distanceToSetosaCentroid ?distance)
+]
+
+
+# ---------------------------------------------------------
+# K-Means cluster 2: Virginica-like
+# centroid = 6.85, 3.07368421, 5.74210526, 2.07105263
+# ---------------------------------------------------------
+
+[virginicaDistance:
+    (?i rdf:type ex:Iris)
+    (?i ex:hasSepalLength ?sl)
+    (?i ex:hasSepalWidth ?sw)
+    (?i ex:hasPetalLength ?pl)
+    (?i ex:hasPetalWidth ?pw)
+
+    difference(?sl, 6.85, ?d1)
+    product(?d1, ?d1, ?d1sq)
+
+    difference(?sw, 3.07368421, ?d2)
+    product(?d2, ?d2, ?d2sq)
+
+    difference(?pl, 5.74210526, ?d3)
+    product(?d3, ?d3, ?d3sq)
+
+    difference(?pw, 2.07105263, ?d4)
+    product(?d4, ?d4, ?d4sq)
+
+    sum(?d1sq, ?d2sq, ?s1)
+    sum(?d3sq, ?d4sq, ?s2)
+    sum(?s1, ?s2, ?distance)
+
+ ->
+    (?i ex:distanceToVirginicaCentroid ?distance)
+]
+
+
+# ---------------------------------------------------------
+# Pick nearest centroid.
+#
+# Cluster numbering here follows the sklearn model:
+#   0 = Versicolor-like
+#   1 = Setosa-like
+#   2 = Virginica-like
+#
+# The asymmetric <= / < also gives deterministic
+# tie-breaking in cluster-number order.
+# ---------------------------------------------------------
+
+[classifyVersicolor:
+    (?i ex:distanceToVersicolorCentroid ?dv)
+    (?i ex:distanceToSetosaCentroid ?ds)
+    (?i ex:distanceToVirginicaCentroid ?dvi)
+
+    le(?dv, ?ds)
+    le(?dv, ?dvi)
+
+ ->
+    (?i rdf:type ex:IrisCluster_VersicolorLike)
+]
+
+
+[classifySetosa:
+    (?i ex:distanceToVersicolorCentroid ?dv)
+    (?i ex:distanceToSetosaCentroid ?ds)
+    (?i ex:distanceToVirginicaCentroid ?dvi)
+
+    lessThan(?ds, ?dv)
+    le(?ds, ?dvi)
+
+ ->
+    (?i rdf:type ex:IrisCluster_SetosaLike)
+]
+
+
+[classifyVirginica:
+    (?i ex:distanceToVersicolorCentroid ?dv)
+    (?i ex:distanceToSetosaCentroid ?ds)
+    (?i ex:distanceToVirginicaCentroid ?dvi)
+
+    lessThan(?dvi, ?dv)
+    lessThan(?dvi, ?ds)
+
+ ->
+    (?i rdf:type ex:IrisCluster_VirginicaLike)
+]
