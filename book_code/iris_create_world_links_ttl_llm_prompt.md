@@ -199,74 +199,46 @@ find authoritative external IRI
 add conservative semantic link
 ```
 
-## Step 8: Import the source ontology
+## Step 8: Relate the companion file to the source ontology safely
 
-If the source RDF contains an `owl:Ontology` IRI, make the world-links ontology import it.
+If the source RDF contains an `owl:Ontology` IRI, use that IRI to identify the source ontology, but do not automatically add an `owl:imports` statement.
+
+The source ontology IRI may be an identifier rather than a dereferenceable URL. Adding `owl:imports` to such an IRI can cause ontology tools such as Protégé to attempt to retrieve a resource that does not exist at that web location.
+
+By default, declare the companion ontology without importing the source ontology.
 
 For example:
 
+
+
 ```turtle
 <https://example.org/cat/world/ontology>
     a owl:Ontology ;
-    owl:imports <https://example.org/cat/ontology> .
+    rdfs:label "Cat model world links" .
 ```
 
-The world-links ontology imports the source ontology.
+Assume that the source RDF and the companion world-links file will be loaded together by the application, RDF store, or ontology tool.
 
-The source ontology should not need to import the world-links ontology.
-
-## Example expected from the Cat RDF
-
-A good result would contain mappings such as:
+Only add:
 
 ```turtle
-@prefix ex:   <https://example.org/cat/> .
-@prefix wd:   <http://www.wikidata.org/entity/> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix owl:  <http://www.w3.org/2002/07/owl#> .
-
-<https://example.org/cat/world/ontology>
-    a owl:Ontology ;
-    owl:imports <https://example.org/cat/ontology> .
-
-ex:Mammal
-    rdfs:seeAlso wd:Q7377 .
-
-ex:Cat
-    rdfs:seeAlso wd:Q146 .
-
-ex:CatCluster_TabbyLike
-    rdfs:seeAlso wd:Q1474329 .
-
-ex:CatCluster_SiameseLike
-    rdfs:seeAlso wd:Q42604 .
-
-ex:CatCluster_PersianLike
-    rdfs:seeAlso wd:Q42610 .
-
-ex:earLengthCentroid
-    rdfs:seeAlso wd:Q7362 .
-
-ex:earWidthCentroid
-    rdfs:seeAlso wd:Q7362 .
-
-ex:tailLengthCentroid
-    rdfs:seeAlso wd:Q60960 .
-
-ex:tailWidthCentroid
-    rdfs:seeAlso wd:Q60960 .
+owl:imports <source-ontology-IRI>
 ```
 
-Also look for useful concepts mentioned in model names and descriptions, such as:
+when at least one of the following is true:
 
-* K-means clustering
-* domestic cat
-* tabby cat
-* Siamese cat
-* Persian cat
-* mammal
+1. the source ontology IRI is known to be dereferenceable and returns the source ontology;
+2. the target ontology environment explicitly provides an IRI mapping for that ontology;
+3. the user specifically requests an `owl:imports` relationship.
 
-Connect them to appropriate source resources when doing so is clear and conservative.
+Do not infer that an ontology IRI is dereferenceable merely because it begins with `http://` or `https://`.
+
+In particular, IRIs under domains such as `example.org` should normally be treated as identifiers, not as retrievable ontology locations.
+
+
+
+
+
 
 ## Final checks
 
@@ -279,6 +251,10 @@ Before returning the file:
 5. Do not use `owl:sameAs` or `owl:equivalentClass` for approximate matches.
 6. Parse the generated Turtle.
 7. Parse it together with the source RDF.
+8. Do not add `owl:imports` unless the source ontology is known to be resolvable
+   or an ontology IRI mapping is explicitly available.
+9. If `owl:imports` is omitted, make sure the companion file remains valid
+   when loaded alongside the source RDF.
 
 Produce the complete `<source-name>_world_links.ttl` file.
 
