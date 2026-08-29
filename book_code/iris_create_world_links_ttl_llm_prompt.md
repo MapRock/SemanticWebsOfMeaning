@@ -2,7 +2,7 @@ You are given an RDF/OWL Turtle file generated from a machine-learning model.
 
 Create a separate companion Turtle file named:
 
-`<source-name>_world_links.ttl`
+`<source-name>_rdf_world_links.ttl`
 
 Its purpose is to connect concepts mentioned in the source RDF to established external IRIs, preferably Wikidata.
 
