@@ -1,6 +1,3 @@
-Yes. I kept the structure and behavior of the prompt essentially unchanged and replaced the Iris-specific clues with a **cat-recognition / cat-feature clustering** example. I also checked the Wikidata IDs rather than carrying them over by analogy.
-
-````text
 You are given an RDF/OWL Turtle file generated from a machine-learning model.
 
 Create a separate companion Turtle file named:
@@ -236,10 +233,6 @@ Do not infer that an ontology IRI is dereferenceable merely because it begins wi
 In particular, IRIs under domains such as `example.org` should normally be treated as identifiers, not as retrievable ontology locations.
 
 
-
-
-
-
 ## Final checks
 
 Before returning the file:
@@ -256,26 +249,5 @@ Before returning the file:
 9. If `owl:imports` is omitted, make sure the companion file remains valid
    when loaded alongside the source RDF.
 
-Produce the complete `<source-name>_world_links.ttl` file.
+Produce the complete `<source-name>_rdf_world_links.ttl` file.
 
-After the Turtle file, briefly list the concepts recognized and the external IRIs selected.
-
-```
-
-I specifically verified the QIDs used in the rewritten prompt:
-
-| Concept | Verified Wikidata item |
-|---|---|
-| domestic cat | `Q146` :contentReference[oaicite:0]{index=0} |
-| mammal | `Q7377` :contentReference[oaicite:1]{index=1} |
-| tabby cat | `Q1474329` :contentReference[oaicite:2]{index=2} |
-| Siamese cat | `Q42604` :contentReference[oaicite:3]{index=3} |
-| Persian cat | `Q42610` :contentReference[oaicite:4]{index=4} |
-| ear | `Q7362` :contentReference[oaicite:5]{index=5} |
-| tail | `Q60960` :contentReference[oaicite:6]{index=6} |
-| K-means clustering | `Q310401` :contentReference[oaicite:7]{index=7} |
-
-One deliberate choice: I used **`Q146` for domestic cat**, not `Q25265`. `Q25265` is **Felidae**, the entire cat family, whereas `Q146` is specifically the domestic cat. :contentReference[oaicite:8]{index=8}
-
-I also deliberately retained your strongest part of the original prompt: the instruction to extract a concept **from within a property name** without pretending that the property itself *is* that concept. `earLengthCentroid → ear` and `tailLengthCentroid → tail` exercise exactly the same behavior as your petal/sepal examples without giving the LLM any Iris clues.
-```
