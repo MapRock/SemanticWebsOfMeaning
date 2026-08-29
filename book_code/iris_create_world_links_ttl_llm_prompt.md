@@ -1,3 +1,6 @@
+Yes. I kept the structure and behavior of the prompt essentially unchanged and replaced the Iris-specific clues with a **cat-recognition / cat-feature clustering** example. I also checked the Wikidata IDs rather than carrying them over by analogy.
+
+````text
 You are given an RDF/OWL Turtle file generated from a machine-learning model.
 
 Create a separate companion Turtle file named:
@@ -32,17 +35,17 @@ Do not require the entire label to correspond to an external entity.
 
 For example:
 
-* `Iris` → Iris genus
-* `Flowering plant` → flowering plant
-* `Setosa-like Iris` → Iris setosa
-* `Versicolor-like Iris` → Iris versicolor
-* `Virginica-like Iris` → Iris virginica
-* `petal length centroid` → petal
-* `petal width centroid` → petal
-* `sepal length centroid` → sepal
-* `sepal width centroid` → sepal
-* `Iris KMeans model` → K-means clustering
-* a comment mentioning `dominant known species ... setosa` → Iris setosa
+* `Cat` → domestic cat
+* `Mammal` → mammal
+* `Tabby-like cat` → tabby cat
+* `Siamese-like cat` → Siamese cat
+* `Persian-like cat` → Persian cat
+* `ear length centroid` → ear
+* `ear width centroid` → ear
+* `tail length centroid` → tail
+* `tail width centroid` → tail
+* `Cat KMeans model` → K-means clustering
+* a comment mentioning `dominant known breed ... Siamese` → Siamese cat
 
 Ignore generic words such as:
 
@@ -78,20 +81,20 @@ When an existing RDF resource clearly represents the external concept, add:
 
 ```turtle
 rdfs:seeAlso
-```
+````
 
 Example:
 
 ```turtle
-ex:Iris
-    rdfs:seeAlso wd:Q156901 .
+ex:Cat
+    rdfs:seeAlso wd:Q146 .
 ```
 
 Likewise:
 
 ```turtle
-ex:FloweringPlant
-    rdfs:seeAlso wd:Q25314 .
+ex:Mammal
+    rdfs:seeAlso wd:Q7377 .
 ```
 
 If a learned class is only similar to a known real-world class, still use the conservative `rdfs:seeAlso`.
@@ -99,8 +102,8 @@ If a learned class is only similar to a known real-world class, still use the co
 For example:
 
 ```turtle
-ex:IrisCluster_SetosaLike
-    rdfs:seeAlso wd:Q894226 .
+ex:CatCluster_TabbyLike
+    rdfs:seeAlso wd:Q1474329 .
 ```
 
 Do not use:
@@ -121,37 +124,37 @@ A datatype property may contain a meaningful real-world concept even though the 
 For example:
 
 ```turtle
-ex:petalLengthCentroid
-    rdfs:label "petal length centroid" .
+ex:earLengthCentroid
+    rdfs:label "ear length centroid" .
 ```
 
 The important world concept is:
 
-`petal`
+`ear`
 
-Find the external IRI for petal and include that connection.
+Find the external IRI for ear and include that connection.
 
 For example:
 
 ```turtle
-ex:petalLengthCentroid
-    rdfs:seeAlso wd:Q107412 .
+ex:earLengthCentroid
+    rdfs:seeAlso wd:Q7362 .
 ```
 
 Likewise:
 
 ```turtle
-ex:petalWidthCentroid
-    rdfs:seeAlso wd:Q107412 .
+ex:earWidthCentroid
+    rdfs:seeAlso wd:Q7362 .
 
-ex:sepalLengthCentroid
-    rdfs:seeAlso wd:Q107216 .
+ex:tailLengthCentroid
+    rdfs:seeAlso wd:Q60960 .
 
-ex:sepalWidthCentroid
-    rdfs:seeAlso wd:Q107216 .
+ex:tailWidthCentroid
+    rdfs:seeAlso wd:Q60960 .
 ```
 
-The purpose of `rdfs:seeAlso` here is not to claim that the datatype property **is** a petal or sepal. It is a semantic pointer to the real-world concept contained in the feature name.
+The purpose of `rdfs:seeAlso` here is not to claim that the datatype property **is** an ear or tail. It is a semantic pointer to the real-world concept contained in the feature name.
 
 Do the same thing with important concepts found inside comments and descriptions.
 
@@ -203,64 +206,65 @@ If the source RDF contains an `owl:Ontology` IRI, make the world-links ontology 
 For example:
 
 ```turtle
-<https://example.org/iris/world/ontology>
+<https://example.org/cat/world/ontology>
     a owl:Ontology ;
-    owl:imports <https://example.org/iris/ontology> .
+    owl:imports <https://example.org/cat/ontology> .
 ```
 
 The world-links ontology imports the source ontology.
 
 The source ontology should not need to import the world-links ontology.
 
-## Example expected from the Iris RDF
+## Example expected from the Cat RDF
 
 A good result would contain mappings such as:
 
 ```turtle
-@prefix ex:   <https://example.org/iris/> .
+@prefix ex:   <https://example.org/cat/> .
 @prefix wd:   <http://www.wikidata.org/entity/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
 
-<https://example.org/iris/world/ontology>
+<https://example.org/cat/world/ontology>
     a owl:Ontology ;
-    owl:imports <https://example.org/iris/ontology> .
+    owl:imports <https://example.org/cat/ontology> .
 
-ex:FloweringPlant
-    rdfs:seeAlso wd:Q25314 .
+ex:Mammal
+    rdfs:seeAlso wd:Q7377 .
 
-ex:Iris
-    rdfs:seeAlso wd:Q156901 .
+ex:Cat
+    rdfs:seeAlso wd:Q146 .
 
-ex:IrisCluster_SetosaLike
-    rdfs:seeAlso wd:Q894226 .
+ex:CatCluster_TabbyLike
+    rdfs:seeAlso wd:Q1474329 .
 
-ex:IrisCluster_VersicolorLike
-    rdfs:seeAlso wd:Q164844 .
+ex:CatCluster_SiameseLike
+    rdfs:seeAlso wd:Q42604 .
 
-ex:IrisCluster_VirginicaLike
-    rdfs:seeAlso wd:Q7934335 .
+ex:CatCluster_PersianLike
+    rdfs:seeAlso wd:Q42610 .
 
-ex:petalLengthCentroid
-    rdfs:seeAlso wd:Q107412 .
+ex:earLengthCentroid
+    rdfs:seeAlso wd:Q7362 .
 
-ex:petalWidthCentroid
-    rdfs:seeAlso wd:Q107412 .
+ex:earWidthCentroid
+    rdfs:seeAlso wd:Q7362 .
 
-ex:sepalLengthCentroid
-    rdfs:seeAlso wd:Q107216 .
+ex:tailLengthCentroid
+    rdfs:seeAlso wd:Q60960 .
 
-ex:sepalWidthCentroid
-    rdfs:seeAlso wd:Q107216 .
+ex:tailWidthCentroid
+    rdfs:seeAlso wd:Q60960 .
 ```
 
 Also look for useful concepts mentioned in model names and descriptions, such as:
 
 * K-means clustering
-* the Iris data set
-* Iris setosa
-* Iris versicolor
-* Iris virginica
+* domestic cat
+* tabby cat
+* Siamese cat
+* Persian cat
+* mammal
 
 Connect them to appropriate source resources when doing so is clear and conservative.
 
@@ -279,3 +283,23 @@ Before returning the file:
 Produce the complete `<source-name>_world_links.ttl` file.
 
 After the Turtle file, briefly list the concepts recognized and the external IRIs selected.
+
+```
+
+I specifically verified the QIDs used in the rewritten prompt:
+
+| Concept | Verified Wikidata item |
+|---|---|
+| domestic cat | `Q146` :contentReference[oaicite:0]{index=0} |
+| mammal | `Q7377` :contentReference[oaicite:1]{index=1} |
+| tabby cat | `Q1474329` :contentReference[oaicite:2]{index=2} |
+| Siamese cat | `Q42604` :contentReference[oaicite:3]{index=3} |
+| Persian cat | `Q42610` :contentReference[oaicite:4]{index=4} |
+| ear | `Q7362` :contentReference[oaicite:5]{index=5} |
+| tail | `Q60960` :contentReference[oaicite:6]{index=6} |
+| K-means clustering | `Q310401` :contentReference[oaicite:7]{index=7} |
+
+One deliberate choice: I used **`Q146` for domestic cat**, not `Q25265`. `Q25265` is **Felidae**, the entire cat family, whereas `Q146` is specifically the domestic cat. :contentReference[oaicite:8]{index=8}
+
+I also deliberately retained your strongest part of the original prompt: the instruction to extract a concept **from within a property name** without pretending that the property itself *is* that concept. `earLengthCentroid → ear` and `tailLengthCentroid → tail` exercise exactly the same behavior as your petal/sepal examples without giving the LLM any Iris clues.
+```
