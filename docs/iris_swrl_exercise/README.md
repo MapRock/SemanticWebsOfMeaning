@@ -39,9 +39,10 @@ Run this SPARQL:
 ```sparql
 PREFIX ex: <https://example.org/iris/>
 
-SELECT ?cluster
+SELECT ?iris ?cluster
 WHERE {
-    ex:TestIris a ?cluster .
+    ?iris a ex:Iris ;
+          a ?cluster .
 
     VALUES ?cluster {
         ex:IrisCluster_SetosaLike
@@ -49,6 +50,7 @@ WHERE {
         ex:IrisCluster_VirginicaLike
     }
 }
+ORDER BY ?iris
 ```
 
 You should get:
@@ -62,13 +64,14 @@ For debugging, this query is also useful:
 ```sparql
 PREFIX ex: <https://example.org/iris/>
 
-SELECT ?setosa ?versicolor ?virginica
+SELECT ?iris ?setosa ?versicolor ?virginica
 WHERE {
-    ex:TestIris
+    ?iris
         ex:distanceToSetosaCentroid ?setosa ;
         ex:distanceToVersicolorCentroid ?versicolor ;
         ex:distanceToVirginicaCentroid ?virginica .
 }
+ORDER BY ?iris
 ```
 
 With the test values above, you should see squared distances approximately:
