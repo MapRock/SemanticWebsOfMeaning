@@ -1,5 +1,6 @@
 @prefix ex: <https://example.org/iris/> .
 
+# TestIris_a is an Iris.
 ex:TestIris_a
     a ex:Iris ;
     ex:hasSepalLength 5.1 ;
