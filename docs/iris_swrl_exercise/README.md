@@ -55,9 +55,8 @@ ORDER BY ?iris
 
 You should get:
 
-```text
-IrisCluster_VersicolorLike
-```
+![Jena rule test](../images/iris_jena_rule_test.png)
+
 
 For debugging, this query is also useful:
 
@@ -75,10 +74,7 @@ ORDER BY ?iris
 ```
 
 With the test values above, you should see squared distances approximately:
-```text
-Setosa       12.986
-Versicolor    0.191
-Virginica     2.482
-```
+
+![Jena rule test](../images/iris_jena_rule_test_values.png)
 
 So you can visually verify that Versicolor is the nearest centroid before even checking the inferred class.
