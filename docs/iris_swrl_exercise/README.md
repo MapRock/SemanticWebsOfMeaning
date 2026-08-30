@@ -2,7 +2,7 @@
 
 This exercise uses Apache Jena Rules rather than a SWRL execution engine. The rules reproduce the nearest-centroid logic of the trained Iris K-Means model. Apache Jena Fuseki loads the RDF model and test observation, applies the Jena rule reasoner, and exposes the inferred classification through SPARQL.
 
-Copy these files into the <i>apache-jena-fuseki-6.x.x</i> directory with these three additional files. See [install_jena_fuseki.md](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/install_jena_fuseki.md), follow steps 1 and 2.
+Copy these files into the <i>apache-jena-fuseki-6.x.x</i> directory with these three additional files. See [install_jena_fuseki.md](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/install_jena_fuseki.md), follow [steps 1](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/install_jena_fuseki.md#1-install-java-first) and 2.
 
 | File                | Brief description                                                                                                                                                                              |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
