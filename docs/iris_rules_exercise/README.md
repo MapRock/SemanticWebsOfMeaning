@@ -16,6 +16,8 @@ Copy these files into the <i>apache-jena-fuseki-6.x.x</i> directory with these t
 
 This is the standard Jena assembler pattern: an InfModel wraps a base model and uses a GenericRuleReasoner whose rules are loaded with ja:rulesFrom.
 
+Peruse the iris rules adapted as Jena Rules: [iris-kmeans.rules](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/docs/iris_rules_exercise/iris-kmeans.rules)
+
 Using PowerShell, navigate to that directory:
 ```text
 cd C:\temp\apache-jena-fuseki-6.1.0
