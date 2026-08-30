@@ -1,0 +1,23 @@
+@prefix ex: <https://example.org/iris/> .
+
+# TestIris_a is an Iris.
+ex:TestIris_a
+    a ex:Iris ;
+    ex:hasSepalLength 5.1 ;
+    ex:hasSepalWidth 3.5 ;
+    ex:hasPetalLength 1.4 ;
+    ex:hasPetalWidth 0.2 .
+
+ex:TestIris_b
+    a ex:Iris ;
+    ex:hasSepalLength 6.1 ;
+    ex:hasSepalWidth 2.8 ;
+    ex:hasPetalLength 4.7 ;
+    ex:hasPetalWidth 1.2 .
+
+ex:TestIris_c
+    a ex:Iris ;
+    ex:hasSepalLength 6.5 ;
+    ex:hasSepalWidth 3.0 ;
+    ex:hasPetalLength 5.8 ;
+    ex:hasPetalWidth 2.2 .
