@@ -24,7 +24,7 @@ cd C:\temp\apache-jena-fuseki-6.1.0
 Start Fuseki:
 
 ```bat
-fuseki-server.bat --conf=iris-fuseki.ttl
+.\fuseki-server.bat --conf=iris-fuseki.ttl
 ```
 
 Then open the Fuseki UI and select the iris dataset, or query the endpoint at:
