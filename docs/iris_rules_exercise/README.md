@@ -2,6 +2,8 @@
 
 This exercise uses Apache Jena Rules rather than a SWRL execution engine. The rules reproduce the nearest-centroid logic of the trained Iris K-Means model. Apache Jena Fuseki loads the RDF model and test observation, applies the Jena rule reasoner, and exposes the inferred classification through SPARQL.
 
+## Setting Up Jena Fuseki
+
 Copy these files into the <i>apache-jena-fuseki-6.x.x</i> directory with these three additional files. See [install_jena_fuseki.md](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/install_jena_fuseki.md), follow [steps 1](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/install_jena_fuseki.md#1-install-java-first) and 2.
 
 | File                | Brief description                                                                                                                                                                              |
@@ -12,11 +14,13 @@ Copy these files into the <i>apache-jena-fuseki-6.x.x</i> directory with these t
 | [`iris-fuseki.ttl`](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/docs/iris_swrl_exercise/iris-fuseki.ttl)   | The Fuseki/Jena assembler configuration that loads the RDF model and test data, attaches the Jena rule reasoner, and exposes the resulting inferred graph through the `/iris` SPARQL endpoint. |
 
 
-
-
 This is the standard Jena assembler pattern: an InfModel wraps a base model and uses a GenericRuleReasoner whose rules are loaded with ja:rulesFrom.
 
-Peruse the iris rules adapted as Jena Rules: [iris-kmeans.rules](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/docs/iris_rules_exercise/iris-kmeans.rules)
+## Looking at the Jena Rules
+
+Peruse the iris ML model adapted as Jena Rules: [iris-kmeans.rules](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/docs/iris_rules_exercise/iris-kmeans.rules)
+
+## Starting Up Jena Fuseki
 
 Using PowerShell, navigate to that directory:
 ```text
@@ -28,6 +32,7 @@ Start Fuseki:
 ```bat
 .\fuseki-server.bat --conf=iris-fuseki.ttl
 ```
+## Opening Jena and Running the Rules
 
 Then open the Fuseki UI and select the iris dataset, or query the endpoint at:
 
