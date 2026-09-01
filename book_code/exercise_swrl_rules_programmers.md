@@ -175,6 +175,7 @@ This will discard the SWRL rule you added, and the original `programmers.ttl` fi
 - Try modifying the rule or adding new individuals and languages.
 - Experiment with making `ObjectOrientedProgrammer` a subclass of `Programmer` using OWL instead of (or in addition to) SWRL.
 - Explore how inferred axioms appear in the **Inferred Axioms** tab inside the SWRLTab.
+- Example using [Jena Rules](https://github.com/MapRock/SemanticWebsOfMeaning/tree/main/docs/iris_rules_exercise)
 
 
 
