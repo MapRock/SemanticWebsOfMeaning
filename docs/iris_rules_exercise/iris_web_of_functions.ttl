@@ -1,0 +1,119 @@
+@prefix ex:   <https://example.org/iris/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/iris/web-of-functions>
+    a owl:Ontology ;
+
+    rdfs:label "Iris Web of Functions extension" ;
+    rdfs:comment "Extends the Iris model description with shared, IRI-identified data elements that can connect the outputs of one model to the inputs of another." .
+
+# A data element has one identity in the graph. Input and output are roles
+# expressed by the relationships between a model and that data element.
+
+ex:DataElement
+    a owl:Class ;
+    rdfs:label "Data element" ;
+    rdfs:comment "A semantically defined value that a model or other computational function can consume, produce, or both." .
+
+ex:ComputationalFunction
+    a owl:Class ;
+    rdfs:label "Computational function" ;
+    rdfs:comment "A model, rule set, calculation, or other executable function with semantically identified inputs and outputs." .
+
+ex:MachineLearningModel
+    rdfs:subClassOf ex:ComputationalFunction .
+
+ex:hasInput
+    a owl:ObjectProperty ;
+    rdfs:label "has input" ;
+    rdfs:domain ex:ComputationalFunction ;
+    rdfs:range ex:DataElement ;
+    rdfs:comment "Identifies a data element consumed by a model." .
+
+ex:hasOutput
+    a owl:ObjectProperty ;
+    rdfs:label "has output" ;
+    rdfs:domain ex:ComputationalFunction ;
+    rdfs:range ex:DataElement ;
+    rdfs:comment "Identifies a data element produced by a model." .
+
+ex:hasPossibleValue
+    a owl:ObjectProperty ;
+    rdfs:label "has possible value" ;
+    rdfs:domain ex:DataElement ;
+    rdfs:comment "Links a data element to one of the resources that may be returned as its value." .
+
+ex:valueDatatype
+    a owl:DatatypeProperty ;
+    rdfs:label "value datatype" ;
+    rdfs:domain ex:DataElement ;
+    rdfs:range xsd:anyURI .
+
+ex:unit
+    a owl:DatatypeProperty ;
+    rdfs:label "unit" ;
+    rdfs:domain ex:DataElement ;
+    rdfs:range xsd:string .
+
+ex:describesEntityType
+    a owl:ObjectProperty ;
+    rdfs:label "describes entity type" ;
+    rdfs:domain ex:DataElement ;
+    rdfs:range owl:Class .
+
+# Shared input/output nodes
+
+ex:SepalLength
+    a owl:NamedIndividual, ex:DataElement ;
+    rdfs:label "Iris sepal length" ;
+    rdfs:comment "Length of an Iris flower's sepal, expressed in centimeters." ;
+    ex:valueDatatype "http://www.w3.org/2001/XMLSchema#decimal"^^xsd:anyURI ;
+    ex:unit "centimeter" ;
+    ex:describesEntityType ex:Iris .
+
+ex:SepalWidth
+    a owl:NamedIndividual, ex:DataElement ;
+    rdfs:label "Iris sepal width" ;
+    rdfs:comment "Width of an Iris flower's sepal, expressed in centimeters." ;
+    ex:valueDatatype "http://www.w3.org/2001/XMLSchema#decimal"^^xsd:anyURI ;
+    ex:unit "centimeter" ;
+    ex:describesEntityType ex:Iris .
+
+ex:PetalLength
+    a owl:NamedIndividual, ex:DataElement ;
+    rdfs:label "Iris petal length" ;
+    rdfs:comment "Length of an Iris flower's petal, expressed in centimeters." ;
+    ex:valueDatatype "http://www.w3.org/2001/XMLSchema#decimal"^^xsd:anyURI ;
+    ex:unit "centimeter" ;
+    ex:describesEntityType ex:Iris .
+
+ex:PetalWidth
+    a owl:NamedIndividual, ex:DataElement ;
+    rdfs:label "Iris petal width" ;
+    rdfs:comment "Width of an Iris flower's petal, expressed in centimeters." ;
+    ex:valueDatatype "http://www.w3.org/2001/XMLSchema#decimal"^^xsd:anyURI ;
+    ex:unit "centimeter" ;
+    ex:describesEntityType ex:Iris .
+
+ex:IrisClassification
+    a owl:NamedIndividual, ex:DataElement ;
+    rdfs:label "Iris classification" ;
+    rdfs:comment "The Iris category assigned to an observation by the Iris KMeans model." ;
+    ex:describesEntityType ex:Iris ;
+    ex:hasPossibleValue
+        ex:IrisKMeansCluster_0,
+        ex:IrisKMeansCluster_1,
+        ex:IrisKMeansCluster_2 .
+
+# Interface of the model defined in iris_rdf.rdf
+
+ex:IrisKMeansModel
+    ex:hasInput
+        ex:SepalLength,
+        ex:SepalWidth,
+        ex:PetalLength,
+        ex:PetalWidth ;
+    ex:hasOutput ex:IrisClassification .
