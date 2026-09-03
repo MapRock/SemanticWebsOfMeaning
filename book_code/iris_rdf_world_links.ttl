@@ -1,32 +1,46 @@
 @prefix ex:   <https://example.org/iris/> .
-@prefix owl:  <http://www.w3.org/2002/07/owl#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix wd:   <http://www.wikidata.org/entity/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+
+# Load the source ontology first, then import this file.
+# This module does not owl:imports the source, so Protégé will not
+# dereference https://example.org/iris/ontology or create an import cycle.
 
 <https://example.org/iris/world/ontology>
     a owl:Ontology ;
     rdfs:label "Iris world links" ;
-    rdfs:comment "Conservative external links from the Iris KMeans ontology to Wikidata concepts." ;
-    rdfs:seeAlso wd:Q4203254, wd:Q310401 .
+    rdfs:comment "Conservative Semantic Web links from the Iris KMeans example ontology to established external concepts, primarily Wikidata." .
 
+# Botanical taxa visible in class labels
 ex:FloweringPlant
     rdfs:seeAlso wd:Q25314 .
 
 ex:Iris
     rdfs:seeAlso wd:Q156901 .
 
-ex:MachineLearningModel
-    rdfs:seeAlso wd:Q2539 .
+# Learned Iris categories whose comments name a dominant known species
+ex:IrisCluster_VersicolorLike
+    rdfs:seeAlso wd:Q164844 .
 
 ex:IrisCluster_SetosaLike
     rdfs:seeAlso wd:Q894226 .
 
-ex:IrisCluster_VersicolorLike
-    rdfs:seeAlso wd:Q164844 .
-
 ex:IrisCluster_VirginicaLike
     rdfs:seeAlso wd:Q7934335 .
 
+# Cluster individuals whose labels and comments refer to those species
+ex:IrisKMeansCluster_0
+    rdfs:seeAlso wd:Q164844 .
+
+ex:IrisKMeansCluster_1
+    rdfs:seeAlso wd:Q894226 .
+
+ex:IrisKMeansCluster_2
+    rdfs:seeAlso wd:Q7934335 .
+
+# Measurement properties whose labels contain petal / sepal
 ex:petalLengthCentroid
     rdfs:seeAlso wd:Q107412 .
 
@@ -39,14 +53,7 @@ ex:sepalLengthCentroid
 ex:sepalWidthCentroid
     rdfs:seeAlso wd:Q107216 .
 
+# Model individual whose name and file describe K-means on the Iris data
 ex:IrisKMeansModel
-    rdfs:seeAlso wd:Q310401, wd:Q4203254 .
-
-ex:IrisKMeansCluster_0
-    rdfs:seeAlso wd:Q164844 .
-
-ex:IrisKMeansCluster_1
-    rdfs:seeAlso wd:Q894226 .
-
-ex:IrisKMeansCluster_2
-    rdfs:seeAlso wd:Q7934335 .
+    rdfs:seeAlso wd:Q310401 ;
+    rdfs:seeAlso wd:Q4203254 .
