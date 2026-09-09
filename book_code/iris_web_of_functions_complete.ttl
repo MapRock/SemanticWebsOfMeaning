@@ -1,0 +1,526 @@
+@prefix ex:      <https://example.org/iris/> .
+@prefix partner: <https://example.com/partner-vocabulary/> .
+@prefix wd:      <http://www.wikidata.org/entity/> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosxl:  <http://www.w3.org/2008/05/skos-xl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix qudt:    <http://qudt.org/schema/qudt/> .
+@prefix unit:    <http://qudt.org/vocab/unit/> .
+
+# =============================================================================
+# Web of Functions (Transformations) - complete standalone example
+# =============================================================================
+
+<https://example.org/iris/web-of-functions-complete>
+    a owl:Ontology ;
+    dcterms:title "Web of Functions (Transformations) - complete example"@en ;
+    dcterms:creator "Eugene Asahara" ;
+    dcterms:created "2026-09-09"^^xsd:date ;
+    owl:versionInfo "1.0.0" ;
+    rdfs:comment "A standalone demonstration of semantically identified function inputs and outputs, mappings, transformations, provenance, and interface validation. This file deliberately contains no owl:imports."@en .
+
+# =============================================================================
+# Core classes
+# =============================================================================
+
+ex:FloweringPlant
+    a owl:Class ;
+    rdfs:label "Flowering plant"@en .
+
+ex:Iris
+    a owl:Class ;
+    rdfs:subClassOf ex:FloweringPlant ;
+    rdfs:label "Iris"@en .
+
+ex:Ginger
+    a owl:Class ;
+    rdfs:subClassOf ex:FloweringPlant ;
+    rdfs:label "Ginger"@en .
+
+ex:MachineLearnedCluster
+    a owl:Class ;
+    rdfs:label "Machine-learned cluster"@en .
+
+ex:DataElement
+    a owl:Class ;
+    rdfs:label "Data element"@en ;
+    rdfs:comment "A semantically identified kind of value that a computational function can consume, produce, or both."@en .
+
+ex:ComputationalFunction
+    a owl:Class ;
+    rdfs:label "Computational function"@en ;
+    rdfs:comment "A model, rule set, calculation, mapping, or other executable function with semantically identified inputs and outputs."@en .
+
+ex:MachineLearningModel
+    a owl:Class ;
+    rdfs:subClassOf ex:ComputationalFunction ;
+    rdfs:label "Machine-learning model"@en .
+
+ex:TransformationFunction
+    a owl:Class ;
+    rdfs:subClassOf ex:ComputationalFunction ;
+    rdfs:label "Transformation function"@en ;
+    rdfs:comment "A function that converts, normalizes, resolves, or otherwise maps one data element into another."@en .
+
+ex:MappingAssertion
+    a owl:Class ;
+    rdfs:label "Mapping assertion"@en ;
+    rdfs:comment "A first-class, reviewable claim that one resource maps to another in a stated context."@en .
+
+# =============================================================================
+# Function-interface properties
+# =============================================================================
+
+ex:hasInput
+    a owl:ObjectProperty ;
+    rdfs:label "has input"@en ;
+    rdfs:domain ex:ComputationalFunction ;
+    rdfs:range ex:DataElement .
+
+ex:hasOutput
+    a owl:ObjectProperty ;
+    rdfs:label "has output"@en ;
+    rdfs:domain ex:ComputationalFunction ;
+    rdfs:range ex:DataElement .
+
+ex:hasPossibleValue
+    a owl:ObjectProperty ;
+    rdfs:label "has possible value"@en ;
+    rdfs:domain ex:DataElement .
+
+ex:describesEntityType
+    a owl:ObjectProperty ;
+    rdfs:label "describes entity type"@en ;
+    rdfs:domain ex:DataElement ;
+    rdfs:range owl:Class .
+
+ex:expectedUnit
+    a owl:ObjectProperty ;
+    rdfs:label "expected unit"@en ;
+    rdfs:domain ex:DataElement ;
+    rdfs:range qudt:Unit .
+
+ex:valueDatatype
+    a owl:DatatypeProperty ;
+    rdfs:label "value datatype"@en ;
+    rdfs:domain ex:DataElement ;
+    rdfs:range xsd:anyURI .
+
+ex:unit
+    a owl:DatatypeProperty ;
+    rdfs:label "display unit"@en ;
+    rdfs:domain ex:DataElement ;
+    rdfs:range xsd:string .
+
+ex:mediaType
+    a owl:DatatypeProperty ;
+    rdfs:label "media type"@en ;
+    rdfs:domain ex:DataElement ;
+    rdfs:range xsd:string .
+
+ex:expression
+    a owl:DatatypeProperty ;
+    rdfs:label "expression"@en ;
+    rdfs:domain ex:ComputationalFunction ;
+    rdfs:range xsd:string .
+
+ex:executesFunction
+    a owl:ObjectProperty ;
+    rdfs:label "executes function"@en ;
+    rdfs:range ex:ComputationalFunction .
+
+# =============================================================================
+# Mapping properties
+# =============================================================================
+
+ex:mapsTo
+    a owl:ObjectProperty ;
+    rdfs:label "maps to"@en ;
+    rdfs:domain ex:MappingAssertion .
+
+ex:proposedRelation
+    a owl:ObjectProperty ;
+    rdfs:label "proposed relation"@en ;
+    rdfs:domain ex:MappingAssertion .
+
+ex:requiredContext
+    a owl:ObjectProperty ;
+    rdfs:label "required context"@en ;
+    rdfs:domain ex:MappingAssertion .
+
+ex:mappingStatus
+    a owl:ObjectProperty ;
+    rdfs:label "mapping status"@en ;
+    rdfs:domain ex:MappingAssertion .
+
+ex:usedInContext
+    a owl:ObjectProperty ;
+    rdfs:label "used in context"@en .
+
+ex:sourceLexicalForm
+    a owl:DatatypeProperty ;
+    rdfs:label "source lexical form"@en ;
+    rdfs:domain ex:MappingAssertion ;
+    rdfs:range rdf:langString .
+
+ex:confidence
+    a owl:DatatypeProperty ;
+    rdfs:label "confidence"@en ;
+    rdfs:domain ex:MappingAssertion ;
+    rdfs:range xsd:decimal .
+
+# =============================================================================
+# Units used by the interfaces
+# =============================================================================
+
+unit:CentiM
+    a qudt:Unit ;
+    rdfs:label "centimeter"@en .
+
+unit:IN
+    a qudt:Unit ;
+    rdfs:label "inch"@en .
+
+unit:USD
+    a qudt:Unit ;
+    rdfs:label "US dollar"@en .
+
+# =============================================================================
+# Iris input and output data-element individuals
+# =============================================================================
+
+ex:IrisPhotograph
+    a owl:NamedIndividual, ex:DataElement ;
+    rdfs:label "Iris photograph"@en ;
+    ex:mediaType "image/*" ;
+    ex:describesEntityType ex:Iris .
+
+ex:SepalLength
+    a owl:NamedIndividual, ex:DataElement, skos:Concept ;
+    rdfs:label "Iris sepal length"@en ;
+    skos:prefLabel "Iris sepal length"@en ;
+    skos:altLabel "sepal length"@en ;
+    rdfs:comment "Length of an Iris flower's sepal, expressed in centimeters."@en ;
+    ex:valueDatatype "http://www.w3.org/2001/XMLSchema#decimal"^^xsd:anyURI ;
+    ex:unit "centimeter" ;
+    ex:expectedUnit unit:CentiM ;
+    ex:describesEntityType ex:Iris .
+
+ex:SepalWidth
+    a owl:NamedIndividual, ex:DataElement, skos:Concept ;
+    rdfs:label "Iris sepal width"@en ;
+    skos:prefLabel "Iris sepal width"@en ;
+    skos:altLabel "sepal width"@en ;
+    rdfs:comment "Width of an Iris flower's sepal, expressed in centimeters."@en ;
+    ex:valueDatatype "http://www.w3.org/2001/XMLSchema#decimal"^^xsd:anyURI ;
+    ex:unit "centimeter" ;
+    ex:expectedUnit unit:CentiM ;
+    ex:describesEntityType ex:Iris .
+
+ex:PetalLength
+    a owl:NamedIndividual, ex:DataElement, skos:Concept ;
+    rdfs:label "Iris petal length"@en ;
+    skos:prefLabel "Iris petal length"@en ;
+    skos:altLabel "petal length"@en ;
+    skos:altLabel "length of iris petal"@en ;
+    skos:exactMatch partner:IrisPetalLengthCentimeters ;
+    rdfs:comment "Length of an Iris flower's petal, expressed in centimeters."@en ;
+    ex:valueDatatype "http://www.w3.org/2001/XMLSchema#decimal"^^xsd:anyURI ;
+    ex:unit "centimeter" ;
+    ex:expectedUnit unit:CentiM ;
+    ex:describesEntityType ex:Iris .
+
+ex:PetalWidth
+    a owl:NamedIndividual, ex:DataElement, skos:Concept ;
+    rdfs:label "Iris petal width"@en ;
+    skos:prefLabel "Iris petal width"@en ;
+    skos:altLabel "petal width"@en ;
+    rdfs:comment "Width of an Iris flower's petal, expressed in centimeters."@en ;
+    ex:valueDatatype "http://www.w3.org/2001/XMLSchema#decimal"^^xsd:anyURI ;
+    ex:unit "centimeter" ;
+    ex:expectedUnit unit:CentiM ;
+    ex:describesEntityType ex:Iris .
+
+ex:PetalLengthInches
+    a owl:NamedIndividual, ex:DataElement ;
+    rdfs:label "Iris petal length in inches"@en ;
+    ex:valueDatatype "http://www.w3.org/2001/XMLSchema#decimal"^^xsd:anyURI ;
+    ex:unit "inch" ;
+    ex:expectedUnit unit:IN ;
+    ex:describesEntityType ex:Iris .
+
+ex:IrisClassification
+    a owl:NamedIndividual, ex:DataElement, skos:Concept ;
+    rdfs:label "Iris classification"@en ;
+    skos:prefLabel "Iris classification"@en ;
+    skos:closeMatch partner:IrisSpeciesCategory ;
+    ex:describesEntityType ex:Iris ;
+    ex:hasPossibleValue
+        ex:IrisKMeansCluster_0,
+        ex:IrisKMeansCluster_1,
+        ex:IrisKMeansCluster_2 .
+
+ex:IrisKMeansCluster_0
+    a owl:NamedIndividual, ex:MachineLearnedCluster ;
+    rdfs:label "Iris KMeans cluster 0 (Versicolor-like)"@en ;
+    rdfs:seeAlso wd:Q164844 .
+
+ex:IrisKMeansCluster_1
+    a owl:NamedIndividual, ex:MachineLearnedCluster ;
+    rdfs:label "Iris KMeans cluster 1 (Setosa-like)"@en ;
+    rdfs:seeAlso wd:Q894226 .
+
+ex:IrisKMeansCluster_2
+    a owl:NamedIndividual, ex:MachineLearnedCluster ;
+    rdfs:label "Iris KMeans cluster 2 (Virginica-like)"@en ;
+    rdfs:seeAlso wd:Q7934335 .
+
+partner:IrisPetalLengthCentimeters
+    a skos:Concept ;
+    skos:prefLabel "Iris petal length in centimeters"@en .
+
+partner:IrisSpeciesCategory
+    a skos:Concept ;
+    skos:prefLabel "Iris species category"@en .
+
+# =============================================================================
+# Shared pricing data elements
+# =============================================================================
+
+ex:CustomerType
+    a owl:NamedIndividual, ex:DataElement ;
+    rdfs:label "Customer type"@en ;
+    ex:hasPossibleValue ex:RetailCustomer, ex:WholesaleCustomer .
+
+ex:DeliveryMethod
+    a owl:NamedIndividual, ex:DataElement ;
+    rdfs:label "Delivery method"@en ;
+    ex:hasPossibleValue ex:WillCall, ex:LocalDelivery, ex:LongVoyageShipping .
+
+ex:QuotedPrice
+    a owl:NamedIndividual, ex:DataElement ;
+    rdfs:label "Quoted price"@en ;
+    ex:valueDatatype "http://www.w3.org/2001/XMLSchema#decimal"^^xsd:anyURI ;
+    ex:unit "US dollar" ;
+    ex:expectedUnit unit:USD .
+
+ex:RetailCustomer
+    a skos:Concept ;
+    skos:prefLabel "Retail customer"@en .
+
+ex:WholesaleCustomer
+    a skos:Concept ;
+    skos:prefLabel "Wholesale customer"@en .
+
+ex:WillCall
+    a skos:Concept ;
+    skos:prefLabel "Will call"@en .
+
+ex:LocalDelivery
+    a skos:Concept ;
+    skos:prefLabel "Local delivery"@en .
+
+ex:LongVoyageShipping
+    a skos:Concept ;
+    skos:prefLabel "Long-voyage shipping"@en .
+
+# =============================================================================
+# Ginger data elements and vocabulary
+# =============================================================================
+
+ex:LocalPlantName
+    a owl:NamedIndividual, ex:DataElement ;
+    rdfs:label "Local plant name"@en ;
+    ex:valueDatatype "http://www.w3.org/2001/XMLSchema#string"^^xsd:anyURI .
+
+ex:PlantPhotograph
+    a owl:NamedIndividual, ex:DataElement ;
+    rdfs:label "Plant photograph"@en ;
+    ex:mediaType "image/*" .
+
+ex:GeographicContext
+    a owl:NamedIndividual, ex:DataElement ;
+    rdfs:label "Geographic context"@en .
+
+ex:MappingConfidence
+    a owl:NamedIndividual, ex:DataElement ;
+    rdfs:label "Mapping confidence"@en ;
+    ex:valueDatatype "http://www.w3.org/2001/XMLSchema#decimal"^^xsd:anyURI .
+
+ex:GingerClassification
+    a owl:NamedIndividual, ex:DataElement ;
+    rdfs:label "Ginger classification"@en ;
+    ex:describesEntityType ex:Ginger ;
+    ex:hasPossibleValue ex:KahiliGinger, ex:WhiteGinger, ex:RedGinger .
+
+ex:KahiliGinger
+    a skos:Concept ;
+    skos:prefLabel "Hedychium gardnerianum" ;
+    skos:altLabel "Kahili ginger"@en ;
+    skos:altLabel "Kahili ginger lily"@en ;
+    rdfs:seeAlso <https://www.gbif.org/taxon/3JZPN> .
+
+ex:WhiteGinger
+    a skos:Concept ;
+    skos:prefLabel "White ginger"@en .
+
+ex:RedGinger
+    a skos:Concept ;
+    skos:prefLabel "Red ginger"@en .
+
+ex:KahiliFeatherStandard
+    a skos:Concept ;
+    skos:prefLabel "kāhili"@haw ;
+    skos:prefLabel "feather standard"@en .
+
+ex:KahiliPlantLabel
+    a skosxl:Label ;
+    skosxl:literalForm "kahili"@en ;
+    ex:usedInContext ex:HawaiiPlantCatalog ;
+    dcterms:source ex:LocalNurseryVocabulary .
+
+ex:KahiliGinger
+    skosxl:altLabel ex:KahiliPlantLabel .
+
+ex:HawaiiPlantCatalog
+    a prov:Entity ;
+    rdfs:label "Hawaii plant catalog context"@en .
+
+ex:LocalNurseryVocabulary
+    a prov:Entity ;
+    rdfs:label "Local nursery vocabulary"@en .
+
+# =============================================================================
+# Functions forming the main Web of Functions
+# =============================================================================
+
+ex:SepalPetalMeasurementFunction
+    a owl:NamedIndividual, ex:ComputationalFunction ;
+    rdfs:label "Sepal and petal measurement"@en ;
+    rdfs:comment "A black-box image-processing function that measures an Iris photograph."@en ;
+    ex:hasInput ex:IrisPhotograph ;
+    ex:hasOutput ex:SepalLength, ex:SepalWidth, ex:PetalLength, ex:PetalWidth .
+
+ex:IrisKMeansModel
+    a owl:NamedIndividual, ex:MachineLearningModel ;
+    rdfs:label "Iris KMeans model"@en ;
+    ex:hasInput ex:SepalLength, ex:SepalWidth, ex:PetalLength, ex:PetalWidth ;
+    ex:hasOutput ex:IrisClassification .
+
+ex:IrisPricingFunction
+    a owl:NamedIndividual, ex:ComputationalFunction ;
+    rdfs:label "Iris pricing"@en ;
+    ex:hasInput ex:IrisClassification, ex:CustomerType, ex:DeliveryMethod ;
+    ex:hasOutput ex:QuotedPrice .
+
+ex:GingerPricingFunction
+    a owl:NamedIndividual, ex:ComputationalFunction ;
+    rdfs:label "Ginger pricing"@en ;
+    ex:hasInput ex:GingerClassification, ex:CustomerType, ex:DeliveryMethod ;
+    ex:hasOutput ex:QuotedPrice .
+
+# =============================================================================
+# Explicit transformation path used by the final SPARQL query
+# =============================================================================
+
+# This producer is intentionally separate from SepalPetalMeasurementFunction.
+# It represents a source whose interface provides petal length in inches.
+ex:InchBasedPetalMeasurementFunction
+    a owl:NamedIndividual, ex:ComputationalFunction ;
+    rdfs:label "Inch-based iris petal measurement"@en ;
+    ex:hasInput ex:IrisPhotograph ;
+    ex:hasOutput ex:PetalLengthInches .
+
+ex:PetalLengthInchesToCentimeters
+    a owl:NamedIndividual, ex:TransformationFunction ;
+    rdfs:label "Convert iris petal length from inches to centimeters"@en ;
+    ex:hasInput ex:PetalLengthInches ;
+    ex:hasOutput ex:PetalLength ;
+    ex:expression "centimeters = inches * 2.54" .
+
+# =============================================================================
+# Categorical mapping as a transformation function
+# =============================================================================
+
+ex:LocalGingerNameResolver
+    a owl:NamedIndividual, ex:TransformationFunction ;
+    rdfs:label "Resolve a local ginger name"@en ;
+    ex:hasInput ex:LocalPlantName, ex:PlantPhotograph, ex:GeographicContext ;
+    ex:hasOutput ex:GingerClassification, ex:MappingConfidence .
+
+ex:Proposed
+    a skos:Concept ;
+    skos:prefLabel "Proposed"@en .
+
+ex:Mapping_2384
+    a owl:NamedIndividual, ex:MappingAssertion, prov:Entity ;
+    ex:sourceLexicalForm "kahili"@en ;
+    ex:mapsTo ex:KahiliGinger ;
+    ex:proposedRelation skos:closeMatch ;
+    ex:requiredContext ex:HawaiiPlantCatalog ;
+    ex:confidence "0.78"^^xsd:decimal ;
+    ex:mappingStatus ex:Proposed ;
+    prov:wasGeneratedBy ex:NameResolutionRun_2384 .
+
+ex:RawPlantDescription_2384
+    a prov:Entity ;
+    rdfs:label "Raw plant description 2384"@en .
+
+ex:ResolvedGingerClassification_2384
+    a prov:Entity ;
+    rdfs:label "Resolved ginger classification 2384"@en ;
+    prov:wasDerivedFrom ex:RawPlantDescription_2384 .
+
+ex:NameResolutionRun_2384
+    a prov:Activity ;
+    ex:executesFunction ex:LocalGingerNameResolver ;
+    prov:used ex:RawPlantDescription_2384 ;
+    prov:generated ex:ResolvedGingerClassification_2384, ex:Mapping_2384 .
+
+# =============================================================================
+# SHACL interface check
+# =============================================================================
+
+ex:PetalLengthInterfaceShape
+    a sh:NodeShape ;
+    sh:targetNode ex:PetalLength ;
+    sh:property [
+        sh:path ex:valueDatatype ;
+        sh:hasValue "http://www.w3.org/2001/XMLSchema#decimal"^^xsd:anyURI
+    ] ;
+    sh:property [
+        sh:path ex:expectedUnit ;
+        sh:hasValue unit:CentiM
+    ] .
+
+# =============================================================================
+# Final SPARQL query from the article
+# =============================================================================
+#
+# PREFIX ex: <https://example.org/iris/>
+#
+# SELECT ?producer ?transform ?consumer
+# WHERE {
+#   ?producer
+#       ex:hasOutput ?sourceElement .
+#
+#   ?transform
+#       a ex:TransformationFunction ;
+#       ex:hasInput ?sourceElement ;
+#       ex:hasOutput ?targetElement .
+#
+#   ?consumer
+#       ex:hasInput ?targetElement .
+# }
+#
+# Expected result:
+#   producer:  ex:InchBasedPetalMeasurementFunction
+#   transform: ex:PetalLengthInchesToCentimeters
+#   consumer:  ex:IrisKMeansModel
+
