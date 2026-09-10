@@ -2,7 +2,7 @@
 
 This exercise uses Apache Jena Rules rather than a SWRL execution engine. The rules reproduce the nearest-centroid logic of the trained Iris K-Means model. Apache Jena Fuseki loads the RDF model and test observation, applies the Jena rule reasoner, and exposes the inferred classification through SPARQL.
 
-This article could be considered "Part 2" of [Machine Learning Models in Knowledge Graphs](https://eugeneasahara.com/2026/08/30/machine-learning-models-in-knowledge-graphs/).
+This article could be considered "Part 2" of [Machine Learning Models in Knowledge Graphs](https://eugeneasahara.com/2026/08/30/machine-learning-models-in-knowledge-graphs/). Also, see [Web of Functions (Transformations)](https://eugeneasahara.com/2026/09/10/web-of-functions-transformations/).
 
 ## Setting Up Jena Fuseki
 
