@@ -34,6 +34,8 @@ Then comes Brazilian Jiu-Jitsu.
 
 Mitsuyo Maeda was a Kodokan judoka. He brought his fighting art to Brazil (ca. 1914) and taught Carlos Gracie; the Gracies and other Brazilian lineages continued developing what eventually became Brazilian Jiu-Jitsu. BJJ increasingly distinguished itself through its much greater emphasis on ground fighting. ([Renzo Gracie NH][4])
 
+Fun fact: My father's mother's maiden name was Maeda. Maybe we're distantly related.
+
 So:
 
 <img src="images/jujitsu-bjj.png" alt="OWL above loaded into Protege" width="800">
