@@ -1,3 +1,9 @@
+## Post-Publication FAQs
+
+[Semantic Webs of Meaning](https://technicspub.com/semantic-webs-of-meaning/) was published on August 17, 2026. It covers a broad subject, and some ideas naturally deserve additional clarification once the book is out in the world and readers begin comparing its approach with other ways of thinking about knowledge graphs. This document collects those post-publication questions, clarifications, and extensions.
+
+These are not intended as corrections to the book so much as a continuing discussion around it. In some cases, a question may expose an assumption that was implicit in the text; in others, a later article, discussion, or implementation experience may provide an opportunity to explain why I took a particular approach. Where useful, I will point back to the relevant chapters and expand on how the ideas fit together.
+
 ### Where Should an Enterprise Knowledge Graph Start?
 Added: Sept 12, 2026
 
