@@ -14,6 +14,9 @@ To be clear, the mistake was mine. I appreciate Josh Beam bringing to light BJJ'
 
 And that makes this a great RDF example, along with the [Kalbi Plate](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/book_code/kalbi_plate.md) example. It's a great example because most people don't know the lineage of Judo, BJJ, Aikido, and Jujitsu. So most people wouldn't catch the confusion it might cause.
 
+You might want to watch this video on a more comprehensive take of what jujitsu is (even though the title is kind of aggresive): [
+How Brazil Stole A Martial Art](https://www.youtube.com/watch?v=WWWfgX1Ps_c)
+
 ## The Historical Family Tree
 
 [Jigoro Kano (wd:Q190141)](https://www.wikidata.org/wiki/Q190141) did not invent judo from nothing. The Kodokan’s own history says that Kano studied Tenjin Shinyo-ryu and Kito-ryu classical jujitsu, combined aspects of them with his own ideas, and established the system that became Kodokan judo (ca. 1882). ([Kodokan Global][2])
