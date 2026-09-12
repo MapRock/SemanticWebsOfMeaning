@@ -8,7 +8,7 @@ In Josh Beam's BJJ YouTube video [*Fighting a judo master to see if my jiu jitsu
 
 He's said that in other videos as well. Taken literally, to my judo-enthusiast ears, that sounds historically backwards. **Judo developed from older Japanese jiujitsu traditions.** But Josh is a [Brazilian Jiu-Jitsu](https://www.wikidata.org/wiki/Q189336) practitioner, and it seems he uses “jiu jitsu” as shorthand for BJJ. Since that is what he means to say, the statement is correct as it seems **Brazilian Jiu-Jitsu developed downstream from Kodokan judo.**
 
-I've never ever heard anyone refer to BJJ simple as "jiu jitsu", which is why it caught my attention. I later learned that inside BJJ gyms, people often refer to their art as simply Jiu-Jitsu. But I and most other people in the world are not BJJ practitioners.
+I've never ever heard anyone refer to BJJ simple as "jiu jitsu", which is why it caught my attention. I later learned that inside BJJ gyms (or in Brazil), people often refer to their art as simply Jiu-Jitsu. But I and most other people in the world are not BJJ practitioners.
 
 To be clear, the mistake was mine. I appreciate Josh Beam bringing to light BJJ's judo roots. The "error" I perceived is therefore not really about martial arts. It is about **identity and meaning**.
 
