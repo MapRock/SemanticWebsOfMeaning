@@ -14,7 +14,7 @@ To be clear, the mistake was mine. I appreciate Josh Beam bringing to light BJJ'
 
 And that makes this a great RDF example, along with the [Kalbi Plate](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/book_code/kalbi_plate.md) example. It's a great example because most people don't know the lineage of Judo, BJJ, Aikido, and Jujitsu. So most people wouldn't catch the confusion it might cause.
 
-You might want to watch this video on a more comprehensive take of what jujitsu is (even though the title is kind of aggresive): [
+<b>Update, Sept 12, 2026</b>: You might want to watch this video on a more comprehensive take of what jujitsu is (even though the title is kind of aggresive): [
 How Brazil Stole A Martial Art](https://www.youtube.com/watch?v=WWWfgX1Ps_c)
 
 ## The Historical Family Tree
