@@ -1,7 +1,6 @@
 ### Where Should an Enterprise Knowledge Graph Start?
 
-This post clarifies how Chapters 4 and 10 fit together. Chapter 4 argues that an enterprise should begin with the knowledge already embedded in BI systems, databases, software, business processes, and domain language rather than starting from a blank page. That material is not treated as the final ontology, but as grounded, traceable semantic raw material.
+This post, [Where Should an Enterprise Knowledge Graph Start?](https://eugeneasahara.com/2026/09/12/where-should-an-enterprise-knowledge-graph-start/), responds to the objection that ontology design should begin with competency questions rather than inherited databases and schemas, because existing structures may reflect implementation compromises instead of true domain meaning. I agree with that concern, but Chapter 4 deliberately starts by mining existing enterprise artifacts—especially BI semantic layers, software, databases, business processes, and domain language—because they contain valuable operationalized knowledge and keep the KG grounded in the enterprise. Chapter 10 provides the resolution: treat that existing knowledge as the foundation, make reflecting it the first competency questions, and then use subsequent competency questions to correct, extend, and connect the graph beyond what existing systems already know.
 
-Chapter 10 then supplies the discipline for extending that foundation through competency questions. My proposal is that the first competency questions should ask whether the KG can faithfully reflect the enterprise’s existing BI knowledge, operational systems, and domain meanings. From there, later competency questions guide what must be added, corrected, connected, or extended into broader enterprise and Semantic Web knowledge.
 
-[Where Should an Enterprise Knowledge Graph Start?](https://eugeneasahara.com/2026/09/12/where-should-an-enterprise-knowledge-graph-start/)
+
