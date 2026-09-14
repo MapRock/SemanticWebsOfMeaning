@@ -2,7 +2,17 @@
 
 This exercise uses Apache Jena Rules rather than a SWRL execution engine. The rules reproduce the nearest-centroid logic of the trained Iris K-Means model. Apache Jena Fuseki loads the RDF model and test observation, applies the Jena rule reasoner, and exposes the inferred classification through SPARQL.
 
-This article could be considered "Part 2" of series, [Inductive Meets Deductive](https://eugeneasahara.com/category/inductive-meets-deductive/). Also, see [Web of Functions (Transformations)](https://eugeneasahara.com/2026/09/10/web-of-functions-transformations/).
+This article is "Part 2" of series, [Inductive Meets Deductive](https://eugeneasahara.com/category/inductive-meets-deductive/):
+
+1. **[Machine Learning Models in Knowledge Graphs](https://eugeneasahara.com/2026/08/30/machine-learning-models-in-knowledge-graphs/)** discusses the serialization of ML models (mostly decision trees, clusters, and association) into KG form. Deployed ML models are really a type of business rule, which affects the business. Therefore, its inclusion is critical.
+2. <b>Jena (Fuseki) Rules for Iris</b> for a tutorial on applying the k-means model into the Jena Fuseki graph DB using Jena Rules.
+3. [**Web of Functions (Transformations).**](https://eugeneasahara.com/2026/09/10/web-of-functions-transformations/)
+4. Re-linking retrained models (~October 2026).
+5. Implementing decision forests (~October 2026).
+6. Implementing an ML model trained on the association/arules algorithm (~November 2026).
+7. Implementing regression, neural networks, and FFT models as [rich properties](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/appendices/appendix_f_rich_properties.md) (~December 2026).
+
+Also, see [Web of Functions (Transformations)](https://eugeneasahara.com/2026/09/10/web-of-functions-transformations/).
 
 ## Setting Up Jena Fuseki
 
