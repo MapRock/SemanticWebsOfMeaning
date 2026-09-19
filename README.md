@@ -72,12 +72,12 @@ This supplemental repository is maintained by the author. Unless explicitly stat
 
 ## Author of <i>Semantic Webs of Meaning</i>
 
-**[Eugene Asahara](https://www.linkedin.com/in/eugeneasahara/)**
+LinkedIn page: **[Eugene Asahara](https://www.linkedin.com/in/eugeneasahara/)**
 
 ### Additional material and related work
 
 * [My blog site](https://eugeneasahara.com), [Semantic Webs of Meaning Category](https://eugeneasahara.com/category/semantic-webs-of-meaning-book/)
-* [Enterprise Intelligence supplemental repo](https://github.com/MapRock/IntelligenceBusiness)
+* [Enterprise Intelligence supplemental Repo](https://github.com/MapRock/IntelligenceBusiness)
 * [Time Molecules Supplemental Repo](https://github.com/MapRock/TimeMolecules)
 * [Assemblage of AI Supplemental Repo](https://github.com/MapRock/assemblage-of-artificial-intelligence)
 
