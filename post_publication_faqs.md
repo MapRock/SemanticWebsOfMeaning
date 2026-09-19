@@ -2,7 +2,7 @@
 
 <i>[Semantic Webs of Meaning](https://technicspub.com/semantic-webs-of-meaning/)</i> was published on August 17, 2026. It covers a broad subject, and some ideas naturally deserve additional clarification once the book is out in the world and readers begin comparing its approach with other ways of thinking about knowledge graphs. This document collects those post-publication questions, clarifications, and extensions.
 
-These are not intended as corrections to the book so much as a continuing discussion around it. In some cases, a question may expose an assumption that was implicit in the text; in others, a later article, discussion, or implementation experience may provide an opportunity to explain why I took a particular approach. Where useful, I will point back to the relevant chapters and expand on how the ideas fit together. Please see [Book Erratum](https://github.com/MapRock/SemanticWebsOfMeaning#book-erratum) for actual errors.
+These are not intended as corrections to the book so much as a continuing discussion around it. In some cases, a question may expose an assumption that was implicit in the text; in others, a later article, discussion, or implementation experience may provide an opportunity to explain why I took a particular approach. Some are "deleted scenes" dropped to keep the page count down but does help to fill in a few places. Where useful, I will point back to the relevant chapters and expand on how the ideas fit together. Please see [Book Erratum](https://github.com/MapRock/SemanticWebsOfMeaning#book-erratum) for actual errors.
 
 ### The Art of Crafting Competency Questions for Knowledge Graphs
 
