@@ -4,7 +4,19 @@
 
 These are not intended as corrections to the book so much as a continuing discussion around it. In some cases, a question may expose an assumption that was implicit in the text; in others, a later article, discussion, or implementation experience may provide an opportunity to explain why I took a particular approach. Some are "deleted scenes" dropped to keep the page count down but does help to fill in a few places. Where useful, I will point back to the relevant chapters and expand on how the ideas fit together. Please see [Book Erratum](https://github.com/MapRock/SemanticWebsOfMeaning#book-erratum) for actual errors.
 
-### The Art of Crafting Competency Questions for Knowledge Graphs
+### How should an enterprise knowledge graph deal with rare events and risks that look stable until they suddenly aren’t?
+
+Added: Sept 21, 2026
+
+This post, [Chains of Unstable Correlations](https://eugeneasahara.com/2026/02/13/chains-of-unstable-correlations/), is a deleted scene from Chapter 9. Readers of that chapter might ask how an EKG should treat risks that do not announce themselves as bad triples or known threat classes—the rare, threshold-crossing events that look routine until a chain of relationships tips. Chapter 9 already argues that the same graph used to discover opportunities can reveal vulnerabilities, and that a plausible relationship can propagate as a semantic virus. What did not fit the page count is the statistical form of that problem: many dangerous enterprise relationships are not linear. They sit quietly in a long left tail, then amplify after an elbow.
+
+The Tuple Correlation Web from [Enterprise Intelligence](https://technicspub.com/enterprise-intelligence/) treats BI results as attention signals and correlations as transient, abductive clues—Chains of Strong Correlations as “hypothesis ore” for System 1, System 2, and System ⅈ. Those chains are not reliably linear. Port congestion versus retail stockouts, stockouts versus emergency freight, early fraud anomalies versus accelerating loss, and overloaded grid components versus cascade blackouts share the same hockey-stick shape. A small further change in X produces a disproportionate change in Y. Once that edge sits in a chain, fragility is contagious. That is how rare events become visible late: the correlation was always there; the regime was not.
+
+For Chapter 9 this cuts two ways. Defensively, an adversary reasoning over the same EKG can hunt elbows and correlation chains the way an analyst hunts opportunities. The attack surface is not only restricted triples, but combinations that become identifying or exploitable only after a threshold. For the enterprise, the Risk Knowledge Graph should treat unstable-correlation signatures—elbow location, regime-specific slopes, cascade paths, and whether the curve is a failure hockey stick, a restabilizing S-curve, a multi-regime relationship, or an antifragile curve that hardens defenses—as first-class indicators, not only as static risk classes. The article’s blast-radius intuition matches the chapter’s sandbox inference tests and canary questions: a new correlation edge can change conclusions without any single triple looking wrong.
+
+The practical stance is therefore not to wait for the rare event to be labeled in a risk register. Preserve the structural facts of the correlation, including its shape; attach them to risk classes, cause-effect links, and named-graph controls; and test what new conclusions become possible when the chain is allowed to fire. The TCW does not assert cause or policy. It keeps the map of how pressure propagates so the EKG can reason about rare events before the elbow is crossed.
+
+### How are competency questions created?
 
 Added: Sept 17, 2026
 
