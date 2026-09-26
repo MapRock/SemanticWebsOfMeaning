@@ -60,6 +60,65 @@ We want to say something *about that statement itself*, such as:
 
 In regular RDF, you can’t attach information directly to a relationship. So reification is a workaround where you create a **new thing** whose only job is to represent the original relationship, so you can then attach information *to that new thing*.
 
+
+### Reification, Ontology, and Epistemology
+
+Reification becomes easier to understand if we separate two questions we can ask about almost any statement:
+
+**What does this statement mean?**  
+**Why do we believe it?**
+
+The first question leans toward **ontology**: the concepts and relationships we use to describe the world. The second leans toward **epistemology**: how we came to know something, who made the claim, what evidence supports it, and under what circumstances we should accept it.
+
+Consider an everyday statement:
+
+> Luigi’s is a good restaurant.
+
+A knowledge graph could simply state:
+
+```turtle
+:Luigis rdf:type :GoodRestaurant .
+```
+
+That may be perfectly useful. But the statement immediately raises deeper questions. What does *good restaurant* mean? Good food? Good service? Reasonable prices? Quiet enough for conversation? Those are questions about the meaning of the concepts and relationships in the graph.
+
+Then comes a different kind of question:
+
+> Who says Luigi’s is good?
+
+Perhaps I ate there and assessed it as a good place for a casual dinner. Now we do not merely want to describe Luigi’s. We want to describe **my assessment of Luigi’s**.
+
+RDF 1.2 reification gives us a way to make that proposition something we can talk about:
+
+```turtle
+:assessment123
+    rdf:reifies <<( :Luigis rdf:type :GoodRestaurant )>> ;
+    :assessedBy :Eugene ;
+    :context :CasualDinner ;
+    :basedOn :DinnerVisit456 ;
+    :confidence 0.9 .
+```
+
+Notice an important distinction. This says that `:assessment123` is about the proposition that Luigi’s is a good restaurant. It does **not by itself assert that Luigi’s actually is one**. If the graph accepts that proposition as a fact, the ordinary triple can also be asserted:
+
+```turtle
+:Luigis rdf:type :GoodRestaurant .
+```
+
+That distinction is useful. “Eugene assessed Luigi’s to be a good restaurant” can be unquestionably true even if someone disagrees that Luigi’s actually is a good restaurant.
+
+Reification therefore gives the graph a handle on the **claim itself**. Once the claim has an identity, we can attach provenance, confidence, time, evidence, context, disagreement, review status, or other information explaining why the claim exists and how seriously it should be taken.
+
+This is where ontology and epistemology begin to meet in a practical knowledge graph. A simple triple tells us something about the modeled world. Reification lets us also describe **how that statement entered our knowledge of the world**.
+
+And there is no requirement to descend forever. The evidence might eventually point to a review, photograph, receipt, machine-learning model, measurement, document, or other [rich property](https://github.com/MapRock/SemanticWebsOfMeaning/blob/main/appendices/appendix_f_rich_properties.md). The graph only needs enough explicit structure for the purpose at hand.
+
+See also, in the book: 
+<ul>
+<li>Balancing Simplicity, Salience, and Real-World Complexity, Chapter 1, Page 24.</li>    
+<li>Peeling the Onion, Chapter 9, Page 218.</li>
+</ul>
+
 ### Better Everyday Analogies
 
 Here are a few intuitive ways to think about it:
