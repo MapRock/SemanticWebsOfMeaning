@@ -1,0 +1,1431 @@
+@prefix cgiLith: <http://resource.geosciml.org/classifier/cgi/lithology/> .
+@prefix cgiProc: <http://resource.geosciml.org/classifier/cgi/eventprocess/> .
+@prefix chebi: <http://purl.obolibrary.org/obo/CHEBI_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix erggeo: <https://eugeneasahara.com/ontology/geology-expert-reasoning#> .
+@prefix inspireProc: <http://inspire.ec.europa.eu/codelist/EventProcessValue/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix qk: <http://qudt.org/vocab/quantitykind/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+cgiProc:deposition a skos:Concept ;
+    dcterms:source <https://docs.ogc.org/is/16-008/16-008r1.html> ;
+    skos:broader erggeo:SedimentaryProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "deposition"@en ;
+    erggeo:canProduce cgiLith:sediment ;
+    erggeo:occursInSetting erggeo:SedimentaryBasin .
+
+cgiProc:intrusion a skos:Concept ;
+    dcterms:source <https://docs.ogc.org/is/16-008/16-008r1.html> ;
+    skos:broader erggeo:IgneousProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "intrusion"@en ;
+    erggeo:associatedWithCondition erggeo:SubsurfaceCooling ;
+    erggeo:canEnable erggeo:ContactMetamorphism ;
+    erggeo:canProduce cgiLith:gabbroic_rock,
+        cgiLith:granite .
+
+cgiLith:quartzite a skos:Concept ;
+    dcterms:source <https://docs.ogc.org/is/16-008/16-008r1.html> ;
+    skos:broader cgiLith:metamorphic_rock ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "quartzite"@en .
+
+<https://eugeneasahara.com/ontology/geology-expert-reasoning> a owl:Ontology ;
+    dcterms:created "2026-10-11"^^xsd:date ;
+    dcterms:creator "Eugene Asahara" ;
+    dcterms:description "A hybrid OWL + SKOS model for geological expert reasoning. OWL provides the backbone for samples, observations, hypotheses, investigations, claims, and case-specific evidence. SKOS provides a flexible controlled vocabulary for rock types, geologic processes, settings, formation conditions, observable features, and other world-model concepts. Modal relationships such as canProduce, suggestsPossibility, and canLeaveEvidence encode general geological understanding without asserting that a particular specimen actually had that history."@en ;
+    dcterms:source <https://docs.ogc.org/is/16-008/16-008r1.html> ;
+    dcterms:title "Geology Expert Reasoning World Model"@en ;
+    rdfs:comment "The model deliberately separates three things: (1) OWL categories for the kinds of records that exist in an investigation, (2) SKOS geological concepts used as the expert's world model, and (3) case-specific hypotheses and evidence. This prevents a general statement such as 'serpentinization can produce serpentinite' from being confused with a claim that a particular specimen was produced that way."@en ;
+    owl:versionIRI <https://eugeneasahara.com/ontology/geology-expert-reasoning/3.0> ;
+    owl:versionInfo "3.0" .
+
+erggeo:AeolianTransport a skos:Concept ;
+    skos:broader erggeo:SurfaceProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "aeolian transport"@en ;
+    erggeo:canLeaveEvidence erggeo:CrossBedding .
+
+erggeo:Burial a skos:Concept ;
+    skos:broader erggeo:SedimentaryProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "burial"@en ;
+    erggeo:canEnable cgiProc:metamorphic_process,
+        erggeo:Lithification .
+
+erggeo:Claim a owl:Class ;
+    rdfs:label "claim"@en ;
+    rdfs:comment "A proposition about a particular specimen, event, place, or history that may carry evidence and confidence."@en .
+
+erggeo:Cooling a skos:Concept ;
+    skos:broader erggeo:IgneousProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "cooling"@en .
+
+erggeo:Erosion a skos:Concept ;
+    skos:broader erggeo:SurfaceProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "erosion"@en ;
+    erggeo:canProduce cgiLith:sediment .
+
+erggeo:ExposedFormationsUphill a skos:Concept ;
+    skos:broader erggeo:InvestigativeCue ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "formations exposed uphill"@en ;
+    erggeo:supportsInferenceOf erggeo:GeologicSetting .
+
+erggeo:Extrusion a skos:Concept ;
+    skos:broader erggeo:IgneousProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "extrusion / lava emplacement"@en ;
+    erggeo:associatedWithCondition erggeo:NearSurfaceCooling ;
+    erggeo:canProduce cgiLith:basalt,
+        cgiLith:rhyolite .
+
+erggeo:FluvialTransport a skos:Concept ;
+    skos:broader erggeo:SurfaceProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "fluvial transport"@en ;
+    erggeo:canLeaveEvidence erggeo:CrossBedding,
+        erggeo:RoundedClasts ;
+    erggeo:canRelocate erggeo:RockMaterial ;
+    erggeo:canTransport cgiLith:sediment ;
+    erggeo:occursInSetting erggeo:WashOrStreamSetting .
+
+erggeo:GeologicEventOccurrence a owl:Class ;
+    rdfs:label "geologic event occurrence"@en ;
+    rdfs:comment "A claimed or inferred occurrence of a geologic process at a particular place and time."@en .
+
+erggeo:GlacialTransport a skos:Concept ;
+    skos:broader erggeo:SurfaceProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "glacial transport"@en ;
+    erggeo:canRelocate erggeo:RockMaterial .
+
+erggeo:GreenRockIllustrativeCase a erggeo:ExpertReasoningCase ;
+    rdfs:label "illustrative green-rock identification case"@en ;
+    rdfs:comment "Illustrative only. No identification is asserted. The case demonstrates how an observed green color opens competing identity and color-mechanism hypotheses, while the wash setting makes transport and upstream geology part of the investigation. The next observation is selected because it can discriminate among hypotheses, not because a fixed decision tree requires it."@en ;
+    erggeo:considersHypothesis erggeo:HypothesisCopperColorCause,
+        erggeo:HypothesisGreenJasper,
+        erggeo:HypothesisNephrite,
+        erggeo:HypothesisSerpentineColorCause,
+        erggeo:HypothesisSerpentinite ;
+    erggeo:hasInvestigationAction erggeo:ActionCheckDensity,
+        erggeo:ActionCheckHardness,
+        erggeo:ActionInspectFracture,
+        erggeo:ActionInspectUpstreamGeology ;
+    erggeo:hasObservation erggeo:ObsFoundInWash,
+        erggeo:ObsGreenColor,
+        erggeo:ObsNearbyGeology ;
+    erggeo:hasSample erggeo:GreenRockSample .
+
+erggeo:IntrusiveContactZone a skos:Concept ;
+    skos:broader erggeo:GeologicSetting ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "intrusive contact zone"@en .
+
+erggeo:LowPressure a skos:Concept ;
+    skos:broader erggeo:FormationCondition ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "low pressure"@en ;
+    skos:related qk:Pressure .
+
+erggeo:LowTemperature a skos:Concept ;
+    skos:broader erggeo:FormationCondition ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "relatively low temperature"@en ;
+    skos:related qk:Temperature .
+
+erggeo:NearbyRockAssemblage a skos:Concept ;
+    skos:broader erggeo:InvestigativeCue ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "nearby rock assemblage"@en ;
+    erggeo:supportsInferenceOf erggeo:GeologicSetting .
+
+erggeo:PlateMotion a skos:Concept ;
+    skos:broader erggeo:TectonicProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:note "Plate motion is useful not as a label alone but because it can enable subduction, uplift, faulting and related downstream processes."@en ;
+    skos:prefLabel "plate motion"@en ;
+    erggeo:canEnable inspireProc:faulting,
+        inspireProc:folding,
+        erggeo:Subduction,
+        erggeo:Uplift .
+
+erggeo:ReducingConditions a skos:Concept ;
+    skos:broader erggeo:FormationCondition ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "reducing / low-oxygen conditions"@en ;
+    skos:scopeNote "Reducing conditions may favor Fe2+ relative to Fe3+, but Fe2+ in a mineral does not by itself demonstrate deep formation."@en ;
+    erggeo:mayBeAssociatedWith erggeo:FerrousIronBearingSilicate .
+
+erggeo:SilicaRichComposition a skos:Concept ;
+    skos:broader erggeo:Composition ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "silica-rich composition"@en .
+
+erggeo:TranslucencyObservation a skos:Concept ;
+    skos:broader erggeo:ObservableFeature ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "translucency"@en ;
+    erggeo:helpsDiscriminate cgiLith:serpentinite,
+        erggeo:GreenJasperOrChert,
+        erggeo:Nephrite .
+
+erggeo:Weathering a skos:Concept ;
+    skos:broader erggeo:SurfaceProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "weathering"@en .
+
+erggeo:aboutSample a owl:ObjectProperty ;
+    rdfs:label "about sample"@en ;
+    rdfs:range erggeo:PhysicalSample .
+
+erggeo:associatedWithCondition a owl:ObjectProperty ;
+    rdfs:label "associated with condition"@en ;
+    rdfs:comment "Connects a material, process, facies, or setting to a commonly associated formation condition."@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept .
+
+erggeo:basedOnObservation a owl:ObjectProperty ;
+    rdfs:label "based on observation"@en ;
+    rdfs:domain erggeo:EvidenceAssessment ;
+    rdfs:range erggeo:Observation .
+
+erggeo:canEnable a owl:ObjectProperty ;
+    rdfs:label "can enable"@en ;
+    rdfs:comment "The subject process or condition can create circumstances that allow the object process to occur."@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept .
+
+erggeo:canExpose a owl:ObjectProperty ;
+    rdfs:label "can expose"@en ;
+    rdfs:comment "A process can bring the object material or geologic feature to an observable surface setting."@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept .
+
+erggeo:canHaveObservableFeature a owl:ObjectProperty ;
+    rdfs:label "can have observable feature"@en ;
+    rdfs:comment "A material can exhibit an observable feature; the feature need not be defining or unique."@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept .
+
+erggeo:canRelocate a owl:ObjectProperty ;
+    rdfs:label "can relocate"@en ;
+    rdfs:comment "A process can move a material so that its place of observation differs from its place of formation."@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept .
+
+erggeo:canTransform a owl:ObjectProperty ;
+    rdfs:label "can transform"@en ;
+    rdfs:comment "A process can transform the object material or state; this does not assert that a particular occurrence was transformed."@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept .
+
+erggeo:canTransport a owl:ObjectProperty ;
+    rdfs:label "can transport"@en ;
+    rdfs:comment "A process can move the object material from one place to another."@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept .
+
+erggeo:confidenceText a owl:DatatypeProperty ;
+    rdfs:label "confidence text"@en ;
+    rdfs:range xsd:string .
+
+erggeo:considersHypothesis a owl:ObjectProperty ;
+    rdfs:label "considers hypothesis"@en ;
+    rdfs:domain erggeo:ExpertReasoningCase ;
+    rdfs:range erggeo:Hypothesis .
+
+erggeo:contradictsHypothesis a owl:ObjectProperty ;
+    rdfs:label "contradicts hypothesis"@en ;
+    rdfs:domain erggeo:EvidenceAssessment ;
+    rdfs:range erggeo:Hypothesis .
+
+erggeo:favorsFormationOf a owl:ObjectProperty ;
+    rdfs:label "favors formation of"@en ;
+    rdfs:comment "A condition or setting makes formation of the object more plausible without asserting necessity or sufficiency."@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept .
+
+erggeo:hasInvestigationAction a owl:ObjectProperty ;
+    rdfs:label "has investigation action"@en ;
+    rdfs:domain erggeo:ExpertReasoningCase ;
+    rdfs:range erggeo:InvestigationAction .
+
+erggeo:hasObservation a owl:ObjectProperty ;
+    rdfs:label "has observation"@en ;
+    rdfs:domain erggeo:ExpertReasoningCase ;
+    rdfs:range erggeo:Observation .
+
+erggeo:hasSample a owl:ObjectProperty ;
+    rdfs:label "has sample"@en ;
+    rdfs:domain erggeo:ExpertReasoningCase ;
+    rdfs:range erggeo:PhysicalSample .
+
+erggeo:helpsDiscriminate a owl:ObjectProperty ;
+    rdfs:label "helps discriminate"@en ;
+    rdfs:comment "An observation or test can help distinguish among candidate explanations or identifications."@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept .
+
+erggeo:investigatesConcept a owl:ObjectProperty ;
+    rdfs:label "investigates concept"@en ;
+    rdfs:domain erggeo:InvestigationAction ;
+    rdfs:range skos:Concept .
+
+erggeo:involvesChemicalEntity a owl:ObjectProperty ;
+    rdfs:label "involves chemical entity"@en ;
+    rdfs:comment "Links a mechanism concept to a standard chemical-entity IRI where a well-known identifier is available."@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range rdfs:Resource .
+
+erggeo:mayBeAssociatedWith a owl:ObjectProperty ;
+    rdfs:label "may be associated with"@en ;
+    rdfs:comment "A deliberately weak association used where geologic relationships are real but not defining or universal."@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept .
+
+erggeo:mayBeCausedBy a owl:ObjectProperty ;
+    rdfs:label "may be caused by"@en ;
+    rdfs:comment "A deliberately defeasible relation from an observed feature to a possible underlying mechanism."@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept .
+
+erggeo:mayIndicate a owl:ObjectProperty ;
+    rdfs:label "may indicate"@en ;
+    rdfs:comment "A weak evidential relation: the subject may be evidence consistent with the object but is not sufficient proof."@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept .
+
+erggeo:observesConcept a owl:ObjectProperty ;
+    rdfs:label "observes concept"@en ;
+    rdfs:comment "Links a case-specific observation to the geological/world-model concept observed."@en ;
+    rdfs:domain erggeo:Observation ;
+    rdfs:range skos:Concept .
+
+erggeo:occursInSetting a owl:ObjectProperty ;
+    rdfs:label "occurs in setting"@en ;
+    rdfs:comment "Connects a process or material to a geologic setting in which it may occur."@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept .
+
+erggeo:predictsObservationConcept a owl:ObjectProperty ;
+    rdfs:label "predicts observation concept"@en ;
+    rdfs:comment "What kind of observation should become more likely if the hypothesis is correct."@en ;
+    rdfs:domain erggeo:Hypothesis ;
+    rdfs:range skos:Concept .
+
+erggeo:promptedBy a owl:ObjectProperty ;
+    rdfs:label "prompted by"@en ;
+    rdfs:range erggeo:Observation .
+
+erggeo:proposesConcept a owl:ObjectProperty ;
+    rdfs:label "proposes concept"@en ;
+    rdfs:comment "Links a hypothesis to a candidate identity, mechanism, setting, or condition."@en ;
+    rdfs:domain erggeo:Hypothesis ;
+    rdfs:range skos:Concept .
+
+erggeo:suggestsPossibility a owl:ObjectProperty ;
+    rdfs:label "suggests possibility"@en ;
+    rdfs:comment "A cue makes the object a candidate worth considering; this does not assert identification."@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept .
+
+erggeo:supportsHypothesis a owl:ObjectProperty ;
+    rdfs:label "supports hypothesis"@en ;
+    rdfs:domain erggeo:EvidenceAssessment ;
+    rdfs:range erggeo:Hypothesis .
+
+erggeo:supportsInferenceOf a owl:ObjectProperty ;
+    rdfs:label "supports inference of"@en ;
+    rdfs:comment "An observation or concept can support inference of another concept while remaining defeasible."@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept .
+
+inspireProc:faulting a skos:Concept ;
+    dcterms:source <http://inspire.ec.europa.eu/codelist/EventProcessValue> ;
+    skos:broader erggeo:TectonicProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "faulting"@en ;
+    erggeo:canEnable erggeo:HydrothermalAlteration ;
+    erggeo:canExpose erggeo:RockMaterial .
+
+inspireProc:folding a skos:Concept ;
+    dcterms:source <http://inspire.ec.europa.eu/codelist/EventProcessValue> ;
+    skos:broader erggeo:TectonicProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "folding"@en .
+
+cgiProc:metamorphic_process a skos:Concept ;
+    dcterms:source <https://docs.ogc.org/is/16-008/16-008r1.html> ;
+    skos:broader erggeo:MetamorphicProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "metamorphic process (CGI)"@en ;
+    erggeo:associatedWithCondition erggeo:FluidRichConditions,
+        erggeo:HighPressure,
+        erggeo:HighTemperature .
+
+cgiLith:basalt a skos:Concept ;
+    dcterms:source <https://docs.ogc.org/is/16-008/16-008r1.html> ;
+    skos:broader cgiLith:igneous_rock ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "basalt"@en ;
+    erggeo:canHaveObservableFeature erggeo:FineGrainedTexture ;
+    erggeo:mayBeAssociatedWith erggeo:MaficComposition .
+
+cgiLith:gabbroic_rock a skos:Concept ;
+    dcterms:source <https://docs.ogc.org/is/16-008/16-008r1.html> ;
+    skos:broader cgiLith:igneous_rock ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "gabbroic rock"@en ;
+    erggeo:canHaveObservableFeature erggeo:CoarseGrainedTexture ;
+    erggeo:mayBeAssociatedWith erggeo:MaficComposition .
+
+cgiLith:granite a skos:Concept ;
+    dcterms:source <https://docs.ogc.org/is/16-008/16-008r1.html> ;
+    skos:broader cgiLith:igneous_rock ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "granite"@en ;
+    erggeo:canHaveObservableFeature erggeo:CoarseGrainedTexture ;
+    erggeo:mayBeAssociatedWith erggeo:FelsicComposition .
+
+cgiLith:hornfels a skos:Concept ;
+    dcterms:source <https://docs.ogc.org/is/16-008/16-008r1.html> ;
+    skos:broader cgiLith:metamorphic_rock ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "hornfels"@en .
+
+cgiLith:rhyolite a skos:Concept ;
+    dcterms:source <https://docs.ogc.org/is/16-008/16-008r1.html> ;
+    skos:broader cgiLith:igneous_rock ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "rhyolite"@en ;
+    erggeo:canHaveObservableFeature erggeo:FineGrainedTexture ;
+    erggeo:mayBeAssociatedWith erggeo:FelsicComposition .
+
+cgiLith:sandstone a skos:Concept ;
+    dcterms:source <https://docs.ogc.org/is/16-008/16-008r1.html> ;
+    skos:broader cgiLith:sedimentary_rock ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "sandstone"@en .
+
+cgiLith:ultramafic_igneous_rock a skos:Concept ;
+    dcterms:source <https://docs.ogc.org/is/16-008/16-008r1.html> ;
+    skos:broader cgiLith:igneous_rock ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "ultramafic igneous rock"@en ;
+    erggeo:suggestsPossibility cgiLith:serpentinite ;
+    erggeo:supportsInferenceOf erggeo:Serpentinization .
+
+erggeo:ActionCheckDensity a erggeo:InvestigationAction ;
+    rdfs:label "check density / specific gravity"@en ;
+    erggeo:aboutSample erggeo:GreenRockSample ;
+    erggeo:investigatesConcept erggeo:DensityObservation ;
+    erggeo:promptedBy erggeo:ObsGreenColor .
+
+erggeo:ActionCheckHardness a erggeo:InvestigationAction ;
+    rdfs:label "check hardness"@en ;
+    erggeo:aboutSample erggeo:GreenRockSample ;
+    erggeo:investigatesConcept erggeo:HardnessObservation ;
+    erggeo:promptedBy erggeo:ObsGreenColor .
+
+erggeo:ActionInspectFracture a erggeo:InvestigationAction ;
+    rdfs:label "inspect fracture behavior"@en ;
+    erggeo:aboutSample erggeo:GreenRockSample ;
+    erggeo:investigatesConcept erggeo:FractureObservation ;
+    erggeo:promptedBy erggeo:ObsGreenColor .
+
+erggeo:ActionInspectUpstreamGeology a erggeo:InvestigationAction ;
+    rdfs:label "inspect upstream geology and nearby rock assemblage"@en ;
+    erggeo:aboutSample erggeo:GreenRockSample ;
+    erggeo:investigatesConcept erggeo:MineralAssociationObservation,
+        erggeo:UpstreamGeology ;
+    erggeo:promptedBy erggeo:ObsFoundInWash .
+
+erggeo:Aventurescence a skos:Concept ;
+    skos:broader erggeo:ObservableFeature ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "aventurescence / glittery inclusions"@en .
+
+erggeo:ChloritePresence a skos:Concept ;
+    skos:broader erggeo:ColoringMineralPresence ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "chlorite presence"@en ;
+    skos:scopeNote "Chlorite commonly contributes green color and may be associated with low-grade metamorphism or hydrothermal alteration."@en ;
+    erggeo:mayIndicate erggeo:HydrothermalAlteration,
+        erggeo:LowGradeMetamorphism .
+
+erggeo:ChloriteRichMetamorphicRock a skos:Concept ;
+    skos:broader cgiLith:metamorphic_rock ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "chlorite-rich metamorphic rock"@en ;
+    erggeo:canHaveObservableFeature erggeo:GreenColor ;
+    erggeo:mayBeAssociatedWith erggeo:RegionalMetamorphism .
+
+erggeo:ChromiumSubstitution a skos:Concept ;
+    skos:broader erggeo:CrystalLatticeSubstitution ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "chromium substitution"@en ;
+    skos:scopeNote "Cr3+ substitution can contribute green coloration in some minerals; this is a possible mechanism, not a rock identification."@en .
+
+erggeo:ContactMetamorphism a skos:Concept ;
+    skos:broader erggeo:MetamorphicProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "contact metamorphism"@en ;
+    erggeo:associatedWithCondition erggeo:HighTemperatureLowPressure ;
+    erggeo:canProduce cgiLith:hornfels .
+
+erggeo:DensityObservation a skos:Concept ;
+    skos:broader erggeo:ObservableFeature ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "density"@en ;
+    erggeo:helpsDiscriminate cgiLith:serpentinite,
+        erggeo:GreenJasperOrChert,
+        erggeo:Nephrite .
+
+erggeo:EpidotePresence a skos:Concept ;
+    skos:broader erggeo:ColoringMineralPresence ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "epidote presence"@en ;
+    skos:scopeNote "Epidote commonly occurs in metamorphic and hydrothermally altered rocks and can contribute yellow-green to green color."@en ;
+    erggeo:mayIndicate erggeo:HydrothermalAlteration,
+        erggeo:RegionalMetamorphism .
+
+erggeo:EpidoteRichRock a skos:Concept ;
+    skos:broader erggeo:RockMaterial ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "epidote-rich rock"@en ;
+    erggeo:canHaveObservableFeature erggeo:GreenColor ;
+    erggeo:mayBeAssociatedWith erggeo:HydrothermalAlteration .
+
+erggeo:FractureObservation a skos:Concept ;
+    skos:broader erggeo:ObservableFeature ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "fracture behavior"@en ;
+    erggeo:helpsDiscriminate cgiLith:serpentinite,
+        erggeo:GreenJasperOrChert,
+        erggeo:Nephrite .
+
+erggeo:GreenMineralInclusions a skos:Concept ;
+    skos:broader erggeo:ColorProducingMechanism ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "green mineral inclusions or dispersed phases"@en ;
+    skos:scopeNote "Quartz, chert, or jasper may appear green because of dispersed inclusions or fine mineral phases rather than the silica itself being intrinsically green."@en ;
+    erggeo:mayBeAssociatedWith erggeo:GreenJasperOrChert,
+        erggeo:GreenQuartzAventurine .
+
+erggeo:HardnessObservation a skos:Concept ;
+    skos:broader erggeo:ObservableFeature ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:note "A discriminating observation becomes valuable because a hypothesis predicts that it should differ among candidate materials."@en ;
+    skos:prefLabel "hardness"@en ;
+    erggeo:helpsDiscriminate cgiLith:serpentinite,
+        erggeo:GreenJasperOrChert,
+        erggeo:Nephrite .
+
+erggeo:HighPressure a skos:Concept ;
+    skos:broader erggeo:FormationCondition ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "high pressure"@en ;
+    skos:related qk:Pressure .
+
+erggeo:HighTemperature a skos:Concept ;
+    skos:broader erggeo:FormationCondition ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "high temperature"@en ;
+    skos:related qk:Temperature .
+
+erggeo:HighTemperatureLowPressure a skos:Concept ;
+    skos:broader erggeo:FormationCondition ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "high-temperature / low-pressure conditions"@en .
+
+erggeo:HypothesisCopperColorCause a erggeo:Hypothesis ;
+    rdfs:label "hypothesis: green color reflects secondary copper mineralization"@en ;
+    erggeo:aboutSample erggeo:GreenRockSample ;
+    erggeo:predictsObservationConcept erggeo:NearSurfaceWeatheringZone ;
+    erggeo:promptedBy erggeo:ObsGreenColor ;
+    erggeo:proposesConcept erggeo:SecondaryCopperMineralization .
+
+erggeo:HypothesisGreenJasper a erggeo:Hypothesis ;
+    rdfs:label "hypothesis: specimen may be green jasper/chert"@en ;
+    erggeo:aboutSample erggeo:GreenRockSample ;
+    erggeo:predictsObservationConcept erggeo:ConchoidalFracture ;
+    erggeo:promptedBy erggeo:ObsGreenColor ;
+    erggeo:proposesConcept erggeo:GreenJasperOrChert .
+
+erggeo:HypothesisNephrite a erggeo:Hypothesis ;
+    rdfs:label "hypothesis: specimen may be nephrite"@en ;
+    erggeo:aboutSample erggeo:GreenRockSample ;
+    erggeo:predictsObservationConcept erggeo:InterlockingFibrousTexture ;
+    erggeo:promptedBy erggeo:ObsGreenColor ;
+    erggeo:proposesConcept erggeo:Nephrite .
+
+erggeo:HypothesisSerpentineColorCause a erggeo:Hypothesis ;
+    rdfs:label "hypothesis: green color reflects serpentine minerals"@en ;
+    erggeo:aboutSample erggeo:GreenRockSample ;
+    erggeo:predictsObservationConcept erggeo:SerpentineMineralPresence ;
+    erggeo:promptedBy erggeo:ObsGreenColor ;
+    erggeo:proposesConcept erggeo:SerpentineMineralPresence .
+
+erggeo:HypothesisSerpentinite a erggeo:Hypothesis ;
+    rdfs:label "hypothesis: specimen may be serpentinite"@en ;
+    erggeo:aboutSample erggeo:GreenRockSample ;
+    erggeo:predictsObservationConcept erggeo:WaxyLuster ;
+    erggeo:promptedBy erggeo:ObsGreenColor ;
+    erggeo:proposesConcept cgiLith:serpentinite .
+
+erggeo:Lithification a skos:Concept ;
+    skos:broader erggeo:SedimentaryProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "lithification"@en ;
+    erggeo:canProduce cgiLith:sandstone,
+        cgiLith:sedimentary_rock .
+
+erggeo:LowGradeMetamorphism a skos:Concept ;
+    skos:broader erggeo:FormationCondition ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "low-grade metamorphic conditions"@en .
+
+erggeo:Metasomatism a skos:Concept ;
+    skos:broader erggeo:MetamorphicProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "metasomatism"@en ;
+    erggeo:associatedWithCondition erggeo:FluidRichConditions .
+
+erggeo:MineralAssociationObservation a skos:Concept ;
+    skos:broader erggeo:ObservableFeature ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "mineral associations"@en ;
+    erggeo:helpsDiscriminate cgiLith:serpentinite,
+        erggeo:GreenJasperOrChert,
+        erggeo:Nephrite .
+
+erggeo:NearSurfaceCooling a skos:Concept ;
+    skos:broader erggeo:FormationCondition ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "near-surface cooling"@en ;
+    erggeo:associatedWithCondition erggeo:RapidCooling .
+
+erggeo:NickelSubstitution a skos:Concept ;
+    skos:broader erggeo:CrystalLatticeSubstitution ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "nickel substitution"@en ;
+    skos:scopeNote "Ni-bearing minerals or substitution can contribute green coloration in some ultramafic-associated materials."@en .
+
+erggeo:ObsNearbyGeology a erggeo:Observation ;
+    rdfs:label "observation: nearby/upstream geology is relevant"@en ;
+    erggeo:aboutSample erggeo:GreenRockSample ;
+    erggeo:observesConcept erggeo:UpstreamGeology .
+
+erggeo:OxidizingConditions a skos:Concept ;
+    rdfs:seeAlso <https://www.ebi.ac.uk/chebi/CHEBI:29034> ;
+    skos:broader erggeo:FormationCondition ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "oxidizing conditions"@en ;
+    erggeo:mayBeAssociatedWith chebi:29034 .
+
+erggeo:PartialMelting a skos:Concept ;
+    skos:broader erggeo:IgneousProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "partial melting"@en ;
+    erggeo:canProduce erggeo:Volcanism .
+
+erggeo:PrehniteBearingRock a skos:Concept ;
+    skos:broader erggeo:RockMaterial ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "prehnite-bearing rock"@en ;
+    erggeo:canHaveObservableFeature erggeo:GreenColor ;
+    erggeo:mayBeAssociatedWith erggeo:HydrothermalAlteration .
+
+erggeo:RapidCooling a skos:Concept ;
+    skos:broader erggeo:FormationCondition ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "rapid cooling"@en ;
+    erggeo:canLeaveEvidence erggeo:FineGrainedTexture ;
+    erggeo:favorsFormationOf erggeo:FineGrainedTexture .
+
+erggeo:RoundedClasts a skos:Concept ;
+    skos:broader erggeo:ObservableFeature ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "rounded clasts"@en .
+
+erggeo:SecondaryMineralCoating a skos:Concept ;
+    skos:broader erggeo:ColorProducingMechanism ;
+    skos:definition "Color produced by later mineralization along surfaces, fractures, pores, or weathered zones."@en ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "secondary mineral coating or infill"@en .
+
+erggeo:SedimentaryBasin a skos:Concept ;
+    skos:broader erggeo:GeologicSetting ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "sedimentary basin"@en .
+
+erggeo:SlowCooling a skos:Concept ;
+    skos:broader erggeo:FormationCondition ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "slow cooling"@en ;
+    erggeo:canLeaveEvidence erggeo:CoarseGrainedTexture ;
+    erggeo:favorsFormationOf erggeo:CoarseGrainedTexture .
+
+erggeo:Subduction a skos:Concept ;
+    skos:broader erggeo:TectonicProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "subduction"@en ;
+    erggeo:associatedWithCondition erggeo:HighPressureLowTemperature ;
+    erggeo:canEnable erggeo:PartialMelting,
+        erggeo:RegionalMetamorphism ;
+    erggeo:canProduce erggeo:HighPressureLowTemperature ;
+    erggeo:occursInSetting erggeo:SubductionZone .
+
+erggeo:SubductionZone a skos:Concept ;
+    skos:broader erggeo:GeologicSetting ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "subduction-zone setting"@en .
+
+erggeo:SubsurfaceCooling a skos:Concept ;
+    skos:broader erggeo:FormationCondition ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "subsurface cooling"@en ;
+    erggeo:associatedWithCondition erggeo:SlowCooling .
+
+erggeo:UltramaficComposition a skos:Concept ;
+    skos:broader erggeo:Composition ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "ultramafic composition"@en .
+
+erggeo:Uplift a skos:Concept ;
+    skos:broader erggeo:TectonicProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "uplift"@en ;
+    erggeo:canExpose erggeo:RockMaterial ;
+    erggeo:canProduce erggeo:UpliftedTerrane .
+
+erggeo:UpliftedTerrane a skos:Concept ;
+    skos:broader erggeo:GeologicSetting ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "uplifted terrane"@en ;
+    erggeo:supportsInferenceOf erggeo:MetamorphicTerrane .
+
+erggeo:VolcanicField a skos:Concept ;
+    skos:broader erggeo:GeologicSetting ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "volcanic field"@en ;
+    erggeo:suggestsPossibility erggeo:AlteredVolcanicRock .
+
+erggeo:Volcanism a skos:Concept ;
+    skos:broader erggeo:IgneousProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "volcanism"@en ;
+    erggeo:occursInSetting erggeo:VolcanicField .
+
+erggeo:canBeEvidenceOf a owl:ObjectProperty ;
+    rdfs:label "can be evidence of"@en ;
+    rdfs:comment "An observable feature can be evidence consistent with a process or setting, without proving it."@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept ;
+    owl:inverseOf erggeo:canLeaveEvidence .
+
+erggeo:canBeProducedBy a owl:ObjectProperty ;
+    rdfs:label "can be produced by"@en ;
+    rdfs:comment "Inverse of can produce."@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept ;
+    owl:inverseOf erggeo:canProduce .
+
+erggeo:canLeaveEvidence a owl:ObjectProperty ;
+    rdfs:label "can leave evidence"@en ;
+    rdfs:comment "A process can leave an observable trace that may later support inference about the process."@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept ;
+    owl:inverseOf erggeo:canBeEvidenceOf .
+
+erggeo:canProduce a owl:ObjectProperty ;
+    rdfs:label "can produce"@en ;
+    rdfs:comment "General world-model relation: the subject process or condition can produce the object in some circumstances."@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept ;
+    owl:inverseOf erggeo:canBeProducedBy .
+
+cgiLith:schist a skos:Concept ;
+    dcterms:source <https://docs.ogc.org/is/16-008/16-008r1.html> ;
+    skos:broader cgiLith:metamorphic_rock ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "schist"@en .
+
+cgiLith:sedimentary_rock a skos:Concept ;
+    dcterms:source <https://docs.ogc.org/is/16-008/16-008r1.html> ;
+    skos:broader erggeo:RockType ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "sedimentary rock"@en .
+
+erggeo:ConchoidalFracture a skos:Concept ;
+    skos:broader erggeo:ObservableFeature ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "conchoidal fracture"@en .
+
+erggeo:CrossBedding a skos:Concept ;
+    skos:broader erggeo:ObservableFeature ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "cross-bedding"@en .
+
+erggeo:FelsicComposition a skos:Concept ;
+    skos:broader erggeo:Composition ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "felsic composition"@en .
+
+erggeo:FerrousIronBearingSilicate a skos:Concept ;
+    rdfs:seeAlso <https://www.ebi.ac.uk/chebi/CHEBI:29033> ;
+    skos:broader erggeo:CrystalLatticeSubstitution ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:note "Do not compile this into the rule 'Fe2+ means formed deep.' Ferrous iron can occur in minerals formed in many environments. Geological setting, mineral identity, assemblage, alteration, and other evidence are needed."@en ;
+    skos:prefLabel "Fe2+-bearing silicate lattice"@en ;
+    skos:scopeNote "Fe2+ can contribute to green color in several silicate minerals. Its presence alone is not a reliable depth indicator."@en ;
+    erggeo:involvesChemicalEntity chebi:29033 .
+
+erggeo:GreenQuartzAventurine a skos:Concept ;
+    skos:broader erggeo:MineralMaterial ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "green quartz / aventurine"@en ;
+    erggeo:canHaveObservableFeature erggeo:Aventurescence,
+        erggeo:GreenColor .
+
+erggeo:HighPressureLowTemperature a skos:Concept ;
+    skos:broader erggeo:FormationCondition ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "high-pressure / relatively low-temperature conditions"@en .
+
+erggeo:InterlockingFibrousTexture a skos:Concept ;
+    skos:broader erggeo:Texture ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "tough interlocking fibrous texture"@en .
+
+erggeo:MaficComposition a skos:Concept ;
+    skos:broader erggeo:Composition ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "mafic composition"@en .
+
+erggeo:MineralMaterial a skos:Concept ;
+    skos:broader erggeo:RockMaterial ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "mineral or mineral-rich material"@en .
+
+erggeo:NearSurfaceWeatheringZone a skos:Concept ;
+    skos:broader erggeo:FormationCondition ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "near-surface weathering / oxidation zone"@en ;
+    erggeo:mayBeAssociatedWith erggeo:OxidizingConditions .
+
+erggeo:ObsFoundInWash a erggeo:Observation ;
+    rdfs:label "observation: specimen was found in a wash"@en ;
+    erggeo:aboutSample erggeo:GreenRockSample ;
+    erggeo:observesConcept erggeo:WashOrStreamSetting .
+
+erggeo:ObservationContext a skos:Concept ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "observation context"@en ;
+    skos:topConceptOf erggeo:GeologyExpertReasoningScheme .
+
+erggeo:SecondaryCopperMineralization a skos:Concept ;
+    rdfs:seeAlso <https://www.ebi.ac.uk/chebi/CHEBI:29036> ;
+    skos:broader erggeo:SecondaryMineralCoating ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "secondary copper mineralization"@en ;
+    skos:scopeNote "Secondary copper minerals may produce vivid green or blue-green colors, commonly in oxidized weathering zones of copper-bearing rock."@en ;
+    erggeo:associatedWithCondition erggeo:NearSurfaceWeatheringZone ;
+    erggeo:involvesChemicalEntity chebi:29036 .
+
+erggeo:Serpentinization a skos:Concept ;
+    skos:broader erggeo:MetamorphicProcess ;
+    skos:definition "Hydration and alteration of ultramafic rock that can produce serpentine minerals and serpentinite."@en ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "serpentinization"@en ;
+    erggeo:associatedWithCondition erggeo:FluidRichConditions ;
+    erggeo:canProduce cgiLith:serpentinite ;
+    erggeo:canTransform cgiLith:ultramafic_igneous_rock .
+
+erggeo:WashOrStreamSetting a skos:Concept ;
+    skos:broader erggeo:ObservationContext ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:note "In a wash, transport history is part of the reasoning: inspect upstream geology and nearby rock assemblages rather than assuming the specimen formed where it was found."@en ;
+    skos:prefLabel "wash or stream setting"@en ;
+    skos:scopeNote "A place of observation that commonly contains transported material; the found location need not be the formation location."@en ;
+    erggeo:supportsInferenceOf erggeo:UpstreamGeology .
+
+erggeo:WaxyLuster a skos:Concept ;
+    skos:broader erggeo:ObservableFeature ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "waxy or greasy luster"@en .
+
+cgiLith:sediment a skos:Concept ;
+    dcterms:source <https://docs.ogc.org/is/16-008/16-008r1.html> ;
+    skos:broader erggeo:RockMaterial ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "sediment"@en .
+
+erggeo:AlteredVolcanicRock a skos:Concept ;
+    skos:broader erggeo:RockMaterial ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "altered volcanic rock"@en ;
+    erggeo:canHaveObservableFeature erggeo:GreenColor .
+
+erggeo:ColoringMineralPresence a skos:Concept ;
+    skos:broader erggeo:ColorProducingMechanism ;
+    skos:definition "Green color caused primarily by the presence or abundance of a green mineral or mineral assemblage."@en ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "presence of a coloring mineral"@en .
+
+erggeo:CrystalLatticeSubstitution a skos:Concept ;
+    skos:broader erggeo:ColorProducingMechanism ;
+    skos:definition "Substitution of ions into a mineral crystal lattice that can alter absorption of visible light and therefore color."@en ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "crystal-lattice substitution"@en .
+
+erggeo:EvidenceAssessment a owl:Class ;
+    rdfs:label "evidence assessment"@en ;
+    rdfs:comment "A case-specific assessment that an observation supports or contradicts a hypothesis."@en .
+
+erggeo:MetamorphicTerrane a skos:Concept ;
+    skos:broader erggeo:GeologicSetting ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "metamorphic terrane"@en ;
+    erggeo:suggestsPossibility cgiLith:schist,
+        erggeo:Nephrite .
+
+erggeo:PhysicalSample a owl:Class ;
+    rdfs:label "physical sample"@en ;
+    rdfs:comment "A particular specimen or sample being investigated."@en .
+
+erggeo:RegionalMetamorphism a skos:Concept ;
+    skos:broader erggeo:MetamorphicProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "regional metamorphism"@en ;
+    erggeo:canProduce cgiLith:schist .
+
+erggeo:RockType a skos:Concept ;
+    skos:broader erggeo:RockMaterial ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "rock type"@en .
+
+erggeo:SedimentaryProcess a skos:Concept ;
+    skos:broader erggeo:GeologicProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "sedimentary process"@en .
+
+erggeo:SerpentineMineralPresence a skos:Concept ;
+    skos:broader erggeo:ColoringMineralPresence ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "serpentine-mineral presence"@en ;
+    skos:scopeNote "Serpentine minerals can give altered ultramafic rocks green colors and are evidence consistent with serpentinization."@en ;
+    erggeo:mayIndicate erggeo:Serpentinization .
+
+erggeo:Texture a skos:Concept ;
+    skos:broader erggeo:ObservableFeature ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "texture"@en .
+
+erggeo:UpstreamGeology a skos:Concept ;
+    skos:broader erggeo:InvestigativeCue ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "upstream geology"@en ;
+    erggeo:supportsInferenceOf erggeo:GeologicSetting .
+
+erggeo:CoarseGrainedTexture a skos:Concept ;
+    skos:broader erggeo:Texture ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "coarse-grained texture"@en .
+
+erggeo:ColorProducingMechanism a skos:Concept ;
+    skos:definition "A mineralogical, chemical, structural, or surface process that can contribute to an observed color."@en ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "color-producing mechanism"@en .
+
+erggeo:FineGrainedTexture a skos:Concept ;
+    skos:broader erggeo:Texture ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "fine-grained texture"@en .
+
+erggeo:FluidRichConditions a skos:Concept ;
+    skos:broader erggeo:FormationCondition ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "fluid-rich conditions"@en .
+
+erggeo:InvestigativeCue a skos:Concept ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "investigative cue"@en ;
+    skos:topConceptOf erggeo:GeologyExpertReasoningScheme .
+
+cgiLith:igneous_rock a skos:Concept ;
+    dcterms:source <https://docs.ogc.org/is/16-008/16-008r1.html> ;
+    skos:broader erggeo:RockType ;
+    skos:definition "Rock formed by igneous processes such as intrusion/cooling of magma or volcanic eruption."@en ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "igneous rock"@en .
+
+cgiLith:metamorphic_rock a skos:Concept ;
+    dcterms:source <https://docs.ogc.org/is/16-008/16-008r1.html> ;
+    skos:broader erggeo:RockType ;
+    skos:definition "Rock formed by solid-state mineralogical, chemical, and/or structural change to pre-existing rock."@en ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "metamorphic rock"@en .
+
+erggeo:Composition a skos:Concept ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "composition"@en ;
+    skos:topConceptOf erggeo:GeologyExpertReasoningScheme .
+
+erggeo:ExpertReasoningCase a owl:Class ;
+    rdfs:label "expert reasoning case"@en ;
+    rdfs:comment "A particular investigation in which observations, context, competing hypotheses, predicted evidence, and investigative actions are connected."@en .
+
+erggeo:HydrothermalAlteration a skos:Concept ;
+    skos:broader erggeo:MetamorphicProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "hydrothermal alteration"@en ;
+    erggeo:associatedWithCondition erggeo:FluidRichConditions ;
+    erggeo:canProduce erggeo:AlteredVolcanicRock .
+
+erggeo:IgneousProcess a skos:Concept ;
+    skos:broader erggeo:GeologicProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "igneous process"@en .
+
+erggeo:SurfaceProcess a skos:Concept ;
+    skos:broader erggeo:GeologicProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "surface process"@en .
+
+erggeo:TectonicProcess a skos:Concept ;
+    skos:broader erggeo:GeologicProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "tectonic process"@en .
+
+erggeo:GeologicProcess a skos:Concept ;
+    skos:definition "A process that can create, transform, move, expose, or alter earth materials."@en ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "geologic process"@en ;
+    skos:topConceptOf erggeo:GeologyExpertReasoningScheme .
+
+erggeo:InvestigationAction a owl:Class ;
+    rdfs:label "investigation action"@en ;
+    rdfs:comment "An action chosen to obtain evidence that may discriminate among hypotheses."@en .
+
+erggeo:MetamorphicProcess a skos:Concept ;
+    skos:broader erggeo:GeologicProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "metamorphic process"@en .
+
+erggeo:Observation a owl:Class ;
+    rdfs:label "observation"@en ;
+    rdfs:comment "A case-specific observation or measurement, kept separate from its interpretation."@en .
+
+erggeo:GreenJasperOrChert a skos:Concept ;
+    skos:broader erggeo:RockMaterial ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "green jasper or chert"@en ;
+    erggeo:canHaveObservableFeature erggeo:ConchoidalFracture,
+        erggeo:GreenColor .
+
+erggeo:Nephrite a skos:Concept ;
+    skos:broader erggeo:MineralMaterial ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "nephrite"@en ;
+    erggeo:canHaveObservableFeature erggeo:GreenColor,
+        erggeo:InterlockingFibrousTexture ;
+    erggeo:mayBeAssociatedWith erggeo:MetamorphicTerrane,
+        erggeo:Metasomatism .
+
+cgiLith:serpentinite a skos:Concept ;
+    dcterms:source <https://docs.ogc.org/is/16-008/16-008r1.html> ;
+    skos:broader cgiLith:metamorphic_rock ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "serpentinite"@en ;
+    erggeo:canHaveObservableFeature erggeo:GreenColor,
+        erggeo:WaxyLuster ;
+    erggeo:mayBeAssociatedWith erggeo:MetamorphicTerrane,
+        erggeo:UltramaficComposition .
+
+erggeo:GreenColor a skos:Concept ;
+    skos:broader erggeo:ObservableFeature ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:note "Color starts a hypothesis set. It should not be treated as a terminal identification rule."@en,
+        "The useful question is not merely 'which rocks are green?' but 'what mechanism made this specimen green?' The same observed color can arise from very different mineral chemistries and geological histories."@en ;
+    skos:prefLabel "green color"@en ;
+    skos:scopeNote "Useful as an initial cue, but weakly discriminating because many unrelated rocks and minerals can be green."@en ;
+    erggeo:mayBeCausedBy erggeo:ChloritePresence,
+        erggeo:ChromiumSubstitution,
+        erggeo:EpidotePresence,
+        erggeo:FerrousIronBearingSilicate,
+        erggeo:GreenMineralInclusions,
+        erggeo:NickelSubstitution,
+        erggeo:SecondaryCopperMineralization,
+        erggeo:SerpentineMineralPresence ;
+    erggeo:suggestsPossibility cgiLith:serpentinite,
+        erggeo:AlteredVolcanicRock,
+        erggeo:ChloriteRichMetamorphicRock,
+        erggeo:EpidoteRichRock,
+        erggeo:GreenJasperOrChert,
+        erggeo:GreenQuartzAventurine,
+        erggeo:Nephrite,
+        erggeo:PrehniteBearingRock .
+
+erggeo:ObsGreenColor a erggeo:Observation ;
+    rdfs:label "observation: specimen is green"@en ;
+    erggeo:aboutSample erggeo:GreenRockSample ;
+    erggeo:observesConcept erggeo:GreenColor .
+
+erggeo:GeologicSetting a skos:Concept ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "geologic setting"@en ;
+    skos:topConceptOf erggeo:GeologyExpertReasoningScheme .
+
+erggeo:Hypothesis a owl:Class ;
+    rdfs:label "hypothesis"@en ;
+    rdfs:comment "A defeasible explanation or identification considered in a particular case."@en .
+
+erggeo:RockMaterial a skos:Concept ;
+    skos:definition "A rock, mineral-bearing material, sediment, or related earth material considered during investigation."@en ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "rock or earth material"@en ;
+    skos:topConceptOf erggeo:GeologyExpertReasoningScheme .
+
+erggeo:GreenRockSample a erggeo:PhysicalSample ;
+    rdfs:label "unidentified green rock sample"@en .
+
+erggeo:ObservableFeature a skos:Concept ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "observable feature"@en ;
+    skos:topConceptOf erggeo:GeologyExpertReasoningScheme .
+
+erggeo:FormationCondition a skos:Concept ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "formation condition"@en ;
+    skos:topConceptOf erggeo:GeologyExpertReasoningScheme .
+
+erggeo:GeologyExpertReasoningScheme a skos:ConceptScheme ;
+    dcterms:description "Concepts useful for reasoning from rocks and geologic context toward plausible formation histories, and from hypothesized mechanisms toward predicted observations."@en ;
+    skos:hasTopConcept erggeo:Composition,
+        erggeo:FormationCondition,
+        erggeo:GeologicProcess,
+        erggeo:GeologicSetting,
+        erggeo:InvestigativeCue,
+        erggeo:ObservableFeature,
+        erggeo:ObservationContext,
+        erggeo:RockMaterial ;
+    skos:prefLabel "Geology Expert Reasoning Concept Scheme"@en .
+
+#################################################################
+# Version 3 additions: parameterized identification and blog model
+#################################################################
+
+# These additions make the sample easier to query as an Expert Reasoning
+# Graph. A caller can supply observed concepts (green, waxy, fibrous, etc.),
+# optional numeric measurements such as Mohs hardness, and contextual clues
+# such as wash, volcanic field, metamorphic terrane, or ultramafic source
+# geology. SPARQL can then return candidate materials and useful next clues.
+#
+# The relations remain deliberately defeasible. "suggests possibility" and
+# "can have observable feature" do not assert an identification.
+
+erggeo:observedNumericValue a owl:DatatypeProperty ;
+    rdfs:label "observed numeric value"@en ;
+    rdfs:comment "A numeric value recorded for a case-specific observation. The meaning of the number is supplied by observesConcept."@en ;
+    rdfs:domain erggeo:Observation ;
+    rdfs:range xsd:decimal .
+
+erggeo:observedValueText a owl:DatatypeProperty ;
+    rdfs:label "observed value text"@en ;
+    rdfs:comment "A human-readable value recorded for an observation when a controlled concept or numeric value is not sufficient."@en ;
+    rdfs:domain erggeo:Observation ;
+    rdfs:range xsd:string .
+
+erggeo:mohsHardnessMin a owl:DatatypeProperty ;
+    rdfs:label "approximate minimum Mohs hardness"@en ;
+    rdfs:comment "Approximate lower end of a commonly reported Mohs-hardness range. Intended for candidate filtering, not as a universal defining boundary."@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range xsd:decimal .
+
+erggeo:mohsHardnessMax a owl:DatatypeProperty ;
+    rdfs:label "approximate maximum Mohs hardness"@en ;
+    rdfs:comment "Approximate upper end of a commonly reported Mohs-hardness range. Intended for candidate filtering, not as a universal defining boundary."@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range xsd:decimal .
+
+# ----------------------------------------------------------------
+# Observable texture / crystal-scale vocabulary used in the blog
+# ----------------------------------------------------------------
+
+erggeo:CryptocrystallineTexture a skos:Concept ;
+    skos:broader erggeo:Texture ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "cryptocrystalline texture"@en ;
+    skos:scopeNote "Crystals are extremely small and are not individually visible to the unaided eye; exact boundaries vary by usage."@en .
+
+erggeo:MicrocrystallineTexture a skos:Concept ;
+    skos:broader erggeo:Texture ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "microcrystalline texture"@en ;
+    skos:scopeNote "Crystals are not visible individually to the unaided eye but can be resolved microscopically; exact boundaries vary by usage."@en .
+
+erggeo:MacrocrystallineTexture a skos:Concept ;
+    skos:broader erggeo:Texture ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "macrocrystalline texture"@en ;
+    skos:scopeNote "Individual crystals are visible without a microscope. Visible crystals may be only around a millimeter across or may grow many centimeters or more."@en .
+
+erggeo:AphaniticTexture a skos:Concept ;
+    skos:broader erggeo:FineGrainedTexture ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "aphanitic texture"@en ;
+    skos:scopeNote "Igneous texture in which individual mineral grains are too small to distinguish readily with the unaided eye; commonly associated with relatively rapid cooling."@en ;
+    erggeo:suggestsPossibility cgiLith:basalt, cgiLith:rhyolite .
+
+erggeo:PhaneriticTexture a skos:Concept ;
+    skos:broader erggeo:CoarseGrainedTexture ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "phaneritic texture"@en ;
+    skos:scopeNote "Igneous texture in which constituent mineral grains are readily visible to the unaided eye; commonly associated with relatively slow cooling underground."@en ;
+    erggeo:suggestsPossibility cgiLith:gabbroic_rock, cgiLith:granite .
+
+cgiLith:basalt erggeo:canHaveObservableFeature erggeo:AphaniticTexture .
+cgiLith:rhyolite erggeo:canHaveObservableFeature erggeo:AphaniticTexture .
+cgiLith:gabbroic_rock erggeo:canHaveObservableFeature erggeo:PhaneriticTexture .
+cgiLith:granite erggeo:canHaveObservableFeature erggeo:PhaneriticTexture .
+
+erggeo:GreenJasperOrChert
+    erggeo:canHaveObservableFeature erggeo:CryptocrystallineTexture ;
+    erggeo:mohsHardnessMin "6.5"^^xsd:decimal ;
+    erggeo:mohsHardnessMax "7.0"^^xsd:decimal .
+
+erggeo:GreenQuartzAventurine
+    erggeo:canHaveObservableFeature erggeo:MacrocrystallineTexture,
+        erggeo:ConchoidalFracture ;
+    erggeo:mohsHardnessMin "7.0"^^xsd:decimal ;
+    erggeo:mohsHardnessMax "7.0"^^xsd:decimal .
+
+erggeo:Nephrite
+    erggeo:mohsHardnessMin "6.0"^^xsd:decimal ;
+    erggeo:mohsHardnessMax "6.5"^^xsd:decimal .
+
+cgiLith:serpentinite
+    erggeo:mohsHardnessMin "2.5"^^xsd:decimal ;
+    erggeo:mohsHardnessMax "5.5"^^xsd:decimal .
+
+erggeo:PrehniteBearingRock
+    erggeo:mohsHardnessMin "6.0"^^xsd:decimal ;
+    erggeo:mohsHardnessMax "6.5"^^xsd:decimal .
+
+# ----------------------------------------------------------------
+# Direct clue -> candidate links useful for interactive identification
+# ----------------------------------------------------------------
+
+erggeo:Aventurescence
+    erggeo:suggestsPossibility erggeo:GreenQuartzAventurine ;
+    erggeo:helpsDiscriminate erggeo:GreenQuartzAventurine .
+
+erggeo:WaxyLuster
+    erggeo:suggestsPossibility cgiLith:serpentinite ;
+    erggeo:helpsDiscriminate cgiLith:serpentinite .
+
+erggeo:ConchoidalFracture
+    erggeo:suggestsPossibility erggeo:GreenJasperOrChert,
+        erggeo:GreenQuartzAventurine ;
+    erggeo:helpsDiscriminate erggeo:GreenJasperOrChert,
+        erggeo:GreenQuartzAventurine .
+
+erggeo:InterlockingFibrousTexture
+    erggeo:suggestsPossibility erggeo:Nephrite ;
+    erggeo:helpsDiscriminate erggeo:Nephrite .
+
+erggeo:CryptocrystallineTexture
+    erggeo:suggestsPossibility erggeo:GreenJasperOrChert ;
+    erggeo:helpsDiscriminate erggeo:GreenJasperOrChert .
+
+erggeo:MacrocrystallineTexture
+    erggeo:suggestsPossibility erggeo:GreenQuartzAventurine ;
+    erggeo:helpsDiscriminate erggeo:GreenQuartzAventurine .
+
+# Generic field tests can discriminate among several common green-rock candidates.
+erggeo:HardnessObservation
+    erggeo:helpsDiscriminate erggeo:GreenQuartzAventurine,
+        cgiLith:serpentinite,
+        erggeo:GreenJasperOrChert,
+        erggeo:Nephrite,
+        erggeo:PrehniteBearingRock .
+
+erggeo:DensityObservation
+    erggeo:helpsDiscriminate erggeo:GreenQuartzAventurine,
+        cgiLith:serpentinite,
+        erggeo:GreenJasperOrChert,
+        erggeo:Nephrite .
+
+erggeo:FractureObservation
+    erggeo:helpsDiscriminate erggeo:GreenQuartzAventurine,
+        cgiLith:serpentinite,
+        erggeo:GreenJasperOrChert,
+        erggeo:Nephrite .
+
+erggeo:TranslucencyObservation
+    erggeo:helpsDiscriminate erggeo:GreenQuartzAventurine,
+        cgiLith:serpentinite,
+        erggeo:GreenJasperOrChert,
+        erggeo:Nephrite,
+        erggeo:PrehniteBearingRock .
+
+# Context should alter the candidate set, not prove an identity.
+erggeo:MetamorphicTerrane
+    erggeo:suggestsPossibility cgiLith:serpentinite,
+        erggeo:ChloriteRichMetamorphicRock,
+        erggeo:Nephrite .
+
+erggeo:HydrothermalSetting a skos:Concept ;
+    skos:broader erggeo:GeologicSetting ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "hydrothermal alteration setting"@en ;
+    erggeo:suggestsPossibility erggeo:AlteredVolcanicRock,
+        erggeo:ChloriteRichMetamorphicRock,
+        erggeo:EpidoteRichRock,
+        erggeo:PrehniteBearingRock .
+
+erggeo:UltramaficSourceGeology a skos:Concept ;
+    skos:broader erggeo:InvestigativeCue ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "ultramafic source geology nearby or upstream"@en ;
+    erggeo:suggestsPossibility cgiLith:serpentinite ;
+    erggeo:supportsInferenceOf erggeo:Serpentinization .
+
+# Investigation actions corresponding to discriminating clues.
+erggeo:ActionCheckAventurescence a erggeo:InvestigationAction ;
+    rdfs:label "look for aventurescence or glittery inclusions"@en ;
+    erggeo:investigatesConcept erggeo:Aventurescence .
+
+erggeo:ActionCheckWaxyLuster a erggeo:InvestigationAction ;
+    rdfs:label "inspect whether the luster is waxy or greasy"@en ;
+    erggeo:investigatesConcept erggeo:WaxyLuster .
+
+erggeo:ActionCheckFibrousTexture a erggeo:InvestigationAction ;
+    rdfs:label "inspect for a tough interlocking fibrous texture"@en ;
+    erggeo:investigatesConcept erggeo:InterlockingFibrousTexture .
+
+erggeo:ActionCheckTranslucency a erggeo:InvestigationAction ;
+    rdfs:label "inspect translucency, especially at thin edges"@en ;
+    erggeo:investigatesConcept erggeo:TranslucencyObservation .
+
+erggeo:ActionCheckCrystalScale a erggeo:InvestigationAction ;
+    rdfs:label "inspect whether the material is cryptocrystalline, microcrystalline, or visibly crystalline"@en ;
+    erggeo:investigatesConcept erggeo:CryptocrystallineTexture,
+        erggeo:MicrocrystallineTexture,
+        erggeo:MacrocrystallineTexture .
+
+erggeo:GreenRockIllustrativeCase
+    erggeo:hasInvestigationAction erggeo:ActionCheckAventurescence,
+        erggeo:ActionCheckCrystalScale,
+        erggeo:ActionCheckFibrousTexture,
+        erggeo:ActionCheckTranslucency,
+        erggeo:ActionCheckWaxyLuster .
+
+erggeo:HypothesisGreenQuartz a erggeo:Hypothesis ;
+    rdfs:label "hypothesis: specimen may be green quartz / aventurine"@en ;
+    erggeo:aboutSample erggeo:GreenRockSample ;
+    erggeo:predictsObservationConcept erggeo:Aventurescence,
+        erggeo:MacrocrystallineTexture ;
+    erggeo:promptedBy erggeo:ObsGreenColor ;
+    erggeo:proposesConcept erggeo:GreenQuartzAventurine .
+
+erggeo:GreenRockIllustrativeCase
+    erggeo:considersHypothesis erggeo:HypothesisGreenQuartz .
+
+# ----------------------------------------------------------------
+# Quartz-cycle / process-history concepts from the blog
+# ----------------------------------------------------------------
+
+erggeo:QuartzGrain a skos:Concept ;
+    skos:broader erggeo:MineralMaterial ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "quartz grain"@en ;
+    skos:scopeNote "A resistant quartz grain released from quartz-bearing rock by weathering and erosion."@en .
+
+erggeo:QuartzRichSand a skos:Concept ;
+    skos:broader cgiLith:sediment ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "quartz-rich sand"@en .
+
+erggeo:GneissicRock a skos:Concept ;
+    skos:broader cgiLith:metamorphic_rock ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "gneissic rock"@en ;
+    skos:scopeNote "Used here as a broad concept. Quartzite does not simply or inevitably become gneiss; suitable quartz-feldspar-mica-bearing protoliths can develop gneissic textures under high-grade metamorphism and deformation."@en .
+
+erggeo:Magma a skos:Concept ;
+    skos:broader erggeo:RockMaterial ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "magma"@en .
+
+erggeo:Crystallization a skos:Concept ;
+    skos:broader erggeo:IgneousProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "crystallization of magma"@en ;
+    erggeo:canProduce cgiLith:igneous_rock,
+        cgiLith:granite .
+
+erggeo:HighGradeMetamorphism a skos:Concept ;
+    skos:broader erggeo:MetamorphicProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "high-grade metamorphism"@en ;
+    erggeo:canProduce erggeo:GneissicRock .
+
+erggeo:CrustalThickening a skos:Concept ;
+    skos:broader erggeo:TectonicProcess ;
+    skos:inScheme erggeo:GeologyExpertReasoningScheme ;
+    skos:prefLabel "crustal thickening / continental collision"@en ;
+    erggeo:canEnable erggeo:HighGradeMetamorphism,
+        erggeo:PartialMelting .
+
+erggeo:canRelease a owl:ObjectProperty ;
+    rdfs:label "can release"@en ;
+    rdfs:comment "A process can free or liberate the object material from a pre-existing material."@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept .
+
+erggeo:Weathering
+    erggeo:canRelease erggeo:QuartzGrain .
+
+erggeo:FluvialTransport
+    erggeo:canTransport erggeo:QuartzGrain .
+
+cgiProc:deposition
+    erggeo:canProduce erggeo:QuartzRichSand .
+
+erggeo:Lithification
+    erggeo:canTransform erggeo:QuartzRichSand ;
+    erggeo:canProduce cgiLith:sandstone .
+
+cgiProc:metamorphic_process
+    erggeo:canTransform cgiLith:sandstone ;
+    erggeo:canProduce cgiLith:quartzite .
+
+erggeo:Uplift
+    erggeo:canExpose cgiLith:granite,
+        cgiLith:sandstone,
+        cgiLith:quartzite,
+        erggeo:GneissicRock .
+
+erggeo:PartialMelting
+    erggeo:canProduce erggeo:Magma .
+
+erggeo:Subduction
+    erggeo:canEnable erggeo:HighGradeMetamorphism,
+        erggeo:PartialMelting .
+
+# The graph therefore has both a simplified loop and explicit branches:
+# granite -> weathering/release -> quartz grain -> transport -> deposition
+# -> quartz-rich sand -> lithification -> sandstone -> metamorphism
+# -> quartzite, with possible uplift back to weathering, deeper metamorphism
+# toward gneissic rocks, or deeper recycling/partial melting toward magma
+# and crystallization into new igneous rock.
+
