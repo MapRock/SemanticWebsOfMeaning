@@ -6,7 +6,7 @@ It may exist only in the head of someone who has spent twenty years diagnosing u
 
 That creates an old knowledge-management problem: **how do we get the expertise out?**
 
-But LLMs substantially change the practical difficulty of that problem.
+But LLMs substantially change the practical difficulty of that problem. LLMs are what I wish existed back in 2004 when I built my graph on SQL Server performance tuning. I could have written a book, but chose to build a graph that would be "live". I believe what took me over half a year back in 2004 would take a matter of weeks.
 
 ### The SME Does Not Have to Write a Book
 
