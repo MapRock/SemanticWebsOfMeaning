@@ -234,3 +234,57 @@ An Expert Reasoning Graph serializes much of that same knowledge into something 
 That does not make the Expert Reasoning Graph easy to construct.
 
 It may, however, make something that was once prohibitively difficult merely difficult.
+
+### Not a Cookbook: Books That Capture Generative Expertise
+
+When I compare building an Expert Reasoning Graph with writing a book about one's expertise, I do **not** mean a cookbook in the usual sense.
+
+A cookbook preserves known recipes. Given a desired dish, it tells us what ingredients to obtain and what sequence of steps to follow. The enterprise equivalents are procedures, runbooks, checklists, decision trees, and documented best practices. Those are valuable, but they describe situations for which we already know what to do.
+
+The harder expertise appears when **there is no recipe**.
+
+A chef is given unfamiliar ingredients and asked to invent dinner. A lawyer encounters a fact pattern that has never occurred exactly this way before. A database specialist faces a performance failure they have never seen. An architect must design a building for a combination of site, people, constraints, and purposes that has never existed before. A jazz musician must decide what to play next while the music is unfolding.
+
+There are books that attempt to teach precisely this deeper kind of knowledge:
+
+| Domain | Example | What makes it different from a recipe book |
+| --- | --- | --- |
+| **Cooking** | *Kitchen Creativity*, Karen Page | Explicitly concerns inventive cooking **without recipes**. It tries to expose how accomplished chefs combine technique, intuition, ingredients, constraints, and imagination to create dishes that do not already exist. |
+| **Database performance** | *The Guru's Guide to SQL Server Architecture and Internals*, Ken Henderson | Rather than cataloging performance fixes, Henderson explains the architecture and internals of SQL Server and how those mechanisms affect tuning. Understanding what the system is actually doing provides a mental model from which an expert can diagnose problems that no troubleshooting recipe anticipated. |
+| **Law** | *Thinking Like a Lawyer*, Frederick Schauer | Legal expertise cannot consist of memorizing every rule or prior case. Schauer focuses on rules, precedent, authority, analogy, interpretation, evidence, and other forms of legal reasoning that allow a lawyer to reason about a new set of facts. |
+| **Architecture** | *A Pattern Language*, Christopher Alexander et al. | The patterns are not building plans to copy. They form a language whose elements can be combined to produce an enormous variety of new buildings and environments. The book is especially interesting here because the patterns are explicitly interconnected rather than independent instructions. |
+| **Jazz improvisation** | *How to Improvise*, Hal Crook | The goal is not to reproduce a composition. Crook decomposes improvisation into things such as what to play, how to play, when to play, pacing, phrasing, rhythmic density, motif development, harmony, and other dimensions that musicians combine while creating something in real time. |
+| **Medicine** | *How Doctors Think*, Kathryn Montgomery | Clinical reasoning begins with a particular patient rather than a known answer. The physician combines history, signs, symptoms, experience, empirical knowledge, causal reasoning, and judgment to construct and revise a tentative explanation under uncertainty. |
+| **Computer programming** | *Structure and Interpretation of Computer Programs*, Abelson and Sussman et al. | Its emphasis is on mental models, abstraction, composition, state, modularity, and the structure of computational processes rather than on memorizing solutions to particular programming tasks. These concepts become tools for constructing systems that have never previously existed. |
+
+**Table C3 – Books that attempt to capture generative rather than merely procedural expertise.**
+
+These books sit at different points on the spectrum, but they share an important characteristic. They try to communicate **the structures from which answers can be generated**, rather than simply recording the answers that were generated previously.
+
+That distinction is close to the purpose of an Expert Reasoning Graph.
+
+A conventional knowledge base might contain the recipe:
+
+**Problem A → perform Step 1 → Step 2 → Step 3**
+
+The deeper representation attempts to preserve why those steps work, what mechanisms are involved, which conditions matter, what alternatives are available, what evidence would distinguish them, and what to do when the situation does not match anything previously encountered.
+
+In cooking terms, the interesting knowledge is not merely how to make Beef Bourguignon. It is how someone who deeply understands ingredients, heat, texture, acidity, fat, technique, and flavor can look at what happens to be in the kitchen and create a good dish that has never had a recipe.
+
+That is much closer to the kind of expertise an Expert Reasoning Graph is intended to capture.
+
+#### The Knowledge Has to Be Articulatable
+
+There is an important limit to this analogy. Not every form of expertise can necessarily be captured in an Expert Reasoning Graph.
+
+Some expertise becomes deeply embodied or automatic. An accomplished guitarist may perform movements they can no longer consciously decompose. Even when experts can explain what they do, years of experience can make it difficult for them to remember what was once confusing, which intermediate concepts a beginner needs, or which assumptions they are silently making.
+
+The useful target therefore lies somewhere between a recipe and ineffable intuition.
+
+The expert must be able, perhaps with help from an interviewer or LLM, to articulate enough of the underlying structure: what matters, why it matters, what mechanisms are involved, what conditions change the answer, what alternatives they consider, and what evidence causes them to choose one path rather than another.
+
+But the representation should not descend so far into the weeds that it merely documents one particular case. It must preserve knowledge at a level that can be recombined and applied to situations that have not occurred before.
+
+This is why books such as Barb Stuckey's *Taste What You're Missing* are interesting examples. Rather than providing a collection of finished dishes, the book explains underlying dimensions of taste and perception that help a cook understand why combinations work and devise combinations of their own.
+
+That is the level of knowledge an Expert Reasoning Graph needs: **not the finished answer, and not every microscopic movement involved in producing it, but the transferable structure from which a new answer can be reasoned.**
