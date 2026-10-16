@@ -207,6 +207,14 @@ Knowledge supplied by the SME should not silently become indistinguishable from 
 
 The LLM helps construct the model. It does not become the unquestioned authority behind it.
 
+### The LLM Usually Isn't Starting From Zero
+
+There is another important advantage. Unless someone's work is extraordinarily exotic, proprietary, or new, today's LLM will probably already have at least a general understanding of the field in which that person works. A database administrator does not have to begin by explaining what a database, index, query optimizer, or execution plan is. A geologist does not have to explain rocks, minerals, erosion, metamorphism, or plate tectonics. A lawyer does not have to begin by explaining statutes, precedent, evidence, or contracts.
+
+That matters because the expert can spend more time explaining the **finer details of what they actually do**: the exceptions, unusual cases, subtle clues, mechanisms, shortcuts, suspicions, and judgments that are unlikely to appear in ordinary documentation. The LLM already has enough of the surrounding vocabulary and conceptual structure to follow much of that conversation, ask reasonably informed questions, and suggest connections the expert can accept, reject, or correct.
+
+It will not know the expert's particular environment, and its general knowledge may be incomplete or wrong. That is why the SME remains the authority. But the conversation usually does not have to start from first principles. The LLM arrives with enough background knowledge that the expert can begin much farther into the weeds.
+
 ### From Writing Books to Building Graphs
 
 The hardest part remains the same problem humans have always faced: converting tacit expertise into something explicit.
