@@ -2,6 +2,8 @@
 
 One of the first geological ideas that substantially changed how I thought about rocks was something a friend called the quartz cycle. I am using that phrase here as the name he gave the idea and as a conceptual teaching device, not as a claim that geology contains one canonical closed “quartz cycle.”
 
+In geological terms, what he was really showing me was something like a quartz-centered path through the much broader and conventional **rock cycle**.
+
 Before that conversation, my picture of geology was largely a collection of simple relationships. Volcanoes produced lava. Coral produced sand. Rocks had names, and particular things produced particular kinds of rocks.
 
 The quartz-cycle story gave me something much more powerful: history.
