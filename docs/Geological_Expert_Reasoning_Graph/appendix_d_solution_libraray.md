@@ -18,6 +18,27 @@ A person no longer had to look only to nature. They could learn from tools, stor
 
 The library became cumulative.
 
+## Relationship to My Earlier Work
+
+This appendix connects the Expert Reasoning Graph to several earlier pieces in which I approached different portions of this progression.
+
+| Earlier work | Date | Connection to this appendix |
+| --- | --- | --- |
+| [Data Vault Methodology paired with Domain Driven Design](https://eugeneasahara.com/2021/01/02/data-vault-methodology-and-domain-driven-design) | January 2, 2021 | Described “tribal knowledge” as rich, contextual knowledge accumulated through tens of thousands of hours inside an enterprise and frequently trapped in employees' heads. |
+| [System ⅈ: The Default Mode Network of AGI](https://eugeneasahara.com/2026/01/08/system-0-the-default-mode-network-of-agi) | January 8, 2026 | Described nature as humanity's first library of working solutions and the progression from evolutionary solutions through analogy into cultural memory. |
+| [An Interlude Before the Third Act of “The Assemblage of AI”](https://eugeneasahara.com/2026/02/17/an-interlude-before-the-third-act-of-the-assemblage-of-ai) | February 17, 2026 | Stated the progression particularly directly: evolution seeds solutions, humans use them as analogies, and successful human solutions are added to culture, which increasingly becomes the source of further invention. |
+| [The Products of System 2](https://eugeneasahara.com/2026/03/04/the-products-of-system-2) | March 4, 2026 | Developed the ladder **evolution (genes) → culture (memes) → encoded forms**, emphasizing plans, stories, procedures, models, and other artifacts that allow solutions to survive the minds that created them. |
+
+**Table D1 – Earlier pieces leading toward the knowledge-worker layer of the Expert Reasoning Graph.**
+
+The Expert Reasoning Graph therefore feels less to me like an isolated graph idea than another step in that progression.
+
+Evolution retains what worked. Culture retains some of what humans learned. Books, software, procedures and other encoded forms make portions of culture durable.
+
+Knowledge workers then spend their careers adapting that inherited knowledge to circumstances nobody anticipated exactly.
+
+**The Expert Reasoning Graph is an attempt to keep more of what happens in that last step from disappearing.**
+
 ## The Knowledge Worker Adds Another Layer
 
 But there is another layer that does not receive nearly as much attention.
@@ -58,17 +79,12 @@ When that happens, individual experience becomes part of the larger cultural lib
 
 But much of it never makes that transition.
 
-The problem gets solved and everyone moves on.
-
-The support ticket is closed.
-
-The database begins running normally again.
-
-The customer is retained.
-
-The machine is repaired.
-
-The strange rock is identified.
+- The problem gets solved and everyone moves on.
+- The support ticket is closed.
+- The database begins running normally again.
+- The customer is retained.
+- The machine is repaired.
+- The strange rock is identified.
 
 The reasoning that produced the answer remains with the person who solved the problem.
 
@@ -86,9 +102,7 @@ I previously described a progression something like:
 
 Encoded forms are the durable products of human reasoning: plans, stories, procedures, strategies, models, diagrams, checklists, recipes and other artifacts that can survive the mind that produced them.
 
-The Expert Reasoning Graph suggests another step.
-
-A procedure records a solution.
+The Expert Reasoning Graph suggests another step. A procedure records a solution.
 
 An ERG attempts to preserve enough of the **reasoning that generated or adapted the solution** that the knowledge can be useful when the next case is not identical.
 
@@ -122,9 +136,7 @@ Seen this way, there is a long chain of accumulated problem solving:
 
 The first layers have been accumulating for an extraordinarily long time.
 
-The weak link is near the bottom.
-
-Humanity is very good at preserving finished products. We preserve recipes, designs, formulas, procedures, theories and software. Enterprises preserve enormous quantities of transactions and measurements.
+The weak link is near the bottom. Humanity is very good at preserving finished products. We preserve recipes, designs, formulas, procedures, theories and software. Enterprises preserve enormous quantities of transactions and measurements.
 
 We are much worse at preserving **how a particular experienced person navigated from an unfamiliar situation to a solution when no existing recipe quite fit.**
 
@@ -150,29 +162,4 @@ That last point is crucial. The objective is not to replace the unique knowledge
 
 The objective is to use that enormous existing library as scaffolding so that the **new knowledge produced by this particular person's experience** can be identified, articulated and preserved.
 
-## Relationship to My Earlier Work
 
-## Relationship to My Earlier Work
-
-This appendix connects the Expert Reasoning Graph to several earlier pieces in which I approached different portions of this progression.
-
-| Earlier work | Date | Connection to this appendix |
-| --- | --- | --- |
-| [Data Vault Methodology paired with Domain Driven Design](https://eugeneasahara.com/2021/01/02/data-vault-methodology-and-domain-driven-design) | January 2, 2021 | Described “tribal knowledge” as rich, contextual knowledge accumulated through tens of thousands of hours inside an enterprise and frequently trapped in employees' heads. |
-| [System ⅈ: The Default Mode Network of AGI](https://eugeneasahara.com/2026/01/08/system-0-the-default-mode-network-of-agi) | January 8, 2026 | Described nature as humanity's first library of working solutions and the progression from evolutionary solutions through analogy into cultural memory. |
-| [An Interlude Before the Third Act of “The Assemblage of AI”](https://eugeneasahara.com/2026/02/17/an-interlude-before-the-third-act-of-the-assemblage-of-ai) | February 17, 2026 | Stated the progression particularly directly: evolution seeds solutions, humans use them as analogies, and successful human solutions are added to culture, which increasingly becomes the source of further invention. |
-| [The Products of System 2](https://eugeneasahara.com/2026/03/04/the-products-of-system-2) | March 4, 2026 | Developed the ladder **evolution (genes) → culture (memes) → encoded forms**, emphasizing plans, stories, procedures, models, and other artifacts that allow solutions to survive the minds that created them. |
-
-**Table D1 – Earlier pieces leading toward the knowledge-worker layer of the Expert Reasoning Graph.**
-
-The Expert Reasoning Graph therefore feels less to me like an isolated graph idea than another step in that progression.
-
-Evolution retains what worked.
-
-Culture retains some of what humans learned.
-
-Books, software, procedures and other encoded forms make portions of culture durable.
-
-Knowledge workers then spend their careers adapting that inherited knowledge to circumstances nobody anticipated exactly.
-
-**The Expert Reasoning Graph is an attempt to keep more of what happens in that last step from disappearing.**
