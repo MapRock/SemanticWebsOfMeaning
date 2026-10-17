@@ -2,7 +2,7 @@
 
 This repository contains supplemental appendices, examples, and technical material accompanying the book:
 
-[***Semantic Webs of Meaning: Building Contextual Knowledge Graphs for Deduction and Integration***](https://technicspub.com/semantic-webs-of-meaning/) by **Eugene Asahara**, published by [Technics Publications](https://technicspub.com), 2026
+[***Semantic Webs of Meaning: Building Contextual Knowledge Graphs for Deduction and Integration***](https://technicspub.com/semantic-webs-of-meaning/) by **Eugene Asahara**, published by [Technics Publications](https://technicspub.com), 2026. Also available on [Amazon](https://www.amazon.com/Semantic-Webs-Meaning-Contextual-Integration/dp/B0HFKTLZ3X/ref=sr_1_1?crid=6FOQGFL75VVT&dib=eyJ2IjoiMSJ9.lTv-GMldwfEELcI3YQMvBUayaa0O8ASQWAX3tXH2eXCA5BdtAWBbPTMdyZNsDv5irE-V8eBSPaFJj0IU8TM-_C4rAaIPgBxBRCS-UKYlhN-sZCCKuHmotFxl-TY6vwPp7tysDm9W3kgcvETWLiORcrD5ldN2kc4oK3jsnv4-Ix9-PCVZfMQNc42mkcl13lSEAJtRJnMVUGQO310B7_-_UYXY80lHVVBrj6kZ2Y50XXM.4TjfoFPHKUq5bSL-HwNYKvED4dHop-uqZvpZRKKs0z0&dib_tag=se&keywords=semantic+webs+of+meaning&qid=1792245978&sprefix=semantic+webs+of+meaning%2Caps%2C176&sr=8-1)
 
 Please see my blog, [Trailer to my book: Semantic Webs of Meaning](https://eugeneasahara.com/2026/08/12/trailer-for-my-new-book-semantic-webs-of-meaning/), for an overview.
 
