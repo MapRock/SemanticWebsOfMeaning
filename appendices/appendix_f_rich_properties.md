@@ -2,6 +2,14 @@
 
 <i>This appendix accompanies [***Semantic Webs of Meaning: Building Contextual Knowledge Graphs for Deduction and Integration***](https://technicspub.com/semantic-webs-of-meaning/) by Eugene Asahara, published by [Technics Publications](https://technicspub.com).</i>
 
+**Euler’s abstraction (Königsberg, 1736)**
+
+Leonhard Euler faced the practical puzzle of whether one could walk the seven bridges of Königsberg, crossing each exactly once. He stripped away everything irrelevant to that question—the shapes and sizes of the landmasses, the lengths and appearance of the bridges, the curves of the river, the geography of the city. What remained was only the pattern of connection: four landmasses as vertices, seven bridges as edges linking them. From that pure connectivity he proved the walk impossible (four vertices of odd degree) and, in doing so, founded graph theory. The power of the move was precisely the loss: by discarding the “rich” physical details, the essential structure became visible and generalizable.
+
+**Restoring some of what was set aside**
+
+That same abstraction is the foundation of knowledge graphs: entities become nodes, relationships become edges, and everything that does not fit neatly into a triple is either omitted or awkwardly flattened. Rich properties are a deliberate restoration of part of what Euler set aside. They keep the graph’s abstract connectivity and semantic accessibility, while attaching the native artifacts—schematics, CAD models, diagrams, ML models, recordings, simulations—that still hold the spatial, visual, procedural, or computational richness that cannot be expressed without loss as ordinary RDF. The graph records identity, metadata, and links into the artifact; the artifact itself preserves the fidelity the pure graph had to discard. In short, the graph gives us Euler’s insight; the rich property gives back some of the world he had to ignore.
+
 ## F.1 Beyond Simple Properties
 
 Knowledge graphs are usually introduced through relatively simple properties:
@@ -736,7 +744,24 @@ The broader contribution is the synthesis: recognizing that an engineering schem
 
 Each is a representation of knowledge that can be linked to the graph without pretending that all of its meaning must first be converted into an ontology.
 
-## F.19 Conclusion
+## F.19 Semantic Schematics
+
+A useful subtype of rich property is the **semantic schematic**:
+
+> A semantic schematic is a visual or structured representation whose identifiable elements are linked to entities in a knowledge graph.
+
+Examples include:
+
+* a vehicle schematic whose parts link to component entities;
+* a building plan whose rooms link to locations and assets;
+* a UML diagram whose classes link to source code and database tables;
+* a workflow whose steps link to events, roles, and policies;
+* a strategy map whose objectives link to KPIs and initiatives;
+* and a trophic cascade whose species and effects link to ecological observations.
+
+A semantic schematic is more than an illustration. It is an alternate interface to the knowledge graph and an alternate representation of knowledge.
+
+## F.20 Conclusion
 
 Knowledge graphs are powerful because they make identity, meaning, and relationships explicit. They should not, however, be treated as the only useful representation of knowledge.
 
@@ -756,3 +781,5 @@ The knowledge graph does not need to reproduce every detail of a schematic, mode
 The external artifact preserves nuance and fidelity. The knowledge graph provides identity, context, governance, integration, and reasoning.
 
 Together, they describe more than either could describe alone.
+
+See: [Embedding Machine Learning Models into Knowledge Graphs](https://eugeneasahara.com/2025/01/09/machine-learning-models-embedded-in-knowledge-graphs/).
